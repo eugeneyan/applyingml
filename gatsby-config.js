@@ -4,6 +4,14 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
- module.exports = {
+module.exports = {
   pathPrefix: "/applied-ml-site",
+  plugins: [
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
+  ],
 }

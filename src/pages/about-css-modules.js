@@ -1,6 +1,6 @@
 import React from "react"
 import * as styles from "./about-css-modules.module.css"
-import Container from "../components/container"
+import Layout from "../components/layout"
 
 console.log(styles)
 
@@ -16,7 +16,7 @@ const User = props => (
 
 export default function About() {
   return (
-    <Container>
+    <Layout>
       <h1>About CSS Modules</h1>
       <p>CSS Modules are cool</p>
       <User
@@ -29,6 +29,6 @@ export default function About() {
         avatar="https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/tutorial/part-two/pexels-guilherme-almeida-1858175.jpg"
         excerpt="I'm Daniela Dewitt. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
-    </Container>
+    </Layout>
   )
 }

@@ -1,14 +1,15 @@
 import React from "react"
-import { Link } from "gatsby"
 import Header from "../components/header"
+import Layout from "../components/layout"
 
 export default function Home() {
   return (
-    <div style={{ color: `blue` }}>
-      <Link to="/contact/">Contact</Link>
-      <Header headerText="Hello Gatsby" />
-      <p>What a world.</p>
-      <img src="https://source.unsplash.com/random/400x200" alt="" />
-    </div>
+    <Layout>
+      <Header headerText="Hi! I'm building a fake Gatsby site as part of a tutorial!"/>
+      <p>
+        What do I like to do? Mainly machine learning, but this is my project to learn javascript 
+        and help people. Watch this space ;)
+      </p>
+    </Layout>
   )
 }
