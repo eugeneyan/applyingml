@@ -3,7 +3,7 @@
   "private": true,
   "description": "A site for applied-ml",
   "version": "0.1.0",
-  "license": "0BSD",
+  "homepage": "https://eugeneyan.github.io/applied-ml-repo",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -12,7 +12,9 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
+    "local-deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "predeploy": "gatsby build --prefix-paths",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "gatsby": "^3.4.1",
