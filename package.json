@@ -3,7 +3,7 @@
   "private": true,
   "description": "A site for applied-ml",
   "version": "0.1.0",
-  "homepage": "https://eugeneyan.github.io/applied-ml-repo",
+  "homepage": "https://github.com/eugeneyan/applyingml",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/eugeneyan/applied-ml-site"
+    "url": "https://github.com/eugeneyan/applyingml"
   }
 }
