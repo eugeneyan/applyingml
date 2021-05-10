@@ -11,10 +11,10 @@ export default function MyFiles({ data }) {
         <table>
           <thead>
             <tr>
-              <th>relativePath</th>
-              <th>prettySize</th>
+              <th>path</th>
+              <th>size</th>
               <th>extension</th>
-              <th>birthTime</th>
+              <th>created</th>
             </tr>
           </thead>
           <tbody>

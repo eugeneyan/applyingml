@@ -2,3 +2,10 @@
   margin: 1em auto;
   max-width: 600px;
 } */
+
+.header-link {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  font-family: Raleway;
+}

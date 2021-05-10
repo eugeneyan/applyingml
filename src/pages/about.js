@@ -6,7 +6,7 @@ export default function About({ data }) {
   return (
     <Layout>
       <h1>About {data.site.siteMetadata.title}</h1>
-      <p>Such wow. Very React.</p>
+      <p>Built with Gatsby. Such wow. Very React.</p>
     </Layout>
   )
 }

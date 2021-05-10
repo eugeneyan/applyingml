@@ -4,7 +4,7 @@ import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 
 const ListLink = props => (
-  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+  <li className="header-link">
     <Link to={props.to}>{props.children}</Link>
   </li>
 )
@@ -37,6 +37,7 @@ export default function Layout({ children }) {
               margin-top: 0;
               margin-bottom: 0;
               display: inline-block;
+              color: black;
             `}
           >
             {data.site.siteMetadata.title}
@@ -46,8 +47,10 @@ export default function Layout({ children }) {
           css={css`
             liststyle: none;
             float: right;
+            margin-bottom: 0;
           `}
         >
+          <ListLink to="/posts/">Posts</ListLink>
           <ListLink to="/about/">About</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
         </ul>
