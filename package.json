@@ -14,7 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "local-deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "predeploy": "gatsby build --prefix-paths",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "gatsby": "^3.4.1",
