@@ -1,5 +1,7 @@
 import React from "react"
-import { Link } from "gatsby"
+import { css } from "@emotion/react"
+import { useStaticQuery, Link, graphql } from "gatsby"
+import { rhythm } from "../utils/typography"
 
 const ListLink = props => (
   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
@@ -8,13 +10,44 @@ const ListLink = props => (
 )
 
 export default function Layout({ children }) {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
   return (
-    <div style={{ margin: `1em auto`, maxWidth: 688, padding: `0 1rem` }}>
+    <div
+      css={css`
+        margin: 0 auto;
+        max-width: 688px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    >
       <header style={{ marginBottom: `1.5rem` }}>
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h3 style={{ marginTop: 0, marginBottom: 0, display: "inline" }}>Applying ML</h3>
+          <h3
+            css={css`
+              margin-top: 0;
+              margin-bottom: 0;
+              display: inline-block;
+            `}
+          >
+            {data.site.siteMetadata.title}
+          </h3>
         </Link>
-        <ul style={{ listStyle: `none`, float: `right` }}>
+        <ul
+          css={css`
+            liststyle: none;
+            float: right;
+          `}
+        >
           <ListLink to="/about/">About</ListLink>
           <ListLink to="/contact/">Contact</ListLink>
         </ul>
