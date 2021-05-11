@@ -4,6 +4,8 @@ import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 import { MDXProvider } from "@mdx-js/react"
 
+import CodeBlock from './codeblock'
+
 const ListLink = props => (
   <li
     css={css`
@@ -16,6 +18,10 @@ const ListLink = props => (
     <Link to={props.to}>{props.children}</Link>
   </li>
 )
+
+const components = {
+  code: CodeBlock
+}
 
 export default function Layout({ children }) {
   const data = useStaticQuery(
@@ -63,10 +69,7 @@ export default function Layout({ children }) {
           <ListLink to="/about/">About</ListLink>
         </ul>
       </header>
-      <MDXProvider
-        components={{
-        }}
-      >
+      <MDXProvider components={components}>
         {children}
       </MDXProvider>
     </div>

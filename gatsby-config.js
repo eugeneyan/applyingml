@@ -53,6 +53,11 @@ module.exports = {
               linkImagesToOriginal: false,
             },
           },
+          `gatsby-remark-copy-linked-files`,
+        ],
+        remarkPlugins: [
+          require('remark-math'),
+          require('remark-html-katex'),
         ],
       },
     },
