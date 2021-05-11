@@ -9,15 +9,8 @@ export default function Home({ data }) {
   return (
     <Layout>
       <div>
-        <h1
-          css={css`
-            display: inline-block;
-          `}
-        >
-          Some sample posts
-        </h1>
-        {/* <h3>{data.allMarkdownRemark.totalCount} Posts</h3> */}
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        <p>Resources related to applying machine learning.</p>
+        {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <Link
               to={node.fields.slug}
@@ -38,7 +31,7 @@ export default function Home({ data }) {
                   `}
                 ></span>
               </h3>
-              <p>{node.frontmatter.description}</p>
+              <br></br>
             </Link>
           </div>
         ))}
@@ -49,20 +42,20 @@ export default function Home({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(filter: {fileAbsolutePath: {regex: "/(posts)/"  }}, sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {
           frontmatter {
             title
-            date
             description
+            date
           }
           fields {
               slug
           }
           timeToRead
-          html
+          body
         }
       }
     }

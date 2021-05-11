@@ -2,9 +2,17 @@ import React from "react"
 import { css } from "@emotion/react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
+import { MDXProvider } from "@mdx-js/react"
 
 const ListLink = props => (
-  <li className="header-link">
+  <li
+    css={css`
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 0;
+      font-family: Raleway;
+    `}
+  >
     <Link to={props.to}>{props.children}</Link>
   </li>
 )
@@ -26,13 +34,13 @@ export default function Layout({ children }) {
       css={css`
         margin: 0 auto;
         max-width: 688px;
-        padding: ${rhythm(2)};
+        padding: ${rhythm(1)};
         padding-top: ${rhythm(1.5)};
       `}
     >
-      <header style={{ marginBottom: `1.5rem` }}>
+      <header style={{ marginBottom: `2rem` }}>
         <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-          <h3
+          <h1
             css={css`
               margin-top: 0;
               margin-bottom: 0;
@@ -41,7 +49,7 @@ export default function Layout({ children }) {
             `}
           >
             {data.site.siteMetadata.title}
-          </h3>
+          </h1>
         </Link>
         <ul
           css={css`
@@ -50,12 +58,17 @@ export default function Layout({ children }) {
             margin-bottom: 0;
           `}
         >
-          <ListLink to="/posts/">Posts</ListLink>
+          <ListLink to="/resources/">Resources</ListLink>
+          <ListLink to="/mentors/">Mentors</ListLink>
           <ListLink to="/about/">About</ListLink>
-          <ListLink to="/contact/">Contact</ListLink>
         </ul>
       </header>
-      {children}
+      <MDXProvider
+        components={{
+        }}
+      >
+        {children}
+      </MDXProvider>
     </div>
   )
 }

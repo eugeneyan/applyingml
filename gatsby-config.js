@@ -17,7 +17,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/markdown`,
       },
     },
     {
@@ -40,8 +40,24 @@ module.exports = {
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-transformer-remark`,
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 700,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
     `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-catch-links`,
   ],
 }
