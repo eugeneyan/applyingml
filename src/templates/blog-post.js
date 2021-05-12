@@ -21,12 +21,13 @@ export default function BlogPost({ data }) {
 }
 
 export const query = graphql`
-  query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      body
-      frontmatter {
-        title
-      }
+query MyQuery {
+  mdx {
+    frontmatter {
+      title
+      slug
     }
+    body
   }
+}
 `

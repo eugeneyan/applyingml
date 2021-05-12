@@ -13,7 +13,7 @@ export default function Home({ data }) {
         {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <Link
-              to={node.fields.slug}
+              to={node.frontmatter.slug}
               css={css`
                 text-decoration: none;
                 color: inherit;
@@ -50,9 +50,7 @@ export const query = graphql`
             title
             description
             date
-          }
-          fields {
-              slug
+            slug
           }
         }
       }
