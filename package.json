@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.4.0",
-    "@fontsource/literata": "^4.3.0",
+    "@fontsource/merriweather": "^4.3.0",
     "@fontsource/raleway": "^4.3.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",

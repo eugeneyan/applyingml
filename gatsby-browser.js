@@ -1,3 +1,3 @@
 import "@fontsource/raleway"
-import "@fontsource/literata"
-import "@fontsource/literata/600.css"
+import "@fontsource/merriweather"
+import "@fontsource/merriweather/700.css"
