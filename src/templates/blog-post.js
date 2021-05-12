@@ -21,8 +21,8 @@ export default function BlogPost({ data }) {
 }
 
 export const query = graphql`
-query MyQuery {
-  mdx {
+query($slug: String!) {
+  mdx(frontmatter: { slug: { eq: $slug } }) {
     frontmatter {
       title
       slug

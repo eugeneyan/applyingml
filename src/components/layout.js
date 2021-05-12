@@ -11,7 +11,7 @@ const ListLink = props => (
   <li
     css={css`
       display: inline-block;
-      margin-left: 1rem;
+      margin-left: 0.75rem;
       margin-bottom: 0;
       font-family: Raleway;
     `}
@@ -83,9 +83,10 @@ export default function Layout({ children }) {
             margin-bottom: 0;
           `}
         >
-          <ListLink to="/resources/">Resources</ListLink>
+          <ListLink to="/applied-ml/">Papers</ListLink>
+          <ListLink to="/posts/">Posts</ListLink>
           <ListLink to="/mentors/">Mentors</ListLink>
-          <ListLink to="/about/">About</ListLink>
+          {/* <ListLink to="/about/">About</ListLink> */}
         </ul>
       </header>
       <hr style={{ color: `#d9d9d9`, border: `0` }}></hr>
