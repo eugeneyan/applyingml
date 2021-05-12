@@ -7,7 +7,6 @@ const typography = new Typography({
   headerFontFamily: [
     "Raleway",
     "Helvetica Neue",
-    "Arial",
     "sans-serif",
   ],
   bodyFontFamily: ["Literata", "Georgia", "serif"],

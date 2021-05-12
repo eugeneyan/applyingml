@@ -6,7 +6,7 @@ export default function Home() {
     <Layout>
       <p>
         What do I like to do? Mainly machine learning, but this is my project to
-        learn javascript and help people. Watch this space ;)
+        learn JavaScript, Gatsby, make new friends, and help people. Watch this space ;)
       </p>
     </Layout>
   )

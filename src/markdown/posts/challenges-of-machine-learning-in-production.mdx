@@ -1,0 +1,147 @@
+---
+title: "Machine Learning in Production - Challenges"
+description: "I thought deploying machine learning was hard. Then I had to maintain multiple systems in prod."
+date: "2020-05-18"
+---
+import { FigureCaption } from '../../components/figure-caption';
+import "katex/dist/katex.min.css"
+
+There’s not much on what happens _after_ deployment. There’re good academic papers (referenced below) though they’re less accessible to laymen. To address this, I’ll share my experience with real-world examples. It’s a work in progress and not an exhaustive list, but I hope it raises awareness on machine learning post-deployment.
+
+I’ll discuss this from the bottom-up: starting with data, then models and engineering, then aspects external to the system (i.e., the real world, org structure, users).
+
+## Schemas Change When They Shouldn't (& vice versa)
+
+**Machine learning systems are dependent on data.** Unstable upstream data will affect your system’s performance. Some of these are just annoying outages or delays that require you to manually run your pipeline. Others are more damaging and difficult to discover.
+
+Here’s an example: Imagine you have a column for `gender` with two values, `male` and `female`. To be more politically correct, frontend adds `Transgender`,  `Other`, and `Prefer not to say` to the dropdown list. They also update `male` -> `Male` and `female` -> `Female`. The prod database now has these new—never seen before—values.
+
+Your data pipelines chug along without complaints. Your [feature encoders](https://spark.apache.org/docs/latest/ml-features.html#feature-transformers) set these unknown values to `null`. Your models are resilient to the entire `gender` column being `null` and don’t break. However, your system’s online performance degrades, especially in use cases where gender is important (e.g., customer segmentation, personalized recommenders, etc.)
+
+**(Unexpected) pipeline consumers may impose constraints.** Your data pipelines store intermediate processed data in tables, which you make available to the whole org. As you iterate, you add data columns that improve ML performance and remove the redundant ones. One day, you get an angry email, asking why a (dropped) column is no longer available—it’s from a previously unknown consumer of your data.
+
+The quick, short-term fix is to restore that data column and placate that angry consumer. However, this adds additional compute time and cost to your pipeline—with no benefits to your systems! Now, there are delays in your model's daily refresh and your team has to bear the additional cost.
+
+Big picture-wise, your pipelines (and ML system) are now entangled. Consumers of your data have imposed constraints—you no longer have full autonomy to update your data pipelines. Further, all systems relying on your pipeline, including yours, end up stuck in poor overall local optima.
+
+**Data Leaks are introduced.** [Data leakage](https://www.datarobot.com/wiki/target-leakage/) occurs when some form of the label (aka target variable) “leaks” into the feature data. This leads to artificially good results during offline evaluation, but poor performance in a live environment.
+
+> Suppose you’re building a model to [estimate a patient’s hospital bill](https://eugeneyan.com/speaking/machine-learning-in-production-for-healthcare-talk/). Patients request an estimation at the point of admission (or when they're shopping around). A key feature in your model is the <i>estimated</i> hospitalization_days (provided by the admitting doctor); this is stored in the production database. One day, someone decides to update the hospitalization_days column with the actual number of days hospitalised.
+
+Now, your model trains on the actual length of stay which would **never** be available at the point of admission—this is a data leak. During training, the model gives (actual) `hospitalization_days` a high weight, overfits, and performs well in offline evaluation. During serving, it continues to weigh  (estimated) `hospitalization_days` highly, resulting in poor production accuracy. Such data leaks and training-serving skew can be difficult to detect.
+
+## Unwanted Model Interactions (Internal & External)
+
+**Too many features makes your model different to maintain.** After launching the prototype, an easy route to performance improvements is to add more features–this _usually_ leads to improved accuracy. We seldom reassess if _all_ the features are _still_ useful. Over time, many features become redundant, with (or without) the addition of other features.
+
+It can be expensive to maintain data pipelines for these redundant features. These redundancies also add unnecessary dependencies and complexity to your model, making it harder to maintain and iterate on.
+
+**Other models influence your model performance.** Often, your model is exposed to customers _together_ with several other models.
+
+> Take the home page of an e-commerce app for example. Your recommender is one of many widgets on it. There’s also an overall widget ranker that determines which widget gets more visibility. Widgets that increase certain metrics (e.g., click-thru, conversion, revenue) are displayed closer to the top.
+
+Recently, your recommender performance has worsened. Why? Is it degrading on its own? Are other recommenders performing better and drawing away engagement? Or was there a change in the widget ranker’s algorithm? These interaction effects make it difficult to understand a model’s online performance and make improvements.
+
+## Infra & Codebase is Messy (read: Chaotic)
+
+**Machine learning systems often have poor engineering practices.** I’ll be honest—if I build an ML system end-to-end, my coding practices are not going to be as “best practice” as my engineering brothers-in-arms.
+
+Poor engineering practices have different “smells”. Glue-code is one such smell—they do one-off jobs such as dumping data from S3 to your database or vice versa. My codebase also smells of multiple programming languages. Python is the de facto for machine learning while Scala (and Spark) for big data processing. There’s also bits of SQL scattered here and there. And some legacy UI tools that are too tightly woven in.
+
+These different languages and codebases will require different infrastructure and skill sets to support. Over the long term, it becomes expensive to maintain and improve upon. On the other hand, attempting to rewrite everything in Java or some other enterprise language is a non-starter. Still trying to figure this balance out.
+
+**Configuration code is often messy or non-existent.** As you develop your ML system, you find the need to add [“magic” numbers](https://www.kaggle.com/c/sberbank-russian-housing-market/discussion/35044). What are examples of these? The `threshold` to convert probabilities to 1s and 0s in classification. The `days` of historical data to train your model on. And of course, all the optimized machine learning hyper `params`.
+
+In the worst case, you find these magic numbers sprinkled in the production code. A slight improvement would have them in configuration files. Or you might be using [MLflow](https://mlflow.org/docs/latest/tracking.html) to manage them. As your ML system grows, the config code grows larger than the ML code.
+
+How can we manage these voluminous configs? How do we onboard someone new to them? When we make changes, how do we know they’re correct (and prevent prod from breaking)? It's a bigger challenge than it appears.
+
+> Data matures like wine, applications like fish - James Governor
+
+**Infrastructure environments don’t cooperate.** You’ve tried a new machine learning library and offline evaluation results are amazing. Also, the new release of Spark 2.x fixes a key pain point and you want to start using it ASAP. (For example, before Spark 2.3, [raw prediction probabilities were not available for some model implementations](https://issues.apache.org/jira/browse/SPARK-12664).)
+
+Unfortunately, your infra team is unable to support your requests. To serve your new machine learning library in prod, they need to update the API servers. To use Spark 2.x, they need to wait for their cloud/Hadoop distro to support it. And update the cluster. And perform regression testing. It’ll be a couple days (read: weeks).
+
+But hey, that’s not too bad. Could be worse. You might’ve updated the code, deployed it, and broke everything for a day or two. You could have caused a P0 outage where the CEO is notified and everyone drops everything to roll back.
+
+In short, once your system is in production, you’ll have to rely on the `prod` environment and can’t cowboy in `dev` anymore.
+
+## Real-World Bias and Bad Guys Come Knocking
+
+**Real-world data doesn’t cooperate.** It changes. Contrast this with your machine learning model. Once trained, ML models are static (unless they’re updated via online learning). They learn (fixed) assumptions about the world—based on the training data—and don’t change them.
+
+What happens when those assumptions no longer hold? [Data drift](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-monitor-data-drift). This occurs when your input data (during prediction) becomes progressively different from your training data over time. Real-world data is dynamic but your model is static.
+
+> We've seen an example of structural drift (e.g., schema change); this occured when the gender column was updated. The example of hospitalization_days, where the value changes from estimated to actual demonstrates semantic drift–the meaning of the data has changed but the structure (i.e., schema) hasn't.
+
+In benign instances, model performance degrades and CTR drops a bit. It’s far more damaging if it leads to a loss in [finances](https://futurism.com/investing-lawsuit-ai-trades-cost-millions) or worse, lives.
+
+**Feedback loops can cause a vicious cycle.** In production, your model affects the real world, which affects your model, which affects the real world … you get what I mean. (Yes, [Minority Report](https://en.wikipedia.org/wiki/Minority_Report_(film)))
+
+> Here’s an example: A forecasting model predicts how much inventory a supermarket chain should hold each week. The model is penalised for holding excess inventory, so it consistently underestimates. As a result, stores often sell the forecasted amount and go out of stock. The ML model learns based on the (decreasing) sales data and continues to underestimate. But on paper, it looks really accurate.
+
+Another example. Let’s consider a ranking system. Products that rank high today get high engagement. Because they had high engagement, they continue to rank high tomorrow. This makes it almost impossible for new products to get traffic. Such feedback loops are tricky to detect and control for in model training.
+
+**Adversaries (the academic term for bad guys).** Adversaries will [probe and try to trick your model](https://en.wikipedia.org/wiki/Adversarial_machine_learning) if it’s profitable. In a ranking system, sellers will try to get counterfeit or poor quality products to rank high, even going as far as [buying their own products](https://sellercentral.amazon.com/forums/t/seller-buying-their-own-products/80878). Phishers try to get past email spam detectors. Fraudsters try to outsmart anti-money laundering systems.
+
+These adversaries will reverse engineer your models and monitor which of their attempts worked. As they probe, they also (deliberately) introduce data which your model will learn from. As a result, the training data is polluted and prod performance decreases.
+
+## Org Issues - Priorities Clash; Diffused Responsibility
+
+**More teams will get involved (with conflicting priorities).** As part of data science, you want to innovate and deploy the best performing (and likely computationally most expensive) machine learning. Engineering wants stability and lower cost of maintenance. Business wants results _fast_ (read: today, but ideally yesterday), constraining the time and resources available for long-term innovation (slight overgeneralization).
+
+You’ll have to consider the bigger picture as you iterate on your ML system that is now in prod. This means not having the fanciest, highest-performing model because it requires 10x more compute for 0.5% gain. This means shipping in 2 – 3 months instead of 2 – 3 years. It’ll be a challenge to balance these different stakeholder priorities in your roadmap.
+
+**More people are now required for each update meeting.** When someone reported a bug in the initial production prototype, you fixed it single-handedly in a day. Now, to fix a bug or add a new feature, you need a meeting with the product manager, a data engineer, a software engineer, and a QA—if you’re lucky, this meeting can happen within days.
+
+In most mature organizations, work is divided across specialised roles. Let’s consider this in the context of machine learning. To add input data columns:
+- A data engineer needs to update data pipelines and the feature store.
+- Then, a data scientist updates the ML code and runs offline evaluation.
+- Next, an engineer “productionizes” the code (can’t let those DSes break prod!)
+- Finally, a quality assurance (QA) guy runs the test suite and stress tests.
+
+This [division of labour](https://en.wikipedia.org/wiki/Division_of_labour) leads to [increased coordination costs and wait time](https://multithreaded.stitchfix.com/blog/2019/03/11/FullStackDS-Generalists/) as tasks pass from one person to another. The result? Increased friction, reduced development and deployment velocity. This makes it a challenge to iterate fast once in production.
+
+> What one programmer can do in one month, two programmers can do in two months - Frederick P. Brooks
+
+## With Users, You Have to Provide Customer Service
+
+**Consumers will spot flaws and demand fixes.** Because there’re so many users of your product, the flaws of machine learning quickly become apparent. Most machine learning applications approximate human-level ability—and mistakes—but at a much larger scale. Things can blow up fast.
+
+One infamous example is the [Google Gorilla](https://www.cnet.com/news/google-apologizes-for-algorithm-mistakenly-calling-black-people-gorillas/). In 2015, Google’s photo classifier mistakenly labelled black people as gorillas. Two years on, Google still [hasn't](https://www.wired.com/story/when-it-comes-to-gorillas-google-photos-remains-blind/) found a satisfying–GG. I’ve experienced similar incidents where customers were recommended adult toys on product pages (don’t ask me how, it’s trained on user behaviour data). This was a concern, especially for conservative Muslim countries, especially for parents.
+
+With millions of users, the (enviably low) 0.001% error rates affect thousands. You’ll receive the gift of feedback and the expectation of a quick fix.
+
+**People need to know why.** Let me first qualify by saying that, in most use cases, this probably won’t happen. Weather forecasts, movie recommendations, route planning—we use them daily and don’t question them. We acclimatize to machine learning apps the more often we use them, especially if the utility is high and repercussions low.
+
+$$
+\text {Getting used to ML apps} =\text {Weekly Usage} \times \text {Utility}-\text {Repercussion}
+$$
+
+However, there are instances where we _need_ an explanation.
+
+> Imagine walking into a hospital looking for a standard heart valve procedure. Your google-jitsu suggests this [typically costs 60 thousand](https://www.onlinejacc.org/content/70/18_Supplement/B268.1). However, the hospital’s (opaque) algorithm estimates a bill thrice that amount. Woah, wait, why?! Does the model foresee complications? Is it my age or medical history? Is it my smoking?
+
+People can’t help but worry, even if it’s just an estimation and has _no_ impact on the final bill. Compare this to machine learning algorithms that _do_ affect people’s lives, such as getting rejected for a loan or insurance. In these cases, the need to know why is far stronger and our machine learning systems should be able to provide that.
+
+**People care about privacy and how their data is used.** The more data machine learning systems have, the better they learn, the better they serve. On the other hand, people want to control their data. They don’t want their personal data being used to discriminate or target them (e.g., ads). They don’t want embarrassing details online.
+
+This leads to regulations, such as the EU’s General Data Protection Regulation (GDPR). It aims to give individuals control over their personal data and affects how many industries operate, especially social media and online ads. If you have users from the EU, you’ll also face this challenge in your machine learning ops.
+
+## Where to go from here?
+
+At the start of this post, you likely thought one of the following:
+- “Deploying was the hardest part.”
+- “Deploying is just the beginning.”
+
+Whichever group you were in, I hope this increased your awareness of machine learning challenges post-deployment. I spent years on these issues and have (thankfully) found some straightforward ways to fix–or, in many cases, prevent–them. More in the next post.
+
+## References
+- [Machine Learning: The High Interest Credit Card of Technical Debt](https://research.google/pubs/pub43146/)
+- [Rules of Machine Learning: Best Practices for ML Engineering](https://developers.google.com/machine-learning/guides/rules-of-ml#overview)
+- [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
+- [On Challenges in Machine Learning Model Management](http://sites.computer.org/debull/A18dec/p5.pdf)
+- [Data Lifecycle Challenges in Production Machine Learning: A Survey](https://dl.acm.org/doi/10.1145/3299887.3299891)
+- [Continuous Delivery for Machine Learning](https://martinfowler.com/articles/cd4ml.html)
+- [Why Machine Learning Models Degrade In Production](https://towardsdatascience.com/why-machine-learning-models-degrade-in-production-d0f2108e9214)
+- [Versioning for End-to-End Machine Learning Pipelines](https://dl.acm.org/doi/10.1145/3076246.3076248)

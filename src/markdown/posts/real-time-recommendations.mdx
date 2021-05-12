@@ -1,5 +1,5 @@
 ---
-title: "Real-time Machine Learning For Recommendations"
+title: "Real-time Recommendations"
 description: "Why real-time? How have China & US companies built them? How to design & build an MVP?"
 date: "2021-01-10"
 ---
@@ -19,7 +19,7 @@ Note: This discussion assumes basic knowledge of recommendation systems, such as
 
 If you understand the difference between collaboration vs. content-based recommendations, and item-to-item vs. user-to-item, feel free to skip this section.
 
-**ollaboration-based recommendations are based on user behavior.** Assume I like movie X and dislike movie Y. To recommend movies to me, we first find users similar to me (i.e., like X, dislike Y). Then, from those users, what are movies they liked, but I’ve not watched? Those movies are then recommended to me. With user behavioral data, users can “collaborate” to create recommendations for each other. Collaborative filtering is probably the most well-known approach.
+**Collaboration-based recommendations are based on user behavior.** Assume I like movie X and dislike movie Y. To recommend movies to me, we first find users similar to me (i.e., like X, dislike Y). Then, from those users, what are movies they liked, but I’ve not watched? Those movies are then recommended to me. With user behavioral data, users can “collaborate” to create recommendations for each other. Collaborative filtering is probably the most well-known approach.
 
 **Content-based recommendations are based on item metadata.** Given the movies I’ve watched (and enjoyed), content-based recommenders suggest movies of similar genre, time period, director, etc. Relative to collaboration-based recommenders, content-based recommenders tend to be more effective when the movie is new and we don’t have enough user behavioral data about it yet (i.e., cold-start problem)
 

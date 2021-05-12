@@ -13,7 +13,7 @@ export default function BlogPost({ data }) {
           description={post.frontmatter.description}
         />
         <div>
-          <h1>{post.frontmatter.title}</h1>
+          <h2 style= {{ fontSize: `2em`}}>{post.frontmatter.title}</h2>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
       </Layout>

@@ -1,5 +1,5 @@
 ---
-title: "Feature Stores - A Hierarchy of Needs"
+title: "Feature Stores"
 description: "Access, serving, integrity, convenience, autopilot; use what you need."
 date: "2021-02-21"
 ---
@@ -60,7 +60,7 @@ What happens if access to feature information and data is low? Here’s a common
 
 To address this, [GoJek built Feast](https://www.gojek.io/blog/feast-bridging-ml-models-and-data), a feature store that acts as the interface between data engineers and scientists, and ML practitioners. Data engineers and scientists create features and contribute them to the feature store. Then, ML practitioners consume these ready-made features, saving time by not having to create their own features. 
 
-(Not sure how I feel about this productivity gain, given my preference for data scientists to be more [end-to-end]({{ site.baseurl }}{% link posts/_posts/2020-08-09-end-to-end-data-science.md %}). Nonetheless, this spilt between data engineering and machine learning might have been an artifact of how GoJek’s data team was structured, with the data engineering team mostly situated in India while the ML team was mostly in Singapore. Thus, Feast served as an interface for both teams to collaborate on.)
+(Not sure how I feel about this productivity gain, given my preference for data scientists to be more [end-to-end](https://eugeneyan.com/writing/end-to-end-data-science/). Nonetheless, this spilt between data engineering and machine learning might have been an artifact of how GoJek’s data team was structured, with the data engineering team mostly situated in India while the ML team was mostly in Singapore. Thus, Feast served as an interface for both teams to collaborate on.)
 
 Similarly, Uber built their [Palette feature store](https://www.infoq.com/presentations/michelangelo-palette-uber/) to encourage the sharing—and reuse—of features in a single location. Various teams across Uber could contribute features to, and use features from, Palette. For Uber, this minimized duplicate work, made ML outcomes more consistent, and accelerates the ML process. 
 
@@ -82,7 +82,7 @@ For Monzo Bank, the features were available in their analytics stack, which was 
 Uber’s Palette adopts a similar dual-store approach. The offline store (Hive) saves feature snapshots and is mainly used by training jobs. The online store (Cassandra) serves the same features in real-time. Features not available in Cassandra are generated online via Flink before being saved to Cassandra. Data between both stores are synchronized. New features added in Hive are automatically copied to Cassandra; real-time features added to Cassandra are ETL-ed to Hive.
 
 ![Creating batch and real-time features, and synchronizing between stores](../assets/uber-dual-store.jpg)
-<FigureCaption caption="Creating batch and real-time features, and synchronizing between stores"/>
+<FigureCaption caption="Creating batch and real-time features, and synchronizing between stores" source="https://www.infoq.com/presentations/michelangelo-palette-uber/" />
 
 DoorDash took addressing serving needs to the extreme with their [Gigascale feature store](https://doordash.engineering/2020/11/19/building-a-gigascale-ml-feature-store-with-redis/). Here are the demanding technical requirements they had:
 - Stores billions of records via persistent, scalable storage: DoorDash has millions of entities (users, merchants, food items) leading to billions of feature-value pairs.
@@ -102,7 +102,7 @@ With serving needs met, we turn to integrity needs. There are two main pain poin
 To address the first problem, Netflix built [distributed time-travel](https://netflixtechblog.com/distributed-time-travel-for-feature-generation-389cccdd3907). It takes snapshots of their offline and online data. These snapshots cover various contexts such as member type, device, time of day, etc.
 
 ![Creating snapshots from offline stores and online micro services](../assets/netflix-snapshots.jpg)
-<FigureCaption caption="Creating snapshots from offline stores and online micro services"/>
+<FigureCaption caption="Creating snapshots from offline stores and online micro services" source="https://netflixtechblog.com/distributed-time-travel-for-feature-generation-389cccdd3907" />
 
 However, creating snapshots for every context is expensive. Thus, they perform stratified sampling on attributes such as viewing patterns, device type, time spent on device, region, etc. These samples provide a good distribution of data to train and validate their models on. The sampling is done via Spark and snapshots are stored in S3. 
 
@@ -111,12 +111,12 @@ A similar process snapshots online data from their hundreds of microservices. Th
 To solve the second pain point of train-serve skew, GoJek adopted Apache Beam as their data processing pipeline. Data from batch and streaming sources (e.g., BigQuery, Kafka) are ingested via Beam into offline and online stores (e.g., BigQuery, Redis). A unified API (to access historical and online data) minimizes the need to rewrite feature pipelines for the serving environment and thus accidentally introducing train-serve skew.
 
 ![GoJek's Feast ingesting features via Apache Beam](../assets/gojek-feast.jpg)
-<FigureCaption caption="GoJek's Feast ingesting features via Apache Beam"/>
+<FigureCaption caption="GoJek's Feast ingesting features via Apache Beam" source="https://www.gojek.io/blog/feast-bridging-ml-models-and-data" />
 
 Netflix addressed this via shared feature encoders. Though they have different pipelines for offline (Spark) and online feature generation, both pipelines use the same feature encoders (i.e., same classes, libraries, and data formats). This ensures that feature generation is consistent across training and serving environments.
 
 ![Netflix uses the same encoders for offline and online feature generation](../assets/netflix-shared-encoders.jpg)
-<FigureCaption caption="Netflix uses the same encoders for offline and online feature generation"/>
+<FigureCaption caption="Netflix uses the same encoders for offline and online feature generation" source="https://databricks.com/session/fact-store-scale-for-netflix-recommendations" />
 
 We’ve also seen how Uber approached this by keeping their offline (Hive) and online (Cassandra) feature stores in sync. New features in either store are copied to the other store, ensuring consistency between data used for training and serving.
 
@@ -133,7 +133,7 @@ Similarly, Uber built [Data Quality Monitor](https://eng.uber.com/monitoring-dat
 - Finally, a time series is built on the top components. If the current measurement does not match the one-step ahead forecast, it is classified as an anomaly.
 
 ![Data quality scores over time, and when incidents occur](../assets/uber-dqm.jpg)
-<FigureCaption caption="Data quality scores over time, and when incidents occur"/>
+<FigureCaption caption="Data quality scores over time, and when incidents occur" source="https://eng.uber.com/monitoring-data-quality-at-scale/"/>
 
 ## Convenience: Making it as easy to use as possible
 
@@ -173,7 +173,7 @@ At the top, we have autopilot needs. Not meeting these needs may mean your data 
 Airbnb noticed that backfilling was a bottleneck when their data scientists iterated on ML experiments. Thus, Zipline includes a feature to backfill features automatically. A simple UI is provided where data scientists could define new features, specify the start and end dates, and how many processes to parallelize the backfill for. These features would then be added to their existing training feature set [via an Airflow pipeline](https://speakerdeck.com/artwr/using-apache-airflow-as-a-platform-for-data-engineering-frameworks?slide=16). 
 
 ![Airbnb's UI for backfilling and the Airflow DAG it creates](../assets/airbnb-backfill.jpg)
-<FigureCaption caption="Airbnb`s UI for backfilling and the Airflow DAG it creates" />  
+<FigureCaption caption="Airbnb`s UI for backfilling and the Airflow DAG it creates" source="https://speakerdeck.com/artwr/using-apache-airflow-as-a-platform-for-data-engineering-frameworks?slide=17" />  
 
 
 Other ways to meet autopilot needs include: 
@@ -183,7 +183,7 @@ Other ways to meet autopilot needs include:
 
 ## Conclusion: It depends on what you need
 
-I hope it's clearer what a feature store is. If we're starting from ground zero, maybe all we need is [access](#access-reducing-duplication--encouraging-reusability) and [serving](#serving-using-features-in-real-time-environments), and a dash of [integrity](#integrity-creating-correct-offline-and-online-features). If we're building our own at big tech co, we'll probably want to consider [convenience](#convenience-making-it-as-easy-to-use-as-possible) and [autopilot](#autopilot-automating-as-much-as-we-can) relatively early. Did I miss anything? Please reach out [@eugeneyan](https://twitter.com/eugeneyan){:target="blank"}!
+I hope it's clearer what a feature store is. If we're starting from ground zero, maybe all we need is [access](#access-reducing-duplication--encouraging-reusability) and [serving](#serving-using-features-in-real-time-environments), and a dash of [integrity](#integrity-creating-correct-offline-and-online-features). If we're building our own at big tech co, we'll probably want to consider [convenience](#convenience-making-it-as-easy-to-use-as-possible) and [autopilot](#autopilot-automating-as-much-as-we-can) relatively early. Did I miss anything? Please reach out [@eugeneyan](https://twitter.com/eugeneyan)!
 
 Looking to get started with a feature store? [Feast](https://github.com/feast-dev/feast) is a great option to consider. It meets the needs of access and serving, and its consistent API makes it easy to use similar code for training and serving. Best of all, it’s open-sourced (read: free). Let me know how it goes!
 
