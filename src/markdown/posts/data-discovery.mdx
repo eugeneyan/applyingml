@@ -44,7 +44,7 @@ Assuming we have many search results, how should we rank them? For [Lyft](https:
 
 Facebook’s [Nemo](https://engineering.fb.com/data-infrastructure/nemo/) takes it further. First, search terms are parsed with a [spaCy](https://spacy.io)-based library. Then, table candidates are generated via [Unicorn](https://research.fb.com/publications/unicorn-a-system-for-searching-the-social-graph/), the same infra they use for scalable search on the social graph. Finally, candidates are ranked based on social signals (e.g., table users) and other features such as kNN-based scoring. Taken together, this gives Nemo the ability to parse natural language queries. 
 
-![Nemo's search architecture; don't expect this in other platforms](../assets/nemo-search.jpg)
+![Nemo's search architecture; don't expect this in other platforms](../../assets/nemo-search.jpg)
 <FigureCaption caption="Nemo's search architecture; don't expect this in other platforms" source="https://engineering.fb.com/data-infrastructure/nemo/" />
 
 While seldom mentioned, **another way to help users find data is via recommendations**. This is usually on the home page. Recommendations can be based on popular tables within the organization and team, or tables recently queried by the user. New, “golden” datasets by data publishers can also be recommended to raise awareness. 20% of monthly active users used homepage recommendations when Spotify implemented this.
@@ -59,7 +59,7 @@ If the user has read permissions, we can also provide a **preview of the data** 
 - Categorical columns: Number of distinct values, top values by proportion
 - Date columns: Range of dates in the data
 
-![Column statistics in Amundsen](../assets/amundsen-column-stats.jpg)
+![Column statistics in Amundsen](../../assets/amundsen-column-stats.jpg)
 <FigureCaption caption="Column statistics in Amundsen" source="https://eng.lyft.com/amundsen-lyfts-data-discovery-metadata-engine-62d27254fbb9" />
 
 **Providing data lineage** also helps users learn about upstream dependencies. ETL jobs (e.g., scheduled via Airflow) can be linked to let users inspect scheduling and delays. This is helpful when evaluating data sources for production.
@@ -78,7 +78,7 @@ Another useful feature is **data lineage**. This helps users learn about downstr
 
 Before using the data in production, users will want to know how frequently it’s updated. Indicating **how the data is partitioned** by time (e.g., day, hour) can help. Alternatively, data discovery platforms can integrate with an orchestrator like Airflow. Users can then examine scheduled ETL jobs and the time taken for them to complete. Lyft’s Amundsen has Airflow integration through I’m uncertain about the extent of it.
 
-![Task durations on Airflow](../assets/airflow-landing-time.jpg)
+![Task durations on Airflow](../../assets/airflow-landing-time.jpg)
 <FigureCaption caption="Task durations on Airflow" source="https://www.agari.com/email-security-blog/airflow-agari/" />
 
 ## High-level comparison across features
@@ -112,7 +112,7 @@ LinkedIn’s DataHub started as [WhereHows](https://engineering.linkedin.com/blo
 
 DataHub has all the essential features including search, table schemas, ownership, and lineage. While WhereHows cataloged metadata data around a single entity (datasets), DataHub provides additional support for [users and groups](https://github.com/linkedin/datahub/blob/master/docs/how/entity-onboarding.md), with more entities (e.g., jobs, dashboards) [coming soon](https://github.com/linkedin/datahub/blob/master/docs/features.md#data-constructs-entities). It has good [documentation](https://github.com/linkedin/datahub#documentation) and can be [tested locally via docker](https://github.com/linkedin/datahub/tree/master/docker).
 
-![Ownership types on DataHub](../assets/datahub-owners.jpg)
+![Ownership types on DataHub](../../assets/datahub-owners.jpg)
 <FigureCaption caption="Ownership types on DataHub" source="https://engineering.linkedin.com/blog/2019/data-hub" />
 
 The open-source version supports metadata from Hive, Kafka, and relational databases. The internal version has support for additional [data sources](https://engineering.linkedin.com/blog/2020/open-sourcing-datahub--linkedins-metadata-search-and-discovery-p) and more connectors might be made available publicly. 
@@ -125,7 +125,7 @@ Lyft wrote about Amundsen in [April 2019](https://eng.lyft.com/amundsen-lyfts-da
 
 Amundsen helps us find data via search (with popularity ranking) and recommendations (via the home page). Table detail pages are rich with information including row previews, columns statistics, owners, and frequent users (if they’re made available). While Amundsen lacks native data lineage integration, it’s on the 2020 [roadmap](https://www.amundsen.io/amundsen/roadmap/). Other items on the roadmap including integration with a data quality system ([Great Expectations](https://github.com/great-expectations/great_expectations) perhaps?), improving search ranking, and displaying commonly joined tables.
 
-![Amundsen's detail page](../assets/amundsen-detail-page.jpg)
+![Amundsen's detail page](../../assets/amundsen-detail-page.jpg)
 <FigureCaption caption="Amundsen's detail page" source="https://github.com/amundsen-io/amundsen/" />
 
 Since its release, an amazing community has gathered around Amundsen. The community has contributed valuable features such as extractors for BigQuery and Redshift, integration with Apache Atlas, and markdown support for the UI. 
@@ -154,7 +154,7 @@ Atlas started incubation at Hortonworks in Jul 2015 as part of the Data Governan
 
 Atlas’ primary goal is data governance and helping organizations meet their security and compliance requirements. Thus, it has rich features for tagging assets (e.g., sensitive, personally identifiable information), tag propagation to downstream datasets, and security on metadata access. It also has notifications on metadata changes. For data discovery, it has free-text search, schema details, and data lineage. It also includes [advanced search](https://atlas.apache.org/#/SearchAdvance) where users can query via a syntax similar to SQL. 
 
-![Tag propagation on Atlas](../assets/atlas-tag-propagation.jpg)
+![Tag propagation on Atlas](../../assets/atlas-tag-propagation.jpg)
 <FigureCaption caption="Tag propagation on Atlas" source="https://atlas.apache.org/#/ClassificationPropagation" />  
 
 Atlas supports integration with [metadata sources](https://atlas.apache.org/#/Architecture) such as HBase, Hive, and Kafka, with more to be added in the future. It also allows users to create and update metadata entities via REST API. [Documentation for Atlas](https://atlas.apache.org/#/) is comprehensive and the code can be found [here](https://github.com/apache/atlas).
@@ -165,7 +165,7 @@ Various organizations have shared their experiences with DataHub and Amundsen. E
 
 It was particularly interesting to see how ING [adopted both Atlas and Amundsen](https://medium.com/wbaa/facilitating-data-discovery-with-apache-atlas-and-amundsen-631baa287c8b). Atlas handled metadata management, data lineage, and data quality metrics, while Amundsen focused on search and discovery. Table popularity scores were calculated via Spark on query logs to rank search results in Amundsen.
 
-![How ING uses both Atlas and Amundsen](../assets/atlas-amundsen.jpg)
+![How ING uses both Atlas and Amundsen](../../assets/atlas-amundsen.jpg)
 <FigureCaption caption="How ING uses both Atlas and Amundsen" source="https://medium.com/wbaa/facilitating-data-discovery-with-apache-atlas-and-amundsen-631baa287c8b" />
 
 A few other companies shared how they evaluated various open source and commercial solutions (e.g., [SaxoBank](https://www.slideshare.net/SheetalPratik/linkedinsaxobankdataworkbench#14), [SpotHero](https://www.slideshare.net/MaggieHays/data-discoverability-at-spothero#6)). Do you know of more? Please let me know!

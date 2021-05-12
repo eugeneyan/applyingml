@@ -22,7 +22,7 @@ Maslow’s Hierarchy of Needs is a motivational theory in psychology. It suggest
 
 I think feature stores can be organized as a hierarchy of needs too. Some needs are more pressing than others (e.g., access to data, serving features in production). These essential needs have to be fulfilled before higher needs are considered.
 
-![Feature Store Hierarchy of Needs](../assets/feature-stores-v2.jpg)
+![Feature Store Hierarchy of Needs](../../assets/feature-stores-v2.jpg)
 <FigureCaption caption="Feature Store Hierarchy of Needs"/>
 
 **At the base, we have access needs.** This includes access to feature information and data, transparency, and lineage. Transparency lets users view the logic and code creating the features while lineage lets them trace upstream sources. Together, they make it easier to find, share, and reuse features, minimizing duplicate work.
@@ -82,7 +82,7 @@ For Monzo Bank, the features were available in their analytics stack, which was 
 
 Uber’s Palette adopts a similar dual-store approach. The offline store (Hive) saves feature snapshots and is mainly used by training jobs. The online store (Cassandra) serves the same features in real-time. Features not available in Cassandra are generated online via Flink before being saved to Cassandra. Data between both stores are synchronized. New features added in Hive are automatically copied to Cassandra; real-time features added to Cassandra are ETL-ed to Hive.
 
-![Creating batch and real-time features, and synchronizing between stores](../assets/uber-dual-store.jpg)
+![Creating batch and real-time features, and synchronizing between stores](../../assets/uber-dual-store.jpg)
 <FigureCaption caption="Creating batch and real-time features, and synchronizing between stores" source="https://www.infoq.com/presentations/michelangelo-palette-uber/" />
 
 DoorDash took addressing serving needs to the extreme with their [Gigascale feature store](https://doordash.engineering/2020/11/19/building-a-gigascale-ml-feature-store-with-redis/). Here are the demanding technical requirements they had:
@@ -102,7 +102,7 @@ With serving needs met, we turn to integrity needs. There are two main pain poin
 
 To address the first problem, Netflix built [distributed time-travel](https://netflixtechblog.com/distributed-time-travel-for-feature-generation-389cccdd3907). It takes snapshots of their offline and online data. These snapshots cover various contexts such as member type, device, time of day, etc.
 
-![Creating snapshots from offline stores and online micro services](../assets/netflix-snapshots.jpg)
+![Creating snapshots from offline stores and online micro services](../../assets/netflix-snapshots.jpg)
 <FigureCaption caption="Creating snapshots from offline stores and online micro services" source="https://netflixtechblog.com/distributed-time-travel-for-feature-generation-389cccdd3907" />
 
 However, creating snapshots for every context is expensive. Thus, they perform stratified sampling on attributes such as viewing patterns, device type, time spent on device, region, etc. These samples provide a good distribution of data to train and validate their models on. The sampling is done via Spark and snapshots are stored in S3. 
@@ -111,12 +111,12 @@ A similar process snapshots online data from their hundreds of microservices. Th
 
 To solve the second pain point of train-serve skew, GoJek adopted Apache Beam as their data processing pipeline. Data from batch and streaming sources (e.g., BigQuery, Kafka) are ingested via Beam into offline and online stores (e.g., BigQuery, Redis). A unified API (to access historical and online data) minimizes the need to rewrite feature pipelines for the serving environment and thus accidentally introducing train-serve skew.
 
-![GoJek's Feast ingesting features via Apache Beam](../assets/gojek-feast.jpg)
+![GoJek's Feast ingesting features via Apache Beam](../../assets/gojek-feast.jpg)
 <FigureCaption caption="GoJek's Feast ingesting features via Apache Beam" source="https://www.gojek.io/blog/feast-bridging-ml-models-and-data" />
 
 Netflix addressed this via shared feature encoders. Though they have different pipelines for offline (Spark) and online feature generation, both pipelines use the same feature encoders (i.e., same classes, libraries, and data formats). This ensures that feature generation is consistent across training and serving environments.
 
-![Netflix uses the same encoders for offline and online feature generation](../assets/netflix-shared-encoders.jpg)
+![Netflix uses the same encoders for offline and online feature generation](../../assets/netflix-shared-encoders.jpg)
 <FigureCaption caption="Netflix uses the same encoders for offline and online feature generation" source="https://databricks.com/session/fact-store-scale-for-netflix-recommendations" />
 
 We’ve also seen how Uber approached this by keeping their offline (Hive) and online (Cassandra) feature stores in sync. New features in either store are copied to the other store, ensuring consistency between data used for training and serving.
@@ -133,7 +133,7 @@ Similarly, Uber built [Data Quality Monitor](https://eng.uber.com/monitoring-dat
 - Then, building a multi-dimensional time series on those metrics (and PCA is applied to get the top components).
 - Finally, a time series is built on the top components. If the current measurement does not match the one-step ahead forecast, it is classified as an anomaly.
 
-![Data quality scores over time, and when incidents occur](../assets/uber-dqm.jpg)
+![Data quality scores over time, and when incidents occur](../../assets/uber-dqm.jpg)
 <FigureCaption caption="Data quality scores over time, and when incidents occur" source="https://eng.uber.com/monitoring-data-quality-at-scale/"/>
 
 ## Convenience: Making it as easy to use as possible
@@ -173,7 +173,7 @@ At the top, we have autopilot needs. Not meeting these needs may mean your data 
 
 Airbnb noticed that backfilling was a bottleneck when their data scientists iterated on ML experiments. Thus, Zipline includes a feature to backfill features automatically. A simple UI is provided where data scientists could define new features, specify the start and end dates, and how many processes to parallelize the backfill for. These features would then be added to their existing training feature set [via an Airflow pipeline](https://speakerdeck.com/artwr/using-apache-airflow-as-a-platform-for-data-engineering-frameworks?slide=16). 
 
-![Airbnb's UI for backfilling and the Airflow DAG it creates](../assets/airbnb-backfill.jpg)
+![Airbnb's UI for backfilling and the Airflow DAG it creates](../../assets/airbnb-backfill.jpg)
 <FigureCaption caption="Airbnb`s UI for backfilling and the Airflow DAG it creates" source="https://speakerdeck.com/artwr/using-apache-airflow-as-a-platform-for-data-engineering-frameworks?slide=17" />  
 
 

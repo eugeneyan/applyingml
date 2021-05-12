@@ -26,7 +26,7 @@ Lexical-based approaches start with **preprocessing** the query string. This inc
 
 For example, “acme gold iphone charger i012e large” can be relaxed to “iphone charger”. Trying to match on the full query string leads to no results. But in this case, we can infer that the key intent is “iphone charger” and relax the query string to increase recall. The example below also shows “charger” being rewritten to “charging”, as well as query expansion by adding the “apple” token. 
 
-![An example of query rewriting, relaxation, and expansion](../assets/query-processing.jpg)
+![An example of query rewriting, relaxation, and expansion](../../assets/query-processing.jpg)
 <FigureCaption caption="An example of query rewriting, relaxation, and expansion" />
 
 **Query translation** is another form of rewriting, where a text-translation paradigm is applied to convert tail (i.e., unpopular, 20th percentile) queries into head queries that account for the bulk of traffic, helping to increase recall. It also helps in downstream ranking as we have more behavioral information (e.g., clicks, purchases) on head queries.
@@ -39,7 +39,7 @@ However, specific—and valid—queries such as “Chick’n” were being spell
 
 **[Yahoo shared about their text-translation approach](https://www.kdd.org/kdd2016/subtopic/view/ranking-relevance-in-yahoo-search)** to rewrite queries. The intent was to overcome the problem of matching and ranking cold start queries (not seen in the click log). To achieve this, they built a translation model using query-document pairs from their bipartite click graph. (A bipartite graph is a graph where nodes can be separated into two, disjointed sets, such as queries and documents.) The translation model learns phrase-level translations such as word alignment, phrase extraction, and phrase scoring. At query time, the model segments each query into phrases and then translates each phrase.
 
-![Yahoo's bipartite query-document graph](../assets/yahoo-click-graph.jpg)
+![Yahoo's bipartite query-document graph](../../assets/yahoo-click-graph.jpg)
 <FigureCaption caption="Yahoo's bipartite query-document graph" source="https://www.kdd.org/kdd2016/subtopic/view/ranking-relevance-in-yahoo-search" />
 
 Each query is typically translated into hundreds of candidates. Candidates are scored on three groups of features: query features (e.g., number of tokens in query, number of stop words, language model score), translated query features (same as query features), and similarity between the original query and translated query (e.g., [Jaccard similarity](https://en.wikipedia.org/wiki/Jaccard_index) between shared URLs, word-level cosine similarity, etc). The similarity features were found to be the most important.
@@ -54,7 +54,7 @@ During query time, the query is parsed and tagged to the relevant concepts (i.e.
 
 Building a knowledge graph is taxing. Nonetheless, we can bootstrap one by using [WordNet](https://en.wikipedia.org/wiki/WordNet), a lexical database of semantic relationships between words (available in more than 200 languages!) or [ConceptNet](https://en.wikipedia.org/wiki/Open_Mind_Common_Sense#ConceptNet), a semantic network where edges are assertions of commonsense between concepts (e.g., “is a”, “is used for”, “is made of”). Another approach is to mine [Wikipedia redirects](https://en.wikipedia.org/wiki/Wikipedia:Redirect).
 
-![An example of ConceptNet with synonym, part of, and form of relationships](../assets/conceptnet.jpg)
+![An example of ConceptNet with synonym, part of, and form of relationships](../../assets/conceptnet.jpg)
 <FigureCaption caption="An example of ConceptNet with synonym, part of, and form of relationships" source="https://conceptnet.io/" />
 
 **[Uber shared about how they use a knowledge graph for search](https://eng.uber.com/uber-eats-query-understanding/).** First, they developed an ontology to describe the entities of the graph and the relationships between them. For example, foods and cuisines are related by `countryOfOrigin` while each entity can be a `subCategoryOf` another entity.
@@ -65,7 +65,7 @@ Then, they annotate restaurants and menu items with tags based on graph nodes—
 
 For example, if a user queries for “Asian”, the graph expands the search to include subsets such as “Chinese” and “Japanese”. Similarly, a query for “Udon” can be expanded to include related terms such as “Ramen”, “Soba”, and “Japanese”. The graph also includes location as an edge. Thus, if a restaurant is outside a user’s delivery zone, the graph can traverse to find similar cuisines in the user’s area.
 
-![Uber's knowledge graph with country-of-origin and sub-category-of relationships](../assets/uber-graph.jpg)
+![Uber's knowledge graph with country-of-origin and sub-category-of relationships](../../assets/uber-graph.jpg)
 <FigureCaption caption="Uber's knowledge graph with country-of-origin and sub-category-of relationships" source="https://eng.uber.com/uber-eats-query-understanding/" />
 
 **[DoorDash also uses a knowledge graph](https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/)** and shared their ontology. They have three types of entities (i.e., nodes) in their knowledge graph (which is implemented in Neo4j):
@@ -78,17 +78,17 @@ Entities are connected by three types of relationships:
 - Each food category can have at most one parent food category. For example, `sandwich_cat` only has `breakfast_cat` as its parent, and `deli_cat` only has `sandwich_cat` as its parent. This enforces hierarchy between the food categories.
 - Each food tag will belong to one food category. For example, `deli_tag`, `sandwich_tag`, and `cheesesteaks_tag` belong to `sandwich_cat`.
 
-![DoorDash graph with relationships between stores, categories, and tags](../assets/doordash-graph.jpg)
+![DoorDash graph with relationships between stores, categories, and tags](../../assets/doordash-graph.jpg)
 <FigureCaption caption="DoorDash graph with relationships between stores, categories, and tags" source="https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/" />
 
 At query time, the knowledge graph expands on the underlying query concept. For example, when a customer searches for “KFC”, the KFC store nearest to the customer is returned as the top result. Then, the graph is used to expand the query to return restaurants with tags (e.g., `fried_chicken_tag`, `wings_tag`) that have the same primary category (i.e., `chicken_cat`).
 
-![Query expansion for 'kfc'](../assets/doordash-kfc.jpg)
+![Query expansion for 'kfc'](../../assets/doordash-kfc.jpg)
 <FigureCaption caption="Query expansion for 'kfc'" source="https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/" />
 
 Similarly, when the customer enters a broad search query such as “Asian”, it is mapped to the `asian_cat`. This is then expanded to subcategories such as `thai_cat` and `chinese_cat`, and restaurants with tags belonging to these categories are retrieved. In the example below, Charm Thai contains the `thai_tag` which is part of the `thai_cat`, and HI Peninsula contains the `dim_sum_tag` which is part of the `chinese_cat`.
 
-![Query expansion for 'asian'](../assets/doordash-asian.jpg)
+![Query expansion for 'asian'](../../assets/doordash-asian.jpg)
 <FigureCaption caption="Query expansion for 'asian'" source="https://doordash.engineering/2020/12/15/understanding-search-intent-with-better-recall/" />
 
 ## Pitfalls of lexical and graph-based approaches
@@ -130,7 +130,7 @@ Each query is represented by a vector of tokens, with weights proportional to th
 
 **[Uber used the GloVe algorithm](https://eng.uber.com/uber-eats-query-understanding/)** to learn query embeddings. GloVe (Global Vectors) creates word embeddings by learning word co-occurrence in a corpus. To apply the language modeling paradigm to search, each query is considered a word in a sentence, and queries are “next to each other” in the sentence (i.e., same context) if both queries lead to an order from the same restaurant. To put it another way, the restaurant is the context and two queries share the same context if they both lead to orders in the same restaurant.
 
-![Queries leading to orders from the same restaurant have the same context](../assets/uber-embedding.jpg)
+![Queries leading to orders from the same restaurant have the same context](../../assets/uber-embedding.jpg)
 <FigureCaption caption="Queries leading to orders from the same restaurant have the same context" source="https://eng.uber.com/uber-eats-query-understanding/" />
 
 They start with constructing a Pointwise Mutual Information matrix with the search queries, where _a_ and _b_ are tuning params and _p(q1, q2)_ is the joint distribution of _q1_ and _q2_.
@@ -141,19 +141,19 @@ $$
 
 Then, they apply a GloVe-based factorization model to learn query embeddings. These query embeddings can then be used for query expansion (via approximate nearest neighbors) to improve search recall. For example, if a user searches for “tan tan noodle” (or more correctly, “dan dan noodle”) and there are no restaurants selling it nearby, it can be expanded to “Little Szechuan”, “Chinese”, and “Spicy Food”. 
 
-![Query expansion for 'tan tan noodle'" alt="Query expansion for 'tan tan noodle'](../assets/uber-expansion.jpg)
+![Query expansion for 'tan tan noodle'" alt="Query expansion for 'tan tan noodle'](../../assets/uber-expansion.jpg)
 <FigureCaption caption="Query expansion for 'tan tan noodle'" alt="Query expansion for 'tan tan noodle'" source="https://eng.uber.com/uber-eats-query-understanding/" /> 
 
 **[GrubHub adopts a similar paradigm](https://bytes.grubhub.com/search-query-embeddings-using-query2vec-f5931df27d79)** using the skip-gram architecture and shared examples where the nearest neighbors for “Udon” and “Mediterranean” almost map 1:1 with a reference food graph. This provides assurance that the self-supervised approach can capture knowledge graph-like semantics via embeddings. 
 
-![Embeddings for 'udon' and 'mediterranean' relative to the knowlege graph](../assets/grubhub-embedding.jpg)
+![Embeddings for 'udon' and 'mediterranean' relative to the knowlege graph](../../assets/grubhub-embedding.jpg)
 <FigureCaption caption="Embeddings for 'udon' and 'mediterranean' relative to the knowlege graph" source="https://bytes.grubhub.com/search-query-embeddings-using-query2vec-f5931df27d79" />
 
 ### Supervised techniques: Improves modeling of our desired event
 
 **[Amazon built semantic product search](https://arxiv.org/abs/1907.00937)** using customer behavioral data. Their neural net architecture shares embeddings across the query and product. Queries are fed into the model as they are while products are represented as an ordered bag-of-attributes (e.g., title, brand, color). They also tried learning attribute embeddings but it led to 5% lower recall (relative to concatenating attributes), likely due to the variability in accuracy and availability of structured data.
 
-![Amazon's neural network architecture for semantic product search](../assets/amazon-search-nn.jpg)
+![Amazon's neural network architecture for semantic product search](../../assets/amazon-search-nn.jpg)
 <FigureCaption caption="Amazon's neural network architecture for semantic product search" source="https://arxiv.org/abs/1907.00937" />
 
 Average pooling is then applied to get a fixed-length embedding for the query and product. Relative to recurrent approaches such as LSTM and GRU, using average pooling made little difference (<0.5%) in mean average precision and recall@100 while requiring less computation, training time, and inference latency.
@@ -162,21 +162,21 @@ They initially adopted a two-part hinge loss. First, _ŷ_ is the cosine similari
 
 Thus, they updated the two-part loss to also consider products that were impressed but not purchased, where _ŷ_ < 0.55 where _y_ = impressed but not purchased. This improved the separation of scores between random negatives (red), impressed but not purchased negatives (grey), and purchased positives (green).
 
-![Score distribution with two-part (left) and three-part (right) hinge loss](../assets/amazon-search-hinge-loss.jpg)
+![Score distribution with two-part (left) and three-part (right) hinge loss](../../assets/amazon-search-hinge-loss.jpg)
 <FigureCaption caption="Score distribution with two-part (left) and three-part (right) hinge loss" source="https://arxiv.org/abs/1907.00937" />
   
 To tokenize queries and products, they applied tokenization approaches such as:
 - Work unigrams and n-grams: N-grams capture phrase-level information that unigrams don’t. For example, “chocolate milk” and “milk chocolate” are different though they share the same unigrams.
 - Character tri-grams: These are robust to types and handle compound words (e.g., “amazontv”, “firetvstick”) well. They also capture similarity of model parts. 
 
-![Example tokens for the query 'artistic iphone 6s case'](../assets/amazon-search-tokens.jpg)
+![Example tokens for the query 'artistic iphone 6s case'](../../assets/amazon-search-tokens.jpg)
 <FigureCaption caption="Example tokens for the query 'artistic iphone 6s case'" source="https://arxiv.org/abs/1907.00937" />
 
 It is unfeasible to have a vocabulary of all possible word n-grams as dictionary size grows exponentially with _n_. Thus, they maintain a vocabulary of hundreds of thousands of n-grams based on token frequency. To handle unseen words, they hash out-of-vocabulary (OOV) tokens to additional embedding bins. By using fixed hash functions and shared query-document embeddings, unseen tokens in both the query and products map to the same embedding vector. A bin size 5-10x larger than vocab size is used. Then, all tokens are combined as a single bag-of-tokens (i.e., unordered, equal weight).
 
 **[Facebook’s embedding-based search](https://arxiv.org/abs/2006.11632)** adopts a two-tower approach with separate towers for queries and documents. The model is formulated as a ranking problem based on distance between a query and document. Cosine similarity is used as the distance metric.
 
-![Facebook's two-tower architecture that includes location and social features](../assets/fb-search-nn.jpg)
+![Facebook's two-tower architecture that includes location and social features](../../assets/fb-search-nn.jpg)
 <FigureCaption caption="Facebook's two-tower architecture that includes location and social features" source="https://arxiv.org/abs/2006.11632" />
 
 They use triplet loss to approximate the recall objective. For a given triplet _(q, d+, d-)_, _q_ is the query while _d+_ and _d-_ are the associated positive and negative documents. _D(q, d)_ is the distance between the query and document embedding and _m_ is the margin enforced between positive and negative pairs. The intuition is to separate the positive and negative pairs by the distance margin. 
@@ -195,7 +195,7 @@ As additional context, they included location features of the query (e.g., city,
 
 As a final example, we look at **[JD’s semantic retrieval model](https://arxiv.org/abs/2006.02282)** which takes it one step further with the introduction of multiple query heads. 
 
-![JD's two-tower architecture with multiple query heads](../assets/jd-search-nn.jpg)
+![JD's two-tower architecture with multiple query heads](../../assets/jd-search-nn.jpg)
 <FigureCaption caption="JD's two-tower architecture with multiple query heads" source="https://arxiv.org/abs/2006.02282" />
 
 The item tower is straightforward where embeddings from multiple attributes (e.g., title, brand, seller) are concatenated into a single vector (this is similar to Amazon’s approach though they have embeddings for each attribute). Then, the vector goes through multiple [Rectified Linear Unit](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) layers. The output item embedding is finally normalized to be the same length as the query embedding. 
@@ -210,7 +210,7 @@ $$
 
 To create negative item labels, they used a mix of random negatives and batch negatives. Random negatives are uniformly sampled from all items. Thus, each item has the same probability of showing up as a negative. However, this is computationally expensive as each random negative has to go through the item tower (to get the item embedding). Batch negatives come from the other query-item pairs in the same batch. For a query-item pair, the other positive items in the same batch are used as item negatives. They found that a proportion of 0.5 - 0.75 random negatives works well. 
 
-![Using 0.5 - 0.75 random negatives leads to optimal results](../assets/jd-negative-mix.jpg)
+![Using 0.5 - 0.75 random negatives leads to optimal results](../../assets/jd-negative-mix.jpg)
 <FigureCaption caption="Using 0.5 - 0.75 random negatives leads to optimal results" source="https://arxiv.org/abs/2006.02282" />
 
 ## Embedding-based approaches have pitfalls too
@@ -222,7 +222,7 @@ Thus, I've found **lexical, graph, and embedding-based approaches to be compleme
 - Amazon's semantic matching augments keyword and behavioral matching
 - Facebook's semantic matching augments their existing boolean-matching
 
-![Amazon's (left, semantic matching) and Facebook's (right, NN Operator in the retrieval box) embedding-based approach augmenting existing methods](../assets/embedding-augmentation.jpg)
+![Amazon's (left, semantic matching) and Facebook's (right, NN Operator in the retrieval box) embedding-based approach augmenting existing methods](../../assets/embedding-augmentation.jpg)
 <FigureCaption caption="Amazon's (left, semantic matching) and Facebook's (right, NN Operator in the retrieval box) embedding-based approach augmenting existing methods" />
 
 ## Conclusion: Start lexical, then embeddings

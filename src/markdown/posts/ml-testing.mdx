@@ -10,7 +10,7 @@ ML tests can be further split into **testing** and **evaluation**. We’re famil
 
 On the other hand, ML **testing** involves checks on model behaviour. **Pre-train tests**—which can be run without trained parameters—check if our _written logic_ is correct. For example, is classification probability between 0 to 1? **Post-train tests** check if the _learned logic_ is expected. For example, on the [Titanic dataset](https://www.kaggle.com/c/titanic/data), we should expect females to have a higher survival probability (relative to males).
 
-![Workflow for testing machine learning](../assets/testing-ml-flow.jpg)
+![Workflow for testing machine learning](../../assets/testing-ml-flow.jpg)
 <FigureCaption caption="Workflow for testing machine learning" source="https://www.jeremyjordan.me/testing-ml/" />
 
 Taken together, here’s how the workflow might look like. To complement this, we’ll implement a machine learning model and run the following tests on it:

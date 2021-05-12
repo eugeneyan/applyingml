@@ -71,7 +71,7 @@ When applied together, the above two practices ensure end-users do not notice mo
 
 Then, take it further by inspecting the model for bias or incorrect learning. This is easier now with tools for model interpretability such as [LIME](https://github.com/marcotcr/lime) and [SHAP](https://github.com/slundberg/shap). If it’s a loan approval model, does it bias against certain genders, age groups, or ethnicities? (Though I would argue that, in the first place, such data shouldn’t be considered.) How do the most important features change from day-to-day? If a feature jumps in importance, it could suggest a data leak.
 
-![This SHAP summary plot shows sex, passenger class, and age were most important as features.](../assets/shap-summary-plot.jpg)
+![This SHAP summary plot shows sex, passenger class, and age were most important as features.](../../assets/shap-summary-plot.jpg)
 <FigureCaption caption="This SHAP summary plot shows sex, passenger class, and age were most important as features." />
 
 **Meta-analysis on offline vs offline metrics.** How well do your offline metrics correlate with online improvements? Does an increase in AUC or NDCG in offline evaluation lead to an increase in click-through rate or conversion rate online?
@@ -150,7 +150,7 @@ Are customers complaining about inappropriate products in recommendations or sea
 
 Here’s an example where we predict passenger survivability from the famous [Titanic dataset](https://www.kaggle.com/c/titanic). For this passenger, we see that gender and age had a big positive influence on survivability—after all, women and children first. Her having a 3rd class cabin had a negative impact—lower class cabins are in the lower decks and thus further away from the lifeboats.
 
-![This SHAP force plot shows being female and low in age improved survivability.](../assets/shap-force-plot.jpg)
+![This SHAP force plot shows being female and low in age improved survivability.](../../assets/shap-force-plot.jpg)
 <FigureCaption caption="This SHAP force plot shows being female and low in age improved survivability." />
 
 ## Some (Important) Practices I Didn’t Discuss

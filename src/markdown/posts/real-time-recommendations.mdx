@@ -26,12 +26,12 @@ If you understand the difference between collaboration vs. content-based recomme
 
 In item-to-item (i2i) recommendations, given an item, we recommend other items. Here’s an example of i2i recommendations on IMDB, under the “More Like This” widget. This works well in scenarios where the focus is the item (e.g., item detail page).
 
-![More like Independence Day on IMDB" alt="More like Independence Day on IMDB](../assets/mlt.jpg)
+![More like Independence Day on IMDB" alt="More like Independence Day on IMDB](../../assets/mlt.jpg)
 <FigureCaption caption="More like Independence Day on IMDB"/>
 
 In user-to-item (u2i), given a user, we recommend items. We see this on the home page of Netflix, Amazon, Taobao, sometimes with the name of “Recommended For You”. Our social media feeds (e.g., Twitter, LinkedIn, Facebook) are u2i recommendations too. In such scenarios, the user (and their historical preferences) is the focus.
 
-![Recommended For You on Amazon](../assets/rfy.jpg)
+![Recommended For You on Amazon](../../assets/rfy.jpg)
 <FigureCaption caption="Recommended For You on Amazon"/>
 
 Taken together, i2i and u2i recommendations provide coverage for the bulk of user traffic via detail pages and home pages.
@@ -44,7 +44,7 @@ Relative to real-time recommendations, batch recommendations are computationally
 
 Batch recommendations are also simpler ops-wise. By caching pre-computed recommendations (in our key-value store), we decouple computation from serving. Thus, even if the compute step fails, there’s no customer-facing impact; we continue to serve the previous batch of (slightly stale) recommendations. The cache provides a buffer and ensures almost 100% uptime, reducing ops burden on the team (e.g., on-call, complaints).
 
-![Batch vs. streaming in the case of analytics](../assets/batch-vs-stream.jpg)
+![Batch vs. streaming in the case of analytics](../../assets/batch-vs-stream.jpg)
 <FigureCaption caption="Batch vs. streaming in the case of analytics" source="https://softwareengineeringdaily.com/2018/11/09/converged-data-platform-unifying-streaming-data-using-mapr/"/>
 
 In contrast, real-time recommendations usually require more computation. For example, we might aggregate streamed events (e.g., click, like, purchase) and generate new recommendations on-demand, based on user interactions. (In comparison, batch recommendations only compute a single set daily.) Furthermore, such computation is done individually and does not benefit from economies of scale. (Nonetheless, we save on not generating recommendations for customers who don’t visit our app).
@@ -153,7 +153,7 @@ These equations can also be adapted to calculate user affinity towards category,
 
 Here’s an example of Swing and category affinity used in [real-time recommendations at Alibaba](https://102.alibaba.com/detail?id=183). This implementation is for the “Recommended For You” widget on the home page of [1688](https://www.1688.com/index.html), a B2B e-commerce. The widget receives clicks from 72% of users.
 
-![Real-time recommendations on Alibaba 1688](../assets/1688-architecture.jpg)
+![Real-time recommendations on Alibaba 1688](../../assets/1688-architecture.jpg)
 <FigureCaption caption="Real-time recommendations on Alibaba 1688" source="https://102.alibaba.com/detail?id=183"/>
 
 
@@ -196,7 +196,7 @@ Next, we look west and see how US companies have implemented real-time recommend
 
 **First, here’s [YouTube’s video recommendation system](https://dl.acm.org/doi/10.1145/2959100.2959190)**. We should be familiar with the overall design paradigm by now.
 
-![Real-time recommendations on YouTube](../assets/youtube-architecture.jpg)
+![Real-time recommendations on YouTube](../../assets/youtube-architecture.jpg)
 <FigureCaption caption="Real-time recommendations on YouTube" source="https://dl.acm.org/doi/10.1145/2959100.2959190" />
 
 For candidate generation, approximate kNN is applied on video and search embeddings to select hundreds of videos from millions (probably billions by now).
@@ -205,7 +205,7 @@ For ranking, a deep neural network is used to score each video and select the be
 
 **Instagram’s [approach](https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/) is similar**. In the candidate generation stage, account embeddings are used to identify accounts similar to those the user has previously interacted with. From these account candidates, they sample 500 media candidates (e.g., photos, stories).
 
-![Real-time recommendations on Instagram](../assets/instagram-architecture.gif)
+![Real-time recommendations on Instagram](../../assets/instagram-architecture.gif)
 <FigureCaption caption="Real-time recommendations on Instagram" source="https://ai.facebook.com/blog/powered-by-ai-instagrams-explore-recommender-system/" />
 
 Then, these media candidates go through a three-pass ranking process which uses a combination of techniques to shrink neural network models:
@@ -215,12 +215,12 @@ Then, these media candidates go through a three-pass ranking process which uses 
 
 **For our final example, we look at [how Netflix re-ranks recommendations in real-time](https://dl.acm.org/doi/10.1145/2959100.2959174).** On most Netflix pages, we’ll see several recommendation rows. Each recommendation row has dozens of movies. The goal is to reorder the recommendation rows (i.e., North-South ordering) as well as the movies within each recommendation row (i.e., East-West order).
 
-![Recommendation rows on Netflix's home screen](../assets/netflix-home.jpg)
+![Recommendation rows on Netflix's home screen](../../assets/netflix-home.jpg)
 <FigureCaption caption="Recommendation rows on Netflix's home screen" source="https://dl.acm.org/doi/10.1145/2959100.2959174" />
 
 Horizontal scrolls (on the recommendation rows) are used as user-interaction signals. They showed that video play probability is positively correlated with the number of horizontal scrolls. 
 
-![Relationship between horizontal scrolling and watch probability](../assets/netflix-horizontal-scroll.jpg)
+![Relationship between horizontal scrolling and watch probability](../../assets/netflix-horizontal-scroll.jpg)
 <FigureCaption caption="Relationship between horizontal scrolling and watch probability" source="https://dl.acm.org/doi/10.1145/2959100.2959174" />
 
 In contrast to previous examples, re-ranking is carried out _on the client device_, avoiding a roundtrip to the server. (However, this also prevents candidate generation.) Given that viewing devices can be low-powered (e.g., TVs), computation needs to be lightweight. Thus, the algorithms used are simple—yet effective—probabilistic models. This allows recommendation rows below the fold (i.e., not on screen) to be updated on-the-fly as users perform horizontal scrolling above the fold.
@@ -253,7 +253,7 @@ We should also consider other aspects such as availability (aka redundancy), sec
 
 There are several open-sourced ANN implementations, such as [Facebook’s FAISS](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/), [Google’s ScANN](https://ai.googleblog.com/2020/07/announcing-scann-efficient-vector.html), and Hierarchical Navigable Small Word Graphs ([hnswlib](https://github.com/nmslib/hnswlib)). We’ll benchmark them on the recall/latency trade-off. To mimic production conditions, each query consists of a single embedding (i.e., batch size = 1). The graph below shows ScaNN outperforming the other two implementations. (FAISS, in particular, is [optimized for batch queries](https://github.com/facebookresearch/faiss/wiki/FAQ#why-are-searches-with-a-single-query-vector-slow).)
 
-![Benchmarking ANNs on recall vs latency](../assets/ann-benchmarks.jpg)
+![Benchmarking ANNs on recall vs latency](../../assets/ann-benchmarks.jpg)
 <FigureCaption caption="Benchmarking ANNs on recall vs latency"/>
 
 **To rank candidates, we start with a single-layer neural network** (read: logistic regression) with cross features—simple, yet difficult to beat. Cross features are created by combining all possible pairs of features to capture their interactions. While this blows up the feature space, it’s not a problem for logistic regression.
@@ -267,7 +267,7 @@ From experience, business stakeholders will usually have conflicting goals. Mark
 
 **Will our MVP require specialized infrastructure? Not necessarily.** A cost-effective approach is to use [EC2 instances](https://aws.amazon.com/ec2/instance-types/) that can scale horizontally with a [load balancer](https://aws.amazon.com/elasticloadbalancing/) in front. To further simplify things, we can just use [AWS SageMaker](https://aws.amazon.com/sagemaker/).
 
-![Load balancing with multiple instances" alt="Load balancing with multiple instances](../assets/load-balancer.gif)
+![Load balancing with multiple instances" alt="Load balancing with multiple instances](../../assets/load-balancer.gif)
 <FigureCaption caption="Load balancing with multiple instances" alt="Load balancing with multiple instances" source="https://medium.com/dazn-tech/aws-application-load-balancer-algorithms-765be2eca158" />
 
 To assess latency and throughput, we have various options including [`serverless-artillery`](https://github.com/Nordstrom/serverless-artillery) ([AWS guide](https://aws.amazon.com/blogs/machine-learning/load-test-and-optimize-an-amazon-sagemaker-endpoint-using-automatic-scaling/)) and [`locust`](https://locust.io). Running several load tests showed that a SageMaker endpoint backed by 30 m5.xlarge instances was able to serve 1,200 queries per second without breaking a sweat. At this throughput, median latency was 25ms while the 99th percentile was 65ms. There were zero errors. 
