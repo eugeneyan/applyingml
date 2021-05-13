@@ -3,12 +3,19 @@ title: "Machine Learning in Production - A Practical Guide"
 description: "Can maintaining machine learning in production be easier? I go through some practical tips."
 date: "2020-05-25"
 slug: "/resources/ml-production-guide/"
+type: "resource"
 ---
 import { FigureCaption } from '../../components/figure-caption';
 
-In the [previous post](/posts/challenges-of-machine-learning-in-production/), we discussed six little-known challenges _after_ deploying machine learning. This follow-up will share some practices I’ve found useful to maintaining machine learning in production.
+In the [previous post](/resources/ml-production-challenges/), we discussed the challenges faced after deploying machine learning, including: 
+- Unexpected data schema changes
+- Unwanted model interactions
+- Messy infra and codebase
+- Real-world bias and adversaries
+- Organization issues and diffusion of responsibility
+- Operations support for customers
 
-With close to 20 suggestions, it can get overwhelming. Fret not, I’ll highlight the top three **must-haves** and **good-to-haves** at the end of this post.
+This guide will share some practices I’ve found useful to maintaining machine learning in production. With close to 20 suggestions, it can get overwhelming. Fret not, I’ll highlight the top three **must-haves** and **good-to-haves** at the end of this post.
 
 ## Monitor Training and Serving Data for Contamination
 

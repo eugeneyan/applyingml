@@ -1,12 +1,31 @@
 import React from "react"
+import { Link } from "gatsby"
 import Layout from "../components/layout"
 
 export default function Home() {
   return (
     <Layout>
       <p>
-        What do I like to do? Mainly machine learning, but this is my project to
-        learn JavaScript, Gatsby, make new friends, and help people. Watch this space ;)
+        Applying machine learning is hard. There's a gap between knowing machine
+        learning <i>("here's how a decision tree splits")</i> and applying it at work,
+        <i>("the decision tree ranker we shipped increased CTR and conversation by
+        x%")</i>.
+      </p>
+
+      <p>
+        Such knowledge is seldom documented; it's not something you can find in
+        a textbook, classes, or how-to article. To fill this gap, ApplyingML
+        aims to document the process of applying ML through guides and case
+        studies of how other companies have done it, and interviews with ML
+        practitioners.
+      </p>
+
+      <p>
+        You can start with browsing <Link to="/applied-ml/">papers</Link> by
+        companies sharing their ML systems,{" "}
+        <Link to="/resources/">resources</Link> on ML systems and processes, or{" "}
+        <Link to="/mentors/">mentors</Link> sharing their experience and advice.
+        Happy learning!
       </p>
     </Layout>
   )

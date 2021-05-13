@@ -7,7 +7,7 @@
 module.exports = {
   pathPrefix: `/applyingml`,
   siteMetadata: {
-    title: `Applying ML`,
+    title: `ApplyingML`,
     description:
       `Sharing resources on applying ML and interviews with practioners`,
       author: `Eugene Yan`,
@@ -64,5 +64,12 @@ module.exports = {
     `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
+    },
   ],
 }

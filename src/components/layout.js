@@ -32,13 +32,39 @@ const ExternalLink = props => {
 }
 
 const BlockQuote = props => {
-  return (<blockquote style={{ borderLeft: '.25em solid #d9d9d9', paddingLeft: '1em', marginLeft: '0'}}>{props.children}</blockquote>)
+  return (
+    <blockquote
+      style={{
+        borderLeft: ".25em solid #d9d9d9",
+        paddingLeft: "1em",
+        marginLeft: "0",
+      }}
+    >
+      {props.children}
+    </blockquote>
+  )
 }
+
+const Footer = props => (
+  <p
+    css={css`
+      font-family: Raleway;
+      font-size: 11px;
+      text-align: center;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      margin-bottom: 0;
+    `}
+  >
+    {props.children}
+  </p>
+)
 
 const components = {
   code: CodeBlock,
   a: ExternalLink,
-  blockquote: BlockQuote
+  blockquote: BlockQuote,
 }
 
 export default function Layout({ children }) {
@@ -58,8 +84,10 @@ export default function Layout({ children }) {
       css={css`
         margin: 0 auto;
         max-width: 668px;
-        padding: ${rhythm(1)};
-        padding-top: ${rhythm(1)};
+        padding: ${rhythm(0.75)} ${rhythm(1)};
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       `}
     >
       <header style={{ marginBottom: `1rem` }}>
@@ -84,13 +112,28 @@ export default function Layout({ children }) {
           `}
         >
           <ListLink to="/applied-ml/">Papers</ListLink>
-          <ListLink to="/posts/">Posts</ListLink>
+          <ListLink to="/resources/">Resources</ListLink>
           <ListLink to="/mentors/">Mentors</ListLink>
-          {/* <ListLink to="/about/">About</ListLink> */}
         </ul>
       </header>
       <hr style={{ color: `#d9d9d9`, border: `0` }}></hr>
-      <MDXProvider components={components}>{children}</MDXProvider>
+      <MDXProvider components={components}>
+        <div
+          css={css`
+            flex: 1 0 auto;
+          `}
+        >
+          {children}
+        </div>
+      </MDXProvider>
+      <Footer>
+        © <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">Eugene Yan</a>{" "}
+        {new Date().getFullYear()}
+        {` • `}
+        <Link to="/about">About</Link>
+        {` • `}
+        <a href="https://github.com/eugeneyan/applyingml" target="_blank" rel="noreferrer">Suggest edits</a>.
+      </Footer>
     </div>
   )
 }

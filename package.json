@@ -1,7 +1,7 @@
 {
-  "name": "applied-ml-site",
+  "name": "applyingml",
   "private": true,
-  "description": "A site for applied-ml",
+  "description": "A site on applying machine learning",
   "version": "0.1.0",
   "homepage": "https://github.com/eugeneyan/applyingml",
   "scripts": {
@@ -34,6 +34,7 @@
     "gatsby-remark-images": "^5.1.0",
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-transformer-sharp": "^3.4.0",
+    "gatsby-transformer-yaml": "^3.5.0",
     "prism-react-renderer": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

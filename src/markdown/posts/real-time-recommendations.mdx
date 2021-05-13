@@ -3,16 +3,12 @@ title: "Real-time Recommendations"
 description: "Why real-time? How have China & US companies built them? How to design & build an MVP?"
 date: "2021-01-10"
 slug: "/resources/real-time-recommendations/"
+type: "resource"
 ---
 import { FigureCaption } from '../../components/figure-caption';
 import "katex/dist/katex.min.css"
 
-A few weeks ago, Chip compared the state of real-time machine learning in China and US: While many Chinese companies have adopted real-time ML, US companies are still assessing its value. She also wrote about ML going real-time [here](https://huyenchip.com/2020/12/27/real-time-machine-learning.html).
-
-This post continues the thread and shares **how real-time ML looks in practice**. Drawing from my experience and industry papers/blogs, we'll discuss **real-time recommendations**.
-- When does real-time recommendation make sense? When does it not? 
-- How have China and US companies implemented real-time recommenders? 
-- How can we design and implement a simple MVP?
+How do real-time recommendations look like in practice? In this write-up, we'll view some examples of real-time recsys from various companies and discuss when it makes sense to go real-time and how to implement an MVP.
 
 Note: This discussion assumes basic knowledge of recommendation systems, such as the difference between item-to-item and user-to-item, and the candidate generation & ranking paradigm. Fret not if those terms are unfamiliar. We’ll have two primers to help you get up to speed.
 

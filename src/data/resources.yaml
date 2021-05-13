@@ -1,0 +1,23 @@
+categories:
+  - title: Guides
+    sections:
+      - title: Machine Learning Design Docs
+        slug: /resources/ml-design-docs/
+      - title: Testing Machine Learning
+        slug: /resources/testing-ml/
+      - title: Maintaining Machine Learning in Production
+        slug: /resources/ml-production-guide/
+  - title: Teardowns
+    sections:
+      - title: Data Discovery Platforms
+        slug: /resources/data-discovery/
+      - title: Feature Stores
+        slug: /resources/feature-stores/
+      - title: Real-time Recommendations
+        slug: /resources/real-time-recommendations/
+      - title: Search Query Matching
+        slug: /resources/search-query-matching/
+  - title: Courses
+    sections:
+      - title: MLOps Course (by Made With ML)
+        slug: https://madewithml.com/courses/mlops/

@@ -3,8 +3,9 @@ title: "Machine Learning in Production - Testing"
 description: "Checking for correct implementation, expected learned behaviour, and satisfactory performance."
 date: "2020-09-06"
 slug: "/resources/testing-ml/"
+type: "resource"
 ---
-Two weeks ago, [Jeremy](https://twitter.com/jeremyjordan) wrote a great post on [Effective Testing for Machine Learning Systems](https://www.jeremyjordan.me/testing-ml/). He distinguished between traditional software tests and machine learning (ML) tests; software tests check the **written logic** while ML tests check the **learned logic**.
+Machine learning tests can be distinguished between traditional software tests and machine learning (ML) tests; software tests check the **written logic** while ML tests check the **learned logic**.
 
 ML tests can be further split into **testing** and **evaluation**. We’re familiar with ML **evaluation** where we train a model and evaluate its performance on an unseen validation set; this is done via metrics (e.g., accuracy, [Area under Curve of Receiver Operating Characteristic (AUC ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve)) and visuals (e.g., precision-recall curve.
 
@@ -13,12 +14,7 @@ On the other hand, ML **testing** involves checks on model behaviour. **Pre-trai
 ![Workflow for testing machine learning](../../assets/testing-ml-flow.jpg)
 <FigureCaption caption="Workflow for testing machine learning" source="https://www.jeremyjordan.me/testing-ml/" />
 
-Taken together, here’s how the workflow might look like. To complement this, we’ll implement a machine learning model and run the following tests on it:
-- [Pre-train tests to ensure correct implementation](#pre-train-tests-to-ensure-correct-implementation)
-- [Post-train tests to ensure expected learned behaviour](#post-train-tests-to-ensure-expected-learned-behaviour)
-- [Evaluation to ensure satisfactory model performance](#model-evaluation-to-ensure-satisfactory-performance)
-
-Follow along with the code in this Github repository: [`testing-ml`](https://github.com/eugeneyan/testing-ml)
+Taken together, here’s how the workflow might look like. To complement this, we’ll implement a machine learning model with pre-train, post-train, and evaluation checks. Follow along with this Github repository: [`testing-ml`](https://github.com/eugeneyan/testing-ml)
 
 ## Setting up the context (algorithm and data)
 

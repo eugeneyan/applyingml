@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import { css } from "@emotion/react"
 
 export const FigureCaption = props => {
@@ -11,7 +12,11 @@ export const FigureCaption = props => {
           margin-top: -1rem;
         `}
       >
-        {props.caption} (<a href={props.source} target="_blank" rel="noreferrer" >source</a>)
+        {props.caption} (
+        <Link href={props.source} target="_blank" rel="noreferrer">
+          source
+        </Link>
+        )
       </p>
     )
   } else {
