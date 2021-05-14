@@ -1,6 +1,8 @@
 categories:
   - title: Guides
     sections:
+      - title: How to Read Papers
+        slug: /resources/read-papers/
       - title: Machine Learning Design Docs
         slug: /resources/ml-design-docs/
       - title: Testing Machine Learning

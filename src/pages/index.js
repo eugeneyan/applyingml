@@ -6,10 +6,8 @@ export default function Home() {
   return (
     <Layout>
       <p>
-        Applying machine learning is hard. There's a gap between knowing machine
-        learning <i>("here's how a decision tree splits")</i> and applying it at work,
-        <i>("the decision tree ranker we shipped increased CTR and conversation by
-        x%")</i>.
+        Applying machine learning is hard. There's a gap between <b>knowing</b> machine
+        learning vs <b>applying</b> it at work to drive impact.
       </p>
 
       <p>
