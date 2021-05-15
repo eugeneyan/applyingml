@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import CategorySection from "../components/category"
@@ -18,13 +18,13 @@ const ResourcesPage = ({
       <p>
         Guides, teardowns, and other relevant material on how to apply machine
         learning in production. Have a suggestion? Reach out to{" "}
-        <a
-          href="https://twitter.com/eugeneyan"
+        <Link
+          to="https://twitter.com/eugeneyan"
           target="_blank"
           rel="noreferrer"
         >
           @eugeneyan
-        </a>
+        </Link>
         .
       </p>
       <p>{Categories}</p>

@@ -22,12 +22,12 @@ const ListLink = props => (
 
 const ExternalLink = props => {
   if (props.href.includes("yourwebsite.com") || props.href[0] === "/") {
-    return <a href={props.href}>{props.children}</a>
+    return <Link to={props.href}>{props.children}</Link>
   }
   return (
-    <a href={props.href} target="_blank" rel="noopener noreferrer">
+    <Link to={props.href} target="_blank" rel="noopener noreferrer">
       {props.children}
-    </a>
+    </Link>
   )
 }
 

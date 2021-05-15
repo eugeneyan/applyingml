@@ -13,7 +13,7 @@ export const FigureCaption = props => {
         `}
       >
         {props.caption} (
-        <Link href={props.source} target="_blank" rel="noreferrer">
+        <Link to={props.source} target="_blank" rel="noreferrer">
           source
         </Link>
         )

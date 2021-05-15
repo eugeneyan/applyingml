@@ -1,20 +1,21 @@
 import React from "react"
+import { Link } from "gatsby"
 
 const CategorySection = ({ category }) => {
   const Sections = category.sections.map(section => {
     if (section.slug) {
       return (
         <li key={section.title}>
-          <a href={section.slug}>{section.title}</a>
+          <Link to={section.slug}>{section.title}</Link>
         </li>
       )
-    } else if (section.draft) {
+    } else if (section.type === "draft") {
       return (
         <li key={section.title}>
           {section.title}{" "}
-          <a href={section.draft} target={" _blank"}>
+          <Link to={section.draft} target={" _blank"}>
             DRAFT
-          </a>
+          </Link>
         </li>
       )
     } else {

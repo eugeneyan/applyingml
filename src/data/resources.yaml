@@ -9,6 +9,8 @@ categories:
         slug: /resources/testing-ml/
       - title: Maintaining Machine Learning in Production
         slug: /resources/ml-production-guide/
+      - title: Be More End-to-end
+        slug: /resources/end-to-end/
   - title: Teardowns
     sections:
       - title: Data Discovery Platforms
