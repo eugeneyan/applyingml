@@ -34,11 +34,11 @@ export default function BlogPost({ data }) {
   } else if (post.frontmatter.type === "mentor") {
     return (
       <Layout>
-        <Seo
-          title={post.frontmatter.name + " - " + post.frontmatter.role}
-        />
+        <Seo title={post.frontmatter.name + " - " + post.frontmatter.role} />
         <div>
-          <h2 style={{ fontSize: `1.75em` }}>{post.frontmatter.name + " - " + post.frontmatter.role}</h2>
+          <h2 style={{ fontSize: `1.75em` }}>
+            {post.frontmatter.name + " - " + post.frontmatter.role}
+          </h2>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
       </Layout>

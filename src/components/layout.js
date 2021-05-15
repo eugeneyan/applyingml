@@ -127,12 +127,22 @@ export default function Layout({ children }) {
         </div>
       </MDXProvider>
       <Footer>
-        © <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">Eugene Yan</a>{" "}
+        ©{" "}
+        <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
+          Eugene Yan
+        </a>{" "}
         {new Date().getFullYear()}
         {` • `}
         <Link to="/about">About</Link>
         {` • `}
-        <a href="https://github.com/eugeneyan/applyingml" target="_blank" rel="noreferrer">Suggest edits</a>.
+        <a
+          href="https://github.com/eugeneyan/applyingml"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Suggest edits
+        </a>
+        .
       </Footer>
     </div>
   )

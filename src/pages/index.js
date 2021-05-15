@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <Layout>
       <p>
-        Applying machine learning is hard. There's a gap between <b>knowing</b> machine
-        learning vs <b>applying</b> it at work to drive impact.
+        Applying machine learning is hard. There's a gap between <b>knowing</b>{" "}
+        machine learning vs <b>applying</b> it at work to drive impact.
       </p>
 
       <p>
