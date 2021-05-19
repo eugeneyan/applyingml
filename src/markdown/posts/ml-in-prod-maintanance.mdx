@@ -1,52 +1,59 @@
 ---
-title: "Machine Learning in Production - A Practical Guide"
+title: "Maintaining Machine Learning in Production"
 description: "Can maintaining machine learning in production be easier? I go through some practical tips."
 date: "2020-05-25"
 slug: "/resources/ml-production-guide/"
 type: "resource"
 ---
-import { FigureCaption } from '../../components/figure-caption';
 
-In the [previous post](/resources/ml-production-challenges/), we discussed the challenges faced after deploying machine learning, including: 
-- Unexpected data schema changes
-- Unwanted model interactions
-- Messy infra and codebase
-- Real-world bias and adversaries
-- Organization issues and diffusion of responsibility
-- Operations support for customers
+import { FigureCaption } from "../../components/figure-caption"
 
-This guide will share some practices I’ve found useful to maintaining machine learning in production. With close to 20 suggestions, it can get overwhelming. Fret not, I’ll highlight the top three **must-haves** and **good-to-haves** at the end of this post.
+The [previous post](/resources/ml-production-challenges/) about the challenges we might face after deploying machine learning, sorted into six buckets:
+
+- Data: Upstream schema changes contaminate data
+- Model: Increased complexity hampers maintainability
+- Engineering: Fragmented codebase, configuration, and infra
+- The Real World: Bias, feedback loops, and adversaries
+- Org Structure: Excessive division of labour slows down iteration
+- Customers: Frequent operational requests disrupt work
+
+This guide shares some practices to address those challenges of maintaining machine learning. There are about 20 of these, but fret not, I'll highlight the top three must-haves and good-to-haves at the end.
 
 ## Monitor Training and Serving Data for Contamination
 
 **Validate your incoming data.** “Data is the New Oil.” “Garbage in, Garbage Out.” These clichés emphasize that clean input data is essential to your system. Here’s how you can monitor your incoming data, starting with the most basic. These checks identify errors upfront and save hours spent unnecessarily fixing your pipeline or decontaminating your feature store.
 
 Check the incoming files (if you receive data via a CSV/TSV/JSON dump). Don’t assume the file format will be consistent—a manual job could be creating them.
+
 - Is the schema correct? Are all expected columns present?
 - Is the format correct? (e.g., can your parse it as CSV?)
 - Is the encoding correct? (e.g., is it UTF-8 compliant?)
-- Is the data volume reasonable? Is it much larger or smaller than previous dumps?
+- Is the data volume expected? Is it much larger or smaller than previously?
 - If the file is encrypted, was the data tampered with, possibly via a man-in-the-middle attack?
 
 Check the data’s overall distribution.
-- How many rows are there? Row counts should not fluctuate from day to day.
+
+- How many rows? Row counts should not fluctuate widely day to day.
 - Do columns that should not have nulls, have nulls? Is there a sudden increase (or decrease) in the proportion of null values per column?
 - Do primary keys (e.g., customer ID, product ID) have duplicates? (Depending on how you do your joins, having duplicates could blow up the number of rows)
 
 Check the features’ distributions.
+
 - For continuous features, are the minimum and maximum values reasonable? E.g., age shouldn’t be below 0 or above a sensible threshold. Do basic aggregates (e.g., median, mean, interquartile range) seesaw from day to day?
 - For categorical features, are the unique values constant? If we expect the unique values of `Male`, `Female`, and `Undeclared` for gender, there shouldn’t be additional values such as `male` or `Married`. Also, is the proportion of each value similar?
 - For timestamp features, is the format the same? Is it still dd-mm-yyyy, or did an American DBA change it to mm-dd-yyyy? Also, are the date ranges reasonable? Most of the time, you shouldn’t have dates from the 18th century or the future.
 
-If you want to get fancy, perform statistical checks
-- Are the correlations between your features and targets consistent? A sudden increase suggests a data leak; a gradual decrease suggests a data drift.
+You can also perform statistical checks.
+
+- Are correlations between your features and targets consistent? A sudden increase suggests a data leak; a gradual decrease suggests a data drift.
 - Detect changes with homogeneity tests, ANOVAs, and time series analysis. Is gender distribution the same? Use a chi-squared test to (dis)confirm the null hypothesis. (However, if your data is large, statistical significance can be common.)
 
 Here’s a [recent article on how Uber monitors data quality](https://eng.uber.com/monitoring-data-quality-at-scale/) via multi-dimensional time series and principal component analysis.
 
 **Check for training-serving skew.** It’s often caused by discrepancies between training data and input data during serving, leading to disparity in model performance during training and serving.
 
-When serving, log the input data before and after processing and do some checks.
+When serving, log input data before and after processing and do some checks.
+
 - Is the serving data similar to training data? If the serving data is more sparse, it could be that the training data is unknowingly enriched (e.g., missing customer demographic information is imputed for daily reports).
 - Is the feature processing identical during training and serving? This occurs when different code is using in training (batch) and serving (individual query).
 
@@ -76,18 +83,19 @@ When applied together, the above two practices ensure end-users do not notice mo
 
 **Monitor your model health.** As a first step, check for model staleness. When was the last time you refreshed the production model?
 
-Then, take it further by inspecting the model for bias or incorrect learning. This is easier now with tools for model interpretability such as [LIME](https://github.com/marcotcr/lime) and [SHAP](https://github.com/slundberg/shap). If it’s a loan approval model, does it bias against certain genders, age groups, or ethnicities? (Though I would argue that, in the first place, such data shouldn’t be considered.) How do the most important features change from day-to-day? If a feature jumps in importance, it could suggest a data leak.
+Then, inspecting the model for bias or incorrect learning. This is easier now with tools for model interpretability such as [LIME](https://github.com/marcotcr/lime) and [SHAP](https://github.com/slundberg/shap). If it’s a loan approval model, does it bias against certain genders, age groups, or ethnicities? (Though I would argue that, in the first place, such data shouldn’t be considered.) How do the most important features change from day-to-day? If a feature jumps in importance, it could suggest a data leak.
 
 ![This SHAP summary plot shows sex, passenger class, and age were most important as features.](../../assets/shap-summary-plot.jpg)
-<FigureCaption caption="This SHAP summary plot shows sex, passenger class, and age were most important as features." />
 
-**Meta-analysis on offline vs offline metrics.** How well do your offline metrics correlate with online improvements? Does an increase in AUC or NDCG in offline evaluation lead to an increase in click-through rate or conversion rate online?
+<FigureCaption caption="Sex, passenger class, and age were most important as features." />
+
+**Meta-analysis on offline vs .offline metrics.** How well do your offline metrics correlate with online improvements? Does an increase in AUC or nDCG offline lead to an increase in click-through rate or conversion rate online?
 
 For example, Etsy found [AUC to be a good metric to assess CTR](https://arxiv.org/abs/1711.01377) while this [KDD paper](https://chbrown.github.io/kdd-2013-usb/kdd/p1294.pdf) found large discrepancies between offline and online performance of models due to evaluation metrics.
 
 We make many decisions based on offline evaluation metrics, such as during experimentation and model validation before release. Investing in finding dependable offline metrics will continuously pay dividends.
 
-(An aside: When measuring _online_ performance, focus on what your system can have a direct impact on, such as clicks, purchases, bounce rate. Consider indirect metrics (e.g., user return rate, daily average users) _only_ after you grok the direct metrics. Avoid delayed and big-picture metrics (e.g., user satisfaction, traffic growth)—there could be multiple confounding factors for these.)
+(An aside: When measuring _online_ performance, focus on what your system can have a direct impact on, such as clicks, purchases, bounce rate. Consider indirect metrics (e.g., user return rate, daily average users) _only_ after you grok direct metrics. Avoid delayed and big-picture metrics (e.g., user satisfaction, traffic growth)—there could be confounding factors for these.)
 
 ## Simplify Engineering to Reduce Operational Burden
 
@@ -127,21 +135,19 @@ For example, what are your production requirements? Do you need 95% recall? Or m
 
 For example, if you’re classifying product reviews daily for spam, offensive language, and personal details, erroneous predictions go on to become the next set of (incorrect) training data.
 
-What you’ll want to do is take a small sample of reviews (e.g., 1% - 5%) and have people go through them. Are there obvious errors or new types of fraud emerging? Is there a general pattern to them? Once you find these error patterns, you can get the misclassified reviews via logic or regex to relabel them. Then, you can relabel other misclassifications via [active learning](https://en.wikipedia.org/wiki/Active_learning_(machine_learning)).
+What you’ll want to do is take a small sample of reviews (e.g., 1% - 5%) and have people go through them. Are there obvious errors or new types of fraud emerging? Is there a general pattern to them? Once you find these error patterns, you can get the misclassified reviews via logic or regex to relabel them. Then, you can relabel other misclassifications via [active learning](<https://en.wikipedia.org/wiki/Active_learning_(machine_learning)>).
 
 ## Structure Teams for Iteration and Innovation
 
 **Have your data scientists do end-to-end.** I’ll admit, this is not a popular opinion as most tech teams move toward division of labour. But, hear me out.
 
-A generalist (or if you prefer, full-stack) data scientist can perform diverse functions: communicate with stakeholders to define the right problem, develop prototypes and production code,  and deploy and measure. This increases learning, innovation, and iteration speed. It also encourages individual ownership and reduces diffusion of responsibility.
+A generalist (or if you prefer, full-stack) data scientist can perform diverse functions: communicate with stakeholders to define the right problem, develop prototypes and production code, and deploy and measure. This increases learning, innovation, and iteration speed. It also encourages individual ownership and reduces diffusion of responsibility.
 
 [Netflix](https://netflixtechblog.com/full-cycle-developers-at-netflix-a08c31f83249) has full-cycle developers and it worked well. [Stitch Fix](https://multithreaded.stitchfix.com/blog/2019/03/11/FullStackDS-Generalists/) starts with a full-stack data scientist model and only specialise when necessary.
 
 **Caveat:** This practice assumes good tooling and infrastructure support. Spark instances should be easy to spin up, automatic failover and rollback should be in place, and A/B tests should be simple to start. With these, your generalist data scientists can focus on machine learning system development.
 
-**If you cannot have end-to-end data scientists, have end-to-end teams.** I get it, end-to-end data scientists are rare (though I would argue they’re not unicorns; you can find as well as make them). If so, build end-to-end teams instead.
-
-Have your PM, data scientists, and engineers sit together (after this pandemic blows over). Ensure teams align the same goals of fast iteration and shipping. Have processes that minimize coordination and communication costs (i.e., have quick, informal discussions instead of scheduling meetings).
+**If you cannot have end-to-end data scientists, have end-to-end teams.** Have your PM, data scientists, and engineers sit together (after this pandemic blows over). Ensure teams align the same goals of fast iteration and shipping. Have processes that minimize coordination and communication costs (i.e., have quick, informal discussions instead of scheduling meetings).
 
 **Define clear interfaces between each role.** If different teams own different parts of the machine learning process, ensure that people don’t just “throw code over the wall”. Set clear expectations and interfaces for deliverables.
 
@@ -149,15 +155,16 @@ For example, the deliverable for data engineers could be timely updates in the d
 
 ## Crowdsource the Handling of Customer Complaints
 
-**Make it easy for others to take action.** This includes customer service agents, account managers, and policymakers. You can accomplish this via simple user interfaces (UI) to input product and customer IDs; these are then stored in a database.
+**Make it easy for others to take action.** This includes customer service agents, account managers, and policymakers. Build simple user interfaces (UI) to input product and customer IDs; these are then stored in a database.
 
-Are customers complaining about inappropriate products in recommendations or search results? Let agents blacklist the product ID via the UI. Does a customer have privacy concerns? Again, add their ID via the UI. Does an account manager want to increase a new product’s visibility? Add the product ID via the UI to give it a temporary _boost_ (this helps with cold-start products too). Or better yet, [build a new ad business](https://www.thedrum.com/news/2019/03/21/lazada-unveils-new-marketing-solutions-help-brands-and-sellers-solve-pain-points) and crowdsource _boosting_ to sellers.
+Are there complaints about inappropriate products in recommendations or search results? Let agents blacklist the product ID via the UI. Does a customer have privacy concerns? Again, add their ID via the UI. Does an account manager want to increase a new product’s visibility? Add the product ID via the UI to give it a temporary _boost_ (this helps with cold-start products too). Or better yet, [build a new ad business](https://www.thedrum.com/news/2019/03/21/lazada-unveils-new-marketing-solutions-help-brands-and-sellers-solve-pain-points) and crowdsource _boosting_ to sellers.
 
 **Help operations staff understand model outputs.**When machine-learning decisions have repercussions, people will want an explanation. Help your frontline agents understand and explain decisions to customers. I’ve found SHAP force plots useful for this. LIME is also a good alternative.
 
 Here’s an example where we predict passenger survivability from the famous [Titanic dataset](https://www.kaggle.com/c/titanic). For this passenger, we see that gender and age had a big positive influence on survivability—after all, women and children first. Her having a 3rd class cabin had a negative impact—lower class cabins are in the lower decks and thus further away from the lifeboats.
 
 ![This SHAP force plot shows being female and low in age improved survivability.](../../assets/shap-force-plot.jpg)
+
 <FigureCaption caption="This SHAP force plot shows being female and low in age improved survivability." />
 
 ## Some (Important) Practices I Didn’t Discuss
@@ -173,14 +180,13 @@ There were a few key points I skipped. They’ve been well covered in other reso
 I didn’t plan for this post to be so overwhelming. Let me conclude with the top three must-haves and good-to-haves here (disclaimer: my start-up experience influenced these and they're likely subjective).
 
 IMHO, these are **must-haves** in most teams:
-- Model validation before deployment: This is my favourite practice. With a single check, you eliminate most machine learning misbehaviour before deployment.
+
+- Model validation before deployment: With a single check, you eliminate most machine learning misbehaviour before deployment.
 - Input data validation: Basic checks go long way—the number of rows, presence of erroneous duplicate values, proportion of null values. Then, check the ranges of numeric and date columns as well as the unique values of categorical columns.
 - Easy rollback: This insurance policy lets your team iterate and deploy fast, paving the way for [CI/CD](https://martinfowler.com/articles/cd4ml.html). A deployment broke `prod` in the middle of the night? No worries, rollback and fix it tomorrow morning.
 
 Next, here are three **good-to-haves**:
+
 - Have your data scientists do end-to-end: In my experience, this greatly reduces time for development, accelerates learning and innovation, and cultivates a culture of **ownership**.
 - Invest in data science tooling: Have template `Docker` containers to develop and deploy machine learning models in. Set up a centralised `MLflow` server to share and review results. `Airflow` is great for scheduling jobs with dependencies.
 - Invest in customer service tooling: Build tools to empower customer service agents on the most common tasks (e.g., blacklisting products, explaining outcomes). This reduces the amount of ad hoc requests and fire fighting your team handles.
-
-## References
-- [Rules of Machine Learning: Best Practices for ML Engineering](https://developers.google.com/machine-learning/guides/rules-of-ml#overview)

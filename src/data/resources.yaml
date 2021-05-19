@@ -7,9 +7,9 @@ categories:
         slug: /resources/ml-design-docs/
       - title: Testing Machine Learning
         slug: /resources/testing-ml/
-      - title: Maintaining Machine Learning in Production
+      - title: Maintaining Machine Learning
         slug: /resources/ml-production-guide/
-      - title: Be More End-to-end
+      - title: Be More End-to-End
         slug: /resources/end-to-end/
   - title: Teardowns
     sections:
@@ -21,7 +21,3 @@ categories:
         slug: /resources/real-time-recommendations/
       - title: Search Query Matching
         slug: /resources/search-query-matching/
-  - title: Courses
-    sections:
-      - title: MLOps Course (by Made With ML)
-        slug: https://madewithml.com/courses/mlops/

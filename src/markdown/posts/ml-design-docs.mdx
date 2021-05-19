@@ -5,6 +5,7 @@ date: "2021-03-07"
 slug: "/resources/ml-design-docs/"
 type: "resource"
 ---
+
 Design documents come in all shapes and sizes. But IMHO, they have the same purpose—to help the author think deeply about the problem and solution, and get feedback.
 
 **Thinking deeply comes with writing the design doc.** To propose a good design, you have to research and understand the problem space. Then, communicating what you’ve learned via a document with different levels of detail forces you to clarify and organize your thoughts. Good writing does not come without good thinking.
@@ -15,28 +16,29 @@ Design documents come in all shapes and sizes. But IMHO, they have the same purp
 
 Is it a must to write a design doc? Of course not. But not writing one incurs the risk of building the wrong thing, or something that was requested but ends up unused. I've also observed costly projects halted due to design flaws discovered late in the project, because of an ill-defined problem statement or a tech choice that doesn't scale. In hindsight, such waste could have been mitigated by investing time into writing _and reviewing_ a design doc.
 
-We’ll go over pointers on what to cover in **design docs for machine learning systems**—these pointers will guide the thinking process. My design docs tend to be structured via the [Why, What, How]({{ site.baseurl }}{% link posts/_posts/2021-02-28-writing-why-what-how.md %}#writing-framework-why-what-how-who) framework shared last week (please skim it if you've not read it yet). Then, I’ll share how I get feedback via a two-step review process.
+We’ll go over pointers on what to cover in **design docs for machine learning systems**—these pointers will guide the thinking process. My design docs tend to be structured via the [Why, What, How](https://eugeneyan.com/writing/writing-docs-why-what-how/) framework shared last week (please skim it if you've not read it yet). Then, I’ll share how I get feedback via a two-step review process.
 
-> A simple template, available for the low price of free: [`ml-design-docs`](https://github.com/eugeneyan/ml-design-docs) 
+> A simple template, available for the low price of free: [`ml-design-docs`](https://github.com/eugeneyan/ml-design-docs)
 
 ## The Why and What of design docs
 
 A design doc should start by addressing the Whys and Whats.
 
-**Why should we solve this problem? Why now?** Explain the motivation for your proposal and convince readers of its importance. What is the customer or business benefit? If you’re building a replacement system, explain why improvements to the existing system will not work as well. If there are alternatives, explain why your proposed system is better. 
+**Why should we solve this problem? Why now?** Explain the motivation for your proposal and convince readers of its importance. What is the customer or business benefit? If you’re building a replacement system, explain why improvements to the existing system will not work as well. If there are alternatives, explain why your proposed system is better.
 
-**What are the success criteria?** These are often framed as business goals, such as increased customer engagement, revenue, or reduced cost. They can also be framed as operational goals or new capabilities (e.g., ability to rollback models, serve features in real-time, etc.) 
+**What are the success criteria?** These are often framed as business goals, such as increased customer engagement, revenue, or reduced cost. They can also be framed as operational goals or new capabilities (e.g., ability to rollback models, serve features in real-time, etc.)
 
-**What are the requirements and constraints?** Functional requirements are those that must be met to deliver the project. Describe them from the customer’s point of view—how will the customer experience it and/or benefit? Specific to machine learning, we’ll have specific requirements for each application, such as: 
+**What are the requirements and constraints?** Functional requirements are those that must be met to deliver the project. Describe them from the customer’s point of view—how will the customer experience it and/or benefit? Specific to machine learning, we’ll have specific requirements for each application, such as:
+
 - Recommendations: Proportion of items or customers with >5 recommended items
-- Fraud detection: Upper bound on the proportion or count of false positives 
+- Fraud detection: Upper bound on the proportion or count of false positives
 - Automated classification: Threshold on proportion or count of low-confidence predictions that require human review and approval
 
-Non-functional/technical requirements define the quality of your system and determine how the system should be implemented. Usually, customers won’t notice them unless they’re not met (e.g., exceptionally high latency). Most systems will consider a similar set of requirements such as throughput, latency, security, data privacy, costs, etc. 
+Non-functional/technical requirements define the quality of your system and determine how the system should be implemented. Usually, customers won’t notice them unless they’re not met (e.g., exceptionally high latency). Most systems will consider a similar set of requirements such as throughput, latency, security, data privacy, costs, etc.
 
-**What is in-scope vs out-of-scope?** Some problems can be too big to solve all at once. To ship—and get feedback from customers—in a reasonable amount of time, we might need to chop it down to size. Be upfront about what’s out of scope. We might also need to take on tech debt to meet time and budget constraints. This is fine. Nonetheless, be deliberate about it and have a plan to pay off tech debt as soon as possible. 
+**What is in-scope vs out-of-scope?** Some problems can be too big to solve all at once. To ship—and get feedback from customers—in a reasonable amount of time, we might need to chop it down to size. Be upfront about what’s out of scope. We might also need to take on tech debt to meet time and budget constraints. This is fine. Nonetheless, be deliberate about it and have a plan to pay off tech debt as soon as possible.
 
-**What are our assumptions?** Make explicit your assumptions and understanding of the environment. For example, if building a recsys, how many products and users do you have? What is the expected number of requests per second? This guides how you frame the problem. It can be hard to apply reinforcement learning to large discrete action spaces (i.e., a large number of products) whereas simple approximate nearest neighbors scale well. 
+**What are our assumptions?** State your assumptions and understanding of the environment. For example, if building a recsys, how many products and users do you have? What is the expected number of requests per second? This guides how you frame the problem. It can be hard to apply reinforcement learning to large discrete action spaces (i.e., a large number of products) whereas simple approximate nearest neighbors scale well.
 
 ## The How of design docs
 
@@ -46,15 +48,15 @@ Addressing the How in a design doc can look very different for each ML system. T
 
 This section is similar to the methods section in machine learning papers. A couple of key points I usually cover are:
 
-**Problem statement.** Declare how you’ll frame the problem. In machine learning, the same problem can have vastly different approaches. If it’s a recommender system, are you taking a content or collaboration-based approach? Will it be an item-to-item or user-to-item recommender? Is your system focused on candidate generation or ranking? Being specific helps narrow down your search space and simplifies the rest of the design doc. 
-  
+**Problem statement.** Declare how you’ll frame the problem. In machine learning, the same problem can have vastly different approaches. If it’s a recommender system, are you taking a content or collaboration-based approach? Will it be an item-to-item or user-to-item recommender? Is your system focused on candidate generation or ranking? Being specific helps narrow down your search space and simplifies the rest of the design doc.
+
 Also, be clear about the problem you’re solving. For example, recommendation systems often involve solving a surrogate problem—the [Netflix Challenge](https://en.wikipedia.org/wiki/Netflix_Prize) assumes that accurately predicting user ratings leads to effective movie recommendations. Other labels include the probability of a video being played and the number of minutes watched. _The choice of your surrogate learning problem will have an outsized importance on A/B testing._
 
 As another example, consider fraud detection. This can be solved via unsupervised or supervised approaches. An unsupervised approach won’t need labels and can adopt techniques such as outlier detection via isolation forests or identifying fraud networks via graph clustering. A supervised approach will need to consider label acquisition and how to balance between precision (more uncaught fraud) and recall (more false alarms).
 
 **Data.** Describe the data and entities your ML model will be trained on. Commonly used data include customer (e.g., demographics), customer events (e.g., clicks, purchases), and items (e.g., metadata, text description, images). If you’re using customer data, pay attention to the aspects of data privacy and security (covered under [implementation](#implementation-how-to-build-and-operate-the-system)).
 
-**Techniques.** Outline the machine learning techniques you’ll try/tried. Include baselines for comparison. This section may also include details on how you’ll clean and prepare the data, as well as your feature engineering approach. While not necessary, it’s a good idea to provide sufficient detail so that readers can implement/reproduce your work. 
+**Techniques.** Outline the machine learning techniques you’ll try/tried. Include baselines for comparison. This section may also include details on how you’ll clean and prepare the data, as well as your feature engineering approach. While not necessary, it’s a good idea to provide sufficient detail so that readers can implement/reproduce your work.
 
 **Validation and experimentation.** Explain how you’ll evaluate models offline. (IMHO, you won’t go wrong using a [time-based split](https://scikit-learn.org/stable/modules/cross_validation.html#time-series-split) _most_ of the time.) Note the [difference](https://dl.acm.org/doi/10.1145/3383313.3418479) between leave-one-last, temporal, random, and user-based splits. Explain your choice of evaluation metrics(s) and why you think they are good proxy metrics for production conditions. If you’ve conducted experiments with validation results, include them.
 
@@ -66,25 +68,25 @@ If you’re conducting an A/B test, specify if treatment and control groups will
 
 This section lists the non-function/technical requirements and is more engineering-heavy; it's not necessary to address all of them. If in doubt, consult engineers for help.
 
-**High-level design.** It’s a good idea to start with a diagram providing a high-level view. [System-context diagrams](https://en.wikipedia.org/wiki/System_context_diagram) and [data-flow diagrams](https://en.wikipedia.org/wiki/Data-flow_diagram) work well. In ML systems, some key components are data stores, pipelines (e.g., data preparation, feature engineering, training), and serving. Show how components interact with one another. I often use data-flow diagrams to show how raw data is transformed and used to train models, as well as the input and output of my model in serving. 
+**High-level design.** It’s a good idea to start with a diagram providing a high-level view. [System-context diagrams](https://en.wikipedia.org/wiki/System_context_diagram) and [data-flow diagrams](https://en.wikipedia.org/wiki/Data-flow_diagram) work well. In ML systems, some key components are data stores, pipelines (e.g., data preparation, feature engineering, training), and serving. Show how components interact with one another. I often use data-flow diagrams to show how raw data is transformed and used to train models, as well as the input and output of my model in serving.
 
 **Infra + scalability.** Briefly list the infra options and your final choice. Will it run on-premise, in the cloud, or a mix of both (e.g., data processing and training on-premise for data security, model serving in the cloud for scalability). If you work in big tech with many different compute and hosting options, try to narrow down your search space early. Also, consider how your choice of infra will impact scalability—it’s easier to scale a cloud-based system than to add server racks.
 
-**Performance (throughput + latency).** Address requirements on throughput (i.e., requests per second) and latency (e.g., `x` ms @ p99) and list how performance can be improved (e.g., pre-computation, caching). If additional throughput is required (e.g., to handle peak sales days), will you scale vertically (i.e., bigger machines) or horizontally (i.e., more machines of the same size)—your ability to do this will be tied to your choice of infra. 
+**Performance (throughput + latency).** Address requirements on throughput (i.e., requests per second) and latency (e.g., `x` ms @ p99) and list how performance can be improved (e.g., pre-computation, caching). If additional throughput is required (e.g., to handle peak sales days), will you scale vertically (i.e., bigger machines) or horizontally (i.e., more machines of the same size)—your ability to do this will be tied to your choice of infra.
 
-**Security.** Specify how you’ll secure your application and authenticate users and incoming requests. If your application endpoint is publicly accessible, you might want to plan for a [denial-of-service](https://en.wikipedia.org/wiki/Denial-of-service_attack) attack. Organizations with centralized security teams might have an internal certification process that you can undergo to identify and patch risks. 
+**Security.** Specify how you’ll secure your application and authenticate users and incoming requests. If your application endpoint is publicly accessible, you might want to plan for a [denial-of-service](https://en.wikipedia.org/wiki/Denial-of-service_attack) attack. Organizations with centralized security teams might have an internal certification process that you can undergo to identify and patch risks.
 
 **Data privacy.** Indicate how you’ll protect and ensure the privacy of customer data. Will your ML model learn on [personally identifiable information](https://en.wikipedia.org/wiki/Personal_data) (PII)? If so, detail how this PII will be stored, processed, and used in your model. Also, address how your system will comply with data retention and deletion policies such as [GDPR](https://gdpr.eu/what-is-gdpr/). (I’ve built systems—in healthcare and human resources—where the PII was considered so sensitive that we declined to receive, not to mention use.)
 
 **Monitoring + alarms.** Operating a system without monitoring is like driving at night without headlights—the lack of visibility is unnerving. Detail how you’ll monitor your system performance (e.g., throughput, latency, error rate, etc.) Monitoring can be done server-side (e.g., model endpoint) or client-side (e.g., consumer), with the latter including network latency. Also list the alarms that will trigger human intervention (e.g., on-call).
 
-**Cost.** This will be a key concern for decision-makers who hold the purse strings. It won’t make sense if the cost of operating your system exceeds the revenue it generates. This should include labour cost—how many engineers and scientists do you need to build the system, and for how long? If your system runs in the cloud, estimate the number of instances required for data processing (e.g., [EMR clusters](https://aws.amazon.com/emr/)), and model training and serving (e.g., GPU instances, [AWS Lambda](https://aws.amazon.com/lambda/)). 
+**Cost.** This will be a key concern for decision-makers who hold the purse strings. It won’t make sense if the cost of operating your system exceeds the revenue it generates. This should include labour cost—how many engineers and scientists do you need to build the system, and for how long? If your system runs in the cloud, estimate the number of instances required for data processing (e.g., [EMR clusters](https://aws.amazon.com/emr/)), and model training and serving (e.g., GPU instances, [AWS Lambda](https://aws.amazon.com/lambda/)).
 
-**Integration points.** Define how downstream services will use and interact with your endpoint. Share how the API specification looks like, and the expected input and output data. Keeping the API generic enough ensures extendability to other consuming services (i.e., higher adoption of your system).
+**Integration points.** Define how downstream services will use and interact with your endpoint. Share how the API specification looks like, and the expected input and output data. Keeping the API generic helps with adoption by other users and services.
 
 **Risks and uncertainties.** Risks are the known unknowns; uncertainties are the unknown unknowns. Call them out to the best of your ability. This allows reviewers to help spot design flaws and rabbit holes, and provide feedback on how to avoid/address them.
 
-**Other stuff.** There’s a non-exhaustive list of other concerns that might be relevant to your system. This includes ops strategy (e.g., monitoring, on-call), model rollbacks, quality assurance, extensibility, and model footprint and power consumption (if used in mobile apps). Address them if they are key to your system. 
+**Other stuff.** There’s a non-exhaustive list of other concerns that might be relevant to your system. This includes ops strategy (e.g., monitoring, on-call), model rollbacks, quality assurance, extensibility, and model footprint and power consumption (if used in mobile apps). Address them if they are key to your system.
 
 ## Alternatives considered and rejected
 
@@ -100,9 +102,9 @@ I find it helpful to conduct reviews in two stages: pre-review and review.
 
 At this stage, the document will likely be low resolution and lacking in details—this is a feature, not a bug, and allow for quickly brainstorming and iterating through alternatives. Mine looks like an outline of the eventual design doc, with most of the details and feedback in bullet form. Much of it doesn’t make it into the final design doc.
 
-I tend to conduct pre-reviews one-on-one in a casual setting, usually with individual team members or mentors. If you’re doing this, be clear that it’s the pre-review phase. I’ve caused unnecessary concern when a pre-reviewer thought he was reading the final design doc (when it was just the first iteration). 
+I tend to conduct pre-reviews one-on-one in a casual setting, usually with individual team members or mentors. If you’re doing this, be clear that it’s the pre-review phase. I’ve caused unnecessary concern when a pre-reviewer thought he was reading the final design doc (when it was just the first iteration).
 
-**The review** will be more formal and involve a larger audience of senior technical folk and decision-makers. Be clear what you want from the review. What risks/uncertainties need to be addressed? What decisions need to be made? What help do you need? If you’ve done your pre-review well, it shouldn’t be too common to make major design changes at this stage. 
+**The review** will be more formal and involve a larger audience of senior technical folk and decision-makers. Be clear what you want from the review. What risks/uncertainties need to be addressed? What decisions need to be made? What help do you need? If you’ve done your pre-review well, it shouldn’t be too common to make major design changes at this stage.
 
 At this stage, the design doc should have the necessary details and be in structured prose. Quantified estimates (e.g., throughput, latency, cost) and offline experiment results (e.g., hit@10, nDCG) will be very helpful. Diagrams are a must. Questions asked by pre-reviewers can be addressed in the appendix via a FAQ section.
 
@@ -110,11 +112,10 @@ Scott wrote a [post](https://blog.usejournal.com/writing-docs-at-amazon-e0258086
 
 ## Conclusion
 
-Writing design docs is overhead. Minor changes (e.g., adding a feature column) or low-effort tasks (e.g., a few days) shouldn’t need a design doc—the cost of writing a full design doc will outweigh the benefits. Alternatively, [prototyping](https://eugeneyan.com/writing/prototyping-to-get-buy-in/) can be a feasible approach for smaller systems. 
+Writing design docs is overhead. Minor changes (e.g., adding a feature column) or low-effort tasks (e.g., a few days) shouldn’t need a design doc—the cost of writing a full design doc will outweigh the benefits. Alternatively, [prototyping](https://eugeneyan.com/writing/prototyping-to-get-buy-in/) can be a feasible approach for smaller systems.
 
 Nonetheless, it can be useful to write a design doc when:
-- The problem and/or solution is ambiguous or not well understood (e.g., blockchain)
-- The impact is high (e.g., customer-facing, downstream impact on other services)
-- The implementation effort is high (e.g., multiple teams for a few months)
 
-Whether you’re writing your first or 20th design doc for a machine learning system, I hope this write-up will be helpful for you. Did I miss anything? Reach out [@eugeneyan](https://twitter.com/eugeneyan)!
+- The problem and/or solution is not well understood (e.g., blockchain)
+- The impact is high (e.g., customer-facing, impact on other services)
+- The implementation effort is high (e.g., multiple teams for a few months)

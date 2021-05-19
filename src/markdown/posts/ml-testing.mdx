@@ -5,6 +5,8 @@ date: "2020-09-06"
 slug: "/resources/testing-ml/"
 type: "resource"
 ---
+import { FigureCaption } from '../../components/figure-caption';
+
 Machine learning tests can be distinguished between traditional software tests and machine learning (ML) tests; software tests check the **written logic** while ML tests check the **learned logic**.
 
 ML tests can be further split into **testing** and **evaluation**. We’re familiar with ML **evaluation** where we train a model and evaluate its performance on an unseen validation set; this is done via metrics (e.g., accuracy, [Area under Curve of Receiver Operating Characteristic (AUC ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic#Area_under_the_curve)) and visuals (e.g., precision-recall curve.
@@ -18,7 +20,7 @@ Taken together, here’s how the workflow might look like. To complement this, w
 
 ## Setting up the context (algorithm and data)
 
-Before we can do ML testing, we’ll need an **algorithm and some data**. Our algorithm will be a [`numpy`](https://numpy.org) implementation of [`DecisionTree`](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py) which predicts a probability for binary classification. ([Extensions to make it support regression welcome!](#try-it-for-yourself-and-break-something)).
+Before we can do ML testing, we’ll need an **algorithm and some data**. Our algorithm will be a [`numpy`](https://numpy.org) implementation of [`DecisionTree`](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py) which predicts a probability for binary classification. (Though there are existing libraries for decision trees, implementing it from scratch lets us test the internals.)
   
 To run our tests, we’ll use the [Titanic dataset](https://www.kaggle.com/c/titanic/data). This tiny data set (~900 rows, 10 features) makes for fast testing (when model training is involved) and allows us to iterate quickly. (As part of performance evaluation, we run `fit()` and `predict()` hundreds of times to get the 99th percentile timing.) The simplicity and familiarity of the data also makes it easier to discuss the post-train (i.e., learned logic) tests.
 
@@ -38,8 +40,7 @@ To run our tests, we’ll use the [Titanic dataset](https://www.kaggle.com/c/tit
 |          10 |        1 |      2 | Nasser, Mrs. Nicholas (Adele Achem)     | female |  14 |     1 |     0 | 237736    | 30.0708 | nan   | C        |
 + ------------+----------+--------+-----------------------------------------+--------+-----+-------+-------+-----------+---------+-------+----------+
 ```
-
-<p class="image-caption">If you're unfamiliar with the Titanic dataset, here's how it looks like (scroll to the right).</p>
+<FigureCaption caption="Sample data from titanic dataset." />
 
 ## Adopting testing habits from software engineering
 
@@ -49,7 +50,7 @@ We’ll adopt some good habits from software engineering. We won’t go through 
 - Linting to ensure code consistency with [`pylint`](https://www.pylint.org)
 - Type checking to verify type correctness with [`mypy`](http://mypy-lang.org)
 
-(Note: The tests below won't include type hints though the [implementation code](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py#L16) does.)
+(Note: Tests won't include type hints though the [implementation code](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py#L16) does.)
 
 ## Pre-train tests to ensure correct implementation
 
@@ -141,7 +142,7 @@ def test_dt_overfit(dummy_feats_and_labels):
     assert np.array_equal(labels, pred), 'DecisionTree should fit data perfectly and prediction should == labels.'
 ```
 
-Lastly, we check if increasing tree depth leads to increased accuracy and AUC ROC on _training_ data (though it’ll overfit and perform poorly on _validation_ data). In the test below, we fit trees of depth one to 10 and ensure training accuracy and AUC increases consistently.
+Finally, we check if increasing tree depth leads to increased accuracy and AUC ROC on _training_ data (though it’ll overfit and perform poorly on _validation_ data). In the test below, we fit trees of depth one to 10 and ensure training accuracy and AUC increases consistently.
 
 ```python
 def test_dt_increase_acc(dummy_titanic):
@@ -163,7 +164,7 @@ def test_dt_increase_acc(dummy_titanic):
 
 ## Post-train tests to ensure expected learned behaviour
 
-In post-train tests, we want to **check if the model is behaving correctly**. Thus, we test our trained models for their **learned logic**. I’m unaware of any frameworks for doing this so here’s my take on it (suggestions welcome!). I took inspiration from the excellent paper [Beyond Accuracy: Behavioral Testing of NLP Models with CheckList](https://arxiv.org/abs/2005.04118).
+In post-train tests, we **check if the model is behaving correctly** and test our trained models for their **learned logic**. We'll do this based on the suggestions in [Beyond Accuracy: Behavioral Testing of NLP Models with CheckList](https://arxiv.org/abs/2005.04118).
 
 First, we check for **invariance**. Keeping everything constant and tweaking one feature at a time, how would model predictions change? We should not expect survival probability to change due to the passenger’s name, ticket number, or port of embarkation. 
 
@@ -211,9 +212,9 @@ def test_dt_invariance(dummy_titanic_dt, dummy_passengers):
 ```
 
 On the other hand, we have **directional expectations** such as:
-- Females having higher survival probability (than males)
-- Higher passenger class having higher survival probability (than lower classes)
-- Higher fare having higher survival probability (than lower fare)
+- Females have higher survival probability (than males)
+- Higher passenger class have higher survival probability (than lower class)
+- Higher fare having have survival probability (than lower fare)
 
 ```python
 def test_dt_directional_expectation(dummy_titanic_dt, dummy_passengers):
@@ -360,10 +361,8 @@ make setup
 make check
 ```
 
-Mess around with the implementation and tests. Break something! If you’re feeling adventurous, update `DecisionTree` to also do regression. You’ll need to:
+Tweak the implementation and tests. Break something! If you’re feeling adventurous, update `DecisionTree` to also do regression. You’ll need to:
 - Add an `__init__()` argument for `classification` or `regression`. Alternatively, create it a new `DecisionTree` class (via inheritance perhaps?) solely for regression.
-- Add a function to check for [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) or [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) improvement (instead of [Gini gain](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py#L71)).
+- Add a function to check for [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) or [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) improvement.
 - Add a test data set (perhaps [Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)?) and basic data prep steps.
 - Add test cases and model evaluation checks.
-
-Do you know of (i) other frameworks for **machine learning tests on learned behaviour**, or (ii) examples of  **behaviour failures in machine learning applications**? 
