@@ -11,11 +11,10 @@ export default function Home() {
       </p>
 
       <p>
-        Such knowledge is seldom documented; it's not something you can find in
-        a textbook, classes, or how-to article. To fill this gap, ApplyingML
-        aims to document the process of applying ML through guides and case
-        studies of how other companies have done it, and interviews with ML
-        practitioners.
+        Such knowledge is seldom documented—it's not something you can find in
+        a textbook, classes, or how-to article. To fill this gap, this site shares 
+        about the process of applying ML through guides and case studies, as well 
+        as interviews experienced with ML practitioners.
       </p>
 
       <p>

@@ -36,7 +36,7 @@ export default MentorsPage
 export const mentor = graphql`
   query {
     allMdx(
-      filter: { fileAbsolutePath: { regex: "/(interviews)/" } }
+      filter: { frontmatter: { type: { eq: "mentor" } }}
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

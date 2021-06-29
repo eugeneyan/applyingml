@@ -1,16 +1,21 @@
 categories:
-  - title: Guides
+  - title: ML Guides
     sections:
-      - title: How to Read Papers
-        slug: /resources/read-papers/
-      - title: Machine Learning Design Docs
-        slug: /resources/ml-design-docs/
       - title: Testing Machine Learning
         slug: /resources/testing-ml/
       - title: Maintaining Machine Learning
         slug: /resources/ml-production-guide/
       - title: Be More End-to-End
         slug: /resources/end-to-end/
+  - title: Non-ML Guides
+    sections:
+      - title: How to Read Papers
+        slug: /resources/read-papers/
+      - title: Writing via Why, What, How
+        slug: /resources/why-what-how/
+      - title: Machine Learning Design Docs
+        slug: /resources/ml-design-docs/
+        
   - title: Teardowns
     sections:
       - title: Data Discovery Platforms
@@ -21,3 +26,7 @@ categories:
         slug: /resources/real-time-recommendations/
       - title: Search Query Matching
         slug: /resources/search-query-matching/
+      - title: Patterns for Personalization
+        slug: /resources/personalization/
+      - title: System Design for RecSys & Search
+        slug: /resources/discovery-system-design/
