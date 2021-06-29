@@ -5,7 +5,8 @@ date: "2020-09-06"
 slug: "/resources/testing-ml/"
 type: "resource"
 ---
-import { FigureCaption } from '../../components/figure-caption';
+
+import { FigureCaption } from "../../components/figure-caption"
 
 Machine learning tests can be distinguished between traditional software tests and machine learning (ML) tests; software tests check the **written logic** while ML tests check the **learned logic**.
 
@@ -14,14 +15,18 @@ ML tests can be further split into **testing** and **evaluation**. We’re famil
 On the other hand, ML **testing** involves checks on model behaviour. **Pre-train tests**—which can be run without trained parameters—check if our _written logic_ is correct. For example, is classification probability between 0 to 1? **Post-train tests** check if the _learned logic_ is expected. For example, on the [Titanic dataset](https://www.kaggle.com/c/titanic/data), we should expect females to have a higher survival probability (relative to males).
 
 ![Workflow for testing machine learning](../../assets/testing-ml-flow.jpg)
-<FigureCaption caption="Workflow for testing machine learning" source="https://www.jeremyjordan.me/testing-ml/" />
+
+<FigureCaption
+  caption="Workflow for testing machine learning"
+  source="https://www.jeremyjordan.me/testing-ml/"
+/>
 
 Taken together, here’s how the workflow might look like. To complement this, we’ll implement a machine learning model with pre-train, post-train, and evaluation checks. Follow along with this Github repository: [`testing-ml`](https://github.com/eugeneyan/testing-ml)
 
 ## Setting up the context (algorithm and data)
 
 Before we can do ML testing, we’ll need an **algorithm and some data**. Our algorithm will be a [`numpy`](https://numpy.org) implementation of [`DecisionTree`](https://github.com/eugeneyan/testing-ml/blob/master/src/tree/decision_tree.py) which predicts a probability for binary classification. (Though there are existing libraries for decision trees, implementing it from scratch lets us test the internals.)
-  
+
 To run our tests, we’ll use the [Titanic dataset](https://www.kaggle.com/c/titanic/data). This tiny data set (~900 rows, 10 features) makes for fast testing (when model training is involved) and allows us to iterate quickly. (As part of performance evaluation, we run `fit()` and `predict()` hundreds of times to get the 99th percentile timing.) The simplicity and familiarity of the data also makes it easier to discuss the post-train (i.e., learned logic) tests.
 
 ```bash
@@ -40,11 +45,13 @@ To run our tests, we’ll use the [Titanic dataset](https://www.kaggle.com/c/tit
 |          10 |        1 |      2 | Nasser, Mrs. Nicholas (Adele Achem)     | female |  14 |     1 |     0 | 237736    | 30.0708 | nan   | C        |
 + ------------+----------+--------+-----------------------------------------+--------+-----+-------+-------+-----------+---------+-------+----------+
 ```
+
 <FigureCaption caption="Sample data from titanic dataset." />
 
 ## Adopting testing habits from software engineering
 
 We’ll adopt some good habits from software engineering. We won’t go through them in detail here though it was previously covered in another [post](https://eugeneyan.com/writing/setting-up-python-project-for-automation-and-collaboration/):
+
 - Unit test, fixture reuse, exceptions testing, etc with [`pytest`](https://docs.pytest.org/en/latest/)
 - Code Coverage with [`Coverage.py`](https://coverage.readthedocs.io/en/coverage-5.2.1/) and [`pytest-cov`](https://pytest-cov.readthedocs.io/en/latest/)
 - Linting to ensure code consistency with [`pylint`](https://www.pylint.org)
@@ -56,7 +63,7 @@ We’ll adopt some good habits from software engineering. We won’t go through 
 
 In pre-train tests, we want to **catch errors in our implementation** (i.e., written logic) before training an erroneous model. We can run these tests without a fully trained model.
 
-First, we’ll test our functions of [Gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [Gini gain](https://en.wikipedia.org/wiki/Decision_tree_learning#Information_gain). These will be used to [split the data](https://en.wikipedia.org/wiki/Decision_tree_learning#General) and grow our decision tree. 
+First, we’ll test our functions of [Gini impurity](https://en.wikipedia.org/wiki/Decision_tree_learning#Gini_impurity) and [Gini gain](https://en.wikipedia.org/wiki/Decision_tree_learning#Information_gain). These will be used to [split the data](https://en.wikipedia.org/wiki/Decision_tree_learning#General) and grow our decision tree.
 
 ```python
 def test_gini_impurity():
@@ -102,7 +109,7 @@ def test_dt_output_range(dummy_titanic):
     assert (pred_test <= 1).all() & (pred_test >= 0).all(), 'Decision tree output should range from 0 to 1 inclusive'
 ```
 
-Here, we'll check for test set leakage (i.e., duplicate rows in train/test splits) by concatenating train and test data, dropping duplicates, and checking the number of rows. (Note: Other leakages include [temporal leaks](https://www.fast.ai/2017/11/13/validation-sets/#time-series) and [feature leaks](https://en.wikipedia.org/wiki/Leakage_(machine_learning)#Feature_leakage); we won't cover them here.)
+Here, we'll check for test set leakage (i.e., duplicate rows in train/test splits) by concatenating train and test data, dropping duplicates, and checking the number of rows. (Note: Other leakages include [temporal leaks](https://www.fast.ai/2017/11/13/validation-sets/#time-series) and [feature leaks](<https://en.wikipedia.org/wiki/Leakage_(machine_learning)#Feature_leakage>); we won't cover them here.)
 
 ```python
 def test_data_leak_in_test_data(dummy_titanic_df):
@@ -166,7 +173,7 @@ def test_dt_increase_acc(dummy_titanic):
 
 In post-train tests, we **check if the model is behaving correctly** and test our trained models for their **learned logic**. We'll do this based on the suggestions in [Beyond Accuracy: Behavioral Testing of NLP Models with CheckList](https://arxiv.org/abs/2005.04118).
 
-First, we check for **invariance**. Keeping everything constant and tweaking one feature at a time, how would model predictions change? We should not expect survival probability to change due to the passenger’s name, ticket number, or port of embarkation. 
+First, we check for **invariance**. Keeping everything constant and tweaking one feature at a time, how would model predictions change? We should not expect survival probability to change due to the passenger’s name, ticket number, or port of embarkation.
 
 ```python
 @pytest.fixture
@@ -199,7 +206,7 @@ def test_dt_invariance(dummy_titanic_dt, dummy_passengers):
     p2_name['Name'] = ' Mrs. Berns'
     test_df = pd.DataFrame.from_dict([p2_name], orient='columns')
     X, y = get_feats_and_labels(prep_df(test_df))
-    p2_name_prob = model.predict(X)[0]  # 1.0 
+    p2_name_prob = model.predict(X)[0]  # 1.0
 
     # Change ticket number from 'PC 17599' to 'A/5 21171'
     p2_ticket = p2.copy()
@@ -212,6 +219,7 @@ def test_dt_invariance(dummy_titanic_dt, dummy_passengers):
 ```
 
 On the other hand, we have **directional expectations** such as:
+
 - Females have higher survival probability (than males)
 - Higher passenger class have higher survival probability (than lower class)
 - Higher fare having have survival probability (than lower fare)
@@ -362,6 +370,7 @@ make check
 ```
 
 Tweak the implementation and tests. Break something! If you’re feeling adventurous, update `DecisionTree` to also do regression. You’ll need to:
+
 - Add an `__init__()` argument for `classification` or `regression`. Alternatively, create it a new `DecisionTree` class (via inheritance perhaps?) solely for regression.
 - Add a function to check for [RMSE](https://en.wikipedia.org/wiki/Root-mean-square_deviation) or [MSE](https://en.wikipedia.org/wiki/Mean_squared_error) improvement.
 - Add a test data set (perhaps [Boston](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)?) and basic data prep steps.

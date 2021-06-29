@@ -43,6 +43,8 @@ export default function BlogPost({ data }) {
         </div>
       </Layout>
     )
+  } else {
+    return null
   }
 }
 

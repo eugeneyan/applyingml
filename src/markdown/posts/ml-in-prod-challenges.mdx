@@ -5,7 +5,8 @@ date: "2020-05-18"
 slug: "/resources/ml-production-challenges/"
 type: "resource"
 ---
-import { FigureCaption } from '../../components/figure-caption';
+
+import { FigureCaption } from "../../components/figure-caption"
 import "katex/dist/katex.min.css"
 
 There’s not much on what happens _after_ deployment. There’re good academic papers (referenced below) though they’re less accessible to laymen. To address this, I’ll share my experience with real-world examples. It’s a work in progress and not an exhaustive list, but I hope it raises awareness on machine learning post-deployment.
@@ -16,7 +17,7 @@ I’ll discuss this from the bottom-up: starting with data, then models and engi
 
 **Machine learning systems are dependent on data.** Unstable upstream data will affect your system’s performance. Some of these are just annoying outages or delays that require you to manually run your pipeline. Others are more damaging and difficult to discover.
 
-Here’s an example: Imagine you have a column for `gender` with two values, `male` and `female`. To be more politically correct, frontend adds `Transgender`,  `Other`, and `Prefer not to say` to the dropdown list. They also update `male` -> `Male` and `female` -> `Female`. The prod database now has these new—never seen before—values.
+Here’s an example: Imagine you have a column for `gender` with two values, `male` and `female`. To be more politically correct, frontend adds `Transgender`, `Other`, and `Prefer not to say` to the dropdown list. They also update `male` -> `Male` and `female` -> `Female`. The prod database now has these new—never seen before—values.
 
 Your data pipelines chug along without complaints. Your [feature encoders](https://spark.apache.org/docs/latest/ml-features.html#feature-transformers) set these unknown values to `null`. Your models are resilient to the entire `gender` column being `null` and don’t break. However, your system’s online performance degrades, especially in use cases where gender is important (e.g., customer segmentation, personalized recommenders, etc.)
 
@@ -30,7 +31,7 @@ Big picture-wise, your pipelines (and ML system) are now entangled. Consumers of
 
 > Suppose you’re building a model to [estimate a patient’s hospital bill](https://eugeneyan.com/speaking/machine-learning-in-production-for-healthcare-talk/). Patients request an estimation at the point of admission (or when they're shopping around). A key feature in your model is the <i>estimated</i> hospitalization_days (provided by the admitting doctor); this is stored in the production database. One day, someone decides to update the hospitalization_days column with the actual number of days hospitalised.
 
-Now, your model trains on the actual length of stay which would **never** be available at the point of admission—this is a data leak. During training, the model gives (actual) `hospitalization_days` a high weight, overfits, and performs well in offline evaluation. During serving, it continues to weigh  (estimated) `hospitalization_days` highly, resulting in poor production accuracy. Such data leaks and training-serving skew can be difficult to detect.
+Now, your model trains on the actual length of stay which would **never** be available at the point of admission—this is a data leak. During training, the model gives (actual) `hospitalization_days` a high weight, overfits, and performs well in offline evaluation. During serving, it continues to weigh (estimated) `hospitalization_days` highly, resulting in poor production accuracy. Such data leaks and training-serving skew can be difficult to detect.
 
 ## Unwanted Model Interactions (Internal & External)
 
@@ -78,7 +79,7 @@ What happens when those assumptions no longer hold? [Data drift](https://docs.mi
 
 In benign instances, model performance degrades and CTR drops a bit. It’s far more damaging if it leads to a loss in [finances](https://futurism.com/investing-lawsuit-ai-trades-cost-millions) or worse, lives.
 
-**Feedback loops can cause a vicious cycle.** In production, your model affects the real world, which affects your model, which affects the real world … you get what I mean. (Yes, [Minority Report](https://en.wikipedia.org/wiki/Minority_Report_(film)))
+**Feedback loops can cause a vicious cycle.** In production, your model affects the real world, which affects your model, which affects the real world … you get what I mean. (Yes, [Minority Report](<https://en.wikipedia.org/wiki/Minority_Report_(film)>))
 
 > Here’s an example: A forecasting model predicts how much inventory a supermarket chain should hold each week. The model is penalised for holding excess inventory, so it consistently underestimates. As a result, stores often sell the forecasted amount and go out of stock. The ML model learns based on the (decreasing) sales data and continues to underestimate. But on paper, it looks really accurate.
 
@@ -97,6 +98,7 @@ You’ll have to consider the bigger picture as you iterate on your ML system th
 **More people are now required for each update meeting.** When someone reported a bug in the initial production prototype, you fixed it single-handedly in a day. Now, to fix a bug or add a new feature, you need a meeting with the product manager, a data engineer, a software engineer, and a QA—if you’re lucky, this meeting can happen within days.
 
 In most mature organizations, work is divided across specialised roles. Let’s consider this in the context of machine learning. To add input data columns:
+
 - A data engineer needs to update data pipelines and the feature store.
 - Then, a data scientist updates the ML code and runs offline evaluation.
 - Next, an engineer “productionizes” the code (can’t let those DSes break prod!)
@@ -133,12 +135,14 @@ This leads to regulations, such as the EU’s General Data Protection Regulation
 ## Where to go from here?
 
 At the start of this post, you likely thought one of the following:
+
 - “Deploying was the hardest part.”
 - “Deploying is just the beginning.”
 
 Whichever group you were in, I hope this increased your awareness of machine learning challenges post-deployment. I spent years on these issues and have (thankfully) found some straightforward ways to fix–or, in many cases, prevent–them. More in the next post.
 
 ## References
+
 - [Machine Learning: The High Interest Credit Card of Technical Debt](https://research.google/pubs/pub43146/)
 - [Rules of Machine Learning: Best Practices for ML Engineering](https://developers.google.com/machine-learning/guides/rules-of-ml#overview)
 - [Hidden Technical Debt in Machine Learning Systems](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)
