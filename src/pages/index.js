@@ -12,9 +12,9 @@ export default function Home() {
 
       <p>
         Such knowledge is seldom documented—it's not something you can find in
-        a textbook, classes, or how-to article. To fill this gap, this site shares 
-        about the process of applying ML through guides and case studies, as well 
-        as interviews experienced with ML practitioners.
+        a textbook, classes, or how-to article. To fill this gap, this site tries to
+        share the ghost knowledge of applying machine learning through guides 
+        and case studies, as well as interviews experienced with ML practitioners.
       </p>
 
       <p>

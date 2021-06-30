@@ -7,7 +7,7 @@ type: "resource"
 ---
 import { FigureCaption } from '../../components/figure-caption';
 
-How are industrial recommenders and search designed? It’s uncommon to see system design discussed in machine learning papers or blogs; most focus on model design, training data, and/or loss functions. Nonetheless, the papers that discuss implementation details elucidate design patterns and best practices that are hard to gain outside of hands-on experience.
+How do the system designs for industrial recommendations and search look like? It’s uncommon to see system design discussed in machine learning papers or blogs; most focus on model design, training data, and/or loss functions. Nonetheless, the papers that discuss implementation details elucidate design patterns and best practices that are hard to gain outside of hands-on experience.
 
 Specific to discovery systems (i.e., recommendations and search), most implementations I’ve come across follow a similar paradigm—components and processes are split into offline vs. online environments, and candidate retrieval vs. ranking steps. The 2 x 2 below tries to simplify this.
 
