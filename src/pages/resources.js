@@ -18,7 +18,7 @@ const ResourcesPage = ({
     <Layout>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Resources and Guides | ApplyingML</title>
+        <title>Guides and Teardowns | ApplyingML</title>
         <meta
           name="description"
           content="ML and non-ML related guides, as well as teardowns on ML systems."

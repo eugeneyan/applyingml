@@ -1,7 +1,7 @@
 ---
 name: "Eugene Yan"
 role: "Applied Scientist @ Amazon"
-date: "2020-09-21"
+date: "2023-09-21"
 slug: "/mentors/eugene-yan/"
 type: "mentor"
 ---
@@ -9,7 +9,7 @@ Learn more about Eugene on his [site](https://eugeneyan.com/), [Twitter](https:/
 
 **Please share a bit about yourself: your current role, where you work, and what you do?**
 
-I’m an Applied Scientist at Amazon, part of the Kindle org. We focus on helping users read more, and get more out of reading. My team builds machine learning systems to help customers discover books through recommendations and search. We also have other teams that focus on subscriptions, pricing, etc.
+I’m an Applied Scientist at Amazon, part of the Books org. We focus on helping users read more, and get more out of reading. My team builds machine learning and recommendation systems to help customers discover books through recommendations, search, and interactive widgets. We also have other teams that focus on subscriptions, pricing, etc.
 
 **What was your path towards working with machine learning? What factors helped along the way?**
 
@@ -27,7 +27,7 @@ Design includes researching how others have solved similar problems, understandi
 
 Once the high-level design is finalized, implementation begins. The bulk of the work is technical and includes writing data pipelines, building model servers, training and deployment workflows, orchestration, monitoring, etc. There are also non-technical tasks such as setting up customer targeting, A/B tests, and getting permissions to launch our new system.
 
-In addition, I spend significant time communicating via daily stand-ups and project syncs. The scientists in our team also have a paper reading group. Every few weeks, someone presents a paper and we discuss how we how it might be applicable to our work. I also have 1-on-1s with folks in the team and wider organization. This helps me keep up to date with the problems that others are working on and stay in touch, especially since we’re all working from home now.
+In addition, I spend significant time communicating via daily stand-ups and project syncs. The scientists in our team also have a paper reading group. Every two weeks, someone presents a paper and we discuss how we how it might be applicable to our work. I also have 1-on-1s with folks in the team and wider organization. This helps me keep up to date with the problems that others are working on and stay in touch, especially since we’re all working from home now.
 
 **Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?**
 
@@ -35,7 +35,7 @@ I would start with clarifying the intent (why), desired outcomes (what), and con
 
 Next, I would research how others have solved similar problems. Learning what worked, or didn’t work, reduces the search space and accelerates my design and implementation process. I’ve had to do this so often that I’ve curated a [list of papers and tech blogs](https://github.com/eugeneyan/applied-ml) on applied machine learning. I try to time-box this step to a week or two. 
 
-Then, I would write a doc. This could be a research doc or a design doc. Writing ensures I understand the problem space, can summarize my research, and consider the trade-offs. For example, recommendations can be refreshed daily, or generated in real-time. And to generate recommendations in real-time, we can use raw EC2 and load balancers, SageMaker, or something else. Writing the doc makes me think through these trade-offs, explain my decision rationale, and get feedback.
+Then, I would write a [doc](/resources/why-what-how/). This could be a research doc or a [design doc](/resources/ml-design-docs/). Writing ensures I understand the problem space, can summarize my research, and consider the trade-offs. For example, recommendations can be refreshed daily, or generated in real-time. And to generate recommendations in real-time, we can use raw EC2 and load balancers, SageMaker, or something else. Writing the doc makes me think through these trade-offs, explain my decision rationale, and get feedback.
 
 **How do you work with business to identify and define problems suited for machine learning? How do you pitch it, if necessary?**
 
@@ -85,7 +85,9 @@ It starts with monitoring the input data. If your data pipelines are fairly esta
 
 When retraining models, I usually have a test set based on a slice of the most recent data. When models are refreshed, I evaluate them on the test set. If the model evaluation metrics don’t meet the threshold, the refreshed model doesn’t get deployed. Better to have a slightly stale model than a brand-new, bad model. 
 
-At Amazon, we set up monitors and alarms for our recommenders. For example, we get alarms when latency increases beyond a threshold for a prolonged period, or when model traffic drops blower a minimum level. We also have dashboards for basic metrics such as impressions, click-through rate, etc., as well as an on-call rotation. 
+At Amazon, we set up monitors and alarms for our recommenders. For example, we get alarms when latency increases beyond a threshold for a prolonged period, or when model traffic drops blower a minimum level. We also have dashboards for basic metrics such as impressions, click-through rate, etc., as well as an on-call rotation.
+
+> More about maintaining machine learning in production [here](resources/ml-production-guide/).
 
 **Think of people you know that are able to apply ML effectively–what skills or traits do you think contributed to that?**
 

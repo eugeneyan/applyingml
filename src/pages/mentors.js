@@ -53,7 +53,7 @@ export const mentor = graphql`
   query {
     allMdx(
       filter: { frontmatter: { type: { eq: "mentor" } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: ASC }
     ) {
       edges {
         node {
