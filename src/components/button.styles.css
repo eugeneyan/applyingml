@@ -1,0 +1,9 @@
+Button {
+  border: 1px solid var(--contrast-color);
+  border-radius: 3px;
+  background-color: #007bff;
+  font-family: Raleway;
+  color: white;
+  margin-left: 0.5rem;
+  padding: 0.5em 1em;
+}

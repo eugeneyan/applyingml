@@ -1,0 +1,28 @@
+.Subscribe {
+  margin: auto;
+  background-color: #e5e8eb;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5em 0em 0.05em 0em;
+}
+
+.sub_header {
+    text-align: center;
+    margin: 0.5em;
+    font-size: 1.25em;
+}
+
+.sub_form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sub_input {
+  font-family: Raleway;
+  min-width: 60%;
+  border: 1px solid var(--contrast-color);
+  border-radius: 3px;
+  padding: 0.5em;
+}

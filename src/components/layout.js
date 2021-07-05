@@ -6,6 +6,7 @@ import { MDXProvider } from "@mdx-js/react"
 
 import CodeBlock from "./codeblock"
 import "./layout.module.css"
+import SubscriptionForm from "../components/subscribe"
 
 const ListLink = props => (
   <li
@@ -55,6 +56,7 @@ const Footer = props => (
       width: 100%;
       bottom: 0;
       margin-bottom: 0;
+      margin-top: 1em;
     `}
   >
     {props.children}
@@ -124,6 +126,7 @@ export default function Layout({ children }) {
           `}
         >
           {children}
+          <SubscriptionForm></SubscriptionForm>
         </div>
       </MDXProvider>
       <Footer>
