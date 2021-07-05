@@ -15,8 +15,12 @@ const MentorsPage = ({
   return (
     <Layout>
       <p>
-        Stories and advice from machine learning practitioners. Want to
-        contribute an interview or recommend someone? Reach out to{" "}
+        Stories and advice from machine learning practitioners. Want to{" "}
+        <a
+          href="https://github.com/eugeneyan/applyingml#mentor-interviews"
+          target="_blank"
+          rel="noreferrer"
+        >contribute an interview</a> or recommend someone? Reach out to{" "}
         <a
           href="https://twitter.com/eugeneyan"
           target="_blank"
