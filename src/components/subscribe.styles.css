@@ -7,35 +7,35 @@
 }
 
 .sub_response {
-    text-align: center;
-    margin: 0.5em;
-    font-size: 1.25em;
-    font-weight: 800;
+  text-align: center;
+  margin: 0.5em;
+  font-size: 1.25em;
+  font-weight: 700;
 }
 
 .positive {
-    color: #28B463;
+  color: #28b463;
 }
 
 .negative {
-    color: #CB4335;
+  color: #cb4335;
 }
 
 .sub_header {
-    text-align: center;
-    margin: 0.5em;
-    font-size: 1.25em;
+  font-family: Merriweather, serif;
+  text-align: center;
+  margin: 0.5em;
+  font-size: 1.25em;
+  font-weight: 400;
 }
 
 .sub_form {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
 }
 
 .sub_input {
-  font-family: Raleway;
+  font-family: Raleway, sans-serif;
   min-width: 60%;
   border: 1px solid var(--contrast-color);
   border-radius: 3px;
