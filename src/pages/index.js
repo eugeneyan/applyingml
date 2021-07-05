@@ -6,23 +6,23 @@ export default function Home() {
   return (
     <Layout>
       <p>
-        Applying machine learning is hard. There's a gap between <b>knowing</b>{" "}
-        machine learning vs <b>applying</b> it at work to drive impact.
+        Applying machine learning is hard. Many organizations have yet to
+        benefit from ML, and most individuals still can't apply it effectively.
       </p>
 
       <p>
-        Such knowledge is seldom documented—it's not something you can find in
-        a textbook, classes, or how-to article. To fill this gap, this site tries to
-        share the ghost knowledge of applying machine learning through guides 
-        and case studies, as well as interviews experienced with ML practitioners.
+        Though there are many ML courses, most focus on theory and students
+        finish without knowing how to apply ML. Practical know-how is gained via
+        hands-on experience and seldom documented—you won't find in a textbook,
+        class, or tutorial. Thus, there's a gap between <b>knowing</b> ML vs{" "}
+        <b>applying</b> it at work.
       </p>
 
       <p>
-        You can start with browsing <Link to="/applied-ml/">papers</Link> by
-        companies sharing their ML systems,{" "}
-        <Link to="/resources/">resources</Link> on ML systems and processes, or{" "}
-        <Link to="/mentors/">mentors</Link> sharing their experience and advice.
-        Happy learning!
+        To fill this gap, <code>ApplyingML</code> documents the ghost knowledge
+        of applying ML through sharing <Link to="/applied-ml/">papers</Link>,{" "}
+        <Link to="/resources/">guides</Link>, and{" "}
+        <Link to="/mentors/">interviews</Link> with ML practitioners.
       </p>
     </Layout>
   )
