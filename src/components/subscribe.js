@@ -40,8 +40,8 @@ const SubscriptionForm = () => {
 
   return (
     <div className="Subscribe">
-      {status === "SUCCESS" && <p>Please go confirm your subscription!</p>}
-      {status === "ERROR" && <p>Oops, Something went wrong! try again.</p>}
+      {status === "SUCCESS" && <p class="sub_response">Please go confirm your subscription!</p>}
+      {status === "ERROR" && <p class="sub_response">Oops, Something went wrong! try again.</p>}
 
       <h3 class="sub_header">Want email updates when there's new content?</h3>
       <form
