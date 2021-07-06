@@ -127,7 +127,6 @@ export default function Layout({ children }) {
           `}
         >
           {children}
-          <SubscriptionForm></SubscriptionForm>
           <Helmet>
             <script
               defer
@@ -138,6 +137,8 @@ export default function Layout({ children }) {
         </div>
       </MDXProvider>
       <Footer>
+      <SubscriptionForm></SubscriptionForm>
+      <br></br>
         ©{" "}
         <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
           Eugene Yan

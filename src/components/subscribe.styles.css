@@ -3,7 +3,7 @@
   background-color: #e5e8eb;
   width: 100%;
   border-radius: 5px;
-  padding: 5px 0 1px 0;
+  padding: 0.25rem 0.5rem 1rem 0.5rem;
 }
 
 .sub_response {
@@ -38,7 +38,8 @@
 
 .sub_input {
   font-family: Raleway, sans-serif;
-  min-width: 60%;
+  font-size: 14px;
+  min-width: 70%;
   border: 1px solid var(--contrast-color);
   border-radius: 5px;
   padding: 0.5rem;
