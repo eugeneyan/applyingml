@@ -29,7 +29,7 @@ export default function Home() {
 
       <p>
         To fill this gap, <code>ApplyingML</code> documents the ghost knowledge
-        of applying ML through sharing <Link to="/applied-ml/">papers</Link>,{" "}
+        of applying ML through <Link to="/applied-ml/">curated papers</Link>,{" "}
         <Link to="/resources/">guides</Link>, and{" "}
         <Link to="/mentors/">interviews</Link> with ML practitioners.
       </p>

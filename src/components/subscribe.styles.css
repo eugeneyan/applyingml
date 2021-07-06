@@ -3,13 +3,13 @@
   background-color: #e5e8eb;
   width: 100%;
   border-radius: 5px;
-  padding: 0.5em 0em 0.05em 0em;
+  padding: 5px 0 1px 0;
 }
 
 .sub_response {
   text-align: center;
-  margin: 0.5em;
-  font-size: 1.25em;
+  margin: 0.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -24,20 +24,22 @@
 .sub_header {
   font-family: Merriweather, serif;
   text-align: center;
-  margin: 0.5em;
-  font-size: 1.25em;
+  margin: 0.75rem 0;
+  font-size: 1.05rem;
   font-weight: 400;
 }
 
 .sub_form {
   display: flex;
   justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 }
 
 .sub_input {
   font-family: Raleway, sans-serif;
   min-width: 60%;
   border: 1px solid var(--contrast-color);
-  border-radius: 3px;
-  padding: 0.5em;
+  border-radius: 5px;
+  padding: 0.5rem;
 }

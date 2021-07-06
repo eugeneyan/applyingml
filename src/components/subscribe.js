@@ -43,7 +43,7 @@ const SubscriptionForm = () => {
       {status === "SUCCESS" && <p class="sub_response positive">Please go confirm your subscription!</p>}
       {status === "ERROR" && <p class="sub_response negative">Oops, Something went wrong! try again.</p>}
 
-      <h3 class="sub_header">Want email updates when there's new content?</h3>
+      <h3 class="sub_header">Want email updates on new content?</h3>
       <form
         className="sub_form"
         action={FORM_URL}

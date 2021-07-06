@@ -7,6 +7,7 @@ import { MDXProvider } from "@mdx-js/react"
 import CodeBlock from "./codeblock"
 import "./layout.module.css"
 import SubscriptionForm from "../components/subscribe"
+import { Helmet } from "react-helmet"
 
 const ListLink = props => (
   <li
@@ -113,7 +114,7 @@ export default function Layout({ children }) {
             margin-bottom: 0;
           `}
         >
-          <ListLink to="/applied-ml/">Papers</ListLink>
+          <ListLink to="/papers/">Papers</ListLink>
           <ListLink to="/resources/">Resources</ListLink>
           <ListLink to="/mentors/">Mentors</ListLink>
         </ul>
@@ -127,6 +128,13 @@ export default function Layout({ children }) {
         >
           {children}
           <SubscriptionForm></SubscriptionForm>
+          <Helmet>
+            <script
+              defer
+              src="https://static.cloudflareinsights.com/beacon.min.js"
+              data-cf-beacon='{"token": "caf1ae93682648a6b47a4dd49433de1b"}'
+            ></script>
+          </Helmet>
         </div>
       </MDXProvider>
       <Footer>
