@@ -136,8 +136,8 @@ export default function Layout({ children }) {
           </Helmet>
         </div>
       </MDXProvider>
-      <Footer>
       <SubscriptionForm></SubscriptionForm>
+      <Footer>
       <br></br>
         ©{" "}
         <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
@@ -145,7 +145,7 @@ export default function Layout({ children }) {
         </a>{" "}
         {new Date().getFullYear()}
         {` • `}
-        <Link to="/about">About</Link>
+        <Link to="/about/">About</Link>
         {` • `}
         <a
           href="https://github.com/eugeneyan/applyingml"

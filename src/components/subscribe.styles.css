@@ -40,7 +40,7 @@
   font-family: Raleway, sans-serif;
   font-size: 14px;
   min-width: 70%;
-  border: 1px solid var(--contrast-color);
+  border: none;
   border-radius: 5px;
   padding: 0.5rem;
 }

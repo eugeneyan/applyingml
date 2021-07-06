@@ -1,9 +1,8 @@
 Button {
-  border: 1px solid var(--contrast-color);
+  border: none;
   border-radius: 5px;
   background-color: #007bff;
   font-family: Raleway, sans-serif;
-  font-weight: 800;
   font-size: 14px;
   color: white;
   margin-left: 0.5rem;

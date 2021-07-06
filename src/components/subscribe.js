@@ -1,4 +1,3 @@
-//In src/components/sub-form.component.js
 import React, { useState } from "react"
 import Button from "./button.js"
 import "./subscribe.styles.css"
@@ -40,8 +39,16 @@ const SubscriptionForm = () => {
 
   return (
     <div className="Subscribe">
-      {status === "SUCCESS" && <p class="sub_response positive">Please go confirm your subscription!</p>}
-      {status === "ERROR" && <p class="sub_response negative">Oops, Something went wrong! try again.</p>}
+      {status === "SUCCESS" && (
+        <p class="sub_response positive">
+          Please check your email and confirm your subscription!
+        </p>
+      )}
+      {status === "ERROR" && (
+        <p class="sub_response negative">
+          Oops, Something went wrong! Please try again.
+        </p>
+      )}
 
       <h3 class="sub_header">Want email updates on new content?</h3>
       <form

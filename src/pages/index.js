@@ -31,7 +31,7 @@ export default function Home() {
       <p>
         To fill this gap, <code>ApplyingML</code> collects tacit/tribal/ghost
         knowledge of applying ML through{" "}
-        <Link to="/applied-ml/">curated papers</Link>,{" "}
+        <Link to="/papers/">curated papers</Link>,{" "}
         <Link to="/resources/">guides</Link>, and{" "}
         <Link to="/mentors/">interviews</Link> with ML practitioners. The intent
         is to make it easier to apply—and benefit—from ML at work.
