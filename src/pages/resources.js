@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
@@ -25,15 +25,16 @@ const ResourcesPage = ({
         />
       </Helmet>
       <p>
-        Guides, teardowns, and other relevant material on how to apply machine
-        learning in production. Have a suggestion? Reach out to{" "}
-        <Link
-          to="https://twitter.com/eugeneyan"
+        Guides and teardowns on how to apply machine learning in production.
+        Spot an error or suggesting edits? Please{" "}
+        <a href="mailto:applyingml@gmail.com">reach out</a> or make a{" "}
+        <a
+          href="https://github.com/eugeneyan/applyingml#contributing"
           target="_blank"
           rel="noreferrer"
         >
-          @eugeneyan
-        </Link>
+          pull request
+        </a>
         .
       </p>
       <p>{Categories}</p>
