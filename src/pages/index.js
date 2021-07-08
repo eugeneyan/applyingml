@@ -11,7 +11,7 @@ export default function Home() {
         <title>ApplyingML</title>
         <meta
           name="description"
-          content="Papers, guides, and mentor interviews on how to apply machine learning"
+          content="Papers, guides, and mentor interviews on how to apply machine learning in industry."
         />
       </Helmet>
       <p>

@@ -33,3 +33,8 @@ gatsby develop
 ## Other details
 - Bootstrapped with Gatsby's [`hello-world starter`](https://github.com/gatsbyjs/gatsby-starter-hello-world)
 - Built and deployed on push to `main` via [Gatsby Publish](https://github.com/marketplace/actions/gatsby-publish)
+
+
+---
+
+P.S. This is my first project with JavaScript and React. Suggestions for improvement, feedback on how I'm using JS/Gatsby/React wrong, and code reviews welcome!

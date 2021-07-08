@@ -138,8 +138,7 @@ export default function Layout({ children }) {
       </MDXProvider>
       <SubscriptionForm></SubscriptionForm>
       <Footer>
-      <br></br>
-        ©{" "}
+        <br></br>©{" "}
         <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
           Eugene Yan
         </a>{" "}
@@ -148,7 +147,7 @@ export default function Layout({ children }) {
         <Link to="/about/">About</Link>
         {` • `}
         <a
-          href="https://github.com/eugeneyan/applyingml"
+          href="https://github.com/eugeneyan/applyingml#contributing"
           target="_blank"
           rel="noreferrer"
         >

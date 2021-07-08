@@ -5,3 +5,12 @@ code {
   margin: 0 0.1rem;
   color: deeppink;
 }
+
+ol li {
+  font-family: Raleway, sans-serif;
+}
+
+a.anchor {
+  fill: "red";
+  vertical-align: text-bottom;
+}
