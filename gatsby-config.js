@@ -88,7 +88,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ['/resources/slug', '/mentors/first-last']},
+        exclude: ["/resources/slug", "/mentors/first-last"],
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        sitemap: 'https://applyingml.com/sitemap.xml',
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
     },
   ],
 }
