@@ -88,7 +88,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-      },
+        exclude: ['/resources/slug', '/mentors/first-last']},
     },
   ],
 }
