@@ -4,16 +4,33 @@ import Layout from "../components/layout"
 import Helmet from "react-helmet"
 
 export default function About({ data }) {
+  const seo = {
+    title: "About ApplyingML",
+    description: "1/3 applied-ml, 1/3 ghost knowledge, 1/3 Tim Ferriss Show.",
+    image: "https://applyingml.com/default-og-image.png",
+    url: "https://applyingml.com/about/",
+  }
   return (
     <Layout>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>About | ApplyingML</title>
-        <meta name="description" content="About ApplyingML." />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="image" content={seo.image} />
+        <meta property="og:url" content={seo.url} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@eugeneyan" />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={seo.image} />
       </Helmet>
 
       <p>
-        1/3{" "}
+        <b>Ingredients:</b> 1/3{" "}
         <a
           href="https://github.com/eugeneyan/applied-ml"
           target="_blank"
@@ -31,8 +48,9 @@ export default function About({ data }) {
         </a>
         , 1/3{" "}
         <a href="https://tim.blog/podcast/" target="_blank" rel="noreferrer">
-          Tim Ferriss Show.
+          Tim Ferriss Show
         </a>
+        .
       </p>
       <p>
         1. What is <code>applied-ml</code>?
@@ -46,14 +64,14 @@ export default function About({ data }) {
         2. What is <i>ghost knowledge</i>?
       </p>
       <p>
-        "It's knowledge that is present somewhere in the epistemic community,
-        and is perhaps readily accessible to some central member of that
-        community, but it is not really written down anywhere and it's not clear
-        how to access it.
+        "Knowledge that is present somewhere in the epistemic community, and is
+        perhaps readily accessible to some central member of that community, but
+        it is not really written down anywhere and it's not clear how to access
+        it.
       </p>
 
       <p>
-        Roughly what makes something ghost knowledge is two things: (i) It is
+        Roughly what makes something ghost knowledge is two things: (i) it is
         readily discoverable if you have trusted access to expert members of the
         community, and (ii) it is almost completely inaccessible if you are
         not."
@@ -64,9 +82,9 @@ export default function About({ data }) {
       </p>
 
       <p>
-        It's a podcast where Tim Ferriss interviews and "deconstructs
-        world-class performers from eclectic areas (investing, sports, business,
-        art, etc.) to extract the tactics, tools, and routines you can use."
+        Podcast where Tim Ferriss interviews and "deconstructs world-class
+        performers from eclectic areas (investing, sports, business, art, etc.)
+        to extract the tactics, tools, and routines you can use."
       </p>
     </Layout>
   )

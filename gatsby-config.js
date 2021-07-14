@@ -7,9 +7,12 @@ module.exports = {
   pathPrefix: `/applyingml`,
   siteMetadata: {
     title: `ApplyingML`,
+    titleTemplate: "%s",
     description: `Sharing resources on applying ML and interviews with practioners`,
     author: `Eugene Yan`,
     siteUrl: `https://applyingml.com`,
+    twitterUsername: `@eugeneyan`,
+    image: `default-og-image.png`
   },
   plugins: [
     {
