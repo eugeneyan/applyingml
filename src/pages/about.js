@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Helmet from "react-helmet"
 
-export default function About({ data }) {
+export default function About() {
   const seo = {
     title: "About ApplyingML",
     description: "1/3 applied-ml, 1/3 ghost knowledge, 1/3 Tim Ferriss Show.",

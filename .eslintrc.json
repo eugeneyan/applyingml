@@ -4,7 +4,7 @@
         "es2021": true
     },
     "extends": [
-        // "plugin:react/recommended",
+        "plugin:react/recommended"
         // "airbnb"
     ],
     "parserOptions": {
@@ -19,6 +19,7 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "camelcase": 0
+        "camelcase": 0,
+        "react/no-unescaped-entities": 0
     }
 }

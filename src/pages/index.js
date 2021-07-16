@@ -54,15 +54,7 @@ export default function Home() {
       </p>
       <p>
         Want to contribute an interview? Please{" "}
-        <a href="mailto:applyingml@gmail.com">reach out</a> or make a{" "}
-        <a
-          href="https://github.com/eugeneyan/applyingml#contributing"
-          target="_blank"
-          rel="noreferrer"
-        >
-          pull request
-        </a>
-        .
+        <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
     </Layout>
   )

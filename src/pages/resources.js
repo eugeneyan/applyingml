@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
+import PropTypes from "prop-types"
 
 import Layout from "../components/layout"
 import CategorySection from "../components/category"
@@ -10,12 +11,13 @@ const ResourcesPage = ({
     dataYaml: { categories },
   },
 }) => {
-  const Categories = categories.map(category => (
-    <CategorySection category={category} />
+  const Categories = categories.map((category, i) => (
+    <CategorySection key={i} category={category} />
   ))
   const seo = {
     title: "ML and non-ML Guides and Teardowns",
-    description: "ML and non-ML related guides, and teardowns on ML systems—the ghost knowledge you need for work.",
+    description:
+      "ML and non-ML related guides, and teardowns on ML systems—the ghost knowledge you need for work.",
     image: "https://applyingml.com/default-og-image.png",
     url: "https://applyingml.com/resources/",
   }
@@ -55,6 +57,10 @@ const ResourcesPage = ({
       <p>{Categories}</p>
     </Layout>
   )
+}
+
+ResourcesPage.propTypes = {
+  data: PropTypes.string.isRequired
 }
 
 export default ResourcesPage

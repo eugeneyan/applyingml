@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Helmet from "react-helmet"
+import PropTypes from "prop-types"
 
 import Layout from "../components/layout"
 import Mentor from "../components/mentor"
@@ -10,12 +11,13 @@ const MentorsPage = ({
     allMdx: { edges },
   },
 }) => {
-  const Mentors = edges.map(edge => (
-    <Mentor slug={edge.node.id} post={edge.node} />
+  const Mentors = edges.map((edge, i) => (
+    <Mentor key={i} slug={edge.node.id} post={edge.node} />
   ))
   const seo = {
     title: "Interviews with Machine Learning Practitioners",
-    description: "Stories, advice, and practical know-how from machine learning practitioners.",
+    description:
+      "Stories, advice, and practical know-how from machine learning practitioners.",
     image: "https://applyingml.com/default-og-image.png",
     url: "https://applyingml.com/mentors/",
   }
@@ -40,19 +42,16 @@ const MentorsPage = ({
 
       <p>
         Stories and advice from machine learning practitioners. Want to{" "}
-        contribute an interview or recommend someone? Please make a{" "}
-        <a
-          href="https://github.com/eugeneyan/applyingml#contributing"
-          target="_blank"
-          rel="noreferrer"
-        >
-          pull request
-        </a>{" "}
-        or <a href="mailto:applyingml@gmail.com">email</a> us.
+        contribute an interview or recommend someone? Please{" "}
+        <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
       <p>{Mentors}</p>
     </Layout>
   )
+}
+
+MentorsPage.propTypes = {
+  data: PropTypes.string.isRequired
 }
 
 export default MentorsPage
