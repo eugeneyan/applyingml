@@ -10,57 +10,63 @@ Learn more about Eugene on his [site](https://eugeneyan.com/), [Twitter](https:/
 
 **Please share a bit about yourself: your current role, where you work, and what you do?**
 
-I’m an Applied Scientist at Amazon, part of the Books org. We focus on helping users read more, and get more out of reading. My team builds machine learning and recommendation systems to help customers discover books through recommendations, search, and interactive widgets. We also have other teams that focus on subscriptions, pricing, etc.
+I’m an Applied Scientist at Amazon, part of the Books organization. We work to help users read more, and get more out of reading. My team builds machine learning and recommendation systems to help customers discover books through recommendations, search, and interactive widgets. We also have other teams that focus on subscriptions, pricing, etc.
 
 **What was your path towards working with machine learning? What factors helped along the way?**
 
-My path is fairly unusual and I wouldn't recommend others to try to replicate it. I studied psychology in college because I was interested in people. I focused more on social and cognitive psychology—how do people perceive, make decisions, and behave? This included conducting lab experiments and writing a thesis on how some people performed better under competition while others performed worse. Along the way, I picked up skills in data analysis, statistics, and experimental design. 
+My path is fairly unusual and I wouldn't recommend others to try to replicate it. I studied psychology in college because I was interested in people. I focused on social and cognitive psychology—how do people perceive, make decisions, and behave? This included conducting lab experiments and writing a [thesis](https://www.slideshare.net/eugeneyan/competition-improves-performance-only-when-competition-form-matches-goal-orientation) on how some people performed better under competition while others performed worse. Along the way, I picked up skills in data analysis, statistics, and experimental design. 
 
 After graduation, I wasn't sure what to do and joined the government, because well, it's a stable job. I worked on investment policy for a bit but started to miss working with data. Thus, in my free time, I took courses on data analysis, machine learning, and programming on Coursera and edX. 
 
-I also started interviewing for entry-level data positions and eventually landed a role at IBM as a data analyst. After a year, I joined the workforce analytics teams. Here, I developed job demand forecasts and contributed to an internal job recommendation engine. This was my first role involving machine learning. Since then, I’ve had various roles in healthcare and e-commerce. Though the domain might differ across roles, the focus has always been on understanding and helping people better.
+I also started interviewing for entry-level data positions and eventually landed a role at IBM as a data analyst. After a year, I joined the workforce analytics teams. Here, I developed job demand forecasts and contributed to an internal job recommendation engine. This was my first role involving machine learning. Since then, I’ve had various roles in healthcare and e-commerce. Though the domain might differ across roles, the focus has always been on understanding and helping people better. (I've also written more about my journey [here](https://eugeneyan.com/writing/psych-grad-to-data-science-lead/).)
 
 **How do you spend your time day-to-day?**
 
-This will differ across various roles, as well as across different stages of the machine learning life cycle. Nonetheless, across a project, the bulk of my time is spent on design and implementation.
+Note that this will differ across various roles, as well as across different stages of the machine learning life cycle. Nonetheless, across a project, the bulk of my time is spent on design and implementation.
 
-Design includes researching how others have solved similar problems, understanding the infra and components available, building prototypes to assess feasibility, and finally, writing a design doc and gathering feedback. A good design doc ensures that the solution meets the business requirements (e.g., customer value proposition, cost) and technical requirements (e.g., latency, throughput). This reduces the risk of building the wrong thing, or having to backtrack due to an ill-defined problem statement or tech choice that doesn’t scale. 
+Design includes researching [how others have solved similar problems](/papers/), understanding the infra and components available, building prototypes to assess feasibility, and finally, [writing a design doc](/resources/ml-design-docs/) and gathering feedback. A good design doc ensures that the solution meets the business requirements (e.g., customer value proposition, cost) and technical requirements (e.g., latency, throughput). This reduces the risk of building the wrong thing, or having to backtrack due to an ill-defined problem statement or tech choice that doesn’t scale. 
 
 Once the high-level design is finalized, implementation begins. The bulk of the work is technical and includes writing data pipelines, building model servers, training and deployment workflows, orchestration, monitoring, etc. There are also non-technical tasks such as setting up customer targeting, A/B tests, and getting permissions to launch our new system.
 
 In addition, I spend significant time communicating via daily stand-ups and project syncs. The scientists in our team also have a paper reading group. Every two weeks, someone presents a paper and we discuss how we how it might be applicable to our work. I also have 1-on-1s with folks in the team and wider organization. This helps me keep up to date with the problems that others are working on and stay in touch, especially since we’re all working from home now.
 
-**Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?**
-
-I would start with clarifying the intent (why), desired outcomes (what), and constraints (how not to). This ensures I'm aligned on the problem, and provides freedom to solve the problem in the best way, as long as it meets the intent, desired outcome, and constraints 
-
-Next, I would research how others have solved similar problems. Learning what worked, or didn’t work, reduces the search space and accelerates my design and implementation process. I’ve had to do this so often that I’ve curated a [list of papers and tech blogs](https://github.com/eugeneyan/applied-ml) on applied machine learning. I try to time-box this step to a week or two. 
-
-Then, I would write a [doc](/resources/why-what-how/). This could be a research doc or a [design doc](/resources/ml-design-docs/). Writing ensures I understand the problem space, can summarize my research, and consider the trade-offs. For example, recommendations can be refreshed daily, or generated in real-time. And to generate recommendations in real-time, we can use raw EC2 and load balancers, SageMaker, or something else. Writing the doc makes me think through these trade-offs, explain my decision rationale, and get feedback.
-
-**How do you work with business to identify and define problems suited for machine learning? How do you pitch it, if necessary?**
+**How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?**
 
 Usually, it’s the business coming to me with problems they want solved. We then work together to identify the right problem to solve, and the best way to solve it. For example, in a previous role, someone from the logistics team asked: _“Could you boost the rank of products that are [Fulfilled By Lazada](https://www.lazada.sg/helpcenter/about-fulfilled-by-lazada-fbl-products-4021.html) (FBL)?”_ To better understand their intent, I probed further. 
 
 _“Because FBL products are delivered faster.”_ While I thought the customer benefit was clear, I asked why it was important to them. 
 
-_“Because when it’s delivered faster, we get fewer complaints about late deliveries.”_ This was when we realized the solution wasn’t getting products to customers faster—it was giving customers more accurate delivery estimates. This wasn’t a problem that should be solved by ranking products differently; that wouldn’t solve the root cause of under forecasting. Thus, we reframed the problem and solved it by improving our forecasting algorithm instead.
+_“Because when it’s delivered faster, we get fewer complaints about late deliveries.”_ This was when we realized the solution wasn’t getting products to customers faster—it was giving customers more accurate delivery estimates. This wasn’t a problem that should be solved by ranking products differently; that wouldn’t solve the root cause of underestimating forecasts. Thus, we reframed the problem and solved it by improving our forecasting algorithm instead.
 
-Sometimes, the data team might identify problems or opportunities that the organization might have overlooked. How to pitch this depends on the audience. Some audiences like a structured document identifying the customer’s pain point, expected benefits, and proposed solution. Others like a prototype that demonstrates the customer experience. Nonetheless, the underlying question is the same—how will it help the customer and business? 
+Sometimes, the data team might identify problems or opportunities that the organization might have overlooked. How to align this depends on the audience. Some audiences like a structured document identifying the customer’s pain point, expected benefits, and proposed solution. Others like a prototype that demonstrates the customer experience. Nonetheless, the underlying question is the same—how will it help the customer and business? 
+
+> More on how to [influence without authority](/resources/influencing-without-authority/) and align with business.
 
 **Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?**
 
-I'm fortunate that my work mostly involves customer-facing ML systems. Thus, I can experience and use what we build as a customer myself.
+I'm fortunate that my work mostly involves customer-facing ML systems. Thus, I can experience and use what we build as a customer myself. We also get tickets (read: complaints and feedback) from customers via customer support on what can be improved.
 
 In addition, customers tell us how we’re doing. We have user studies, customer feedback and anecdotes, and friends and family who use our product. I can also analyze the data to understand customer needs. How often do customers have a bad shopping experience (e.g., product returns, poor review) due to poor product quality? How often do customers search for something and not find what they’re looking for?
 
-It’s also a good idea to work backwards from the customer. While we’re defining the problem or designing the solution, we should ask ourselves: “How will this help the customer?”
+It’s also a good idea to [work backwards](https://www.inc.com/justin-bariso/amazon-uses-a-secret-process-for-launching-new-ideas-and-it-can-transform-way-you-work.html) from the customer. While we’re defining the problem or designing the solution, we should ask ourselves: “How will this help the customer?”
+
+**Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?**
+
+I would start with clarifying the [intent (why), desired outcomes (what), and constraints (how not to)](/resources/why-what-how/). This ensures I'm aligned on the problem, and provides freedom to solve the problem in the best way, as long as it meets the intent, desired outcome, and constraints 
+
+Next, I would research how others have solved similar problems. Learning what worked, or didn’t work, reduces the search space and accelerates my design and implementation process. I’ve had to do this so often that I’ve curated a [list of papers and tech blogs](/papers/) on applied machine learning. I try to time-box this step to a week or two. 
+
+Then, I would write a doc. This could be a research doc or a [design doc](/resources/ml-design-docs/). Writing ensures I understand the problem space, can summarize my research, and consider the trade-offs. For example, recommendations can be refreshed daily, or generated in real-time. And to generate recommendations in real-time, we can use raw EC2 and load balancers, SageMaker, or something else. Writing the doc makes me think through these trade-offs, explain my decision rationale, and get feedback.
 
 **Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?**
 
-I mostly collaborate with product managers and engineers. Product managers help with defining requirements, getting permissions to experiment, etc. Engineers help with integrating our ML systems into the overall platform, setting up monitors and alarms, etc.
+I mostly collaborate with product managers and software engineers. Product managers help with defining requirements, getting permissions to experiment, etc. Software engineers help with integrating our ML systems into the overall platform, setting up monitors and alarms, etc.
 
 The main way I scale myself is through writing. This starts with writing one-pagers and design docs to get feedback and ensure everyone’s on the same page. I also try to make my systems and data artifacts easy to consume and reuse. This way, others can build on my work and what I built goes further and drives more impact.
+
+**There are many ways to structure DS/ML teams—what have you seen work, or not work?**
+
+Haha I've a clear bias on this and have written about it [here](https://eugeneyan.com/writing/end-to-end-data-science/).
 
 **How does your organization or team enable rapid iteration on machine learning experiments and systems?**
 
@@ -68,9 +74,13 @@ One way is to give easy access to data. For example, we have a data lake that ma
 
 We also try to have infra mostly self-service. I can spin up a Spark cluster on my own to analyze data, set up beefy notebook instances, and kick off intensive training jobs. Having it self-service removes the friction of data scientists having to deal with infra, or having to wait for an infra engineer to help them. This greatly reduces the barriers to analyzing large amounts of data or running a quick experiment. 
 
-**What processes, tools, or artifacts have you found helpful in the machine learning lifecycle?**
+**What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?**
 
 The steps I shared on how I approach a new problem have been invaluable. One-pagers help to clarify the intent and desired outcome, ensuring that we’re solving the right problem for customers. Conducting a literature review to understand how others solved similar problems reduces the search space and speeds up the design process. Writing design docs help to clarify my thinking and scale sharing and feedback. 
+
+In terms of tools, I'm a big fan of tools that enable fast prototyping, and have written about using [Jupyter, Papermill, and MLflow](https://eugeneyan.com/writing/experimentation-workflow-with-jupyter-papermill-mlflow/).
+
+I also like to build [prototypes (with a front-end)](https://eugeneyan.com/writing/prototyping-to-get-buy-in/) via [FastAPI](https://fastapi.tiangolo.com/) and some basic HTML and CSS. Having something visual makes it easier for non-data folks to understand, interact with, and give feedback on our recommendation or machine learning work.
 
 **How do you quantify the impact of your work? What was the greatest impact you made?**
 
@@ -80,28 +90,36 @@ You might also need to develop your own metrics. One problem I tackled was prior
 
 You might also work on projects that aren’t customer-facing. For example, in a prior role, I realized that the team had to write a lot of boilerplate code to clean data, and train and deploy models. To address this, we built a library and docker templates. We measured how much development time was required before running the first experiment and then deploying the first prototype model. The new library reduced the development cycle by 2/3. In this case, I quantified impact via improvements to team productivity which allows us to do more for the customer and business. 
 
-**After shipping your ML project, how do you operate and maintain it sustainably?**
+**After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?**
 
-It starts with monitoring the input data. If your data pipelines are fairly established and robust, this might not seem as important. Nonetheless, there was one instance where I had to rely on external data from healthcare providers. The data schemas were inconsistent and the data would drift due to seasonality and healthcare policy changes. In that instance, we built a simple pipeline to run basic schema and statistical checks on the input data and flag anomalies.
+It starts with monitoring the input data. If your data pipelines are established and robust, this might not seem as important. Nonetheless, there was one instance where I had to rely on external data from healthcare providers. The data schemas were inconsistent and the data would drift due to seasonality and healthcare policy changes. In that instance, we built a simple pipeline to run basic schema and statistical checks on the input data and flag anomalies.
 
-When retraining models, I usually have a test set based on a slice of the most recent data. When models are refreshed, I evaluate them on the test set. If the model evaluation metrics don’t meet the threshold, the refreshed model doesn’t get deployed. Better to have a slightly stale model than a brand-new, bad model. 
+When retraining models, I have a test set based on a slice of the most recent data. When models are refreshed, I evaluate them on the test set. If the model evaluation metrics don’t meet the threshold, the refreshed model doesn’t get deployed. Better to have a slightly stale model than a new but bad model.
 
-At Amazon, we set up monitors and alarms for our recommenders. For example, we get alarms when latency increases beyond a threshold for a prolonged period, or when model traffic drops blower a minimum level. We also have dashboards for basic metrics such as impressions, click-through rate, etc., as well as an on-call rotation.
+At Amazon, we set up monitors and alarms for our recommenders. For example, we get alarms when latency increases beyond a threshold for a prolonged period, or when model traffic drops below a minimum level. We also have dashboards for basic metrics such as impressions, click-through rate, etc., as well as an on-call rotation.
 
-> More about maintaining machine learning in production [here](resources/ml-production-guide/).
+> More about maintaining machine learning in production [here](/resources/ml-production-guide/).
+
+**What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?**
+
+There was a project where the goal was to generate tags describing the attribute of our products. The team initially tried unsupervised and semi-supervised ML such as clustering, topic modelling, and belief propagation. Unfortunately, this required significant manual labour to name the clusters/topics, as well as audit the relevancy and appropriateness of tags.
+
+For one of my attempts, I tried to be lazy—instead of generating labels, I looked for labels that existed in the data. For example, users may search for "abcde for children". We can then associate their clicked or purchased product with "for children". They might also [organize items into named groups](https://www.goodreads.com/blog/show/1399-goodreads-hack-how-to-create-custom-bookshelves)—we can use these names as tags for items in those groups.
+
+This "lazy" approach turned out to be far more effective and efficient, and is a great example where creative sourcing and use of data trumps sophisticated ML. The approach is currently live and is a foundational source of tags.
 
 **Think of people you know that are able to apply ML effectively–what skills or traits do you think contributed to that?**
 
 Empathy with the end-user helps. This ensures that the machine learning work is tied to the end user’s needs and benefits. Data scientists who keep the customer on top of their minds tend to build systems that have better outcomes for the customer, and thus, the business. 
 
-It’s also good to have a strong sense of ownership. Trying to make machine learning work in a real-world setting involves a lot of work. Sometimes, you need to stretch by working with the business to define the right problem, or figure out how to deploy and integrate your system yourself. People who have ownership and a nothing-is-not-my-job attitude tend to roll up their sleeves and get it done, instead of waiting for help. This helps them iterate and ship faster. 
+It’s also good to have a strong sense of ownership. Trying to apply ML in a real-world setting involves a lot of work. Sometimes, you need to stretch by working with the business to define the right problem, or figure out how to deploy and integrate your system yourself. People who have ownership and a nothing-is-not-my-job attitude tend to roll up their sleeves and get it done, instead of waiting for help. This helps them iterate and ship faster. 
 
 **Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?**
 
-Start with the problem, not the technology. Choosing the right problem is half the battle won. Don't solve problems that won't matter to customers or the business, no matter how exciting the technology is. Also, take the time to frame the problem in various ways to see which works best. Framing the problem the right way can have an outsized impact on outcomes.
+Start with the problem, not the technology. [Choosing the right problem](https://eugeneyan.com/writing/how-to-choose-problems/) is half the battle won. Don't solve problems that won't matter to customers or the business, no matter how exciting the technology is. Also, take the time to frame the problem in various ways to see which works best. Framing the problem the right way can have an outsized impact on outcomes.
 
 It’s also helpful to focus more on system and training data design (instead of just model design). A simple model in a well-architected system will have a greater impact than a sophisticated model that can’t be served reliably. Similarly, how we design training data and labels often has a bigger impact than the machine learning model itself. Try to frame your problem and data so you can benefit from a self-supervised approach. Take care when generating negative labels so they aren't too easy or difficult.
 
 **How do you learn continuously? What are some resources or role models that you've learned from?**
 
-I try to read and write more. For example, when I wanted to catch up on NLP, I read one or two papers a week. Then, I wrote a summary of what I learned, starting from RNNs all the way to T5. Similarly, when I wanted to learn about data discovery platforms and feature stores, I read whatever I could find about their design, implementation, and use cases, and wrote [teardowns](https://eugeneyan.com/tag/teardown/) about them.
+I try to read and write more. For example, when I wanted to catch up on NLP, I read one or two papers a week. Then, I wrote a [summary](https://eugeneyan.com/writing/nlp-supervised-learning-survey/), starting from RNNs all the way to T5. Similarly, when I wanted to learn about data discovery platforms and feature stores, I read whatever I could find about their design, implementation, and use cases, and wrote [teardowns](https://eugeneyan.com/tag/teardown/) about them.

@@ -60,7 +60,7 @@ const ResourcesPage = ({
 }
 
 ResourcesPage.propTypes = {
-  data: PropTypes.string.isRequired
+  data: PropTypes.array.isRequired
 }
 
 export default ResourcesPage

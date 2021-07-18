@@ -40,17 +40,17 @@ const SubscriptionForm = () => {
   return (
     <div className="Subscribe">
       {status === "SUCCESS" && (
-        <p class="sub_response positive">
+        <p className="sub_response positive">
           Please check your email and confirm your subscription!
         </p>
       )}
       {status === "ERROR" && (
-        <p class="sub_response negative">
+        <p className="sub_response negative">
           Oops, Something went wrong! Please try again.
         </p>
       )}
 
-      <h3 class="sub_header">Want email updates on new content?</h3>
+      <h3 className="sub_header">Want email updates on new content?</h3>
       <form
         className="sub_form"
         action={FORM_URL}

@@ -3,6 +3,7 @@ import Highlight, { defaultProps } from "prism-react-renderer"
 import theme from "prism-react-renderer/themes/nightOwl"
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
 import { mdx } from "@mdx-js/react"
+import PropTypes from "prop-types"
 
 const CodeBlock = ({ children, className, live, render }) => {
   const language = className.replace(/language-/, "")
@@ -61,6 +62,13 @@ const CodeBlock = ({ children, className, live, render }) => {
       )}
     </Highlight>
   )
+}
+
+CodeBlock.propTypes = {
+  children: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  live: PropTypes.string.isRequired,
+  render: PropTypes.string.isRequired,
 }
 
 export default CodeBlock

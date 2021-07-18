@@ -8,6 +8,7 @@ import CodeBlock from "./codeblock"
 import "./layout.module.css"
 import SubscriptionForm from "../components/subscribe"
 import { Helmet } from "react-helmet"
+import PropTypes from "prop-types"
 
 const ListLink = props => (
   <li
@@ -22,6 +23,11 @@ const ListLink = props => (
   </li>
 )
 
+ListLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
+}
+
 const ExternalLink = props => {
   if (props.href.includes("yourwebsite.com") || props.href[0] === "/") {
     return <Link to={props.href}>{props.children}</Link>
@@ -31,6 +37,11 @@ const ExternalLink = props => {
       {props.children}
     </Link>
   )
+}
+
+ExternalLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 const BlockQuote = props => {
@@ -45,6 +56,10 @@ const BlockQuote = props => {
       {props.children}
     </blockquote>
   )
+}
+
+BlockQuote.propTypes = {
+  children: PropTypes.string.isRequired,
 }
 
 const Footer = props => (
@@ -63,6 +78,10 @@ const Footer = props => (
     {props.children}
   </p>
 )
+
+Footer.propTypes = {
+  children: PropTypes.string.isRequired,
+}
 
 const components = {
   code: CodeBlock,
@@ -157,4 +176,8 @@ export default function Layout({ children }) {
       </Footer>
     </div>
   )
+}
+
+Layout.propTypes = {
+  children: PropTypes.array.isRequired,
 }

@@ -1,12 +1,13 @@
-import React from "react";
-import "./button.styles.css";
+import React from "react"
+import "./button.styles.css"
+import PropTypes from "prop-types"
 
-const Button = ({ children,small,center, ...otherProps}) => {
-    return(
-        <button className="Button">
-            {children}
-        </button>
-    )
+const Button = ({ children }) => {
+  return <button className="Button">{children}</button>
 }
 
-export default Button;
+Button.propTypes = {
+  children: PropTypes.string.isRequired,
+}
+
+export default Button

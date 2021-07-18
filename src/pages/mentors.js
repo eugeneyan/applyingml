@@ -51,7 +51,7 @@ const MentorsPage = ({
 }
 
 MentorsPage.propTypes = {
-  data: PropTypes.string.isRequired
+  data: PropTypes.array.isRequired
 }
 
 export default MentorsPage

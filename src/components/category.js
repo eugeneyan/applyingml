@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import PropTypes from "prop-types"
 
 const CategorySection = ({ category }) => {
   const Sections = category.sections.map(section => {
@@ -29,6 +30,10 @@ const CategorySection = ({ category }) => {
       <h3 style={{ fontSize: `1.1rem` }}>{Sections}</h3>
     </p>
   )
+}
+
+CategorySection.propTypes = {
+  category: PropTypes.array.isRequired,
 }
 
 export default CategorySection
