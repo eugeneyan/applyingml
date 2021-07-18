@@ -1,0 +1,97 @@
+---
+name: "Vicki Boykis"
+role: "Machine Learning Engineer @ Tumblr"
+description: ""
+date: "2021-07-18"
+slug: "/mentors/vicki-boykis/"
+type: "mentor"
+---
+Learn more about Vicki Boykis on her [site](http://veekaybee.github.io/), [Twitter](https://twitter.com/vboykis), [LinkedIn](https://www.linkedin.com/in/vickiboykis/), and [Tumblr](https://veekaybee.tumblr.com/).
+
+**Please share a bit about yourself: your current role, where you work, and what you do?**
+
+I’m a machine learning engineer at [Tumblr](https://www.tumblr.com/explore/trending), now a part of [Automattic](https://automattic.com/). I work on our Core Data Science team, which is responsible for all the parts of the stack that you described in [your recent post on systems design for recommendation systems](https://eugeneyan.com/writing/system-design-for-discovery/) in surfacing the best, weirdest, most relevant content on Tumblr to our users. When I say weird, I mean weird. We recently did a [10-minute video of a potato in a microwave](https://staff.tumblr.com/post/653731604461682688/potatoes-are-neat-right-heres-one-cooking-in-a). I love everything about working [on this site](https://www.fansplaining.com/articles/the-ever-mutating-life-of-tumblr-dot-com). 
+
+**What was your path towards working with machine learning? What factors helped along the way?**
+
+Growing up, I loved to write and learn languages and [always struggled with math](http://blog.vickiboykis.com/2016/06/03/me-and-markov/) and, as a result, thought that I’d go into international relations. After some research and realizing that it was extremely hard to get into the US Diplomatic corps, in college, I majored in economics because it was the best compromise between majoring in English, which I wanted to do, and majoring in statistics, which I started becoming interested in after I finally had a good math teacher in high school. 
+
+My first job out of college was in economic consulting, which included putting together economic forecasts using SPSS and eViews, but mostly involved a LOT of Excel.  My coworkers in other departments were using SAS and R, and when I saw that you could manipulate data programmatically instead of manually modifying hundreds of cells, I became hooked on programming. 
+
+After that job, I went on to do analytics, and learned SQL really well. Our team was one of the first in the division to get access to this new thing called “[Hadoop](https://increment.com/software-architecture/architecture-for-generations/)”. Although I was mostly responsible for the queries, after a while, I became curious and started digging into the internals of Hadoop myself, and that’s how I started learning Python, Java, and Linux. 
+
+From there, I went on to work in data science in financial services while finishing up an MBA and a certificate in computer science, and then did a stint in data science consulting where I learned just as much about how to figure out what people need as developing large end to end machine learning pipelines.  
+
+It’s a very weird path in the sense that I have no traditional engineering background, but I think what helped me was always being eager to learn, constantly reading, and constantly wanting to get my hands dirty with stuff that, in theory, was outside of the purview of my actual job. 
+
+**How do you spend your time day-to-day?**
+
+It varies a lot, but my team is an experimentation team, which means we spend a lot of time developing hypotheses about what makes a good content discovery experience for our users and then proving or disproving those hypotheses by either changing our algorithms or the ways our algorithms deliver content. 
+
+We act on feedback from users directly through support tickets, from product managers, and by looking at our own metrics and turning those metrics into A/B tests. 
+
+A typical day for me could involve one of any number of things: looking at app log data, setting up an A/B test, writing additional app features, figuring out the best way to rank content, checking YAML config files, or checking our recommendation jobs to make sure the data inputs are sanitized.
+
+Every day also involves a lot of active team PR code reviews and discussion. We do a lot of collaboration, code pairing, and knowledge sharing since we’re dealing with a large, complex codebase with a lot of moving parts. 
+
+I also do a ton of writing.  One of the things I love most about Automattic is how important written culture is in a distributed, international remote organization, and we put a lot of time into [writing P2s](https://wordpress.com/p2/), which is how different teams in the org communicate with each other. 
+
+**How do you work with business to identify and define problems suited for machine learning? How do you pitch it, if necessary?**
+
+Recommendations are a key component of the Tumblr product so it’s not as much that we need to pitch the business about whether we need them or not, but about where strategically is the right place and format for them? 
+
+We do a lot of research to come up with places where we think we can improve these systems, simplify recommendations for users, and work with the goals of other departments like business development, marketing, and editorial to make sure we’re all in sync. 
+
+If we’re working on a new set of recommendations, we usually start by developing a proof of concept of what they’ll look like in the UI. It can be really hard to visualize the actual results of recommender systems, which are often a series of ranked metadata, so the UI is usually a good place to start putting them in context. 
+
+**Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?**
+
+We are enormous believers in dogfooding the product. All of us are active on Tumblr all day, every day, both as end users and product engineers. We’re constantly taking screenshots of the way things work or should work and discussing with other teams, and we’re constantly questioning whether they should work this way. We also do a lot of qualitative research in the form of studies and learn from users directly. 
+
+**Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?**
+
+I’d first try really hard to see if I could solve it without machine learning :D. I’m all about trying the less glamorous, easy stuff first before moving on to any more  complicated solutions. 
+
+If I did have to solve it with ML, I’d start with the business problem first. In my consulting life, I often came across a lot of problems that companies wanted to solve with machine learning. It was always beneficial to ask, “What is the end result that the client (either internal or external) wants? Is it more sales? Is it a better recommendation system? Then, you work backwards to the available technology stack. How can I do machine learning here? Do we have Python/R/Go, whatever. Where do my model outputs have to feed into?  The business problem and the current technology stack are really helpful constraints as starting points when you don’t know what to do, at all. 
+
+**Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?**
+
+Our team does a ton of collaboration and discussions with other machine learning and product engineering teams, including those involved with growth and search, and data science teams who know our data sources inside and out,  who also offer a lot of valuable feedback. 
+
+I scale myself by writing a ton of [P2s](https://wordpress.com/p2/) that [I can come back to later to reference](http://veekaybee.github.io/2021/07/17/p2s/), and to share what I’ve learned with the wider organization. P2s are also great in documenting complex systems so you can come back and fix them again next time. 
+
+**How does your organization or team enable rapid iteration on machine learning experiments and systems?**
+
+Getting to an A/B test  as soon as possible is a really important goal for the team so we’re not just talking about features in the abstract: we can quantify changes and discuss whether the test was successful or not. We operate the team on several concepts that help us get there: a very lean development cycle where we’re going from ideas to PRs very quickly, as well as UX-based hypothesis testing that lets us work with the product itself rather than just the data. 
+
+**What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?**
+
+Probably the tools that I lean on the absolute most are 
+- git 
+- git in coordination with GitHub’s superset of features 
+- YAML 
+- Jupyter Notebooks for prototyping - it is really critical to be able to look at code,data,  and ideas in draft form before putting them to work in the production context of the app, and notebooks help a lot with this, as well as sharing ideas across the organization.  
+- A huge shoutout to the Jetbrains family of products- PhpStorm, PyCharm, and IntelliJ, which also make switching contexts in 3 different codebases across 3 different languages a breeze.
+
+With respect to processes, I’ve found it helpful to break up large, intimidating systems and ideas into iterative, small chunks, i.e. 2-week sprints, in order to get ideas quickly into code and get feedback on that code. It could be a great idea or terrible idea, but I won’t know until it’s something someone else can look at.  
+
+**After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?**
+
+Recommendations are an intrinsic part of the Tumblr app so we’re under SLAs to keep them running, which makes it really easy to operate them :D. What helps is alerting and monitoring, which we’re constantly in the process of refining at a cadence that makes sense for us as a team that’s part of the app, but also with the unique challenges that come with monitoring and constantly iterating on model data. 
+
+**Think of people you know that are able to apply ML effectively–what skills or traits do you think contributed to that?**
+
+The ability to speak the language of both people and computers. There are people who are very good at understanding how the code works but can’t communicate it. There are people who are extremely good at getting people to work together in groups but are not able to operate in the codebase to make the changes. The most powerful engineer in any organization is someone who understands both of these things and how to leverage them, and when. 
+
+**Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?**
+
+[Everything I wrote here](http://veekaybee.github.io/2021/03/26/data-ghosts/) :)
+
+**How do you learn continuously? What are some resources or role models that you've learned from?**
+
+I spend a ton of time reading online, across anyone who publishes anything related to analytics, machine learning, and the data space and, within my team, we do a lot of paper reading/sharing/discussion, too. 
+
+**Read some of Vicki's writing on machine learning**
+- [We’re still in the steam-powered days of machine learning](https://vicki.substack.com/p/were-still-in-the-steam-powered-days)
+- [Neural nets are just people all the way down](https://vicki.substack.com/p/neural-nets-are-just-people-all-the)
+- [Getting machine learning to production](http://veekaybee.github.io/2020/06/09/ml-in-prod/)
