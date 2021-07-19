@@ -67,8 +67,8 @@ const CodeBlock = ({ children, className, live, render }) => {
 CodeBlock.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
-  live: PropTypes.string.isRequired,
-  render: PropTypes.string.isRequired,
+  live: PropTypes.string,
+  render: PropTypes.string,
 }
 
 export default CodeBlock

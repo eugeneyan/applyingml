@@ -55,6 +55,7 @@ const ResourcesPage = ({
         .
       </p>
       <div>{Categories}</div>
+      <br></br>
     </Layout>
   )
 }

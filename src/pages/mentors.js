@@ -46,6 +46,7 @@ const MentorsPage = ({
         <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
       <div>{Mentors}</div>
+      <br></br>
     </Layout>
   )
 }
