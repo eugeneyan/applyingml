@@ -25,15 +25,15 @@ const CategorySection = ({ category }) => {
   })
 
   return (
-    <p>
+    <div>
       <h2>{category.title}</h2>
       <h3 style={{ fontSize: `1.1rem` }}>{Sections}</h3>
-    </p>
+    </div>
   )
 }
 
 CategorySection.propTypes = {
-  category: PropTypes.array.isRequired,
+  category: PropTypes.object.isRequired,
 }
 
 export default CategorySection

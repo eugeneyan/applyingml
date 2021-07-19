@@ -25,7 +25,7 @@ const ListLink = props => (
 
 ListLink.propTypes = {
   to: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.string.isRequired,
 }
 
 const ExternalLink = props => {
@@ -41,7 +41,7 @@ const ExternalLink = props => {
 
 ExternalLink.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.any.isRequired,
 }
 
 const BlockQuote = props => {
@@ -59,7 +59,7 @@ const BlockQuote = props => {
 }
 
 BlockQuote.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 }
 
 const Footer = props => (
@@ -80,7 +80,7 @@ const Footer = props => (
 )
 
 Footer.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.array.isRequired,
 }
 
 const components = {

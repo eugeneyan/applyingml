@@ -54,13 +54,13 @@ const ResourcesPage = ({
         </a>
         .
       </p>
-      <p>{Categories}</p>
+      <div>{Categories}</div>
     </Layout>
   )
 }
 
 ResourcesPage.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.object.isRequired
 }
 
 export default ResourcesPage

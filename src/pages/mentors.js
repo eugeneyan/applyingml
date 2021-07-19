@@ -45,13 +45,13 @@ const MentorsPage = ({
         contribute an interview or recommend someone? Please{" "}
         <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
-      <p>{Mentors}</p>
+      <div>{Mentors}</div>
     </Layout>
   )
 }
 
 MentorsPage.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.object.isRequired
 }
 
 export default MentorsPage

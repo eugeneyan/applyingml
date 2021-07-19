@@ -2,8 +2,30 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Helmet from "react-helmet"
+import Mentor from "../components/mentor"
 
 export default function Home() {
+  const mentor = graphql`
+    query {
+      allMdx(
+        filter: { frontmatter: { type: { eq: "mentor" } } }
+        sort: { fields: [frontmatter___date], order: ASC }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              name
+              role
+              date
+              slug
+            }
+          }
+        }
+      }
+    }
+  `
+  console.log(mentor)
+
   const seo = {
     title: "ApplyingML - Papers, Guides, and Interviews with ML practitioners",
     description: "Curated papers and blogs, ghost knowledge, and interviews with experienced ML practitioners on how to apply machine learning in industry.",
