@@ -1,26 +1,23 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Helmet from "react-helmet"
-import PropTypes from "prop-types"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
-import Layout from "../components/layout"
-import Mentor from "../components/mentor"
+import Layout from '../components/layout';
+import Mentor from '../components/mentor';
 
 const MentorsPage = ({
   data: {
     allMdx: { edges },
   },
 }) => {
-  const Mentors = edges.map((edge, i) => (
-    <Mentor key={i} slug={edge.node.id} post={edge.node} />
-  ))
+  const Mentors = edges.map((edge) => <Mentor slug={edge.node.id} post={edge.node} />);
   const seo = {
-    title: "Interviews with Machine Learning Practitioners",
-    description:
-      "Stories, advice, and practical know-how from machine learning practitioners.",
-    image: "https://applyingml.com/default-og-image.png",
-    url: "https://applyingml.com/mentors/",
-  }
+    title: 'Interviews with Machine Learning Practitioners',
+    description: 'Stories, advice, and practical know-how from machine learning practitioners.',
+    image: 'https://applyingml.com/default-og-image.png',
+    url: 'https://applyingml.com/mentors/',
+  };
   return (
     <Layout>
       <Helmet>
@@ -41,21 +38,21 @@ const MentorsPage = ({
       </Helmet>
 
       <p>
-        Stories and advice from machine learning practitioners. Want to{" "}
-        contribute an interview or recommend someone? Please{" "}
-        <a href="mailto:applyingml@gmail.com">reach out</a>!
+        Stories and advice from machine learning practitioners. Want to contribute an interview or
+        recommend someone? Please <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
       <div>{Mentors}</div>
-      <br></br>
+      <br />
     </Layout>
-  )
-}
+  );
+};
 
 MentorsPage.propTypes = {
-  data: PropTypes.object.isRequired
-}
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+};
 
-export default MentorsPage
+export default MentorsPage;
 
 export const mentor = graphql`
   query {
@@ -75,4 +72,4 @@ export const mentor = graphql`
       }
     }
   }
-`
+`;

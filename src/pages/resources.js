@@ -1,26 +1,24 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Helmet from "react-helmet"
-import PropTypes from "prop-types"
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 
-import Layout from "../components/layout"
-import CategorySection from "../components/category"
+import Layout from '../components/layout';
+import CategorySection from '../components/category';
 
 const ResourcesPage = ({
   data: {
     dataYaml: { categories },
   },
 }) => {
-  const Categories = categories.map((category, i) => (
-    <CategorySection key={i} category={category} />
-  ))
+  const Categories = categories.map((category) => <CategorySection category={category} />);
   const seo = {
-    title: "ML and non-ML Guides and Teardowns",
+    title: 'ML and non-ML Guides and Teardowns',
     description:
-      "ML and non-ML related guides, and teardowns on ML systems—the ghost knowledge you need for work.",
-    image: "https://applyingml.com/default-og-image.png",
-    url: "https://applyingml.com/resources/",
-  }
+      'ML and non-ML related guides, and teardowns on ML systems—the ghost knowledge you need for work.',
+    image: 'https://applyingml.com/default-og-image.png',
+    url: 'https://applyingml.com/resources/',
+  };
 
   return (
     <Layout>
@@ -42,9 +40,8 @@ const ResourcesPage = ({
       </Helmet>
 
       <p>
-        Guides and teardowns on how to apply machine learning in production.
-        Spot an error or suggesting edits? Please{" "}
-        <a href="mailto:applyingml@gmail.com">reach out</a> or make a{" "}
+        Guides and teardowns on how to apply machine learning in production. Spot an error or
+        suggesting edits? Please <a href="mailto:applyingml@gmail.com">reach out</a> or make a{' '}
         <a
           href="https://github.com/eugeneyan/applyingml#contributing"
           target="_blank"
@@ -55,16 +52,17 @@ const ResourcesPage = ({
         .
       </p>
       <div>{Categories}</div>
-      <br></br>
+      <br />
     </Layout>
-  )
-}
+  );
+};
 
 ResourcesPage.propTypes = {
-  data: PropTypes.object.isRequired
-}
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+};
 
-export default ResourcesPage
+export default ResourcesPage;
 
 export const category = graphql`
   query {
@@ -78,4 +76,4 @@ export const category = graphql`
       }
     }
   }
-`
+`;
