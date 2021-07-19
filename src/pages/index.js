@@ -49,7 +49,7 @@ const Home = ({ data }) => {
       </p>
       <p>
         To fill this gap, <code>ApplyingML</code> collects tacit/tribal/ghost knowledge on applying
-        ML via curated papers/blogs guides, and interviews with ML practitioners. In a nutshell,
+        ML via curated papers/blogs, guides, and interviews with ML practitioners. In a nutshell,
         it's <Link to="/about/">1/3 applied-ml, 1/3 ghost knowledge, and 1/3 Tim Ferriss Show</Link>
         . The intent is to make it easier to apply—and benefit from—ML at work.
       </p>
