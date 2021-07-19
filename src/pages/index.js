@@ -1,34 +1,23 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Helmet from "react-helmet"
+import PropTypes from "prop-types"
+
 import Mentor from "../components/mentor"
+import Resource from "../components/resource"
 
-export default function Home() {
-  const mentor = graphql`
-    query {
-      allMdx(
-        filter: { frontmatter: { type: { eq: "mentor" } } }
-        sort: { fields: [frontmatter___date], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              name
-              role
-              date
-              slug
-            }
-          }
-        }
-      }
-    }
-  `
-  console.log(mentor)
-
+const Home = ({ data }) => {
+  const Mentors = data.mentors.edges.map((edge, i) => (
+    <Mentor key={i} slug={edge.node.id} post={edge.node} />
+  ))
+  const Resources = data.resources.edges.map((edge, i) => (
+    <Resource key={i} slug={edge.node.id} post={edge.node} />
+  ))
   const seo = {
     title: "ApplyingML - Papers, Guides, and Interviews with ML practitioners",
-    description: "Curated papers and blogs, ghost knowledge, and interviews with experienced ML practitioners on how to apply machine learning in industry.",
+    description:
+      "Curated papers and blogs, ghost knowledge, and interviews with experienced ML practitioners on how to apply machine learning in industry.",
     image: "https://applyingml.com/default-og-image.png",
     url: "https://applyingml.com",
   }
@@ -64,20 +53,75 @@ export default function Home() {
       </p>
       <p>
         To fill this gap, <code>ApplyingML</code> collects tacit/tribal/ghost
-        knowledge on applying ML via{" "}
-        <Link to="/papers/">curated papers/blogs</Link>,{" "}
-        <Link to="/resources/">guides</Link>, and{" "}
-        <Link to="/mentors/">interviews</Link> with ML practitioners. In a
-        nutshell, it's{" "}
+        knowledge on applying ML via curated papers/blogs guides, and interviews
+        with ML practitioners. In a nutshell, it's{" "}
         <Link to="/about/">
           1/3 applied-ml, 1/3 ghost knowledge, and 1/3 Tim Ferriss Show
         </Link>
         . The intent is to make it easier to apply—and benefit from—ML at work.
       </p>
+      <br></br>
+      <hr></hr>
+      <h2 style={{ fontFamily: "Merriweather, serif", fontSize: `1rem` }}>
+        Read some of the guides below, or{" "}
+        <Link to="/resources/">browse all guides</Link>.
+      </h2>
+      <div>{Resources}</div>
+      <br></br>
+      <hr></hr>
+      <h2 style={{ fontFamily: "Merriweather, serif", fontSize: `1rem` }}>
+        Or start reading some mentor interviews, or{" "}
+        <Link to="/mentors/">browse all interviews</Link>.
+      </h2>
+      <div>{Mentors}</div>
       <p>
         Want to contribute an interview? Please{" "}
         <a href="mailto:applyingml@gmail.com">reach out</a>!
       </p>
+      <br></br>
     </Layout>
   )
 }
+
+Home.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default Home
+
+export const Query = graphql`
+  query {
+    mentors: allMdx(
+      filter: {
+        frontmatter: { type: { eq: "mentor" }, homepage: { eq: true } }
+      }
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            name
+            role
+            date
+            slug
+          }
+        }
+      }
+    }
+    resources: allMdx(
+      filter: {
+        frontmatter: { type: { eq: "resource" }, homepage: { eq: true } }
+      }
+      sort: { fields: [frontmatter___date], order: ASC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+`
