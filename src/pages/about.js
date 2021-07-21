@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Helmet from 'react-helmet';
 import Layout from '../components/layout';
 
@@ -31,9 +31,9 @@ export default function About() {
 
       <p>
         <b>Ingredients:</b> 1/3{' '}
-        <a href="https://github.com/eugeneyan/applied-ml" target="_blank" rel="noreferrer">
+        <Link to="/papers/">
           <code>applied-ml</code>
-        </a>
+        </Link>
         , 1/3{' '}
         <a
           href="https://notebook.drmaciver.com/posts/2020-02-16-14:22.html"
