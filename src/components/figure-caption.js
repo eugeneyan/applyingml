@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
-import { css } from "@emotion/react"
+import React from 'react';
+import { Link } from 'gatsby';
+import { css } from '@emotion/react';
 
-export const FigureCaption = props => {
+export const FigureCaption = (props) => {
   if (props.source !== undefined) {
     return (
       <p
@@ -18,7 +18,7 @@ export const FigureCaption = props => {
         </Link>
         )
       </p>
-    )
+    );
   } else {
     return (
       <p
@@ -30,6 +30,6 @@ export const FigureCaption = props => {
       >
         {props.caption}
       </p>
-    )
+    );
   }
-}
+};

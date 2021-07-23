@@ -1,6 +1,6 @@
-import React from "react"
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import React from 'react';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 const Mentor = ({ post }) => (
   <h3 style={{ fontSize: `1.1rem` }}>
@@ -10,10 +10,10 @@ const Mentor = ({ post }) => (
       </Link>
     </li>
   </h3>
-)
+);
 
 Mentor.propTypes = {
   post: PropTypes.object.isRequired,
-}
+};
 
-export default Mentor
+export default Mentor;

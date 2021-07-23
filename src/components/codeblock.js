@@ -1,19 +1,19 @@
-import React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import theme from "prism-react-renderer/themes/nightOwl"
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
-import { mdx } from "@mdx-js/react"
-import PropTypes from "prop-types"
+import React from 'react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import { mdx } from '@mdx-js/react';
+import PropTypes from 'prop-types';
 
 const CodeBlock = ({ children, className, live, render }) => {
-  const language = className.replace(/language-/, "")
+  const language = className.replace(/language-/, '');
 
   if (live) {
     return (
-      <div style={{ marginTop: "40px", backgroundColor: "black" }}>
+      <div style={{ marginTop: '40px', backgroundColor: 'black' }}>
         <LiveProvider
           code={children.trim()}
-          transformCode={code => "/** @jsx mdx */" + code}
+          transformCode={(code) => '/** @jsx mdx */' + code}
           scope={{ mdx }}
         >
           <LivePreview />
@@ -21,34 +21,29 @@ const CodeBlock = ({ children, className, live, render }) => {
           <LiveError />
         </LiveProvider>
       </div>
-    )
+    );
   }
 
   if (render) {
     return (
-      <div style={{ marginTop: "40px" }}>
+      <div style={{ marginTop: '40px' }}>
         <LiveProvider code={children}>
           <LivePreview />
         </LiveProvider>
       </div>
-    )
+    );
   }
 
   return (
-    <Highlight
-      {...defaultProps}
-      code={children.trim()}
-      language={language}
-      theme={theme}
-    >
+    <Highlight {...defaultProps} code={children.trim()} language={language} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
           className={className}
           style={{
             ...style,
-            padding: "20px",
-            overflow: "auto",
-            borderRadius: "3px",
+            padding: '20px',
+            overflow: 'auto',
+            borderRadius: '3px',
           }}
         >
           {tokens.map((line, i) => (
@@ -61,14 +56,14 @@ const CodeBlock = ({ children, className, live, render }) => {
         </pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 
 CodeBlock.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   live: PropTypes.string,
   render: PropTypes.string,
-}
+};
 
-export default CodeBlock
+export default CodeBlock;

@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 export default function MyImg(props) {
   if (props.title !== undefined) {
@@ -7,8 +7,8 @@ export default function MyImg(props) {
         <img src={props.src} alt={props.alt} />
         <figcaption>{props.title}</figcaption>
       </figure>
-    )
+    );
   } else {
-    return <img src={props.src} alt={props.alt} />
+    return <img src={props.src} alt={props.alt} />;
   }
 }
