@@ -1,11 +1,176 @@
 ---
 name: "Nirant Kasliwal"
-role: "Machine Learning Lead @ Verloop (Coming soon!)"
+role: "Machine Learning Lead @ Verloop"
 description: ""
-date: "2021-07-26"
+date: "2021-07-22"
 slug: "/mentors/nirant-kasliwal/"
 type: "mentor"
+homepage: true
 ---
 Learn more about Nirant on his [blog](https://nirantk.com/writing), [Twitter](https://twitter.com/NirantK), and [LinkedIn](https://linkedin.com/in/nirant).
 
-Coming soon!
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m currently consulting with a few teams which make tools for ML.
+
+Before this, I led ML at Verloop.io on chat automation challenges. I worked on single-turn intent detection systems and some NER problems. While the intent detection system supported a multilingual context, NER was English #BenderRule. Outside of work, I maintain [awesome-nlp](https://github.com/keon/awesome-nlp) and [NLP-progress](https://nlpprogress.com).
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+My first project was [OCR for Natural Scene Images](http://yashsinha.com/data/papers/sinha2015Poster.pdf). This was a part of the course project in my second year (aka sophomore year) of college. I had amazing teammates who were a lot more persistent than me. 
+
+As graduation came closer, I felt I couldn’t compete with folks who’d been programming for 3-5 years at that point. I had to carve out a niche which others would consider more risky or hard. Machine learning became that niche for me.
+
+Factors that helped along the way: 
+
+- Instead of doing a lot of projects, I’d do harder, longer projects. And hackathons in between. I’m very grateful for my teammates, friends, colleagues and mentors during this phase.
+
+- Resources like course.fast.ai, which have top down pedagogy unlike CS224 or cs231. I was the FastAI International Fellow in 2018 and 2019, and that definitely accelerated my learning curve.
+
+### *How do you spend your time day-to-day?*
+
+In my most recent role, I was doing a mix of management and dev work both and later chose to dev completely. I start my day by lurking on startup or ML Twitter with breakfast. 
+
+For my work day, I think of spending time in 3 duration cycles. They are things which will help show progress this week, this month and this quarter. Anything beyond was usually hard to pull off in the early stages of the startup. 
+
+To give you sense of this, here are some examples: 
+
+- Week: Deploying a new model including model updates for an existing problem. This would have an immediate impact on some business metrics. 
+
+- Month: Making model deployment easier, debugging or tagging data
+
+- Quarter: Making experimentation for projects easier e.g. adding DVC
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+In most cases, the motivation for a new problem comes from customers via sales or support. 
+
+There are 3 things I pay attention to in my conversations with them. 
+
+| What to ask | How do they map in ML terms? | Comments                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+|-------------|------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Examples    | Test Cases or Training Data  | This is quite important for you to confirm that you understood what they meant. I’ve seen ML teams spend weeks building something because of a misunderstanding with Product.  I often add these examples to pytest cases in the model tests, to ensure that the stakeholder needs are always met even with future releases.  These tests would help me understand the input variety e.g. Which languages? Phrases or sentences? It’d also allow us to agree on how output will be used. E.g. will they use confidence to threshold vs the service should select the top result and return with confidence. |
+| Behaviour   | Evaluation Metric            | Are we ok with lower recall but higher precision? This is a question which is not always easy to answer for non technical folks–but a question along these lines works: Is it okay if the model makes a correct prediction, but misses quite a few samples?    The conversation around behaviour should end with you being able to map a machine learning model performance to a product feature metric (e.g. engagement).                                                                                                                                                                               |
+| Demo        | Visual Examples/Interfaces   | Visual demos, because they really help folks make sense of the application/problem and the constraint of ML.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+
+When I began doing ML for Verloop.io, I messed up a lot of my non-technical communication: I came across as unreachable and pompous. I didn’t care enough about business objectives, specially the ad hoc requests and prioritised the “reusable” above everything. As ML/Data folks, I’d urge you to learn from my mistakes and pay more attention to understanding your users.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+I am honestly not that great at user empathy. But it helps that for most of my career, my end-users have been either other devs or people in the same company e.g. Sales or Customer Support teams. 
+
+I would also occasionally sit in with user interview calls with the Product Manager and often discuss what they learnt over tea/meals. This helped me get a sense of what the PM is paying attention to, or what they found surprising. 
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+- **Map to Known:** I’d go hunt for the closest match to a familiar problem. Places like [Papers With Code Methods](​​https://paperswithcode.com/methods) or [NLP-progress](https://nlpprogress.com) are an excellent starting point for finding a close match.
+
+- **Reframe to Known:** Often enough, reframing a problem also helps e.g. you can reframe a classification problem as a clustering problem to make progress if your dataset is small, novel and you don’t know the tags yet. 
+
+- **Let the Data be Known:** If I can’t map it that easily, I try to solve the problem by going through the data and trying the non-ML approaches or writing decision trees in pseudocode. This work helps my brain get some inkling of the expected behaviour and data quirks. This guides my approach selection.
+
+At this point, you’d have done enough homework to do a fast-but-deep enough literature review, select for proven, well-implemented papers and go from there. 
+
+I often don’t reproduce the results from the code base. If you feel that the author has made assumptions which are unclear in the paper - I’d suggest going and see if the results are as stated.
+
+You’d be surprised how many papers are unable to repro the performance if you change the test from a hold out sample to a k-Fold cross validation.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+Most of my collaborators are colleagues from work, since I don’t do a lot of collaborative open source work. For scaling myself, I believe a lot in writing - since I’ve a tendency of being misunderstood or even rude/insulting when communicating orally. 
+
+Here are some documents I’ve written in the past, and how they help: 
+- [Machine Learning Engineering Checklist](https://nirantk.com/writing/mlops_for_startups.html)
+- How I work. Here is [an Internet example](https://handbook.hmn.md/working-here/working-remotely/how-i-work-documents/)
+- Onboarding/Learning Calendars: These were customized for each new candidate and built to improve their strength and remove “blocking” weaknesses. Here is an [example](https://meghana.blog/machine-learning-learning-calender/)
+
+I used to push autonomy to the developer for their own project but the feedback I’ve received is that devs should rather be told what to do, and they’ll figure out how.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I’ve worked with at least 2-3 kinds of team structures. 
+
+**Center of Excellence model**, where you work with PhDs in isolation and hope that your work will eventually reach the users. The downside being that this doesn’t make sense you’re on the VC treadmill of fundraising. 
+
+**Consultant** model, where you help/assist the software engineering team doing the work with ML in approach selection, data cleaning, curation but they still have the main context for solving the business problem. I was not a fan of this, since I like to get my hands dirty. 
+
+In many ways, I see a lot of the “Platform” teams mimic this behaviour i.e. “Here is our Platform - use this now!”
+
+**Product Data Science** model -- is what I was planning to build at Verloop.io. We only got halfway through though.
+
+The team was not the usual org design in 2 ways: 
+
+The first choice was that there was no difference between data scientists or engineers. You owned the entire pipeline from research to production and then post-production loops. In the Stitchfix and your own terms: We built a [full stack data science](https://eugeneyan.com/writing/end-to-end-data-science/) team, but in 2018, before the cool kids caught on. Every person owned 1-3 services. As the team gets larger, every project would be full stack instead of every person. 
+
+There was a surprising cost for this choice though: Quite a few data science candidates refused to work with us. 
+
+The second unintentional choice was to isolate ML from the rest of the engineering roadmap, so that we could ship without having to be in sync with them. In hindsight, this was a mistake. It definitely empowered us to ship faster, but teammates felt isolated, and it was hard to complete the feedback loop with our end users via the Product Manager alone.
+
+I’d do this differently the next time around. There are 3 things I’d do differently: 
+
+- **Remove the middleman (i.e me)**: PM and the Data Scientist should work directly with each other. Instead of the information flowing/gathered with me as the nodal person. 
+
+- **Retrospectives**: We did a lot of reviews i.e. what went well or wrong, but not enough of “How does this inform our future?”
+
+- **Add Front End, DevOps Skills**: Lot of our releases would reach the end user because the interface was designed, but not implemented. Engineering teams would quite obviously pick their own OKRs above ours[^1]. The short term fix is to add Front End and DevOps skills. Even something as simple as being able to build+deploy Gradio or Streamlit demos would go a long way in convincing the org to prioritise the shipped work. 
+
+[^1]: A simpler org-wide solution would’ve been to assign shared OKRs, but we lacked the experience to do it. This data-technical-managerial competence would likely remain in short supply for most early teams.  
+
+I am still quite confident that a Full Stack DS team is the right choice for early Data Science teams. But with a few tweaks. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+We did not deploy new code architectures that often. Most of our model updates were around data refreshes. Therefore, experimentation pace was structured around being able to ship new things and not experimenting on the same dataset/problem space again.
+
+We didn’t innovate a lot on experimenting but sweated the Ops stuff e.g VMs, Docker images, K8s config and so on - so that we can deploy as quickly as possible after we’re done. 
+
+As an example, the entire company used RPC. So we’d define the API as a Proto and then auto-generated code would do the rest of it. We’d simply plug in our model results into that. 
+
+Why did we make this choice? In the first few iterations we noticed that it took us same amount of time to do everything before model deployment i.e. data cleaning, model selection, training and versioning as after i.e. API design, web serving (RPC/REST), DB storage, adding logging, monitoring. It’d be much more widely useful for us to invest in Ops: repetitive, unchanging processes + other engineering teams could also use our tooling e.g. a company-wide shared logging library. 
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+I think this would vary a lot by the charter, size, and the MLOps maturity of the team. With that disclaimer, I am a bit of a nerd when it comes to workflow tools. Here is a list of non-exhaustive tools & apps that I’d use/recommend:
+
+- Code Readability: black, isort, one of flake8 or bandit, one of MyPy or PyRight. PyDantic for most classes. 
+- Code Review on Github: [ReviewNB](https://www.reviewnb.com/)
+- Experiment Tracking: Weights and Biases, if we can afford them. If not, something like [Sacred](https://github.com/IDSIA/sacred) perhaps.
+- Data Versioning: DVC.org
+- Data Tagging: Prodi.gy or [Label Studio](https://labelstud.io/), depending on use case and budget
+- Data Debugging: [Cleanlab](https://github.com/cgnorthcutt/cleanlab), [pandas-profiling](https://github.com/pandas-profiling/pandas-profiling)
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+In honesty, I am not quite good at quantifying the impact of my work. One proxy was the final modeling metric itself. E.g. in case of the Intent Classification task:  percentage of questions we answered correctly without needing human intervention was the product and ML metric simultaneously.
+
+In terms of the greatest impact, I’d wager that it was building the ML team/function at Verloop.io. I also built the Intent ranking/classification system which serves over 90% of the company’s chat volumes, but I take greater pride in being able to maintain+upgrade it solo for next ~2 years. 
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+We monitored (and set up alerts) around latency and other serving metrics. We had a very manual model retraining process. This was most often when a customer alerted us to drift/dip in model performance. 
+
+Our data pipelines were quite often in flux, because our source data store evolved to serve the main product and business requirements. In addition, our own intermediate data would often change across projects, and sometimes even within the same projects. 
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+Lots of practice, and wide exposure to problems where ML has been effective. People who have worked in multiple industries are able to best tie the ML output with what the stakeholder e.g. business or product requires. This combined with technical skill and exposure is extremely powerful. 
+
+It is extremely useful to have seen some breadth of data modality, volume, variety and system requirements e.g. compute, latency and throughput.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+I recall Vicky Boykis asking a question along these lines on Twitter. But here is cliff notes of advice for ML: 
+- Write a lot of code and tinker a lot with code which you’ve not written
+- Do one large project and demo it, instead of building several small projects
+- Blog internally or externally and do it as often as you humanly can
+
+I think this is also a good time to plug in Radek’s [Meta Learning book](https://radekosmulski.gumroad.com/l/learn_deep_learning) - which covers the most important things which are not written in other books. 
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+My learning curve is not as steep as it used to be. I’m to blame for lack of structure and pace both. I still read few of the best papers across NLP/ML conferences (e.g. NAACL, EMNLP, NeurIPS, ICML but not vision ones like CVPR). 
+
+I also spent some time reading/studying how to write good software e.g. from [AOSABook](http://aosabook.org/en/index.html): Matplotlib, SQLAlchemy are quite good. I’ll be soon studying the 500 Lines or Less sections. The other source for new information is talks at conferences on Youtube and people sharing paper links on Twitter. 
+
+The most reliable resource I can recommend to folks picking up Deep Learning are [course.fast.ai](https://course.fast.ai/) and the Goodfellow book - both are free. My role models evolve and change over time, but over the years I’ve looked upto John Carmac, Jeremy Howard, DJ Patil, Julia Evans and will probably add folks like Vicky Boykis, Chris Albon, George Hotz and the like to the list soon :) 

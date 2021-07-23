@@ -1,11 +1,104 @@
 ---
 name: "Neal Lathia"
-role: "Director of ML @ Monzo Bank (Coming soon!)"
+role: "Director of Machine Learning @ Monzo Bank"
 description: ""
-date: "2021-07-26"
+date: "2021-07-22"
 slug: "/mentors/neal-lathia/"
 type: "mentor"
+homepage: true
 ---
 Learn more about Neal on his [site](https://nlathia.github.io) and [Twitter](https://twitter.com/neal_lathia).
 
-Coming soon!
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m the Director of Machine Learning at [Monzo Bank](https://monzo.com/) in the United Kingdom. Monzo is an app-only bank - you download the app, sign up, and you then get a [hot coral](https://www.wired.co.uk/article/monzo-card-design) debit card in the post in a couple of days: from there, you can manage all of your finances via the app, including chatting with customer support. 
+
+My role now boils down to _'making machine learning work for Monzo'_ - or, put another way, I spend my time thinking about how ML methods, tools, and people can be most impactful across the company. 
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I stumbled into working on machine learning while doing a PhD in Computer Science which was originally meant to be about [ubiquitous computing](https://en.wikipedia.org/wiki/Ubiquitous_computing). Shortly after starting my research, the [Netflix Prize](https://en.wikipedia.org/wiki/Netflix_Prize) was announced and one of my advisors forwarded me an email announcement about it.
+
+At this stage, I knew nothing about machine learning but I was fascinated by online recommender systems, and so I started learning and shaping [my research](http://nlathia.github.io/research/) on the topic of how recommender systems evolve over time. I still think that recommender systems are one of the best ways to be introduced to machine learning!
+
+Since then, all of the work that I have done has touched on ML in one way or another, although primarily from a systems perspective.
+
+### *How do you spend your time day-to-day?*
+
+Although I started as an individual contributor when I joined Monzo, I code much less nowadays - the last major system that I was hands-on with was the first version of our [feature store](http://nlathia.github.io/2020/12/Building-a-feature-store.html). Majority of my most recent days have been spent talking, reading, and writing:
+
+- Talking - I have regular 1:1s with people in my team (where we cover anything from specific ideas through to career progression and technical reviews), group meetings for different projects, catch-ups with folks across the business, and interviewing.
+- Reading - folks in my team write proposals (for new ideas), analyses and project docs (with ongoing work), and experiment write-ups (with results) and reading these is how I keep up with their work and give them feedback. 
+- Writing - I write similar documents to my team, with ideas, goals/strategy, and thinking about what we need in our ML platform.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+My current approach is to set machine learning to one side and spend the majority of my time understanding the different parts of the business and what problems they are looking to solve.
+
+Using this approach, machine learning opportunities tend to jump out - problems we want to automate that are (a) non-deterministic, (b) have a lot of data, and (c) could have a meaningful impact on that area’s KPIs.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+I’m a staunch believer in end-to-end machine learning work - it is faster than having different teams train/ship models and focuses the machine learning on the end use-case so it is more impactful.
+
+That means that the Machine Learning Scientist in my team who trains a model will then ship it as well, rather than hand it off to another team. This way, they get to see how their modeling efforts all the way through to impact, and they stay close to the end-users of their systems.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+Right now, my first port of call would be to find a Machine Learning Scientist in my team who has some capacity to look into it :) 
+
+When mentoring people through this scenario, I always recommend the same things: _look at the data, write things down, and have a baseline_. Working on a new ML problem is as much about defining the problem as it is working on the solution, and so keeping track of everything that happens along the way is super important - as is having a sense for how to measure what ‘good’ looks like.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+A large part of our work is enabled by Platform teams who run our infrastructure and build tooling that we use - both across our analytics and production stacks. For example, [here’s a great overview of the >1,500 microservices running in our platform](https://qconlondon.com/london2020/presentation/modern-banking-1500-microservices) by Matt Heath and Suhail Patel - I know that without all of the hard work that underpins our infrastructure, our journey into machine learning would have looked very different.
+
+When building specific systems, we collaborate with the teams that own that problem area in the business. Sometimes, that means we split the problem in two. More often, it means that ML Scientists embed with that team for a while.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+There’s a spectrum of org structures - ranging from fully embedding Machine Learning Scientists into product teams through to fully centralising Machine Learning Scientists into a single team. Neither of those extremes really works: folks either lose touch with their discipline and peers or lose touch with the business.
+
+All of the org structures that I’ve seen ‘work’ are some kind of hybrid. I don’t think there’s a one-size-fits-all solution; especially inside a single company where things change quickly over time!
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+Many different ways!
+
+One of the ones I’d like to highlight: we split up the code that creates a dataset from the code that trains a model, typically into separate pipelines. This echoes the importance of data quality in our work, and also helps to make our pipelines more plug & play with each other.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+I spoke at length about processes and tools we use in [this episode](https://www.youtube.com/watch?v=EyLGKmPAZLY) of the MLOps Community podcast. In short: we often discover tools we need by examining the areas of our work that are the most repetitive. That’s why we [built a feature store](http://nlathia.github.io/2020/12/Building-a-feature-store.html) and a model store (note: I have a separate [open-source project](https://github.com/operatorai/modelstore) that is also a model store).
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+The impact of our work is measured in cost savings or revenue - everything we do ultimately finds its way back to one of these metrics. That’s in large part thanks to being in a company that is not seeking to optimise engagement metrics because it doesn’t sell ads.
+
+The biggest impact we’ve seen so far is when tackling different typologies of financial crime using machine learning. Beyond the impact on our KPIs, we’ve heard directly from customers who we have saved from being scammed out of their life savings - and it is very hard to quantify that.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+For lower-level monitoring (e.g., response times, error rates), we use Grafana, just like all of our backend engineers.
+
+Monzo runs all [of our analytics in Google Cloud](https://cloud.google.com/customers/monzo) using dbt, BigQuery, and Looker. Having a single place where everyone in the company goes to look for numbers (regardless of whether they are high-level company metrics or nuanced metrics for A/B tests) has been very powerful, and so we decided that our ML performance monitoring should go there as well. 
+
+Our choice to use these tools, rather than something that was designed specifically for machine learning monitoring, was deliberate - we then don’t need to manage these tools ourselves, and giving others access and insight into our work is much easier.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+The most impactful Machine Learning Scientists that I’ve worked with all have a product-oriented mindset: they recognise that (a) machine learning is a tool, and therefore may not always be the _right_ tool for a task, and (b) that we’re using this tool to try and deliver value to our customers, and so the focus should be on the end-goal rather than just on the details on the modeling. 
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+A lot of what we learn in school or books is focused on training models for a well-defined task on a given dataset. It’s been very rare for me to find this scenario at work!
+
+When applying ML, nearly all of those conditions are no longer true: the task needs to be defined (and can nearly always be formulated in more than one way), the dataset may need to be created and designed, and the focus will often be on _systems_. 
+
+A practical example of this: one of the biggest improvements that I’ve ever seen to a ML system came from an ML Scientist having a hypothesis about data that could become a new feature and then relentlessly pursuing setting up everything we needed to get that input. 
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I enjoy watching online machine learning courses every now and again, as a way to re-learn continuously. The last three I went through were [Full Stack Deep Learning](https://fullstackdeeplearning.com/), Luigi Patruno’s [Sagemaker Course](https://mlinproduction.teachable.com/p/build-deploy-and-monitor-ml-models-with-amazon-sagemaker), and a previous edition of the [fast.ai course](https://www.fast.ai/).
+
+Beyond that, I do continue to (sporadically) peer review submissions to academic conferences - most recently, I’ve been on the Senior Programme Committee for [ACM RecSys](https://recsys.acm.org/) - and so I’ll peruse papers from these conferences when the proceedings are published.
