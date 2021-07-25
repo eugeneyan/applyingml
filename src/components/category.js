@@ -6,38 +6,39 @@ const CategorySection = ({ category }) => {
   const Sections = category.sections.map((section) => {
     if (section.slug) {
       return (
-        <h3 style={{ fontSize: `1.1rem` }}>
+        <h3 style={{ fontSize: '1.1rem' }}>
           <li key={section.title}>
             <Link to={section.slug}>{section.title}</Link>
           </li>
         </h3>
       );
-    } else if (section.type === 'draft') {
+    }
+    if (section.type === 'draft') {
       return (
-        <h3 style={{ fontSize: `1.1rem` }}>
+        <h3 style={{ fontSize: '1.1rem' }}>
           <li key={section.title}>
             {section.title}{' '}
-            <Link to={section.draft} target={' _blank'}>
+            <Link to={section.draft} target=" _blank">
               DRAFT
             </Link>
           </li>
         </h3>
       );
-    } else {
-      return <li key={section.title}>{section.title}</li>;
     }
+    return <li key={section.title}>{section.title}</li>;
   });
 
   return (
     <div>
       <h2>{category.title}</h2>
       <div>{Sections}</div>
-      <br></br>
+      <br />
     </div>
   );
 };
 
 CategorySection.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   category: PropTypes.object.isRequired,
 };
 

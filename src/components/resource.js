@@ -11,7 +11,7 @@ const Resource = ({ post }) => (
 );
 
 Resource.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.string.isRequired,
 };
 
 export default Resource;

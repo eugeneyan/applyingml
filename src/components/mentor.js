@@ -13,7 +13,7 @@ const Mentor = ({ post }) => (
 );
 
 Mentor.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.string.isRequired,
 };
 
 export default Mentor;

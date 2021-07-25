@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { css } from '@emotion/react';
 import { useStaticQuery, Link, graphql } from 'gatsby';
@@ -41,7 +42,7 @@ const ExternalLink = (props) => {
 
 ExternalLink.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.any.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 const BlockQuote = (props) => (
@@ -57,7 +58,7 @@ const BlockQuote = (props) => (
 );
 
 BlockQuote.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 const Footer = (props) => (
@@ -78,7 +79,7 @@ const Footer = (props) => (
 );
 
 Footer.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 const Header3 = (props) => (
@@ -92,6 +93,10 @@ const Header3 = (props) => (
     {props.children}
   </h3>
 );
+
+Header3.propTypes = {
+  children: PropTypes.string.isRequired,
+};
 
 const components = {
   code: CodeBlock,
@@ -190,5 +195,5 @@ export default function Layout({ children }) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.string.isRequired,
 };

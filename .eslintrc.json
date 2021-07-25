@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -17,7 +17,6 @@
     "camelcase": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/no-unescaped-entities": 0,
-    "react/jsx-one-expression-per-line": 0,
-    "react/destructuring-assignment": { "ignoreClassFields": true }
+    "react/jsx-one-expression-per-line": 0
   }
 }

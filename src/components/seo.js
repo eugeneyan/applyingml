@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+// eslint-disable-next-line import/no-unresolved
 import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
 const SEO = ({ title, description, image, article }) => {
   const { pathname } = useLocation();
+  // eslint-disable-next-line no-use-before-define
   const { site } = useStaticQuery(query);
 
   const {

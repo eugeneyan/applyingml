@@ -11,7 +11,9 @@ const ResourcesPage = ({
     dataYaml: { categories },
   },
 }) => {
-  const Categories = categories.map((category) => <CategorySection category={category} />);
+  const Categories = categories.map((category) => (
+    <CategorySection key={category.id} category={category} />
+  ));
   const seo = {
     title: 'ML and non-ML Guides and Teardowns',
     description:

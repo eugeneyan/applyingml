@@ -8,9 +8,11 @@ import Mentor from '../components/mentor';
 import Resource from '../components/resource';
 
 const Home = ({ data }) => {
-  const Mentors = data.mentors.edges.map((edge) => <Mentor slug={edge.node.id} post={edge.node} />);
+  const Mentors = data.mentors.edges.map((edge) => (
+    <Mentor key={edge.node.id} slug={edge.node.id} post={edge.node} />
+  ));
   const Resources = data.resources.edges.map((edge) => (
-    <Resource slug={edge.node.id} post={edge.node} />
+    <Resource key={edge.node.id} slug={edge.node.id} post={edge.node} />
   ));
   const seo = {
     title: 'ApplyingML - Papers, Guides, and Interviews with ML practitioners',

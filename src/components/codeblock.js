@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
@@ -13,7 +14,7 @@ const CodeBlock = ({ children, className, live, render }) => {
       <div style={{ marginTop: '40px', backgroundColor: 'black' }}>
         <LiveProvider
           code={children.trim()}
-          transformCode={(code) => '/** @jsx mdx */' + code}
+          transformCode={(code) => `/** @jsx mdx */${code}`}
           scope={{ mdx }}
         >
           <LivePreview />
@@ -36,9 +37,9 @@ const CodeBlock = ({ children, className, live, render }) => {
 
   return (
     <Highlight {...defaultProps} code={children.trim()} language={language} theme={theme}>
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      {({ langName, style, tokens, getLineProps, getTokenProps }) => (
         <pre
-          className={className}
+          className={langName}
           style={{
             ...style,
             padding: '20px',
@@ -46,10 +47,10 @@ const CodeBlock = ({ children, className, live, render }) => {
             borderRadius: '3px',
           }}
         >
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
+          {tokens.map((line) => (
+            <div key={line.id} {...getLineProps({ line })}>
+              {line.map((token) => (
+                <span key={token.id} {...getTokenProps({ token })} />
               ))}
             </div>
           ))}
@@ -62,8 +63,8 @@ const CodeBlock = ({ children, className, live, render }) => {
 CodeBlock.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
-  live: PropTypes.string,
-  render: PropTypes.string,
+  live: PropTypes.string.isRequired,
+  render: PropTypes.string.isRequired,
 };
 
 export default CodeBlock;

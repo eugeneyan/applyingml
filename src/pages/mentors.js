@@ -11,7 +11,9 @@ const MentorsPage = ({
     allMdx: { edges },
   },
 }) => {
-  const Mentors = edges.map((edge) => <Mentor slug={edge.node.id} post={edge.node} />);
+  const Mentors = edges.map((edge) => (
+    <Mentor key={edge.node.id} slug={edge.node.id} post={edge.node} />
+  ));
   const seo = {
     title: 'Interviews with Machine Learning Practitioners',
     description: 'Stories, advice, and practical know-how from machine learning practitioners.',

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Button from './button.js';
 import './subscribe.styles.css';
+import Button from './button';
 
 const SubscriptionForm = () => {
   const [status, setStatus] = useState(null);
   const [email, setEmail] = useState('');
 
-  //FORM_URL should be the same as the form action url pointed out above
+  // FORM_URL should be the same as the form action url pointed out above
   const FORM_URL = `https://app.convertkit.com/forms/2417784/subscriptions`;
 
   const handleSubmit = async (e) => {
@@ -54,7 +54,7 @@ const SubscriptionForm = () => {
           className="sub_input"
           type="email"
           aria-label="Your email"
-          //The name attribute should be the same as on you selected form.
+          // The name attribute should be the same as on you selected form.
           name="email_address"
           placeholder=" Your email address ..."
           onChange={handleInputChange}
