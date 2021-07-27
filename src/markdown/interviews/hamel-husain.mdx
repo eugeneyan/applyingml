@@ -1,0 +1,146 @@
+---
+name: "Hamel Husain"
+role: "Staff ML Engineer @ GitHub"
+description: ""
+date: "2021-07-26"
+slug: "/mentors/hamel-husain/"
+type: "mentor"
+---
+Learn more about Hamel on his [site](https://hamel.dev/), [Twitter](https://twitter.com/HamelHusain), and [LinkedIn](https://www.linkedin.com/in/hamelhusain/).
+
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m a staff ML Engineer at GitHub and core contributor at fastai. I’m generally interested in improving developer tools and infrastructure for data scientists. You can find more about my recent projects at [https://hamel.dev](https://hamel.dev)
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I pretty much started in machine learning right after college in 2003 building credit risk models at a bank. The word machine learning wasn’t so much in the lexicon back then, I believe we were just called “statisticians”.  
+
+From there, I did a long stint in management consulting where I focused on data across many different industries. This experience skewed slightly towards the “softer” parts of data science, such as framing problems, managing stakeholders, focusing on business impact, and communication skills.  
+
+I had a brief moment somewhere along the way where I got burned out on data and decided to explore something different. I enrolled in law school in the summer of 2008 and graduated in the winter of 2010, by that time I had worked on a variety of different things including large corporate law firms to legal aid for low-income families. I ended up deciding that law wasn’t for me, and realized that I was an engineer all along, and I was just burned out. What I did take away from that interlude was very polished writing skills. Law is all about writing where clarity of expression is paramount. I believe this skill helped me along my journey towards being an effective ML practitioner. 
+
+After another stint in management consulting I sought opportunities to become more technical, and work with the most skilled ML people I could find. Around 2014 I found a startup out of Boston called DataRobot. DataRobot employed 4-5 Kaggle grandmasters at the time (including former #1 ranked individuals), as well as many other luminaries in the field, who maintained popular open source libraries such as scikit-learn and R’s caret package. 
+
+My goal was to sit next to them and soak up everything they knew about machine learning. This was a fantastic experience, as I was able to rapidly learn and ask questions from ML and engineering experts. I was also exposed to hundreds of diverse machine learning problems through the process of working with DataRobot customers. This combination allowed me to understand how ML experts would solve many different problems, but also how to build infrastructure and production systems around it all. Little did I know this set me up very well for a head start in machine learning infrastructure and tooling. 
+
+Despite all the things I learned at DataRobot, I wanted to experience working in silicon valley with its gilded status in tech. In 2016 I joined one of the fastest growing startups in the industry–Airbnb, as a Data Scientist. When I arrived at Airbnb, I expected data science to be very advanced relative to all of the other companies I had seen before. At that time, Airbnb had very mature data analytics and data engineering, but was severely lagging with respect to ML. 
+
+My first job at Airbnb was to audit a model used for growth marketing, and I found that the model was badly overfit to the data, suffered from data-leakage, but also that the method of putting the model in production entailed a rube-goldberg machine of copy and pasting weights learned by a linear model into a SQL query run in Airflow. 
+
+I was extremely surprised that a celebrated bay-area tech company suffered from these issues. This experience made me learn to always consider the gap between perception and reality, and to appreciate the nascent stage of ML in the industry. After shaking off the initial disillusionment, I decided to try to help Airbnb create better ML tools and created blueprints that were a precursor to Airbnb’s [BigHead](https://youtu.be/UvcnoOrgyhE). 
+
+In 2017, I decided to get closer to my love of developer tools and decided to join GitHub. I took interest in the large parallel corpora of code and natural language, especially the code and associated documentation.
+
+I explored several possibilities such as [semantic code search](https://github.blog/2018-09-18-towards-natural-language-semantic-code-search/), which was explored more generally via [CodeSearchNet](https://github.com/github/CodeSearchNet). Around this time, GitHub released GitHub Actions for native CI/CD on GitHub. I took this opportunity to see what things I could glue together for the data science community. 
+
+The hypothesis was that since a large portion of data scientists are already using GitHub, if we are able to create integrations with popular ML tools, this will go a long way to promote best practices everywhere. Over the period of about a year, we created a number of integrations for popular tools such as [nbdev](https://github.com/fastai/nbdev), [Jupyter](https://github.com/jupyterhub/repo2docker-action), [Argo](https://github.com/marketplace/actions/submit-argo-workflows-from-github), [Great Expectations](https://github.com/marketplace/actions/great-expectations-data) and [Weights & Biases](https://github.com/marketplace/actions/get-runs-from-weights-biases). We also created brand new tools such as [fastpages](https://github.com/fastai/fastpages) in the process. I eventually ended up setting up most of the CI/CD for all [fastai](https://github.com/fastai/fastai) projects, and created lots of useful examples of how ML projects can use CI/CD as part of their ML Workflow. 
+
+It was around this time that GitHub agreed to sponsor me full-time to work on fastai with Jeremy Howard. I was fortunate to be able to work with him 1:1 as it shaped the way I think about software engineering and problem solving in general. Jeremy’s contrarian approach highlighted the value in questioning complexity, avoiding cargo-culting, and thinking about the end-user first.  
+
+Jeremy was maniacally focused on developer productivity to the point of deeply hacking the python program language via [fastcore](https://github.com/fastai/fastcore), and creating his very own development environment via [nbdev](https://github.com/fastai/nbdev). I got very involved in the development of both of these projects. 
+
+The initial skepticism wore off quickly when I found that I was at least two orders of magnitude more productive with these tools. This experience exposed the best kept secret in developer tools: we have so much potential to make the tools better, even at the basic level of programming languages and IDEs, and most people don’t realize this because they have accepted the status quo. This experience profoundly shapes how I think about tooling for data scientists. To date, only a very small cohort of people have experienced tools like nbdev, but I hope that more people can experience this in the future. 
+
+I continue to be very interested in improving developer tools for data scientists, and will likely pursue this line of work in the future.
+
+### *How do you spend your time day-to-day?*
+
+I try to figure out how to avoid as many meetings as possible. Not that meetings are a de facto bad thing, but on average, they can be a waste of time—a lot of meetings can be emails, or async communication. 
+
+Also, I think it’s important to learn something new everyday. It can be learning new techniques, or a new framework, or how to approach a specific problem. I try to bake that into whatever I’m doing. 
+
+If you just greedily approach every task, you might do everything faster, but at the end of the day, you don’t learn much, and you might stagnate. If you find a way to grow with every task you do, you’ll likely be  happier. If you can always learn something, you can control your own happiness because that is something that stays with you and helps you grow.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+I spend a bunch of time convincing people not to use ML, yet. I make sure the problem is solved first in a simple way without ML, so that the collective team can build the muscles necessary to look at metrics and refine objectives they care about. 
+
+Nowadays, many people want to have ML included in projects for the sake of vanity even if the objective of the ML system is not clearly defined. I think the most important thing a ML professional can do is to make sure there is a measurable objective that ML can affect that the company actually cares about. If the objective is not measurable, or the company really doesn’t care about it, then the project is unlikely to succeed.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+I think it is important to be a user as much as possible, but also talk to users. Instrumentation is also key to help you know where your ML systems are failing, so you can ask users more targeted questions about why things aren’t working.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+I think it's important to do it without ML first. Solve the problem manually, or with heuristics. This way, it will force you to become intimately familiar with the problem and the data, which is the most important first step. Furthermore, arriving at a non-ML baseline is important in keeping yourself honest.
+
+I usually start by putting everything, other than the ML-related or components, in place. This includes instrumentation, experiment tracking, model registries, etc. Then, I try to use simple techniques. And when I introduce ML, I can then measure the improvements. 
+
+Then, it’s diagnosing how it can be improved, by analysing the data and the metrics. But in order to do this, you need to start with the instrumentation and a simple baseline model. I think 95-99% of projects don’t start with the proper instrumentation, and that makes it hard to diagnose and improve the model.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+I scale by writing. Writing takes a lot of work, but it makes information very digestible. Giving talks takes considerably less work for the author, but puts more burden on the audience on distilling information. I’ve been most satisfied by well-written pieces because I know the audience will get a fantastic return on investment on time spent. However, I also give talks when I’m trying to get the message out there and don’t have much time to write things down carefully.
+
+I don’t believe in the full-stack DS—I think it’s probably some gatekeeping, or some poorly understood aspect of what a DS is. You would never tell one person to do everything in engineering (backend, frontend, design, devops). 
+
+There’s another fallacy, that can be a bit controversial, which is that you can only be a really good ML person if you’re first a good software engineer. I think that’s not realistic based on the constraints that most people are working with. 
+
+Applying ML is very much a team sport, and you need data engineers, devops, infra, design, UX, etc. Essentially, the same people you need for building a new product. I try to scale myself through working with these people, but resources are scarce all around. 
+
+The other component of scaling myself is by contributing to open-source. This also helps people by reducing the pain with better tooling. Nonetheless, some of it still remains as a people problem, and a misunderstanding of how expensive ML is. You can’t just hire a DS or two, and inject ML into your product. 
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I’ve generally seen de-centralized embedded teams work better than centralized ones, but this is a confirmation bias as larger, more mature companies tend to decentralize after they reach a certain point.
+
+Sometimes, with the centralized DS team, there are forces that they’re susceptible to. For example, being in the ivory tower. They might also have difficulty trying to sell their work. Often, that’s a symptom of a disease where you want some ML, just for the sake of it—not always, but sometimes. 
+
+If you don’t embed, and just say you want to hire a bunch of ML people, by definition, you’re focusing on the capability and not focusing on the problem. This tends to exacerbate that dynamic.
+
+When it’s embedded ML doesn’t have to be the center of conversation. We’re just building the product, and we hire an ML person, because that’s what we need. 
+
+In GitHub, we have both—embedded and centralized. The embedded folks are not even part of the DS team. They’re just part of the spam detection team, or the abuse team, and that works really well. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+We don’t have a great system to be honest. We have been transitioning to Azure, so we are using AzureML which contains some tools for helping with this. Prior to Azure, we were using Weights & Biases to help track experiments which helps a bunch with iteration speed. 
+
+In the ideal world, there would be data versioning, code versioning, experiment tracking, CI/CD, dependency tracking, reproducibility, etc. You want to be able to automate reproducibility.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+There are no tools I would de facto introduce. I think it's very context dependent and the field is pretty nascent in this respect, I think.
+
+I used to have a lot of checklists. But then I realized that there’s one thing that everyone struggles with, which is to _keep it simple_. So that’s what I have now. 
+
+Start simple, and everytime you have to increase the sophistication, you have to explain why—a lot of problems get solved when you do this. The way you explain why is via rigorous model evaluation. 
+
+If you’re introducing a new model via a pull request (PR), you should be able to compare in the PR what the difference is, based on the experiment tracking system. This is fully transparent, with all the logs and statistics and everything. They have to prove it in a systematic way that’s transparent. 
+
+The other processes that I have tend to be around testing and documentation. Documentation and reproducibility really go hand-in-hand. A lot of the problems show up in the documentation—If you have to do 10 steps to run this project, then you know something is wrong. Ideally, it should be one or two steps—simplicity should be baked into that. 
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+I try to attach ML projects to internal company metrics. However, I feel that the greatest impact I made in my career is a bit more subjective and related to educating other data scientists.
+
+I get a good feeling helping with fast.ai, or building some open-source tooling, or writing a blog post. I think it’s high impact based on my values. It’s also impactful in helping other people learn. It reduces people suffering in that they don’t have to navigate all that confusion with ML.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+I am currently building systems that do this in a more standardized way at GitHub, but it is not complete yet. Unfortunately, today it is done on a very case-by-case basis differently per project.
+
+I think instrumentation is really important. That’s where the line between ML and engineering becomes blurry. It’s important to have instrumentation that captures how people interact with your product. And it’s with these metrics that you’re able to monitor performance.
+
+Beyond that, you have to have an experiment tracking system, a serving infrastructure that allows you to conduct experiments. 
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+I've encountered many projects where the objective of the ML system was not clear at the outset, which meant I could turn off the ML without anyone noticing. 
+
+I often find that ML is often not the right solution because the organizational maturity and disposition is not mature enough to derive value from ML. I think that most ML projects could be filtered out in this stage, even before thinking about the specific problem to be solved. I don’t think people talk about this enough, but it is important to identify and be aware of this throughout your career.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+Tenacity, spending some time thinking about their own productivity by adopting or learning tooling really well. Also a growth mindset and ability to continuously learn is important.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+Biggest lesson is to keep learning every day. Also seek different perspectives and try to put yourself outside your comfort zone as much as possible.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I just go with the flow on what looks interesting to me at the time. I keep a short list of things I want to learn and keep revisiting that. I also cross things off the list if they no longer interest me. I try to combine this as much as possible with what I’m working on.
