@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import PropTypes from 'prop-types';
 
@@ -38,6 +38,17 @@ export default function BlogPost({ data }) {
           <h2 style={{ fontSize: '2em' }}>{post.frontmatter.title}</h2>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
+        <p
+          style={{
+            fontFamily: 'raleway, sans-serif',
+            fontSize: '1.1em',
+            textAlign: 'center',
+          }}
+        >
+          <i>
+            Read more <Link to="/resources">guides?</Link>
+          </i>
+        </p>
       </Layout>
     );
   }
@@ -57,6 +68,17 @@ export default function BlogPost({ data }) {
           </h2>
           <MDXRenderer>{post.body}</MDXRenderer>
         </div>
+        <p
+          style={{
+            fontFamily: 'raleway, sans-serif',
+            fontSize: '1.1em',
+            textAlign: 'center',
+          }}
+        >
+          <i>
+            Read more <Link to="/mentors">mentor interviews?</Link>
+          </i>
+        </p>
       </Layout>
     );
   }
