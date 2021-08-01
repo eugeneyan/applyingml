@@ -36,3 +36,5 @@ categories:
         slug: /resources/feature-stores/
       - title: Data Discovery Platforms
         slug: /resources/data-discovery/
+      - title: Bootstrapping Data Labels
+        slug: /resources/data-labeling/
