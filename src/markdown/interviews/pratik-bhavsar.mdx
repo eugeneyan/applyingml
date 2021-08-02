@@ -89,7 +89,12 @@ At times I post my doubts on [Maxpool](http://maxpool.club).
 
 Currently, all of our pipelines are on AWS Lambda. This fits our needs and does not require any scaling effort. However, we understand its limitations and plan to move some of our batch predictions to either Sagemaker or AWS Batch.
 
-We interact with backend engineers to fix up the contract and configuration but MLE does the full ML deployment. You can learn to deploy ML on serverless over [here](https://github.com/bhavsarpratik/serverless-transformers-on-aws-lambda).
+We interact with backend engineers to fix up the contract and configuration but MLE does the full ML deployment. MLE are also expected to do system and load tests if needed.
+
+Every time we deploy a new feature we post it out on slack #product channel and get it tested. 
+
+Previously I worked on a large team with backend, DevOps, testing engineer, manager, scrum master and PM. Over there the isolation of work was higher and my work ended at writing the server code.
+
 
 ### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
 
@@ -103,7 +108,7 @@ We have very stringent timelines which force us to think about simple ideas and 
 
 ### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
 
-I am quite surprised by the power of AWS Lambda! Couple it with event-driven architecture using AWS EventBridge and bamm.
+I am quite surprised by the power of AWS Lambda! Couple it with event-driven architecture using AWS EventBridge and bamm. You can learn to deploy serverless ML using Lambda over [here](https://github.com/bhavsarpratik/serverless-transformers-on-aws-lambda).
 
 I love GitHub actions! It is simple to work with and can execute many common scenarios for CI/CD. 
 
