@@ -89,11 +89,11 @@ At times I post my doubts on [Maxpool](http://maxpool.club).
 
 Currently, all of our pipelines are on AWS Lambda. This fits our needs and does not require any scaling effort. However, we understand its limitations and plan to move some of our batch predictions to either Sagemaker or AWS Batch.
 
-We interact with backend engineers to fix up the contract and configuration but MLE does the full ML deployment. MLE are also expected to do system and load tests if needed.
+We interact with backend engineers to fix up the contract(request/response), expected behaviour and configuration but MLE does the full ML deployment. MLE are also expected to do system and load tests if needed.
 
-Every time we deploy a new feature we post it out on slack #product channel and get it tested. 
+Every time we deploy a new feature we post it out on slack **#product** channel and get it tested. 
 
-Previously I worked on a large team with backend, DevOps, testing engineer, manager, scrum master and PM. Over there the isolation of work was higher and my work ended at writing the server code.
+Previously I worked on a large team with backend, DevOps, testing engineer, manager, scrum master and PM. Over there the isolation of work was higher and my scope ended at writing the server code.
 
 
 ### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
@@ -116,7 +116,7 @@ I enjoy wandb for experiment tracking and its slack integration. I strongly sugg
 
 Hydra & pyyaml can help a lot in configuration management.
 
-GrafanaGraphana is quite helpful for monitoring and alerts.
+Grafana is quite helpful for monitoring and alerts.
 
 ### *How do you quantify the impact of your work? What was the greatest impact you made?*
 
