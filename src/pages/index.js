@@ -64,8 +64,7 @@ const Home = ({ data }) => {
       <br />
       <hr />
       <h2 style={{ fontFamily: 'Merriweather, serif', fontSize: '1rem' }}>
-        Or start reading some mentor interviews, or{' '}
-        <Link to="/mentors/">browse all interviews</Link>.
+        Or read some mentor interviews, or <Link to="/mentors/">browse all interviews</Link>.
       </h2>
       <div>{Mentors}</div>
       <p>
