@@ -1,11 +1,149 @@
 ---
 name: "Samantha Zeitlin"
-role: "Principle ML Engineer @ Elastic (Coming soon!)"
+role: "Principle Machine Learning Engineer @ Elastic"
 description: ""
-date: "2021-08-03"
+date: "2021-08-06"
 slug: "/mentors/samantha-zeitlin/"
 type: "mentor"
+homepage: true
 ---
 Learn more about Samantha on her [site](https://szeitlin.github.io/), [Twitter](https://twitter.com/SamanthaZeitlin/), and [LinkedIn](https://www.linkedin.com/in/sgzeitlin).
 
-Coming soon!
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I started at Elastic in May and joined a team, which had been acquired a couple of years ago as a security feature. They were previously called Endgame, and are well-respected in the security world. But they didn't have machine learning production capabilities. They had some models running that were very successful, but the production engineering processes for machine learning was something they needed to add.
+
+When I joined, they asked me to help with observability and data tracking, but when I started, one of our models was not performing as well as it used to. It’s not a huge drop in performance, but they were concerned about it, so I've been helping to figure out how we can refactor it so that it would have tests and observability, and then we want to automate it so that we can train more frequently and make the release process easier.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I was a biochemist by training and was in academia for a long time doing cancer research. Then, I couldn't get a job and an astute person said, hey maybe you should learn python, because I was already doing data science, but nobody was calling it that at the time. So a lot of population statistics, and thinking about how we identify anomalies, and other rare events. So really deep experience in data collection and experiment design, that translated over pretty well to test driven development. 
+
+I worked in startups, and at Yahoo in video advertising. I taught myself Python, and I learned a lot about Ops along the way. I just sort of migrated along this direction because it seems to be the place where people needed the most help. 
+
+I felt that there were a lot of really smart, younger people who are data scientists by training, who don't necessarily want to learn as much about coding in production, so I kind of ended up having to learn that just because the places I worked needed people to do that piece.
+
+> Sam did a podcast about her journey into data science [here](https://anchor.fm/misra-turp/episodes/4---A-senior-data-scientists-life-with-Samantha-Zeitlin-ecpha1).
+
+### *How do you spend your time day-to-day?*
+
+In my current role, I do some writing (documentation, making tickets, job descriptions), some writing and reviewing code, and some architectural design. Currently, we are mapping out a bunch of new systems, building consensus among stakeholders, discussing what all the interfaces need to be, choosing the tooling, and deciding who will do what parts.
+
+Analyzing the data is the easiest thing for me, and I maybe spend 10% of my time doing anything that is data science with actual data. The rest of it is about figuring out how to automate boring parts and how to make it reproducible.
+
+Lots of people who have learned some data science can write a model in a notebook on sample data. But it’s something else to set up a system that’s gonna run in production all the time, where it’s constantly seeing new and different data, and you expect it to be able to run on its own, hands off. So for that there has to be a lot of work around making sure the design is set up to handle edge cases. If we have a real error, what do we do about it? What kinds of things can we ignore vs. this means we have to retrain? All that kind of stuff.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+A big part of that has to do with, do you need a human being and their expertise? And if you do, are there steps that the person is taking that could be encoded somehow, or is there always gonna be a step where you need a human in the loop to validate the output of the model and improve the model?
+
+I’ve worked in both of those situations, where literally all the model did was automate something a person did before, or some basic piece of logic like, everything that's above or below a certain threshold we are gonna handle this way. And then the other question of, do we need an expert to eyeball and determine if something makes sense, and as much as possible try to translate that into code.
+
+Sometimes, the business may not know what their objectives are, and you have to tease it out. I think a lot of that has to do with product leadership. Sometimes, Product is not interested in data and machine learning, and you have to talk to engineers and people in Support. Often people in Support know exactly what the problems are, because they are working directly with customers. And also, if you are on the data team and you are looking at business data, you are gonna notice things and you are gonna have hypotheses about what a new feature could be, or potential customer problems.
+
+But mostly I would try to push Product, like as a user I would go to use the product and say ok, this feature doesn't work the way I want, is this something we could do? And if it's something we can leverage data for, could we go ahead and take ownership of that?
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+At some places, especially in smaller startups, you have a lot of opportunities to find out what isn't working for your users. At larger companies that is less likely to be the case, then you are gonna rely on Support or Product or somebody in Sales to help give you feedback on what's working well and what's not.
+
+Dogfooding is huge, and I think that's the best way to find out if you're working on the right things or handling them the right way.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+The first thing I do is try to learn about what is the business problem that we are trying to solve, and do we have the correct data to begin to address that, and do we have an intuition about what we think the model should do for us. 
+
+There’s kind of two kinds of ML that I run into: one is the kind where you are basically automating your own intuition and you know what you think the model should do, and then the other is where we are not exactly sure this is something a human can really intuit. So then you have to approach those differently depending on whether you can go in with preconceptions that are useful, or if you are better off having no preconceptions.
+
+Most of us start with notebooks, and I would say let’s come up with what we think is a representative sample of data, and have a discussion about what types of models make sense. Then, you can try a few of them and see if you do some upfront data analysis and you make a good case about whether we want to go down this path or another path, the type of model you want to use, and assume that we can do it with existing tooling that we have, either offline or somewhere in AWS or GCCP wherever. 
+
+And then once we have something that is potentially workable, we will put it into the production system, and then the question is does your company already have one of those? Most of the places I worked did not, or we had the kind of system where we threw the code over the wall, to another team, and they rewrote everything in C or whatever. So then the question is what's the right tooling to scale it up? And do we know how often it needs to be retrained, those kinds of questions about data throughput, and frequency.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+As much as possible, I try to hire people that can handle as much of the work as possible, and if they are not ready, then we try to train them up. But I collaborate a lot with dev ops people, infrastructure, and data engineers. Those are usually the primary teams that help the most. 
+
+But as far as scaling myself, I would say I try to delegate as much as possible. I think I'm pretty good at bigger picture stuff, so just trying to coordinate and plan timelines, and priorities, so we know the order of things that have to happen. 
+
+I always need a lot of help from devops because I'm not really a devops person. I had to learn K8s and security procedures, and I’m not great at Bash, Docker, Terraform, and how to configure them the way the company wants it to be configured so that it's secure and does everything we need. 
+
+For infra and DE, a lot has to do with tooling and throughput. If we need large amount of data, and we need them up to a certain standard, there’s often some division of labour, and some discussions: Should things go in S3, how should it be structured in S3 so that everyone who needs to use that data can use it without having to duplicate a bunch of it just in order to restructure it? Or databases, if we have a large data warehouse, which is separate from whatever the main business runs on. 
+
+My approach has always been to try to know just enough to ask the right questions, and hopefully look at other people’s code, and augment it to do what I need. For example, I don't necessarily want to be an expert in Terraform, and I'm not sure that's the best use of my time.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+Where I am right now, we don't (laughs). So that’s one of the things I am working on. But for the last couple of companies I've worked at, I set up Pachyderm so that we could iterate in docker containers and deploy K8s with versioning built in. 
+
+I found that was a great way to work because it meant that we could test and deploy in the same system. It’s very modular, and it's very easy to compare different model versions,  or even just individual steps in pipelines. 
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+So I'm big on Pachyderm, I'm big on notebooks, Docker, all kinds of cloud services—pipeline things like Airflow or Dataflow or Spark. I use managed services as much as possible, but I've also done EMR where I have to configure everything myself, that was fine too. But anything that makes it easy to deploy and scale as needed, and configure so that as the data comes in it gets processed, you don't necessarily have to do a lot of second guessing about things like what happened, how often does this need to run, how long is it gonna take, all that kind of back and forth, it’s gonna change depending on the day of week, the time, whenever it can auto scale.
+
+I’m the tech lead on my team, and we have daily slack standups and a weekly team meeting. I also expect people to write pretty descriptive issues and PRs, so it’s clear what we’re doing, why we’re doing it, why we’re choosing this approach. 
+
+I have some basic coding standards which I expect everyone to use even if they are not data engineers or engineers by training, like tests and logging at a bare minimum. I recommend using Black for coding standards. Coverage is also useful to check. I’m not one of those people who say things like “Oh you do not have 90% coverage, you fail”. I don't think that is useful. But I think just to at least have the warnings or some kind of notifications are a useful reminder. 
+
+We also have a [checklist](https://gist.github.com/szeitlin/bb46f7e9b9a283f64465b2878589da2b) for code review. It’s basically like what you would want someone to help you with, if you want a second set of eyeballs, and tell you “Hey you missed this thing, you might want to check this other thing”. I find it especially useful for people who are more junior who aren't really sure what to look for.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+At each company, it's been different. The first startup I worked at, I thought it was really validating to hear that they were still using my code a year or two later. It was a model predicting how much money people would save if they switched to solar, from regular gas and electric.
+
+At Yahoo, we were able to demonstrate that we saved the company a ton of money by throwing away ad requests that were not valuable, so we were able to measure revenue impact in that case.
+
+Since I've been leading teams, I look at impact as more like, I’ve been able to help people get into their first DS job, and see their careers grow, and as they’ve gained a lot of confidence, they’ve gone on to get better jobs and more money. I feel like that is the biggest multiplier.
+
+I feel the most successful when the people on my team are able to help each other, and when I’m able to hire people with complementary skill sets so that they can learn from each other.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+Logging and dashboards are big. Some places you can dogfood. For example, my last job was at an observability company. Elastic also has observability products so we can use our own monitoring. You have to look for things like drift and edge cases. I think when I first started I had to update things a lot more because I didn’t know what to look for. When I was preparing the data, I was also figuring out how to monitor stuff. I’ve run into incidents such as schema migrations that happened upstream, but were not announced, and all my stuff broke.
+
+Most of the stuff I've done, we knew when we needed to retrain the model, because something had changed. Or, it was set up in a way that was constantly retraining, and so we didn't have to intervene necessarily. For stuff I did more recently, it was anomaly detection, and it was unsupervised and constantly building trees.
+
+We know we need to retrain either by finding out from a customer that something didn’t behave as they expected, or finding out from Product when they want a new feature and they want to incorporate it. Or you just have your monitoring alert you when something looks funny, and you go and figure out why it looks funny. I think those are the main cases I've run into.
+
+You might not be able to always fix it before a customer complains. In some cases, it’s just an edge case. Like the first start-up I was talking about, solar finance, it turns out the way energy billing works is really complicated and there were just a lot of edge cases we weren't aware of, with time zones, and seasons, and units. Once you expand out to new geography—for example we started only supporting California and then we expanded to Texas—there were all kinds of new edge cases that nobody foresaw.
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+Oh that’s an interesting one, there’ve been so many. One of my favourite ones was an interview question. I did not get the job, but they had asked me something like “What do these customers have in common?”, and they gave me this big dataset. 
+
+I think they thought I would build a model, and instead I just made a chart and figured out they were all in the same zip code—that was the only thing they had in common. And I was like “this was not an interesting question” (laughs). I think the best examples are those where you can just make a chart, and it tells you everything you need to know.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+A lot of it is the same things I look for in a good scientist. Some complicated mix of being curious, being practical, being just the right amount of skeptical, being hardworking without getting burnt out. Also, being open to feedback and able to talk to stakeholders, being collaborative. 
+
+I think the most useful form of curiosity is people who just want to learn new things, and who are able to constrain that to “what do I need to know” to apply to this immediate problem. So, not going to get sidetracked going down some rabbit hole, but they are able to say “Ok I’m gonna focus on this one research project and be very curious about this thing that I need to be an expert in”.
+
+For communication, I think there are a couple of different things. There are two sides. You have to be a good listener, but you also have to be able to phrase very specific, targeted questions, in a way that will get you a useful answer. 
+
+And you have to be able to explain technical things in enough detail so stakeholders can understand the decision and trade-offs without getting overwhelmed by jargon. Some people seem like they are good communicators but when you examine what they said, you realise everything is way more complicated than it should be, and they omitted critical details. I think that the skill of figuring out the right amount of detail is very hard to quantify, but the best people know how to do it very well. 
+
+### *You mentioned that a lot of data scientists don’t want to get into the nitty gritty of engineering. Why do you think that is?*
+
+I feel like there's a lot of different factors. I know when I initially thought about software engineering, I was very intimidated because my initial experience with coding was pretty negative and sexist. So that was a little bit of a hurdle for me. But I also think there's people who kind of think it’s boring, or it’s beneath them, or it would distract them from the time they would spend becoming expert in other things.
+
+I think most DS should learn to code, because it’s fun and it gives you so many more options. I think you can get a certain type of job, where all you do is prototype in notebooks, and hand it off to someone. And for some people that's all they want to do, they don't want to learn about how to write tests, they don't want to learn about AWS, etc. They’d rather rely on someone else to handle that for them. 
+
+Honestly, I think a lot of people are intimidated. Often times they are coming from an academic culture where they’re terrified of looking stupid, so they don’t like to ask what they think are dumb questions. And a lot of tooling is a pain in the neck, and you have to have a lot of patience to figure out.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+I feel like a lot of hands-on data engineering practices are extremely relevant for machine learning. I think it’s useful to understand when and how to use batch processing, understanding when it makes sense for something to be asynchronous or not, and understanding how and when to apply statistical analysis. 
+
+One of my favourite examples, when I was in Yahoo, we found a bug that hit <10% of all ad requests. And we mentioned it to the engineers who were handling that part of a code, but they said “Oh we can just run it on the command line on one example, and it looked fine, so there’s no bug”. And we said, that's the point, you won't see it if you only run one sample. They had a unit test mentality about the code, they didn’t understand that things are different at scale, that you always have to think about edge cases in the data. 
+
+Also, I think you have to be really meticulous about keeping track of things if you’re doing everything manually. It’s the same kind of problem you have in lab. I see people run a model, and then they run it again, and then they say “Oh I think i’ve got the right one now”, and then they get confused about which filename was the one that performed better. 
+
+Everything that works well for engineering is important, and also understanding that machine learning is a special case of software engineering. Software engineering teams might not understand why you need to do certain things the way you need to do them, so there’s also a component of having to educate other teams about what we do and why we do it this way.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+Lots of things, I’m in Women Who Code and Women in Big Data. I go to as many free online conferences as I can fit in my schedule. Scale By the Bay is one I went to a few times. 
+
+I also talk to friends in similar roles. Mostly in Slack groups. I’m always asking “Could this be easier or better?” about the stuff I'm doing day to day, and I will ask other people how they solve this problem. I have a few Slack groups I just check at lunch time, like Rands Leadership slack, MLOps Slack, Women In Tech. Those are the main ones I look at. It’s too much obviously, and there are times when I have more bandwidth to look at those. I try not to be the person who only shows up in the channel when I have a question that I want someone else to answer, but sometimes that’s just how it is (laughs).
