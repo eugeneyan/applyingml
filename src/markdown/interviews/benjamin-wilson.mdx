@@ -1,0 +1,118 @@
+---
+name: "Benjamin Wilson"
+role: "Principal Resident Solutions Architect @ Databricks"
+description: ""
+date: "2021-08-24"
+slug: "/mentors/benjamin-wilson/"
+type: "mentor"
+---
+Learn more about Ben on his [LinkedIn](https://www.linkedin.com/in/benjamin-wilson-arch) and [Podcast](https://devchat.tv/podcasts/adventures-in-machine-learning/). He also wrote a book about [ML in Action](https://www.manning.com/books/machine-learning-engineering-in-action).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I currently work as a Principal Resident Solutions Architect at Databricks. In this role I help customers solve problems in the spaces of ETL, ELT, Analytics, General Data Science use cases, and Machine Learning. In addition to helping customers with their project needs, I spend quite a bit of time mentoring people in our field practice on ML, consulting, and large scale data architecture.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+The primary motivation for me has always been boredom and laziness. I got started in ML because I was incredibly tired of manually analyzing data in order to make the same sorts of decisions every day. In a previous life I was a Process Engineer, developing tooling recipes in factories. This sort of job comes with a great deal of repetition within the scope of analyzing vast quantities of data that is collected from the processing tools. After analyzing that data, conclusions are drawn, and the next adjustments to the process are made in order to optimize the yield (how many good parts are coming out as a function of total parts submitted to the process). Because this is such an annoyingly repetitive and prescriptive process, I became incredibly bored with what my days were turning out to be filled with. I had the opportunity to learn from a partnership program that our company had with the SAS Institute, taking every single one of their instructor-led classes that were on offer. After learning the fundamentals, I started to apply them to progressively more projects (generally failing and getting in over my head in my ambitions over time). 
+
+After a few years and a few companies later, I ended up getting hired as a company’s first Data Scientist. Working on projects with several years of experience in both analytics and ML under my belt, I ended up having greater success in project work. I’d learned to keep things as simple and maintainable as possible in my development work, but also to focus on project work from a collaborative perspective. Working closely with subject matter experts to ensure that I was delivering exactly what they were expecting and looking for (applying Agile fundamentals to my project work helped here) through continuous iteration and improvement made these projects much more successful. After a year or so of building increasingly impactful and large-scale ML solutions on Apache Spark, I figured I’d try my hand at applying to Databricks. I’ve been in the field ever since, learning a great deal from interacting with so many companies at various stages of their ML journey. I’ve been able to apply the hard lessons that I’ve learned, as well as issues that I’ve seen other companies struggle with to give insight into how we can solve their problems together.
+
+About a year ago I got asked to write a book on MLOps. I spent nearly a year researching, writing, and crafting Machine Learning Engineering in Action by Manning. The process of writing has certainly focused my thoughts on how I think about ML projects, as well as getting some great interactions with some wonderfully skilled and thoughtful people in industry. 
+
+### *How do you spend your time day-to-day?*
+
+I spend roughly 30% of my time mentoring and working with my colleagues who have less experience with ML projects on issues they are solving for customers. Another 30% of my day is spent directly speaking with our larger Enterprise customers who are looking for guidance on MLOps architecture, modeling solutions, and Spark development guidance in general. The remainder of my time is split between writing, creating reference examples of solutions, and assisting with pre-sales activities with our field team.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+As an advisor to DS groups, I rarely interact directly with the business unit that is asking for the solution. However, I frequently coach those teams to have direct and inclusive conversations with not only their internal customer (“the business”), but also the subject matter experts for the data and problem area in general. 
+
+I always recommend that teams maintain a steady and constant level of communication with their customers. This can be realized through setting up an established meeting cadence (i.e., during a project, meet with the business unit for 30 minutes immediately preceding sprint planning) for status reports. These reports should focus on a demonstration of the current state of the project’s build and layperson-friendly visualizations of the status. Feedback during these meetings should be encouraged, listened to, and used to adapt the next sprint’s tasks and features. 
+
+As to alignment of a project to a business objective, the two most important things to think about with respect to DS project work are: “how is the business going to gauge the success of this?” and “what is the consumption pattern for the output of the DS solution?”. If the metrics that the business are most concerned about are measured, proven (within a reasonable statistical significance through AB testing or a corollary), and are presented as evidence of success in a form that the business can understand clearly, then the direction of development and testing will be clearly defined from day 1. Focusing the project’s goals on building a usage consumption pattern that meets the needs of the end-user will help to define the project’s key features as well. With both of these elements as critical must-haves for any DS project, the chances increase not only for a project making it to production, but, more importantly, staying there and getting used.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+The most important aspect to ensuring that your customers (whether they be internal or external to the walls of your company) are considered is simply by communicating. Involving them in the project will allow them to feel as though they’re part of the end solution, emotionally investing them in the success of it. The other major benefit of doing this is leveraging them for their ideas. A common failure that I see in DS teams is that they believe that they can tackle problems through only using data. I’ve never found that to be a particularly successful pattern of behavior, noticing instead that many weeks of effort can be saved by a short 30 minute conversation with the people who truly understand the problem. 
+
+This becomes a bit harder to do for external customers (obviously), but even in the business to consumer model of business there exists the ability to gain feedback through the use of focus groups. Never underestimate the sheer amount of frustrating rework that you can avoid with just a simple friendly chat with people who understand the nuances behind the collected data and those who are consuming the predictions.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+The same way that I solve problems that seem very familiar. I always choose an adapted Einstein method: “If I had an hour to solve a problem, I’d spend **55 minutes asking questions** about the problem and 5 minutes solving it.”. This, of course, scaled to the exploration and experimentation periods of the project. By talking with SMEs and the business about what should be built, what the details of the data are, and what the end-goal is helps to inform what needs to be verified during EDA, which in turn informs the bake-off of potential solutions during experimentation. 
+
+When researching potential solutions, I always start with the simplest solution possible to rule that out as a means of solving the business need. If I can solve a problem with SQL, that’s always my preferred method. I begin to add complexity during experimentation (hacking it out in a notebook) only when a more simpler solution just doesn’t solve the problem.
+
+The last thing that I try to do is blog hunt, white paper hunt, or follow the hype train with the “latest and greatest” new tech. I’ve been burned far too many times by unintentionally adding ridiculous complexity to projects this way, resulting in a regrettably complicated maintenance cycle (difficult to extend, hard to troubleshoot, and expensive to retrain).
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+At a bare minimum, there is always an SME involved. Aside from that, the project complexity dictates which teams at a company will get called on for some assistance. If the project requires an adaptation to the way that ETL is run, I involve the data engineering team very early in the project. If there are issues with the data that have been identified during EDA, having them involved keeps data cleanup code out of the ML code base (where it really doesn’t belong). 
+
+If I’m working on a problem that needs a real-time component, whichever teams are going to be consuming the REST API are involved very early on in the project. They need to know what the API contract is, certainly, but many times they will have some clever ideas on how to structure the response so that it most efficiently fits in with their systems. They’ll also be valuable in reviewing the recording of the feature vector and the predictions to a queue system for post-hoc analysis, retraining, and monitoring. 
+
+If it’s edge-deployed as part of a software application artifact, the team that owns that app should be very heavily involved in the architecture, interface, and design of the code base that I’m developing. I’ve built many of these solutions in my career and I still, every single time, solicit and listen to their advice when I start on a project of this type.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I’ve also seen some pretty clueless teams. I’ve interacted with world-class DS teams as well. The only thing that sets those two apart is experience. 
+
+I’ve seen teams that are wholly cross-functional havens of geniuses, embedding DE, Developers, DEVOPS, Statisticians, and ML Engineers that are completely unable to get a project to production. 
+
+I’ve seen a team of recent undergrads with no software development experience that are able to collaborate well with one another and “just figure it out” on their first attempt at creating production ML. 
+The team makeup in skills is not a consistent correlative factor from what I’ve seen interacting with hundreds of companies. The thing that sets a good team apart from a dumpster fire is in the team culture. If everyone works together, lets one another’s voice be heard, and are motivated to solve the problem in a collaborative manner, they’re usually going to figure it out. 
+
+However, a team of “lone wolf geniuses” who are trying to prove how smart they are and see their team as competition for career glory, regardless of their level of cumulative experience, is generally doomed. 
+
+I don’t think this is specific to DS work, though. It just becomes more apparent in the failure rate of projects in our field because to be successful in DS, you really can’t try to play the hero role. It’s a profession that absolutely requires communication, teamwork, and collaboration. The companies and teams that grok this are the ones that are shipping solutions to production. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+We have a platform that enables this; from the Databricks Machine Learning runtime environment to MLflow, we build the tools that allow DS teams to collaborate and build great solutions together. 
+
+From the perspective of how Databricks builds these systems, it’s akin to the previous question’s answer: get a bunch of really smart Engineers, who all have a great mentality, collaborating on challenging problems and helping one another succeed. It's teamwork that matters.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+The one big thing that I rarely see teams do is time-box experimentation and proof of concept builds. It’s a concept that traditional software engineering figured out long ago (Agile) and it’s something that the big successful tech companies do with their DS projects. 
+
+Agile methodology for ML is the easiest way to prevent massive 11th-hour reworks of projects due to not solving the business’ problem, excessively complex and impossible to maintain solutions, and insanely expensive solutions that don’t make their budget back when pushed to production.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+At this point in my career, I only quantify my impact by the number of people who earn well-deserved recognition that I’ve mentored. The greatest impact that I make now is saving junior people from making all of the dumb mistakes that I’ve made in my career in DS. It’s remarkably fulfilling to see someone who, after less than a year of working with them and guiding them, is able to build solutions with ease that I would have struggled to build 5 years into my career. I absolutely adore letting everyone know how great that person is and how much they earned their recognition themselves (they put in the hard work, after all!).
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+How have I done this in the past? Painfully. It typically involves a lot of ETL, monitoring jobs that are doing (the appropriate) statistical test between a control group and a test group for attribution determination. 
+
+After I get a good feel for the business impact (and communicate that to the business unit in terms that they can instantly understand) and roll out the solution fully to production, I’ve switched to windowed monitoring of predictions and features to determine stability. 
+
+Drift is incredibly hard to deal with if you’re not watching it, and setting up monitoring on the raw data, the engineered features, and the predictions is a great way to leverage statistical process control rules to ensure that a solution is still providing value. 
+
+For models that are producing a prediction that can be vetted against ‘reality’ in a post-hoc  manner, having the monitoring job compare past predictions to newly collected ground-truth results is a highly critical part of model sustainable operations as well.
+
+I generally default to passive retraining for ‘cheap’ models (something that might cost a few dollars a day to retrain, test against the same holdout validation as the current production model, and log the results of which model is currently in production). For more expensive models (DL, NLP, Matrix Factorization, Association Rules, etc.) I opt for active retraining based on the results of the drift monitoring job. If I detect a significant deviation in performance that is agreed upon by the business unit as critical to trigger a retraining event, I’ll do that on an as-needed asynchronous basis. 
+
+For online systems that have frequent triggers for active retraining, if the concept drift is so severe that I know that it will incur a hefty price to the business to have such a system built, I’ll discuss this with the stakeholders during the pre-POC phase. That gives them the opportunity to bail out of the project due to cost long before we’ve sunk the time, effort, and money into developing a solution. 
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+To be honest, I’ve lost track of the number of times this has happened in my career and when interacting with clients. The vast majority of the time it’s finding out that the performance difference between a simple heuristics-based SQL query (case statements) and a state-of-the-art reinforcement learning approach is so miniscule that it doesn’t make sense to continue with anything but the rules engine.
+
+This isn’t to say that I write SQL to solve all of my problems (although I test it out!), but the idea that a far too complicated solution gets built (or attempted to be built, wasting months of effort and time) when a simpler and more direct solution would have been nearly identically effective is one of the more common themes I see in industry. 
+
+I used to be _very guilty of this_ and have a litany of projects that I’ve done in the past that are almost seemingly intentionally obfuscated in their complexity. I use these failures as cautionary tales to teams that I work with now (or peers of mine who are defaulting to a path of complexity for their projects with customers) so that they can avoid that trap.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+The people that are “great” at ML, as opposed to those that are “good” or “sufficient” are those that pursue simplicity in their solution, communicate well with the business and their peers, and are humble about their knowledge. There is simply far too much to know and learn in this profession to “know it all” in even 10 lifetimes. Being able to work with people, learn from them, and include their thoughts and viewpoints in your work will only make solutions better.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+Communicate by listening, find people that push you to grow in your field (and share your knowledge with them), and avoid the hype. The vast majority of the things that I’ve learned about building ML projects that work were all learned by screwing things up and having to learn it the hard way. It’s one of the reasons why I wrote a book about this topic, actually, since it’s a book that I really wish I could have read about 12 years ago when I was getting started in this field.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I learn new ML techniques by talking through problems with peers. Finding like-minded individuals who are passionate about solving difficult and complex issues in the simplest way possible helps me to always be learning new things. I’d recommend finding a community (or make one at your company!) of people who are hungry to learn. I’ve found success in pairing up with software developers on projects, working with data engineers on clever ways that they manipulate data at scale, and bouncing ideas off of architects throughout my career to help broaden my skills and horizons. 
