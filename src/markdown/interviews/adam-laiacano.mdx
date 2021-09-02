@@ -1,9 +1,113 @@
 ---
 name: "Adam Laiacano"
-role: "Staff Engineer @ Spotify (Coming soon!)"
+role: "Staff Engineer (ML Platform) @ Spotify"
 description: ""
 date: "2021-09-01"
 slug: "/mentors/adam-laiacano/"
 type: "mentor"
 ---
 Learn more about Adam on his [Twitter](https://twitter.com/adamlaiacano/).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I work at Spotify as a staff engineer on our ML platform team, which exists inside the larger data infrastructure organisation. I've been here for almost five years. 
+
+Before working on the infrastructure team, I worked on a handful of personalised products such as “Discover weekly”, which is a flagship playlist of recommended songs, and Spotify’s personalized Home page.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I studied electrical engineering in college. Actually, I started as a physics major and what I liked about physics  was the more applied parts, which I learned from working with electrical engineers at my [Co-Op job](https://careers.northeastern.edu/cooperative-education/). Once I switched majors to electrical engineering, the classes that I liked the most were Stochastic Processes, Control Systems, and Digital Signal Processing. As it turns out, these are the parts of electrical engineering that have the most to do with building models of signals and systems.
+
+A few years into my career I went back to grad school where I took an Econometrics course. I loved the [parallels between economics and electrical engineering](https://www.johndcook.com/blog/2017/10/20/time-series-analysis-vs-dsp-terminology-ma-arma-fir-iir/), but here the things being modeled are human scale rather than machine scale. I found it really interesting and applied to a job as a full-time research assistant at Columbia Business School, in what is sometimes called a “pre-doc” program. This was late 2009, and Data Science was [becoming a thing](http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram). The data/tech Meetup scene in NYC was growing like crazy and I met many wonderful people that way. Everyone was coming at data science and machine learning from a different place (economics, political science, psychology, statistics, physics, etc) and there were no “Data Science” programs yet. I loved the community and the fact that everyone was taking the principles of their discipline and seeing how they work in an emerging field of study application.
+
+I also took (free) night classes in things like Data Mining, NLP, and stochastic processes at Columbia, and worked on the “80% of data science” that is collecting/mugging data for professors during the day. These things and a bit of luck ended up landing me my first “tech” job at Tumblr in 2011. I got to work on so many projects there from Data Engineering to Business Intelligence and what we’d now call Analytics Engineering, to my first real applied ML work for detecting trending topics within the network as well as the interminable project that is spam detection.
+
+### *How do you spend your time day-to-day?*
+
+I work on the ML platform team, which is made up of five squads. The team I'm on is called ML-UX and we work on overall developer experience for machine learning engineers at Spotify. Part of that is building things for tracking experiments and gluing together all of the various parts of our platform, including model training, deployment, and AB testing.
+
+The thing that I love about what I do is the user research. We talk to engineers who are building things. We ask them what their goals are, and what their problems are, and what is the hardest thing they need to do. Sometimes, we see that what we're focusing on as a platform isn't the thing that's most important to most of our users. And so we're able to kind of pivot and shift priorities a little. 
+
+I also read a lot of teams’ code and think, “How hard would it be for them to adopt a new feature of our platform, given their project structure?” We can recommend how teams structure their training pipelines, or how they think about their experiments, or how they add features to their model. If we can make little changes and tweaks to how teams work, so it's a little more cohesive, it allows us as a platform to be much more effective. 
+
+So what I do as a staff engineer is mostly read RFCs, read teams’ code, and talk to people. And then, of course, help build the platform tools. Though I probably work more with product managers and engineering managers than I do with other ICs.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+You need to know what it means to be successful, especially if you want to add machine learning to personalise or optimise a particular part of our overall product. What is the goal? Do you want more people to register? Do you want the people who do register to stay on your platform longer or you buy more things? 
+
+With machine learning, the task might be to build a classifier with the best AUC. But that’s not the goal. The goal is to do something for your business, hopefully it's at least correlated with making money.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+If you're lucky, you’re working on something that you can dogfood. One thing that I love doing is seeing other people's personalized products. The type of content on my Netflix home page looks similar to my HBO, which looks similar to my Hulu, and then when you see somebody else's, it's like, “Oh, these are vastly different for different people!” And I love it. 
+
+At Spotify, we do a lot of user research with our listeners and observe how they use the app. Engineers on the team are invited to watch the videos of those sessions and it's very eye opening to see that not everyone uses the app the same way. So one way to connect with users is to just watch them use our apps.
+
+We also have personas, such as power users, casual users, users that only listen to one thing ever, etc. And we work with our in-house music curation teams to build listening histories of these different personas, and then build tools to run this persona through our recommendation model, and examine how it looks and do qualitative analysis. So another way is to simulate those people. 
+
+When I worked at Tumblr, we had a Meme Librarian (a real title!). She was wonderful and just knows everything about the trends and communities. Our Search and Discovery team would talk with her about results of our trend detection algorithm and other things, to make sure our results are useful.
+
+As ML engineers, it’s important to know a lot about the domain that you are working in - whether it’s social media, music, or finance. But I don’t think it’s possible to know a domain as deeply as these specialists, so working together is hugely valuable.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+First, try to solve it without machine learning. Everybody gives this advice, because it’s good. You can write some if/else rules or heuristics that make some simple decisions and take actions as an output.
+
+Then, think about how you measure success. Success isn't necessarily AUC, or NDCG, or whatever. Success is, “This product is better now than it was before.” And it doesn’t necessarily need machine learning—ML metrics should be kept aside from this. It's all about “How did we make this product better.”
+
+It’s also important to think about the potential lifetime of a project and how much long term maintenance is required.
+
+For some machine learning models, you can build them once and they’re pretty much finished. Maybe you build an image classifier that predicts if there’s a cat in a photo or not. The predictions are not going to change much as it sees new photos (unless cats start looking [very different](https://twitter.com/Jiminy_Kirket/status/1351237450312646659)). As the state of the art for cat recognition progresses, you might be able to make it better than it currently is, but the model will be pretty stable.
+
+On the other end of the spectrum, there is fraud or spam detection. Here, you're fighting against people who are actively trying to get around your defenses. Your model is going to get worse the day you deploy it because the behavior that you’re modeling will immediately change. These models require a dedicated team for analyzing results and regularly tweaking the model.
+
+Finally, if you're doing a supervised learning project, start collecting data immediately. Think hard about what you are trying to optimize (your prediction target) and make sure you are able to log or calculate it. The sooner you have this data, the sooner you can start building models.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+At Spotify, we have this concept of T-shaped-ness for engineers, where you're very good at one particular domain and less deep on others. I think learning enough about what is around you in order to unblock yourself is very important. For machine learning, most of the work is iterating on machine learning models, adding new features, coming up with ideas, etc. That work is generally writing data pipelines, whether they're spark jobs, or Redshift or BigQuery queries.
+
+If you are just starting out, working with data engineers to learn some of these skills is a great way to learn and become more self-sufficient. Eventually I’ve found that I am comfortable with the things that I may want to learn and the things that I don’t, and I try to collaborate with the people who are experts in the things I’d rather not take on myself. For a lot of machine learning folks, this may be getting help from engineers who work on backend/services, or web front-ends.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I think having full-stack product teams is really valuable. This helps enable some of the suggestions I made in previous questions - ML is closer to the user’s needs, collaboration with other engineers, etc.
+
+Also, I think having a manager or product manager who is knowledgeable about machine learning is also really important. If the [First Rule of ML](https://developers.google.com/machine-learning/guides/rules-of-ml#rule_1_don%E2%80%99t_be_afraid_to_launch_a_product_without_machine_learning) is “Don’t be afraid to launch a product without ML,” then the First Rule of building ML teams should be “Don’t be afraid to build a team without ML Engineers.” I’ve been on a team with very talented ML Engineers but there was so little actual modeling to do that the entire team got frustrated and ultimately fell apart. Having leadership who knows how to and when to integrate machine learning into an existing product can alleviate some of this frustration.
+
+The flip side is to give a team with a green-field ML-based project a lot of time to get started. Giving such a team delivery-focused OKRs is a recipe for frustration.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+I’ll give two examples here. One is for the actual ML engineers and one is more organization/infrastructure related.
+
+When we talk about iteration on an ML model, we’re almost always talking about feature exploration/engineering. Moving from a linear model to an xgboost model or a DNN is a large and rare change. Most of the iterative work is changing the training data that goes into the model, in the way of appending new feature columns. This is one of the problems that [Feature Stores help alleviate](https://www.ethanrosenthal.com/2021/02/03/feature-stores-self-service/).
+
+The other thing that is common in the industry is the idea of [“shipping” or “scheduling”  notebooks](https://netflixtechblog.com/notebook-innovation-591ee3221233). That is, allowing data scientists and ML engineers to experiment with new modeling ideas in a Jupyter notebook, and then provide tooling to take that code and schedule it to run regularly in a production environment. At Spotify, we’ve taken the opposite approach and made it safe and easy to experiment with “production” code. Depending on the environment in which your pipeline is executed, your model will be tracked as an experiment or deployed to a scoring service. Either (hopefully not both) of these approaches will massively speed up iteration cycles. What is important is minimizing the friction between trying a new idea and delivering it to your users.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+I love having the ability to easily send features to a model and see what score it would produce. It’s especially useful in the multi-st For this, I’ve used Streamlit a lot. Say you have some ranking problem. And you have five different candidates and different models that would rank them differently. You should be able to input the user and the item and view the rankings for the new model and current production model. This allows you to qualitatively compare them to get a sense of what's going on. 
+
+You can also look at quantitative measures such as [fairness indicators](https://ai.googleblog.com/2019/12/fairness-indicators-scalable.html). Do you only recommend artists from America? Do you only recommend male artists? Do female users get different results? It's important to understand these. We're getting to the point where we can use that information to make our models more fair. The flip-side of this is that it requires knowing this personal information about your users, which is both difficult to gather and requires care in how you store and access this information.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+I'll switch back to talking a little bit more from the infrastructure platform team angle. The metrics there are slightly different. It's not the number of widgets sold. 
+
+We've instrumented our machine learning platform to see what people are doing. Are they adding more features to their models? How quickly are they training models? How can we measure, across the board, the usage of our platform?
+
+It started with the number of models trained. And then it was the number of models trained and deployed. And now we're moving towards understanding how our ML engineers are working on things. So its quantitative measurements combined with qualitative user research.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+Machine learning is often born out of the data org. I think there's some good to that, where your monitoring is tied to your data infrastructure. Spotify has a very mature [Data Mesh](https://martinfowler.com/articles/data-mesh-principles.html)-style data infrastructure. It's very easy to [schedule a workflow](https://www.youtube.com/watch?v=rH46MLNZIPM) to retrain a model every day. We know if it breaks or doesn't complete successfully within an SLA, or if certain conditions aren’t met (such as evaluation metrics are lower than a pre-defined threshold). Teams can get alerted in any of these situations.
+
+When it comes to monitoring the results of a live model, we leave it to the individual teams to define their product performance and can keep track of A/B tests in our [Experimentation Platform](https://engineering.atspotify.com/2020/10/29/spotifys-new-experimentation-platform-part-1/).
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I do a lot of internal user research and talk to teams that build different ML applications. Just talking to them, and learning what is important to them is useful. I get to see what they care about, how they approach things, what types of models they're using, and then I can go and get the code. I do so much learning that way.
+
+There are also a lot of conferences, and with virtual conferences, it's easy to attend every week. I try to bias towards paying attention to talks where people say, this is what we did, or this is how we tried a thing, vs. people saying, this is how you should do a thing. It's really hard to know what everyone should do, but it's really interesting to see what people have done and what they learned.
