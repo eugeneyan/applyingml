@@ -162,13 +162,6 @@ export default function Layout({ children }) {
           `}
         >
           {children}
-          <Helmet>
-            <script
-              defer
-              src="https://static.cloudflareinsights.com/beacon.min.js"
-              data-cf-beacon='{"token": "caf1ae93682648a6b47a4dd49433de1b"}'
-            />
-          </Helmet>
         </div>
       </MDXProvider>
       <SubscriptionForm />
