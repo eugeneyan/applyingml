@@ -3,7 +3,6 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { useStaticQuery, Link, graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { rhythm } from '../utils/typography';
 
