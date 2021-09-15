@@ -1,9 +1,93 @@
 ---
 name: "Erik Bernhardsson"
-role: "Former CTO @ Better (coming soon!)"
+role: "Former CTO @ Better.com"
 description: ""
-date: "2021-09-21"
+date: "2021-09-14"
 slug: "/mentors/erik-bernhardsson/"
 type: "mentor"
 ---
-Coming soon!
+Learn more about Erik on his [blog](https://erikbern.com/) and [Twitter](https://twitter.com/bernhardsson).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m currently hacking on some startup ideas in the data space, which are sort of taking shape slowly. Up until quite recently, I was the CTO of Better.com for six years, taking the eng team from 1 person to 300, and doing all sort of “CTO stuff” – mostly recruiting, but also lots of technical stuff, occasionally writing code. Before Better, I was at Spotify for 6.5 years, initially running the (very nascent) data/BI team, then later managing the music recommendation team. I built the first version of the music rec system at Spotify (heart a lot of my code still powers it) but also did some other stuff, like open sourcing [Luigi](https://github.com/spotify/luigi), which was I think the first open source workflow scheduler to gain significant traction – although it sort of faded out in the last 5 years.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I studied Physics at KTH in Sweden but always considered myself as a software engineer who skewed towards math. I got interested in recommendation systems and started a site with another Physics friend where people could review books and get recommendations. I never took any classes in ML at school (because there weren’t any) and the whole field was much smaller than it is now, but I think my background knowing both programming and math was hugely helpful – I took a few classes in stats and really wish I would have studied more of it.
+
+I knew a bunch of the early engineers at Spotify (through programming competitions at my school) so I was able to convince them that I should write my master’s thesis working on recommender systems while working at Spotify. After graduating just a few months later, I started full-time at Spotify early 2009. It turned out Spotify had much more foundational problems around understanding data so I quickly shifted focus to data engineering and product analytics, but I kept hacking on the music recs as a skunkworks project for many years. In retrospect I should have built a lot more demos and gotten people excited about what I had, because I think the system was actually really good. It wasn’t until early 2012 that we started actually putting real resources on it and launched a bunch of serious features on top of it. At that time, I had moved to NYC, where I worked at Spotify until early 2015.
+
+### *How do you spend your time day-to-day?*
+
+I’m currently starting my own company. A lot of the work has been hacking on a prototype, but I’m also spending a lot of time talking to data practitioners to understand their pain point. More recently I’ve also started hiring more, which takes up a ton of time if you want to hire really good people.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+(Answering this question within the context of my previous companies, not the current): I honestly find that the best people to identify this is the data team itself. Probably my biggest career regret looking back has been times when I built prototypes of things but didn’t really educate the organization on the capabilities. In particular the Spotify music recommendation system could have been used in production 2-3 years earlier if I had spent 5% less time tweaking ML algorithms and used that time towards building internal demos/prototypes to get people excited about my work.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+My super dry business answer is I don’t know what empathy means until you quantify it, but that you spend a lot of time thinking about what metrics you’re trying to move. At Spotify the north star metric was typically Daily Active Users (DAU), and we ran several A/B tests that showed that major changes to the recommendation system could impact the top level DAU metric in a significant way.
+
+Something like DAU doesn’t work when you want faster feedback so we had a lot of different proxies for it.
+
+On a medium level, we sometimes used reviewer panels to identify problematic recommendations. We would generate a batch of recommendations, one from the old system, one from the new, and send it over to humans to rate the recommendations. We’d often look at the % of “WTF” recommendations as the most important thing.
+
+On a very granular level, we had various mechanisms to run local automated tests and get metrics. That enabled engineers to iterate on machine learning models much quicker.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+The skeptic in me would scream: if it’s unfamiliar, how do you even know that ML is the right solution? I would look at the problem with zero bias towards ML and I think that’s super important to do.
+
+But let’s say for whatever reason we are convinced that ML is needed. In that case I would try to understand what’s the objective and what data we have. In theory you have nice (X, y) pairs drawn from the same distribution and an obvious loss function. In practice I generally find that going from business objective to loss function can be incredibly hard and this is where most of the value can be derived.
+
+For instance let’s say the customer support team is overwhelmed. You might jump to the conclusion that you need better lead scoring and start hacking on something that uses logistic loss to predict conversions. But that might not be right?
+
+- Are you trying to avoid people publishing negative stuff online?  Then I would first try to establish a link such as a missed inbound call leading to a bad NPS score leading to a negative social media post. You might have very little data on the last two so it’s going to be more of a quantitative effort
+- Are you trying to improve revenue the most? Then I would look at the expected dollar amount and try to establish a causal relationship between customer support contact and the (counterfactual) incremental revenue
+- Maybe the customer support team should spend less time on the phone and more sending text messages? That seems like an interesting A/B test to run
+
+I don’t know, that’s just a weird example. But I find that going deep on these questions is sooooo valuable. In the end you may or may not end up with a ML problem. That’s fine either way! Once you actually have a ML problem then I find that it’s usually pretty straightforward. Generate features, try different models, etc.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+I’ve generally tried to build systems owning as much of it as possible – being autonomous means you can move very quickly without getting blocked. The downside is you need to know about so many different parts of the stack.
+
+It’s been more challenging for me when some other team owns a product and you have to coordinate with them how to build it. I really don’t have a good general answer to this other than that I think some sort of “embedding” tends to be better – basically that you have a data person “join” that team for a few months working with them.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+There’s a spectrum between centralization and decentralization where I’ve come to the conclusion that you need to centralize the org but decentralize the task management.
+
+What that means is – the data teams have a centralized reporting structure. This ensures you hire very good data people (no good data person wants to report to some business person) and you have a standard for what tools you use etc.
+
+But day to day, most of the members of the data team end up embedding into other teams to work with them. Those teams could be other tech teams building features, but it could also be something outside tech like finance or PR or something.
+
+I don’t think this model is perfect – one drawback is that managers may not work day to day with their reports. This is something those managers have to be very cognizant of and spend some extra effort making sure they know what their reports are doing.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+On a technical level through A/B testing and metrics.
+
+There’s also a process side of it. I’ve found that very heavy top-down planning creates an environment that’s not at all conducive to the type of experimental R&D work that ML needs to be. I like to tell teams what metrics are the most important. But I don’t think it makes sense to care about too much upfront project planning and deadlines and other stuff.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+My experience is a bit dated but I personally found it extremely important to make everything reproducible and automatable as early as possible. I’ve regretted doing it too late much more often than I’ve regretted doing it too early. The problem is a lot of tools create too much overhead and make it feel like a “chore” (which is roughly something I’m working on as my new startup). It’s important to get that tax down.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+I remember going to work in the morning when I worked at Spotify and seeing people on the subway using Spotify, sometimes interacting with features I helped build. It feels really gratifying to think about how millions of people hopefully discover new music through my algorithms every day.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+We tried to automate everything as early as possible at Spotify. I open sourced Luigi back in 2011 to help us do this. For monitoring we used a bunch of homegrown janky solutions that are probably much better now. I think in general that automation and monitoring of data is an area with lots of opportunities.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+My opinion is that it’s extremely valuable to become self-sufficient in terms of infrastructure and software engineering. Unfortunately those things are very big hard topics and I hope they get easier over time. But I think knowing those skills makes you so much more productive. I wish I had more skills to put together and deploy simple web apps in the early days at Spotify so I could have demoed the music recommendations. If you want to get into this, a good starting point is to get an AWS account and build some “toy” web app.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+Twitter feels like the best place to stay up to date on what’s going on in this extremely fast changing industry. I follow lots of people.
