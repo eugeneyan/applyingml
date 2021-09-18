@@ -32,6 +32,8 @@ categories:
         slug: /resources/search-query-matching/
       - title: Patterns for Personalization
         slug: /resources/personalization/
+      - title: Reinforcement Learning for RecSys
+        slug: /resources/rl-for-recsys/
       - title: Feature Stores
         slug: /resources/feature-stores/
       - title: Data Discovery Platforms
