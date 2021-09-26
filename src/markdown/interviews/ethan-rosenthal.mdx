@@ -1,11 +1,99 @@
 ---
 name: "Ethan Rosenthal"
-role: "Senior AI Engineer @ Square (Coming soon!)"
+role: "Senior Artificial Intelligence Engineer @ Square"
 description: ""
-date: "2021-09-01"
+date: "2021-09-25"
 slug: "/mentors/ethan-rosenthal/"
-type: "pending"
+type: "mentor"
 ---
-Learn more about Ethan on his [site](https://www.ethanrosenthal.com), [Twitter](https://twitter.com/eprosenthal), and [LinkedIn](https://www.linkedin.com/in/ethanrosenthal/).
+Learn more about Ethan on his [blog](https://ethanrosenthal.com/), [Twitter](https://twitter.com/eprosenthal), [LinkedIn](https://www.linkedin.com/in/ethanrosenthal/), and [GitHub](https://github.com/EthanRosenthal).
 
-Coming soon!
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m a Senior Artificial Intelligence Engineer which is a title that I only slightly cringe at anymore. I work for [Square](https://squareup.com/us/en) which is commonly known as a company that helps small businesses to take credit card payments. There are a bunch of other products and services beyond payment processing that Square offers to help businesses. One of these is [Square Messages](https://squareup.com/us/en/messages) which is a communication platform for texts and emails between Square businesses and their customers. 
+
+I work on the team that builds Messages, and I focus on adding various “smart” features to the product. One example of a smart feature is the [Square Assistant](https://squareup.com/us/en/appointments/scheduling-features/square-assistant) which is a chatbot that you can text with using natural language to reschedule or cancel an appointment that you have at a Square business. 
+
+Given the textual domain of this work, the modeling side of my work largely involves various forms of natural language processing (NLP). My team also manages the training and serving of NLP models, so I end up doing a fair amount of engineering work.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I first learned what machine learning was during my 5th year of physics graduate school in 2014. I had spent the prior couple years wallowing in the existential crisis of having no idea what I was going to do when I graduated. I had a lot of ideas. Some were half baked, such as my plan to build exhibits at children’s museums. Some were downright dirty, such as the dark period in which I considered management consulting. 
+
+In a fit of desperation, I started googling other professors in my field to see what their students had done. One student had become a data scientist, and they had gotten there by doing a fellowship with [Insight Data Science](https://insightfellows.com/). I didn’t know what data science was (and still don’t really have a great definition for it), but I got the gist somewhat after a bunch of internet research. Data science is a relatively natural fit for physicists—I had spent years learning and applying math to solve problems, and like most physicists I knew, I had picked up some programming along the way.
+
+My introduction to machine learning was via Andrew Ng’s infamous [Coursera Machine Learning course](https://www.coursera.org/learn/machine-learning). That course was taught in MATLAB which was actually convenient since I had spent my entire physics career programming in MATLAB. In addition to the course, I studied [The Elements of Statistical Learning](https://web.stanford.edu/~hastie/ElemStatLearn/) and did a bunch of [side projects](https://www.ethanrosenthal.com/2014/08/31/festival-chatter-part1/), teaching myself Python along the way. I then got accepted into Insight Data Science and got my first data science job through them at [Birchbox](https://www.birchbox.com/). For more information about my journey, I wrote a series of blog posts starting with [this one](https://www.ethanrosenthal.com/2015/09/23/start-to-insight/).
+
+### *How do you spend your time day-to-day?*
+
+I would segment my work time into meetings, non-coding, and coding. The meetings are a mixture of recurring team and individual meetings, project-based meetings, and ad hoc calls. As an individual contributor, my meeting time is thankfully not too onerous. 
+
+My non-coding work consists of basically a lot of Google Docs. I’m a big proponent of writing up a doc (or two) prior to starting a project. The writing process alone helps me to solidify my thoughts. Writing code takes so much time, and I’ve never regretted taking the extra time to define requirements and design the architecture before writing any code. I also find shared docs to be a great way to gather feedback in an asynchronous manner which is crucial for remote work. (Most of my team is on the west coast of the US, while I’m on the east coast in New York City).
+
+Part of my coding work is more research-y/experimental. We train various deep learning models for natural language applications, so this involves some paper reading, model building, and experimentation. The other part of my work involves making sure the models get used and reducing the headaches associated with production machine learning models. This work encompasses efficiently calculating real-time model predictions, automating retraining of models, and other sorts of MLOps-y type work to manage the lifecycle of machine learning models.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+Maintaining empathy can definitely be hard. If possible, you can shadow your end-users. When I worked at [Dia & Co](https://www.dia.com/), I built a recommendation system for an internal tool. I was able to sit with the users of the internal tool in order to better understand how they interacted with the recommendations. In other scenarios, you may not be able to be physically present with your end-users, but you can resort to creepier methods such as [Full Story](https://www.fullstory.com/) which effectively records users’ sessions on your website.
+
+Other approaches that I have seen work are to hold periodic deep dives into understanding cases where your model got something very wrong (e.g. the model misclassified a sample with high confidence). This is both helpful for understanding how the end-user was impacted as well as helpful for improving your model.
+
+A key requirement for everything above is to _require_ ML practitioners to engage in these activities on a periodic basis; otherwise, as I know from personal experience, these empathy-building activities will fall by the wayside.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+Agreed, productionizing ML is a huge effort! I’ve worked across the spectrum in terms of the scope of my involvement. There have been times where I built and deployed the entire system. There have been other times where all I needed to do was provide a YAML configuration file in order to produce a trained, serialized model, and then another team handled deployment and operation of that model.
+
+Collaborating with software engineers who do not necessarily come from an ML background has been extremely helpful. Many ML people are quite capable of coding up solutions to problems, but they may be unaware of software engineering best practices (this was definitely the case for me coming out of graduate school). I was lucky enough to work with engineers willing to review my spaghetti code. I learned an enormous amount, and we built more robust systems as a result. I’m now able to scale myself by “paying it forward” and reviewing others’ code. At the end of the day, this is basically just investing in the learning and development of one’s team.
+
+In addition to learning and mentorship, building out shared tools for common patterns is another great way to scale and collaborate. At Square, we have many different, somewhat isolated ML teams. We have a number of internal libraries that are worked on across teams for performing operations that are team-agnostic. Beyond that, as a company grows, you can have a dedicated ML Platform team for abstracting away some of the operation and infrastructure required for production ML.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I think it’s good to have a dedicated Data team, as opposed to individual data people sitting in each functional area. With that said, it does make sense for data people to specialize in functional areas when the company is large enough. One difficult thing about data work is that it’s often isolating. You frequently build analyses or models from scratch as opposed to working in a large, shared codebase with many other developers. A dedicated Data team can provide support and learning opportunities that you may not be getting through your day-to-day work. 
+
+If the Data team is large enough, it’s helpful to break out roles into something like Analysts, Machine Learning Engineers, and Data Engineers/Analytics Engineers. While one person can cover all three of these roles (and perhaps should very early on at a startup), those people are hard to find! Each of these roles requires different skill sets, and I’ve found this to be a natural way to segment the team.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+In order to enable rapid iteration, you want to decrease the time to:
+- Code up your experiment (e.g. new model, new features, etc…).
+- Run and evaluate your experiment offline (e.g. train a new model).
+- Deploy your experiment online.
+- Measure your online experiment.
+
+Working with some sort of a framework can make it quick to code up an experiment. For example, on my current team, we do not write our deep learning training loop from scratch each time and instead rely on a common training loop for all models. 
+
+For running and evaluating offline experiments, it helps to be able to quickly kick off lots of training runs with different configurations. As such, one wants a low barrier to training models in parallel. We use a third party vendor to manage and monitor model training in the cloud.
+
+For deploying online experiments, it’s again helpful if one has a framework for serving multiple models with A/B testing support. My current team uses a homegrown framework. Lastly, for measuring online experiments, we again measure these ourselves, though we’re considering some model monitoring services. 
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+In an ideal world, I would be able to tie a dollar value to every model that I deploy. There have been times when this was relatively straightforward. When I deployed the first recommendation system at a company I worked at, I was able to run a clean A/B test to directly tie the impact of the recommendation system to company revenue. The impact was large, so we built out a large Data team. 
+
+When I worked in fraud, one way to estimate the impact of a model is to allow a small percentage of payments to bypass the model, such that one gets an unbiased estimate of fraud that the model catches. Tying fraud to financial loss is then fairly straightforward.
+
+I have also done some operations research which often involves automating and optimizing manual processes. Sometimes, the process was intractable to perform manually, so the operations research model was fundamental to the success of the business. Other times, one can calculate the manual labor cost saved by the introduction of the model.
+
+For some of my work that is more MLOps-y / platform-y, it can be difficult to measure my impact. For my work on automatic retraining of models, I’ve simulated what _would have happened_ if we had retrained our models more frequently. That’s then used as justification for automating retraining.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+At many places that I’ve worked, we would write ad hoc SQL queries + some hacky python scripts to check model performance. Often, we would only do this after deploying a new model, and then we’d move on to something else. Occasionally, we’d automate the script and dump the results somewhere (database, S3, email, whatever). This is definitely not good practice, though. Ideally, model performance would be continuously calculated, and new models would be easily monitored.
+
+There’s an interesting relationship between automated retraining and automated model monitoring. If you’re not automating model retraining, then you don’t really need to automate monitoring. This is because you’re more likely to have a major issue with a new model that’s deployed than with a model that’s already in production. Sure, the data that is input into the model could get corrupted and hurt model performance. But, the more likely scenario is that something goes wrong during the training or deployment process.
+
+A related concept to the above is that if you _are_ automating retraining, then you should probably automate your monitoring. And, automating monitoring can often be more difficult than automating retraining. A corollary to all of this is that it ends up being easier to automate training of less important models. If nothing catastrophically bad will happen if your model goes bad, then it’s not as important to monitor the model’s performance. If you don’t have to monitor performance, then you have fewer requirements for automating retraining!
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+I once worked on a problem related to forecasting how many units of various products an ecommerce company would need to have in stock on a given day. As an ML practitioner, it’s easy to split up the world into classification and regression problems, so my initial inclination was to look to regression. However, for this problem it turned out that coding up a simple simulation relying on domain knowledge and some historical averages performed significantly better than any machine learning.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I like to learn by doing things. I often have lots of small [side projects](https://www.ethanrosenthal.com/2020/08/25/optimal-peanut-butter-and-banana-sandwiches/) that I’m working on, and these projects end up pushing me to learn new things in order to complete the project. 
+
+When I’m learning a brand new subject, such as Bayesian modeling, I often buy a textbook to get a solid foundation. For more research-y things, I’m thankful that my time spent in academia prepared me well for reading academic papers, although I much prefer a well-written blog post for learning a new topic. 
+
+For discovering what’s new in the ML world, [Twitter](https://twitter.com/) is my go to source, along with [Hacker News](https://news.ycombinator.com/) (for better or for worse).
