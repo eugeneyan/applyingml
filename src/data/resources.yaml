@@ -1,6 +1,8 @@
 categories:
   - title: ML Guides
     sections:
+      - title: The First Rule of Machine Learning
+        slug: /resources/first-rule-of-ml/
       - title: Be More End-to-End
         slug: /resources/end-to-end/
       - title: Writing Machine Learning Design Docs
