@@ -1,9 +1,113 @@
 ---
 name: "Nihit Desai"
-role: "Staff Engineer @ Facebook (coming soon!)"
+role: "Staff Engineer @ Facebook"
 description: ""
-date: "2021-09-28"
+date: "2021-09-26"
 slug: "/mentors/nihit-desai/"
 type: "mentor"
 ---
-Coming soon!
+Learn more about Nihit on his [Twitter](https://twitter.com/nihit_desai), and [LinkedIn](https://www.linkedin.com/in/nihitdesai/). Also follow his [biweekly newsletter](https://mlopsroundup.substack.com/) on real-world applications of machine learning. 
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+Hi! I’m Nihit. I am a Staff Engineer at Facebook, where I currently work on business integrity. 
+
+Along with a friend of mine, I also write a [biweekly newsletter](https://mlopsroundup.substack.com/) focused on challenges and opportunities associated with real-world applications of ML.  
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I studied Computer Science as an undergrad, and the first machine learning course I took was in my junior year (if I recall correctly!). During the following year, I worked on hierarchical topic extraction from text documents, as part of my senior thesis. This collection of experiences was my formal introduction to data science and machine learning.
+
+I understood the potential real world impact of these technologies only really after I started working. I spent a couple of years at LinkedIn, working on search quality, where I got to dabble in ML problems in search: query understanding, autocomplete, spelling correction and of course, ranking. 
+
+Following this, I went to grad school at Stanford, where I took a few courses focused on ML and deep learning applications in vision and language understanding. One of the more fun [projects](https://nihit.github.io/resources/kickstarter.pdf) I got to work on, was analyzing project pitches on Kickstarter, to predict project success or failure. In the following year, I was a TA for Andrew Ng’s Machine Learning course. Teaching was a new experience for me, and I think helped me understand the importance of communicating technical ideas well. 
+
+Since then I’ve been at Facebook, where I currently work on business integrity. My team works on detection of various classes of bad or harmful content in ads, in order to make sure we can take these ads down in a timely manner. 
+
+### *How do you spend your time day-to-day?*
+
+This varies quite a bit week to week, but it is usually some varying combination of the following:  
+
+- Direction & Planning: Identify the most important problems for the team to focus on, over the next 6-12 months. Help set team goals and roadmap aligned with these problems.
+- IC work: This is where I have a chance to get my hands dirty working on various parts of our machine learning pipeline. There’s good tooling support for streamlined model training and deployment at Facebook, which means I spend a lot more time on data collection, transformation and cleaning. Once this is done, the actual modeling & deployment is often the easier part of the problem. 
+- Technical communication & Mentoring: Writing and reviewing technical design docs, proposal docs for new initiatives; mentorship support for other engineers on the team.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+A framework that I’ve found helpful is the following:
+
+- Understand what a good product experience looks like, for the product you’re working on
+- Design a set of metrics that best proxies and quantifies this experience, and the ability to do controlled experiments to measure the impact of any change (including ML systems and models) on the product
+- Create a culture where online experimentation, and a set of well-defined launch criteria used for launch decision making is a fundamental part of the ML development cycle. 
+
+In my experience, I have found that a setup like what I described above, generally sets up ML teams for delivering success. It is important to keep refining each step in this framework though to make sure that ML, as fantastic a tool as it is, is pointed in a direction that actually improves product experience for users. 
+
+Qualitative evaluation and dogfooding is equally important too. Especially for ML applications like search and recommendations where personalization is an inherent part of the machine learning application, I’ve found it super useful to dogfood the product (or the model output)  to better understand what works well and what is broken.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+My first instinct would be to understand the problem (what is the goal, what are the constraints) and evaluate if Machine Learning is the right tool to build a solution. I feel this gets missed often - ML is a fantastic tool, if applied to the correct set of problems. 
+
+Assuming the answer to the first question is yes, the next step is usually to map the business/product problem to a machine learning problem. This means, (1) figuring out what your model optimizes for (the objective function) and (2) data collection to be able to train your model. In practice, each of these steps can be quite complex. For e.g. how should a high-level objective such as ‘autonomous driving’ be translated to a set of machine learning problems?
+
+The step after this is usually training and validation of models. If this is a new domain and I’m building the first or second version of a machine learning model, my approach is usually to start simple, and make sure the infrastructure for training, monitoring and collecting data over time is correctly set up. 
+
+Usually, the step after this would be some sort of online experimentation or validation. Ideally, a controlled A/B test but for new problem areas or urgent firefighting this might not always be practical. So this is somewhat problem dependent.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+This definitely rings true. Depending on the nature of the project, I’ll collaborate with some subset of the following:
+
+- Research partners ([FAIR](https://ai.facebook.com/research/), or one of the applied research groups) - for bringing new model architectures or detection techniques to production
+- Operations partners - for anything related to data collection, human review, label quality
+- Product partners - for understanding and providing inputs on overall product direction and priorities
+
+Scaling myself - I would say this has definitely been a learning process for me. I understand the importance of it, but honestly I don’t know if I’m good at it yet. One thing that’s helped me a lot is taking the time to understand my colleagues and collaborators. Knowing whose judgement to trust on what issues has helped me delegate a lot more effectively, but this is always a work in progress. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+Across the industry, I believe we are still in the early innings of ML adoption - while the general principles/good practices are well understood, the tools and workflows for scaling adoption of these practices are yet to mature.
+
+A few observations about machine learning ecosystem within Facebook that I think have:
+
+- Tools to interact with data, train & evaluate models offline
+- Tools for easily deploying & darkmoding models online
+- Experimentation & model launch criteria
+- Post-deployment monitoring
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+One thing I have found extremely helpful time and time again is exploratory/qualitative data analysis - what does my data look like? Which features are correlated? Are the labels reliable or do they need cleanup? My go-to is usually Jupyter notebooks with relevant integrations for fetching/visualizing the specific type of data.
+
+Another thing I’d like to highlight is creating reproducible training and deployment workflows - version everything. It will save a ton of debugging headaches down the line.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+We’ve learned to pay a lot more attention to post-deployment model management (including monitoring). We have two kinds of monitoring for production models today:
+
+- Model-specific metrics. Metrics like prediction volume, latency, feature coverage, distribution over prediction labels etc.  
+- End product/business metrics, attributed to models. Metrics like policy violation enforcement volume, false positive rate etc. 
+
+For the most important metrics we have alerts setup to notify on-call in case of unexpected movements. This setup, along with tools for exploratory data analysis to drill down and look at events is a helpful starting point to debug production issues. 
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+Most impactful ML engineers that I know understand that machine learning is, in most cases, only one part of the product. This means sometimes solving issues outside of your domain of expertise or comfort
+
+They are generalists and willing to adapt or learn new frameworks/tools/model architectures as needed. 
+
+There’s a lot of value in starting with a simple approach first, and focusing on the end to end data and label collection process. Over time, the quantity and quality of data you have is likely the single biggest limiting factor of your model performance.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+So many! In general, ML courses and books are a great resource for learning foundations. However, in my experience this is only a small fraction of what you need to be a good machine learning practitioner. Here’s a few things I have learned over the years that I wish someone told me on Day 1:
+
+- The goal ultimately is to solve a product/business problem. Machine learning is a tool to solve it, not the end goal. 
+- The harder part in applying machine learning is often more about data quality - are the labels clean; does your data have coverage; do you have a data acquisition strategy for recurring training etc. Modeling is often straightforward once you have the data.
+- Aggregate performance metrics, while important, are rarely the deciding factor in launching or quantifying end impact.  It is essential to pair this with qualitative assessments such as behavioral tests since different model failures carry different amounts of risk.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I wish I had a more deliberate process for this! I often learn about new ideas or developments (papers, tools, products, upcoming meetups etc) through the community of ML researchers and practitioners around me. Some examples that come to mind: [TWiML AI](https://twimlai.com/), [MLOps.Community](https://mlops.community/), curated list of resources such as [Awesome MLOps](https://github.com/visenger/awesome-mlops), internal groups and paper reading/tech talk events at Facebook.
+
+Then, for a few hours every week I’ll sit down and sort through these updates and dive deeper into ones I find interesting or useful. This could be reading a paper, listening to a podcast or trying out a new tool/product.
