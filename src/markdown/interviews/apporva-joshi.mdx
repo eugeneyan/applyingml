@@ -1,0 +1,87 @@
+---
+name: "Apoorva Joshi"
+role: "Senior Data Scientist @ Elastic"
+description: ""
+date: "2021-10-06"
+slug: "/mentors/apoorva-joshi/"
+type: "mentor"
+---
+Learn more about Apoorva on her [site](http://apoorvajoshi.me/) and [LinkedIn](https://www.linkedin.com/in/apoorvajoshi95/).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+Hello there! I'm Apoorva and I'm currently a Senior Data Scientist on the Protections Team at Elastic. To put it simply, my work deals with using Machine Learning to catch malware. It's an exciting time to be on this team as a Data Scientist as I get to pioneer efforts in bringing ML-based solutions to our [Security Product](https://www.elastic.co/siem/). 
+
+These solutions can be in the form of detection capabilities for different kinds of malware attacks (an example of this can be found on this blog I wrote a while ago), enrichments that improve the user experience, or ways for users to derive better insights from their data.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+Phew! My path to machine learning was quite unconventional, or so I thought, until I met people who end up in the field from the most unexpected backgrounds. I got my Bachelor's degree in Electrical Engineering and then proceeded to get a Master's in Computer Engineering. However, I never felt like that was my calling. And turns out...it wasn't. 
+
+I took a Machine Learning course in my second semester in Graduate School, and loved doing the assignments  for the course. For once, things felt intuitive. When I was later researching topics for my Master's thesis, I knew that this is something I wanted to explore further. I found a professor in the Business School that was working on some interesting stuff and spent the nine months that followed working on one of my favorite projects till date. 
+
+I think having a real project to work on while I was picking up new skills helped a lot. I truly believe that the best way to learn is by doing. Sure, coursework definitely helps to build the foundation and concepts, but being able to apply those concepts is really key. 
+
+### *How do you spend your time day-to-day?*
+
+How I spend my time day-to-day depends a lot on which phase of a project(s) I am in. At the beginning of a release cycle, I usually find my schedule to be a little meeting-heavy, since there's conversations to be had with Product Managers (PM) and engineering collaborators.
+
+Once the requirements of projects have been defined, I initially spend some time doing research on any new concepts I need to learn for the project, implementation details, writing design documents to get feedback from stakeholders etc. Once everyone is on the same page about the workflow, I spend several days prototyping and testing one or more implementations. During this phase, there's also sync meetings with everyone involved in the project to touch base on progress.
+
+Once I have an implementation I'm happy with, it's release time. During this phase, I find myself talking a lot to the UI/UX team and PMs if there are any UI changes involved and also doing some engineering work to package models and getting them ready to ship.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+Like I mentioned above, at the beginning of every release cycle, I sit down with Project Managers, because they are the ones who help me understand the WHY behind what I'm building and having that perspective is extremely important. I sometimes also talk to Solution Architects and other teams who interact with users closely, because I believe they are the ones who have the most insights into problems that our users face or features our users might be happy to see. 
+
+Once you have the problem statement, it becomes much easier to come up with solutions to the problem, which may or may not involve ML, which I think is an important consideration as well. You don't need to fit ML into a project because it's cool. Do it because it's necessary.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+When I'm faced with an unfamiliar problem, I first like to spend some time doing research on any specific terminology or concepts or any existing literature on the broader topic. This exercise makes me feel better prepared to ask the right questions to subject matter experts who I would talk to next. At least in my field of work, the unfamiliarity usually stems from lack of domain (i.e. Security) expertise. So the next thing I like to do is talk to domain experts, about the problem at hand.
+
+After familiarizing myself with the problem statement a bit, I think about what the best data to solve the problem might be, whether we have said data and where it is present. If we have the data, I then spend some time actually gathering it. 
+
+With the raw data in hand, it's time for some data analysis, which is honestly one of my favorite parts of the process, because you never know what you might find. When I have analyses I'm happy with, I send it to other data scientists on the team for feedback or any suggestions on additional analyses I may not have considered. During the analysis process, I not only look for trends in the data but also things like any missing values or redundancies in the data that might be important to address before I start training models.
+
+The next thing I would probably do is try to build a basic baseline model before starting work on more sophisticated prototypes. If there's a deadline attached to the delivery of the solution, I also would want to leave enough time for testing, scaling and packaging, in which case, I might go with a simpler model and think about iterating on it after an initial release.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+I consider myself more of a Data Scientist/Researcher as opposed to a Software/Data Engineer. Most large organizations have large data teams at this point, with dedicated teams for data engineering, data science and other aspects of the process. As a Data Scientist, the responsibilities usually revolve around building ML prototypes, in close collaboration with Data Engineers in particular, who typically assist with setting up the infrastructure for you to access data, scale and deploy models. If you are working with a customer facing product, collaboration with PMs and UI/UX teams can also be a major collaboration. 
+
+Having worked on a smaller team in my previous job, I inevitably had to pick up some data engineering skills (AWS, Docker etc.) which made me self-sufficient then and even now. While being resourceful and knowing the right people to collaborate with or delegate work to is important, it's good to be prepared for times when you might need to get stuff done in order to unblock yourself. 
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+ML teams cannot work in silos without Product Managers. Product is the connection between ML/Engineering and the end users/customers. Without this communication, ML teams cannot deliver solutions that are relevant to users. 
+
+That said, a PM who does not understand ML speak is not a very effective setup, because PMs need to be able to evaluate the effectiveness of the solution being delivered and without enough ML knowledge, they cannot do that.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+On the projects I'm currently working on, I don't have a good way of rapidly iterating, because it is uncharted territory (like I mentioned, it's the first time we're bringing ML solutions into the Security App!)  and there are no processes in place. 
+
+On my previous team, the entire infrastructure was set up on AWS. ML solutions usually ran in Docker containers residing in ECR, there was a dev/testing environment where we could test prototypes on fraction of real user traffic and evaluate whether or not things are working as expected. There was also extensive logging put into place to catch errors fast and iterate on them.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+I think the way you quantify impact depends on what the goal of your work is. For example, I'm currently working on delivering solutions to a user facing product, so the impact of my work is measured by telemetry on how many people have enabled these solutions in their product. 
+
+In my previous job working in Email Security, the goal of the ML models I was working on was pretty much always, to detect more bad things. So the impact of any new model added to the detection pipeline was measured by how many additional detections did the new feature result in. 
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+I have done it a few ways so far. In my previous job where the detection engine I was working on was hosted in AWS, I had an AWS Lambda job that would calculate metrics about the model in production and send me a daily email. That way I could immediately see when the performance was deteriorating. 
+
+At my current job, a combination of dashboards, Slack alerting and CI/CD jobs is how it's done. While the monitoring process is fairly automated, automating model training when it comes to security models is a little tricky, because the landscape changes so rapidly and all data is not relevant or good data.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+I think my biggest shock (?) after I graduated from school, onto my first job was the realization that the clean and pristine datasets I worked on in school, my thesis etc. were probably the result of someone before me spending hours cleaning them. Real-world datasets are far from clean and as an ML Engineer/Data Scientist, the majority of the time allocated to any project is spent in pre-processing the data and getting it into a state where you can actually work with it. 
+
+I've also realized that most sophisticated ML models don't make it to production because of size, latency and various other constraints. They are also not always required to solve the problem. Sure, it's great to explore and experiment, but sometimes, the best solution, considering everything  might just end up being a logistic regression model.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+Never underestimate the power of your network. I have personally learnt a lot from people within my network, at and outside work . If I see someone working on something interesting, I just go pick their brains about it. Conferences are a great way to learn from the community as well. Most major tech companies ([Netflix](https://netflixtechblog.com/tagged/machine-learning), [Google AI](https://ai.googleblog.com/), [Spotify](https://engineering.atspotify.com/) to name a few)  put out technical/engineering-focused blogs. There's always a ton of goodness in there. Hacker News is a good way to learn about current happenings in the industry.  And finally, if there's something I really want to learn, I go the old-fashioned way of picking up a textbook on the topic or taking an online course on Coursera, and then finding avenues at work to apply my learning. 
