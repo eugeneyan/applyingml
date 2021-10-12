@@ -1,0 +1,101 @@
+---
+name: "Jacopo Tagliabue"
+role: "Director of AI @ Coveo"
+description: ""
+date: "2021-10-11"
+slug: "/mentors/jacopo-tagliabue/"
+type: "mentor"
+---
+Learn more about Jacopo on his [linkedin](https://www.linkedin.com/in/jacopotagliabue/).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I’m [Jacopo, I’m Director of AI at Coveo](https://www.linkedin.com/in/jacopotagliabue/). In my team, we combine product thinking and research-like curiosity to build better ML systems, with particular attention to eCommerce use cases ([product search](https://aclanthology.org/2021.naacl-industry.20/), [recommender systems](https://aclanthology.org/2021.ecnlp-1.1/), [personalization](https://dl.acm.org/doi/abs/10.1145/3366424.3386198), [intent prediction](https://rdcu.be/b8oqN) etc.).
+
+We are huge fans of open science and open source, and divide our time equally between [research](https://research.coveo.com/), product and evangelization (mostly through [code](https://github.com/jacopotagliabue/you-dont-need-a-bigger-boat) and [datasets](https://github.com/coveooss/SIGIR-ecom-data-challenge)).
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I have a life-long interest in (formal and natural) languages, and grew up as an [old-fashioned generalist](https://www.santafe.edu/engage/learn/alumni/jacopo-tagliabue); I never took programming courses, and that explains why I still (kind of) suck even now! 
+
+In some sense, I have been doing “data science” before it was cool, or even a phrase; in other sense, I feel the field is changing so rapidly that my tooling and best practices keep changing as well. 
+
+Obviously, a huge boost in experience and confidence came from my entrepreneurial past, as founder and CTO of a NLP company in San Francisco, [Tooso](https://www.coveo.com/en/company/news-releases/2019/coveo-acquires-tooso), which was acquired by Coveo in 2019.
+
+### *How do you spend your time day-to-day?*
+
+Going from founder to manager in a much bigger company involved a significant shift in my day-to-day. I write less code now, and it is mostly for prototyping, pedagogical or research reasons: my job has shifted from “building out all sorts of stuff” to “asking which problems are worth solving”, and then mentoring teammates in actually solving them. 
+
+Finally, a significant part of my day is spent building our network of collaborations and strengthening the company’s position in the AI space. We actively evaluate ML tools of all types (tracking, monitoring, computing, etc.), and evangelize the community about our findings.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+We are a B2B API company, so our product _is_, in some sense, ML models: we “know” that a problem is suited for ML because of our domain knowledge and product-market fit. That means that a lot of problems that traditionally plague “ML projects” in other industries - like data collection - are less of a burden for us, as we designed the system to be working end-to-end: no data, no product.
+
+Outside of product-driven projects, I like to paraphrase the great [Steven Levitt](https://en.wikipedia.org/wiki/Steven_Levitt): ~~economics~~ ML has excellent tools for gaining answers but a shortage of interesting questions. Good ML questions often rely on the ability to collect, find or generate unexpected data, more than small algorithmic tweaks: with my friend [Giovanni](https://giovannicassani.github.io/), we have been lately working on quantifying decision biases in online election systems and we will (hopefully) publish our results soon. 
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+As a B2B company, we have two types of “users”: our client - say, a mid-to-large eCommerce -, which uses our APIs to train models and then provide _its_ clients - i.e. the shopper - a better experience (better search ranking, personalized recommendations etc.). Hopefully the shopper is happier thanks to our models, and buys more from our client, which in turn is happy to invest even more in our solution, and so on. 
+
+That said, we come from years in the industry, having built true end-to-end systems in the space: back in Tooso days, it was not uncommon for me to be in a sale call, an investor meeting, a product retrospective and a coding session _in the same day_. Together with the ability to collaborate with PMs and less technical people, I truly believe that a startup experience makes for much better employees. 
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+Well first things first: is it really a problem that requires ML? While ML as a field has improved massively in the last ten years, there are still many use cases for which ML is either a bad choice, or practically impossible (e.g. a model could be built, if only we had access to secret dataset _XYZ_). 
+
+If the problem requires ML, I do some Googling and literature research to find what others have tried before: in many cases, the solution is either out there, or at least, half there (and you can use existing methods as baselines). 
+
+I think an important concept, in general, is “knowing when to stop”: as we [argued at length](https://dl.acm.org/doi/10.1145/3460231.3474604), most ML practitioners outside of Big Tech deal with problems at “reasonable scale”; in other words, the marginal gain of increasing model sophistication is often soon surpassed by the additional training / maintenance cost.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+The team’s philosophy is the [MLOPs with no Ops](https://towardsdatascience.com/tagged/mlops-without-much-ops) approach: we are obsessive about data quality and standardization, and we put a lot of work upfront to make sure new hires and collaborators can easily access data, train models, and share their results. 
+
+We maintain almost no infrastructure, and we require ML engineers to own the entire process, from data aggregation/filtering/preparation to [testing and documentation](https://towardsdatascience.com/dag-card-is-the-new-model-card-70754847a111). The job of people like me (and my counterpart in data engineering) is not _doing X or Y_, but making sure our team can do X or Y safely and autonomously.
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I never worked at FAANG-scale, so my perspective is always at “reasonable scale”.
+
+Teams that work are small (a casual observer would say “understaffed”), focused and own the work 100%: we subscribe to the “end-to-end data scientist” view, and encourage younger teammates to get curious about the use case, not just the tech.
+
+On the other side, a common anti-pattern is hiring dozens of data scientists without first figuring out data, tooling and a roadmap: now you have a swarm  of expensive employees doing notebooks that go nowhere and spending time moving data around. To all the people building up teams out there: hire very few key people first, picking experienced scientists that _did it all _before; once they figure out data and tooling, _then_ hire ICs: you will find out that you need way fewer people if everybody is productive.
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+As our friend [Ville says](https://www.youtube.com/watch?v=JCbOI_1ZA5E), “production-ready is a continuum”: this is one the wisest things out there regarding ML systems. 
+
+We use Metaflow for both research and production pipeline, SaaS products for experiment tracking, and PaaS offering for quick serving: building a working prototype is much better than slides, and in today’s cloud offerings there are plenty of one-liners to set up an endpoint from a model artifact produced with Metaflow. 
+
+All our data is organized in Snowflake, and ready to use with pre-made tables abstracting away the complexity of the ingestion process.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+ML for us starts always with data: as the Data-Centric AI folks rightfully highlight, data collection, cleaning, aggregation is a part of the ML system, as it conditions its behavior as much as (or more than) models. On the data side, we have been enthusiastic adopters of Snowflake, which retired Redshift, Athena and EMR Clusters and finally provided the PaaS experience everybody was waiting for. On top of that, we currently like DBT and Great Expectations for transformation and QA.
+
+On the more proper ML part, we moved to Metaflow last year and thoroughly love the framework: its design philosophy is very much aligned with our view of ML. We use Metaflow both for research pipelines and product work.
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+In a narrow sense, we have target KPIs to monitor: internal, such as average click rank, and external, such as average order value for eCommerce sales. To have reliable results, it is important to devote significant effort in online testing and causal analysis: if I have to pick one, this is the most fundamentally overlooked and unsolved problem in the space.
+
+In a broader sense, we are part of the AI community: we publish papers, open source code and release datasets to advance the community as a whole. There are some proxies - citation, invited talks, downloads - but we do more of  a qualitative assessment: we organized the [SIGIR 2021 eCom Challenge](https://arxiv.org/abs/2104.09423), we recently won NAACL Best Paper Award, and in 2020 Coveo was [one of the most present companies](https://blog.coveo.com/ecommerce-research-wsdm-2021/) in eCommerce top-tier research venues, next to giants like Amazon, Alibaba, Etsy. 
+
+Finally, in a much more pop definition of “impact”, there is the unique pride in building stuff that people use, even without knowing it: if we do some back of the envelope calculation, Tooso interacted with approximately 1 out of 6 adults in Italy, which is pretty badass for a company almost literally out of a garage. Now at Coveo, our models work at scale on more than 500 clients, including several Fortune 100 companies.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+A lot of my favorite ML people are current or former entrepreneurs, or at least embody the end-to-end ownership of a problem that is the hallmark of entrepreneurship: there is no such thing as “that is somebody else’s job description”, and there is genuine curiosity (and, of course, matching talents) to understand all the parts of the system, as well as where the whole is going - _why_ are we doing this in the first place? 
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+[Training is nothing, will is everything](https://youtu.be/0bqLKXmdDuE?t=53): it matters less what you already know and did, than what you’re willing to learn and do.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+We have ties with other institutions and researchers: some old friends from our previous lives in academia, some new friends we picked up along the way. Working with curious researchers is not just stimulating, but also a fantastic way to keep learning new things directly from the people making the field: progress is better (and more fun) when shared.
+
+Practically, I’m pretty bad with systematic methods to extend my knowledge, and I follow a curiosity-driven approach, picking from conferences, random browsing and friends’ suggestions my next thing to read. If I have to pick a foundational book in AI, [Gödel, Escher, Bach](https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach) is my obvious choice; if I have to pick a researcher to follow closely these days,  [Josh Tenenbaum](http://web.mit.edu/cocosci/josh.html); if you want to know what I’ve been reading recently (both delightful!), “[Causal Inference: The Mixtape](https://mixtape.scunning.com/)” by Scott Cunningham, and “[Mostly Harmless Econometrics](https://press.princeton.edu/books/paperback/9780691120355/mostly-harmless-econometrics)” by Joshua D. Angrist (before [he was cool](https://news.mit.edu/2021/mit-economist-joshua-angrist-shares-nobel-prize-1011)) and Jörn-Steffen Pischke.
+
+On a more philosophical point, I grew up with the SFI attitude: the world is a complex object, and it is unlikely that any one field in isolation will be enough to explain non-trivial phenomena - so you better keep learning from yours and other fields as well (for example, I just took an econ course to better understand marketplaces). [This is the way](https://www.youtube.com/watch?v=gttNC9UyMUs).
