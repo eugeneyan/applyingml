@@ -1,0 +1,102 @@
+---
+name: "Poorna Kumar"
+role: "Senior Manager, Machine Learning @ Upstart"
+description: ""
+date: "2021-11-21"
+slug: "/mentors/poorna-kumar/"
+type: "mentor"
+---
+Learn more about Poorna on her [LinkedIn](https://www.linkedin.com/in/poorna-kumar-81361789/).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I work on the machine learning team at Upstart. Upstart is an online lending platform whose mission is to “enable effortless credit based on true risk”. The phrase “true risk” is a reference to ML, which is used at the core of Upstart’s product to predict loan outcomes, identify prospective customers, catch fraud, and more.
+
+I joined Upstart in 2017 as an IC, and worked on several different project areas for a few years, eventually trying out management. Currently, I lead the ML team that works on fraud detection and verification models. 
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I studied electrical engineering as an undergrad in India. After undergrad, I felt pulled in multiple directions and was confused about what to do next. I took a year off, and ended up deciding to go to Stanford to do an MS in Statistics after that. The idea to study statistics took root after a friend with similar interests chose to pursue that path. I had enjoyed my undergrad classes on probability and statistics, and I found it appealing that statistics was a tool that could be used to study problems in different domains. 
+
+My time at Stanford really opened the doors of machine learning to me. I learned a lot, partly because statistics was quite new to me at the start of the program and partly because I signed up for several machine learning classes which required more sophisticated coding than I’d encountered before. I also TA’ed a few classes (including Andrew Ng’s ML class), and worked on a side project for which I had an RAship. 
+
+I decided to go into industry after my MS. I had enjoyed studying ML in school, and ML was a common career path after a stats degree, so becoming an ML practitioner in industry was not particularly radical.
+
+As for what factors helped me get here, to be clear, there was some luck involved—in being born into a family that had access to and encouraged education, getting into Stanford, etc. But in terms of things I could control, I’ve found the following helpful:
+- Strong fundamentals and rigor in probability, statistics and ML
+- A first principles approach to problem-solving
+- Curiosity about data. I’m a data nerd and I love data analysis, even if it doesn’t involve any machine learning!
+
+### *How do you spend your time day-to-day?*
+
+No two days or weeks look quite the same, but looking back at the last 6 months, I’ve spent time supporting my team, providing technical review and guidance, defining our goals and roadmap, identifying infrastructural needs and advocating for tooling and platforms (“MLOps”) to enable the ML team, and working on IC projects. Part of my job is doing whatever needs to be done to provide business value in the product through ML, which includes responding to urgent business needs, picking up IC projects, or anything else. 
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+To some extent, I’ve taken this for granted at my workplace... ML is considered to be at the heart of Upstart, and there’s been strong conceptual alignment from well before I started. 
+
+To successfully leverage ML for a business, I think there needs to be alignment between the ML team and product or business decision-makers. Product teams should understand the abilities and limits of ML. ML teams should understand business goals and tradeoffs, and be familiar with the product and user experience. Communication, curiosity, and transparency really help to build this kind of cohesion. Also, hire high caliber team members on both sides (ML and product) who ask the right questions and demonstrate good judgement in their selection of problems to work on.
+
+If you’re trying to get the business to buy into ML in the first place, measure and communicate the business value brought about by your ML models.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+It’s not as cookie-cutter or linear as my response might suggest, but here you go:
+
+- Gather context about the goal. Speak to stakeholders on the business side, and understand if this is the right problem to solve, and if there are clear objectives for a machine learning solution. This is a collaborative process. You can weigh in on what kinds of problems ML is and isn’t well-suited for. Speak up early if a project idea doesn’t make sense.
+- Think about the problem from an ML perspective. What is the right ML formulation? How accurate does the ML system have to be to move the needle on the business problem? And, how predictable is the underlying phenomenon? For example, predicting movement in the stock market is “hard” because the underlying phenomenon is more random, whereas telling if a picture of a cat is more deterministic ([one of my favorite talks by Claudia Perlich touches on this topic](https://www.youtube.com/watch?v=AIfHVi-2PXw)). You want to be able to achieve a level of accuracy with machine learning that moves the needle on the problem. If in doubt, check with business stakeholders if a reasonably achievable level of accuracy would indeed be useful.
+- Data! What is the quality and quantity of data you have? Depending on the timeframe I have, I may kick off efforts to collect better data. I’m a firm believer in [data-centric machine learning](https://www.youtube.com/watch?v=06-AZXmwHjo). 
+- Assuming all the above goes well, at this stage you could start prototyping solutions.
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+On the engineering side, my team collaborates with data engineers, ML infra engineers and product engineers. I can’t understate how much my team depends on these partners for success! Scaling happens through better tooling (more on this later), and we lean heavily on our partner teams to enable ML by building platforms that support our workflows. Scaling also happens through good technical writing and code quality, which helps new team members to ramp up faster, reuse prior work, etc. 
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+I hesitate to answer this question, since I’m not a guru by any means. It seems valuable for an organization to support collaboration, and align incentives, between ML scientists and all their cross functional partners (infra and data engineering teams, product engineers, PMs, etc.). This could be true of multiple org structures, I guess, and as a company grows, you’ll probably re-evaluate org structure, so be nimble and open to change. The processes and structure that work for a team of 5 will probably change as the team doubles or quadruples. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+Upstart is investing in infrastructure to speed up and systematize different parts of the ML lifecycle. For example, the infra and DE teams are in the process of building a feature store to enable ML scientists to quickly discover data sources and build the right datasets for model training. Our infra team is trying to increase automation in model training and research workflows (by introducing tools like Metaflow and Airflow). We use MLFlow in places to track research experiments and make research more reproducible. That said, Upstart is still early in our journey here and learning the best practices, and the MLOps industry itself is evolving very quickly, so the tooling of choice might change. Beyond any specific tool, it’s important to know (measure!) how much time ML scientists are spending on which parts of their workflow, and ease the bottlenecks. 
+
+Personally, I’ve also found it valuable to invest in efforts to understand the data that’s available to the ML team, know where it’s coming from, and measure its quality. These investigations have been quite insightful in revealing areas where we need to improve. Poor quality data may not visibly slow the research process down, but it can hobble ML systems and experiments. Relatedly, if your product is not instrumented to collect some types of data, or is collecting it and not making it accessible to the ML team, that’s an opportunity cost in terms of ML advancement.
+
+It also helps to have well-architected production systems, where you can easily swap out one ML model or decision system for another, run live experiments, and capture data to track key metrics. You want to have interfaces that support reusing code between research and production. Upstart’s product engineering teams are working to refactor parts of our production codebase to support this kind of iteration.
+
+Internally in the ML function, you can unlock faster iteration by thinking critically (especially in the early stages of a project), making pragmatic choices, and trying to get feedback fast. For example, before trying out a complicated solution for a new use case which would take a long time to build and validate, test out a simple baseline in production to get quick feedback. 
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+More than any specific process or tools, I’d want to make sure the team was constantly trying to improve:
+- The process for ML scientists to discover and access data
+- Data fidelity, and instrumentation to collect additional data
+- The ability to do and reproduce research, run simulations, etc.
+- Time from research to production
+- Live experimentation, monitoring model quality in production
+- Technical documentation
+
+### *How do you quantify the impact of your work?*
+
+This is my opinion, and not all of it reflects what Upstart is doing today, but I think Upstart has bought into these ideas and is moving towards them. 
+- If your model is in production, monitor its accuracy in production as best you can. (Also estimate the quality of your models before deployment, but prod performance is the proof of the pudding.) 
+- Invest in measurement. Exactly how to do this depends on your model and the context in which it works. If you’ve built a model that’s running live and have a biased (or non-existent) process by which you generate feedback, invest in data collection to get an unbiased estimate of performance. For example, if your data generating process is such that samples that have been scored above a certain threshold are the only ones to get labeled, continuously run experiments to label random samples on the other side of the threshold.
+- You should have an intuitive sense of how model accuracy translates to business gains. (Otherwise, what is the point of building this model?) Depending on the context, this may or may not be worthwhile to  quantify rigorously. For example, if you have a fraud model that’s trying to flag high-risk loan applications for human review, you can estimate the number of false positives that your review team has to deal with at a given level of recall. Sometimes it’s hard to rigorously quantify the dollar value of a good model (e.g., it could lead to happier customers, and estimates of the value of that may be fuzzy), and it’s probably fine to leave it at that if you have a first-principles or mission-based understanding of why accuracy is helpful.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+Currently we monitor models through a combination of dashboards and ad-hoc analysis, but we are discussing internally on how to make this more seamless. As I’ve alluded above, I think model monitoring is a very important part of the ML lifecycle.
+
+We don’t currently retrain models automatically, but that’s a direction I think we’ll move towards. (I think the ideal is to have nearly automatic retraining, but a human should still review a report on model performance and metrics, and have the opportunity to intervene or dig deeper, before approving a new model to go to production.) 
+
+It’s easiest to deploy a retrained model with no API changes. But when the model API changes (usually because of new types of inputs to the model) we do have to update our production pipelines. With the feature store that our infra and data teams are building, we hope to make this process seamless. 
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+Scrappiness; the ability to ask the right questions; technical depth; code quality; defensive thinking (an interest in checking assumptions, sanity-checking results, testing in general); curiosity about data; good judgement; communication skills.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I learn quite a bit from encountering problems at work, thinking about them, and trying to find out how ML practitioners or researchers elsewhere approach similar problems. I also learn from my colleagues, especially from their technical feedback on projects. Some of my colleagues write exceptionally thoughtful and elegant ML code, and just reading their code and understanding how they approach problems is illuminating.
+
+Outside of work, it’s hard to keep up with ML developments because the field is evolving so quickly, and there is so much content out there! I appreciate having someone send me a trickle feed of good stuff to pay attention to (plugging [MLOps RoundUp](https://mlopsroundup.substack.com/) by [Nihit](https://mlopsroundup.substack.com/) and [Rishabh](https://www.linkedin.com/in/bhargavarishabh/)!). Pre-COVID, I would attend talks and conferences (my favorite is [WIDS](https://www.widsconference.org/conference.html)), and I loved to learn about others’ work in machine learning. Since the pandemic, things have gone virtual, and although that’s lowered the barrier to attendance, work has been busier, so ironically I’ve attended fewer events… I hope to attend more going forward. I would also like to make more time for structured learning outside of work, for example, by working my way through a textbook or doing the occasional [course](https://scpd.stanford.edu/) (I took a class last year and it was quite rewarding, but challenging to juggle alongside work). 
