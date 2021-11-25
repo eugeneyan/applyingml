@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './subscribe.styles.css';
-import Button from './button';
 
 const SubscriptionForm = () => {
   const [status, setStatus] = useState(null);
@@ -62,7 +61,7 @@ const SubscriptionForm = () => {
           required
         />
 
-        <Button type="submit">Subscribe</Button>
+        <button type="submit">Subscribe</button>
       </form>
     </div>
   );
