@@ -3,7 +3,7 @@ import './button.styles.css';
 import PropTypes from 'prop-types';
 
 const Button = ({ children }) => (
-  <button className="Button">
+  <button type="submit" className="Button">
     {children}
   </button>
 );
