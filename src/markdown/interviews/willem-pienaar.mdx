@@ -1,11 +1,152 @@
 ---
 name: "Willem Pienaar"
-role: "Principal Engineer @ Tecton (coming soon!)"
+role: "Principal Engineer @ Tecton"
 description: ""
 date: "2021-12-30"
 slug: "/mentors/willem-pienaar/"
 type: "mentor"
+homepage: true
 ---
-Learn more about Willem on his [Twitter](https://twitter.com/willpienaar) and [LinkedIn](https://www.linkedin.com/in/willempienaar/).
+Learn more about Willem on his [Twitter](https://twitter.com/willpienaar) and [LinkedIn](https://www.linkedin.com/in/willempienaar/). Also, learn more about Feast [here](http://feast.dev/).
 
-Coming soon!
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+Gojek is an Indonesian multi-service platform (ride-hailing, food delivery, logistics, digital payments, and lifestyle services).  I joined Gojek in April of 2017 when they had just begun staffing a data team based out of Singapore. The team had around 6 members at the time, all data scientists.
+
+My directive was to help with the productionization of ML solutions, specifically around matchmaking, fraud detection, recommendation systems (food delivery), voucher incentives, and pricing.
+
+At first I led and grew an engineering team that was embedded within the data science team. The engineering team scaled with the data science team and helped productionize models by designing, deploying, and integrating models with the Gojek product backend.
+
+We faced all the usual challenges like sourcing data, building and automating compute pipelines for data processing and model training, model versioning and tracking, model serving, outcome tracking, as well as many operational concerns like performance and data quality monitoring.
+
+Once the data science team grew beyond 25 people we couldn’t feasibly be involved with each ML project. Instead, we shifted our focus mostly towards developing tooling. Our team became the ML platform team.
+
+We built a host of tools that many other teams depended on, like [Clockwork](https://www.gojek.io/blog/reliable-ml-pipelines-with-clockwork), our data pipelining and scheduling system, [Feast](https://cloud.google.com/blog/products/ai-machine-learning/introducing-feast-an-open-source-feature-store-for-machine-learning), the open source feature store, [Merlin](https://www.gojek.io/blog/merlin-making-ml-model-deployments-magical), our model management and serving service.
+
+I founded, led, and grew the team to a size of 15 members over the 4 years that I worked at Gojek.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+I’d had exposure to machine learning prior to joining Gojek, but it was only when joining Gojek that I’d put my experience to use at scale.
+
+My path towards working with machine learning was really centered around productionizing ML and data systems. 
+
+There were various factors that helped
+
+- The diversity of use cases. Gojek has 17+ external products, and a whole host of products that are b2b. Everything from ride hailing, to logistics, to food delivery, to digital payments, to media production. The company invested heavily into data and ML teams to power these products with machine learning and other data-centric techniques. This created an environment where ML teams like ours could work on use cases ranging from driver ranking, to price optimization, to churn prediction, to credit scoring, to fraud detection, to product recommendation, to OCR use cases, to forecasting, to anomaly detection, to vouchering and marketing use cases. The list of use cases is nearly endless.
+- The quality of the ML and data teams. Gojek hired some of the best data scientists and ML engineers in Asia. Many of these folks were experts in their respective fields. Data teams generally formed around use cases as projects, which meant that our engineering team was able to collaborate with many of these teams on their projects, which in turn gave us a lot of in depth exposure to applied ML. 
+- The scale of ML at Gojek. Often it is only possible to really understand how machine learning systems work (or fail) when you have to scale it to millions of customers, drivers, or products. This often leads to having to make trade offs like selecting more performant models with lower accuracy or pre-computing predictions to be looked up and serving time.
+
+### *How do you spend your time day-to-day?*
+
+At Gojek our team’s focus was both on building and maintaining production ML systems, as well as building ML tooling to make data scientists productive.
+
+A typical day would include
+- A standup to check in with and unblock members of the team
+- Triaging our backlog
+- Code or design reviews for any work that is currently in progress
+- Speaking to data teams on use cases that they would like us to address
+- Writing design documents (RFCs) for new functionality or tooling
+- One-on-ones with members of my team
+
+On a larger time frame I’d also be involved in
+- Defining a vision and strategy for the platform and aligning that with the overarching technical direction for the company
+- Defining a roadmap and specific OKRs that we are targeting
+- Breaking down our projects into epics (or more granular cards) and coming up with estimates
+
+My day-to-day is very similar at Tecton, with some subtle changes.
+- I am focused wholly on building feature stores, with the majority of my time focused on Feast.
+- Our users are external (not internal teams)
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+Typically organizations (like Gojek) define high-level objectives they want to target at a quarterly level. Teams within the company come together around these objectives and identify projects that could help meet them.
+
+At Gojek there would typically be four stakeholders
+
+- Business: The business side is user facing and is the ultimate customer. They want to see a lift in a specific metric. 
+- Engineering (Product): The product engineering team owns both consumer facing product systems (android or iOS application, backends, and related data).
+- Data Science: The data science team are the ones that will help to identify and implement an ML use case around an objective
+- Data Science Platform: The data science platform team builds the tooling that makes it possible for the data science team to ship ML solutions into production. In the case of Gojek, we also worked with data scientists in building ML solutions, given our expertise in operational ML.
+
+A project life cycle looks something like this
+- The organization broadcasts that we’d like to focus on Go-Food (food delivery) growth. We want to increase the amount of users ordering food through Go-Food.
+- The DS team works on EDA of existing Go-Food data and the product, and identifies various opportunities to improve conversion through ML (like adding Food or Merchant recommendations).
+- The DS team proposes a specific project and gets sign-off from the business, which means all teams (product engineering, data science, and DSP) will commit resources to this project.
+- The DS team works on a first-cut of an ML model that they believe will improve conversation. 
+- DSP works with both DS on the one side and engineering on the other side to ensure that the ML solution is built and deployed in such a way that it performs nearly as well as it does offline, but still meets the performance SLOs of the engineering team. 
+- A measurement system is deployed to monitor the performance of the system, after which the system is deployed to a small slice of traffic.
+- Beyond this point we scale up traffic if the system performs well, or iterate on the ML solution if it doesn't meet our objective (and associated KRs).
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+The easiest way is to actually be the user. Dog-food your own product. It’s also important to speak to both team members on the operations team since they deal with users on a daily basis, as well as the product managers associated with a product. 
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+In most cases you don’t need machine learning to solve a problem, so I would start by questioning why ML is even a need. I would also consider it a smell if there is no non-ML solution to this problem in place first.
+
+The worst case scenario is if a product needs to be modified to accommodate a new solution, and that first-cut solution is ML. This approach is suboptimal for two reasons
+- You are trying to solve two problems. Firstly, you are trying to make a product change (like adding recommendations to a home page) which has an impact on users and requires work from many teams. Secondly, you are trying to launch a new ML system which is entirely unproven. Ideally these would be separate projects.
+- Having a “control” system that is non-ML is incredibly important because it normally provides your product with a high-performance fallback option if anything goes wrong with your ML system (or if you have cold-starts). It’s also easier to measure your ML system in comparison to an existing non-ML control.
+
+So specifically how we’d approach projects
+- Build a measurement system to know how effective your system is at solving the business problem.
+- Build a non-ML solution first and measure its effectiveness.
+- (optional) Build an ML solution and measure its performance against the non-ML system
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+It depends on scale. There are broadly two approaches
+- Embed data scientists within product verticals. The product team (consisting of engineers, analysts, data scientists, product managers) makes decisions on how to implement DS/ML solutions.
+- Data scientists as standalone teams that build and integrate solutions with the product, but who report into the data organization.
+
+(1) makes sense at a small scale when you really only have one product. Once your organization scales, some problems will appear with (1)
+- The product team focuses on problems in front of them. The DS is roped into doing analysis or building dashboards for the PM.
+- Feature requests are prioritized over building ML systems, given that the success of ML is not guaranteed and the life cycle of a project is longer (2-3 months at least).
+
+I’d recommend a hybrid of (1) and (2). Let product verticals have embedded data scientists, but still follow (2) with teams of data scientists that can invest in strategic projects that push business objectives. 
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+We invested heavily in experimentation systems as part of our ML platform. Specifically, we built a system called [Turing](https://www.gojek.io/blog/finding-intelligence-with-turing) which allowed us to rapidly launch and evaluate ML experiments. 
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+The biggest existential challenge to ML projects is that you can’t show value. So really the focus should be on how to de-risk projects and front-load any incremental value as soon as possible. I’d encourage teams to focus on shipping the most basic MVP possible and don’t worry too much about tech debt. The main focus should be in shipping your solution as fast as possible, and using some kind of measurement system to show how well it’s performing. 
+
+Trying to anticipate all the best practices you need to follow from day one is impossible. Your understanding of the problem space will be completely different after having shipped the MVP, so you will be in a much better position to develop the second iteration. 
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+The easiest is to quantify impact in monetary impact. Certainly at Gojek we made a tremendous impact through both the ML platform we built, as well as the ML systems we built and operated. All matchmaking, pricing, recommendations systems were built on this platform, and we also had many teams building other use cases like fraud detection systems, forecasting systems, churn prediction systems, vouchering systems, etc on the platform.
+
+The lift we saw due to these ML systems was in the order of millions of dollars per month.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+It depends on the use case. For non-realtime systems (like credit scoring, churn prediction) we sometimes let the data scientists run their own analyses on when to retrain or update pipelines. 
+
+For real-time systems we would monitor the degradation of models using our experimentation system, which in turn would retrigger training. Sometimes a retraining wouldn’t fix a problem, and we’d need to update ETL/ELT pipelines to include new features or properties about our domain.
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+One case comes to mind. Gojek introduced a “feed” to the home page of the application. Multiple teams were involved in building a recommendation system to rank this feed. It was a colossal effort because so many stakeholders were involved, given the importance of the home page.
+
+The project was around 4 months in. At that stage we’d designed much of the experimentation system, it’s integration with the home page backend, and we’d built the first cut of the recommendation system as well. We were already thousands of man hours into this project.
+
+Then somebody asked a simple question: If our business objective is to prioritize Go-Food, why don’t we just show Go-Food recommendations on the home page and call it a day?
+
+A week later the project was scrapped and they started serving Go-Food recommendations as part of the feed. 
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+A focus on simplicity. A focus on pragmatism.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+It’s a lot more important to set expectations with stakeholders in your organization that depend on your work, than it is to go into a cave and work on your ML project. The former isn’t always as fun, but it’s way more important.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I believe in systems over discipline. Put yourself into a position where you are forced to learn. Whether that is being responsible for a project in your organization, writing a blog post, or speaking at a conference. Make sure you are always out of your comfort zone.
