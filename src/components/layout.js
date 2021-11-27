@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { useStaticQuery, Link, graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { rhythm } from '../utils/typography';
 
 import CodeBlock from './codeblock';
@@ -160,6 +161,9 @@ export default function Layout({ children }) {
             flex: 1 0 auto;
           `}
         >
+          <Helmet>
+            <script defer data-domain="applyingml.com" src="https://plausible.io/js/plausible.js" />
+          </Helmet>
           {children}
         </div>
       </MDXProvider>
