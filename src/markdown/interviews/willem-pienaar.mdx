@@ -13,13 +13,13 @@ Learn more about Willem on his [Twitter](https://twitter.com/willpienaar) and [L
 
 Gojek is an Indonesian multi-service platform (ride-hailing, food delivery, logistics, digital payments, and lifestyle services).  I joined Gojek in April of 2017 when they had just begun staffing a data team based out of Singapore. The team had around 6 members at the time, all data scientists.
 
-My directive was to help with the productionization of ML solutions, specifically around matchmaking, fraud detection, recommendation systems (food delivery), voucher incentives, and pricing.
+I was tasked with building an engineering team that could help these data scientists get their models into production. The use cases they were working on at the time focused on matchmaking, fraud detection, recommendation systems (food delivery), voucher incentives, and pricing.
 
-At first I led and grew an engineering team that was embedded within the data science team. The engineering team scaled with the data science team and helped productionize models by designing, deploying, and integrating models with the Gojek product backend.
+At first I led and grew an engineering team that was embedded within the data science team. The engineering team scaled with the data science team and helped productionize models by designing, deploying, and integrating models with the Gojek product backends.
 
-We faced all the usual challenges like sourcing data, building and automating compute pipelines for data processing and model training, model versioning and tracking, model serving, outcome tracking, as well as many operational concerns like performance and data quality monitoring.
+We faced all the usual challenges like how to source data from production systems, building and automating compute pipelines for data processing and model training, model versioning and tracking, model serving, outcome tracking, as well as many operational concerns like performance and data quality monitoring.
 
-Once the data science team grew beyond 25 people we couldn’t feasibly be involved with each ML project. Instead, we shifted our focus mostly towards developing tooling. Our team became the ML platform team.
+Once the data science team grew beyond 25 people we couldn’t feasibly be involved with every ML project. Instead, we shifted our focus mostly towards developing tooling. Our team became the ML platform team.
 
 We built a host of tools that many other teams depended on, like [Clockwork](https://www.gojek.io/blog/reliable-ml-pipelines-with-clockwork), our data pipelining and scheduling system, [Feast](https://cloud.google.com/blog/products/ai-machine-learning/introducing-feast-an-open-source-feature-store-for-machine-learning), the open source feature store, [Merlin](https://www.gojek.io/blog/merlin-making-ml-model-deployments-magical), our model management and serving service.
 
@@ -33,7 +33,7 @@ My path towards working with machine learning was really centered around product
 
 There were various factors that helped
 
-- The diversity of use cases. Gojek has 17+ external products, and a whole host of products that are b2b. Everything from ride hailing, to logistics, to food delivery, to digital payments, to media production. The company invested heavily into data and ML teams to power these products with machine learning and other data-centric techniques. This created an environment where ML teams like ours could work on use cases ranging from driver ranking, to price optimization, to churn prediction, to credit scoring, to fraud detection, to product recommendation, to OCR use cases, to forecasting, to anomaly detection, to vouchering and marketing use cases. The list of use cases is nearly endless.
+- The diversity of use cases. Gojek has 17+ consumer facing products, and a whole host of products that are b2b. Everything from ride hailing, to logistics, to food delivery, to digital payments, to media production. The company invested heavily into data and ML teams to power these products with machine learning and other data-centric techniques. This created an environment where ML teams like ours could work on use cases ranging from driver ranking, to price optimization, to churn prediction, to credit scoring, to fraud detection, to product recommendation, to OCR use cases, to forecasting, to anomaly detection, to vouchering and marketing use cases. It's really hard to think of a company with more ML use cases than Gojek.
 - The quality of the ML and data teams. Gojek hired some of the best data scientists and ML engineers in Asia. Many of these folks were experts in their respective fields. Data teams generally formed around use cases as projects, which meant that our engineering team was able to collaborate with many of these teams on their projects, which in turn gave us a lot of in depth exposure to applied ML. 
 - The scale of ML at Gojek. Often it is only possible to really understand how machine learning systems work (or fail) when you have to scale it to millions of customers, drivers, or products. This often leads to having to make trade offs like selecting more performant models with lower accuracy or pre-computing predictions to be looked up and serving time.
 
@@ -73,7 +73,7 @@ A project life cycle looks something like this
 - The organization broadcasts that we’d like to focus on Go-Food (food delivery) growth. We want to increase the amount of users ordering food through Go-Food.
 - The DS team works on EDA of existing Go-Food data and the product, and identifies various opportunities to improve conversion through ML (like adding Food or Merchant recommendations).
 - The DS team proposes a specific project and gets sign-off from the business, which means all teams (product engineering, data science, and DSP) will commit resources to this project.
-- The DS team works on a first-cut of an ML model that they believe will improve conversation. 
+- The DS team works on a first-cut of an ML model that they believe will improve conversion.
 - DSP works with both DS on the one side and engineering on the other side to ensure that the ML solution is built and deployed in such a way that it performs nearly as well as it does offline, but still meets the performance SLOs of the engineering team. 
 - A measurement system is deployed to monitor the performance of the system, after which the system is deployed to a small slice of traffic.
 - Beyond this point we scale up traffic if the system performs well, or iterate on the ML solution if it doesn't meet our objective (and associated KRs).
@@ -113,13 +113,13 @@ We invested heavily in experimentation systems as part of our ML platform. Speci
 
 ### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
 
-The biggest existential challenge to ML projects is that you can’t show value. So really the focus should be on how to de-risk projects and front-load any incremental value as soon as possible. I’d encourage teams to focus on shipping the most basic MVP possible and don’t worry too much about tech debt. The main focus should be in shipping your solution as fast as possible, and using some kind of measurement system to show how well it’s performing. 
+The biggest existential challenge to ML projects is that you can’t show value. So really the focus should be on how to de-risk projects and front-load any incremental value as soon as possible. I’d encourage teams to focus on shipping the most basic MVP possible and don’t worry too much about tech debt. The main focus should be on shipping your solution as fast as possible, and using some kind of measurement system to show how well it’s performing.
 
 Trying to anticipate all the best practices you need to follow from day one is impossible. Your understanding of the problem space will be completely different after having shipped the MVP, so you will be in a much better position to develop the second iteration. 
 
 ### *How do you quantify the impact of your work? What was the greatest impact you made?*
 
-The easiest is to quantify impact in monetary impact. Certainly at Gojek we made a tremendous impact through both the ML platform we built, as well as the ML systems we built and operated. All matchmaking, pricing, recommendations systems were built on this platform, and we also had many teams building other use cases like fraud detection systems, forecasting systems, churn prediction systems, vouchering systems, etc on the platform.
+The easiest is to quantify impact in terms of revenue. Certainly at Gojek we made a tremendous impact through both the ML platform we built, as well as the ML systems we built and operated. All matchmaking, pricing, recommendations systems were built on this platform, and we also had many teams building other use cases like fraud detection systems, forecasting systems, churn prediction systems, vouchering systems, etc on the platform.
 
 The lift we saw due to these ML systems was in the order of millions of dollars per month.
 
@@ -133,7 +133,7 @@ For real-time systems we would monitor the degradation of models using our exper
 
 One case comes to mind. Gojek introduced a “feed” to the home page of the application. Multiple teams were involved in building a recommendation system to rank this feed. It was a colossal effort because so many stakeholders were involved, given the importance of the home page.
 
-The project was around 4 months in. At that stage we’d designed much of the experimentation system, it’s integration with the home page backend, and we’d built the first cut of the recommendation system as well. We were already thousands of man hours into this project.
+The project was around 4 months in. At that stage we’d designed much of the experimentation system, its integration with the home page backend, and we’d built the first cut of the recommendation system as well. We were already thousands of man hours into this project.
 
 Then somebody asked a simple question: If our business objective is to prioritize Go-Food, why don’t we just show Go-Food recommendations on the home page and call it a day?
 
