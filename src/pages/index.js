@@ -101,7 +101,7 @@ export const Query = graphql`
     }
     resources: allMdx(
       filter: { frontmatter: { type: { eq: "resource" }, homepage: { eq: true } } }
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {

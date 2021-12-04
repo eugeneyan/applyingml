@@ -1,0 +1,122 @@
+---
+name: "Timothy Wolodzko"
+role: "Machine Learning Engineer @ Equinix"
+description: ""
+date: "2021-12-04"
+slug: "/mentors/timothy-wolodzko/"
+type: "mentor"
+---
+Learn more about Timothy on his [Twitter](https://twitter.com/tymwol) and [LinkedIn](https://www.linkedin.com/in/twolodzko/).
+
+### *Please share a bit about yourself: your current role, where you work, and what you do?*
+
+I recently joined Equinix, an infrastructure company. I work as a machine learning engineer in a team that tries to make our data centers more energy-efficient with the help of machine learning. I am also an active member and elected moderator of the statistics and machine learning Q&A site CrossValidated.com.
+
+### *What was your path towards working with machine learning? What factors helped along the way?*
+
+My path was rather unorthodox. I have no STEM background but hold a MS in psychology. When at the university, I got interested in statistics and quantitative research. For my master's thesis, I decided to make a purely statistical re-analysis of a large-scale, public domain dataset. I needed to catch up on statistics and programming in R. In the end, we published the thesis with my supervisor.
+
+After graduation, I got hired as a statistician in a research project studying country-wide education trends. The experience taught me a lot and helped when interviewing for the industry. The project ended and I found a new job outside academia. Since then, I’ve had a few different data-related positions: in finance, e-commerce, online marketing, a startup doing SaaS products for the marine industry, and currently, I am working for a cloud infrastructure company.
+
+### *How do you spend your time day-to-day?*
+
+I already held most of the job titles in this area: a statistician, data analyst, data scientist, machine learning engineer. The titles changed, but the responsibilities didn’t change that much. It always was some programming, solving technical problems, data work, statistics, machine learning, “selling” the results to the stakeholders. As a statistician or data analyst, I used more SQL and R, as a data scientist or machine learning engineer, more parquets and Python, but that's probably the biggest difference.
+
+In my previous job, I was in the ML engineering team. We were responsible for productionizing the research ideas, building the necessary infrastructure for training, and using models in our products. Currently, I am a part of a small research-oriented team, where we all have mixed responsibilities. The job is partially data science research, and partially figuring out what could be done to make our work easier, more efficient, and production-ready.
+
+### *How do you work with business to identify and define problems suited for machine learning? How do you align ML projects with business objectives?*
+
+The common reaction to machine learning is mistrust, mixed with overhyped expectations. "This can't work" together with "this will solve all our problems". The business already heard a lot of unfulfilled promises from the technology. On the other hand, the hype around AI is strong and we are all contributing to this. I've seen many times people jumping to solutions and the shiny new models, before considering the limitations of the data. I try keeping the focus on the actual problem to be solved.
+
+### *Machine learning systems can be several steps removed from users, relative to product and UI. How do you maintain empathy with your end-users?*
+
+The first thing you need to remember is that your end-users don’t care about your model, test accuracy, etc. Remember to manually test your solution on realistic examples and edge cases. Do the predictions make sense? Can they be useful? Go beyond the metrics. It's also crucial that you shorten the distance to the end-users, as they can give you valuable feedback.
+
+### *Imagine you're given a new, unfamiliar problem to solve with machine learning. How would you approach it?*
+
+Over the last seven years, I’ve been an active user of CrossValidated.com, StackOverflow's statistics and machine learning sister site. I’ve answered over two thousand questions. When facing a new problem I often have the “I heard this before!” thought. Don't get me wrong, I am not an expert in every domain, but exposure to many diverse problems helps a lot with finding the appropriate phrases for DuckDuckGoing. It also helped me develop the “what’s the actual problem?” mindset as we are often faced with [X-Y problems](https://meta.stackexchange.com/questions/66377/what-is-the-xy-problem). You can always reduce the problem to a simpler one, that is already solved and iterate on that. There are a lot of great resources, so knowing where to search for information solves a lot of problems. 
+
+### *Designing, building, and operating ML systems is a big effort. Who do you collaborate with? How do you scale yourself?*
+
+It's like collecting an RPG team, you need a thief, a warrior, a mage, etc. Machine learning needs many skills from different domains. You can be a generalist, having the T-shaped skills, but you would never be proficient in everything. The common clusters of skills I see are:
+- "analysts" specializing in exploratory data analysis
+- "developers" with strong software engineering skills
+- "data engineers" proficient in big data technologies
+- "machine learning" people up-to-date with the literature, TensorFlow, PyTorch, etc
+- "DevOps" or "MLOps" people who know much about infrastructure
+
+There are so many technologies that nobody can master them all. Regardless of job titles, it's good to have a team of people with a mix of these skills.
+
+How do I scale myself? I do it mostly by knowledge sharing. Standups, code reviews, pair programming, knowledge sharing sessions are all good opportunities for it. 
+
+### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
+
+My previous company was a startup with many good developers and we were doing Scrum. I even did a Scrum master certificate and held the role for the machine learning team. Eventually, we decided to drop Scrum in favor of a less formal, Kanban-like approach. There were several problems with Scrum. It was hard to fit the tasks into sprints. We had standard programming tasks and research tasks that would take much more time. Sometimes waiting for the models to stop training was taking long enough so we weren't able to finish till the end of the sprint. The research usually leads to new questions to be answered, and it makes more sense to continue with them, rather than stacking them into the backlog.
+
+On the other hand, the practices that make the work visible (kanban boards), clear goals (definition of done), splitting work into small chunks and collecting feedback, facilitating information sharing and collaboration (standups, pair programming) are all very good practices we can learn from the Agile methodologies. LinkedIn Learning has a nice small course on [Agile in data science](https://www.linkedin.com/learning/learning-data-science-using-agile-methodology).
+
+### *How does your organization or team enable rapid iteration on machine learning experiments and systems?*
+
+To iterate rapidly, you need easy access to the data and virtual machines for training the models and experimenting. When training on your laptop, sooner or later you will run out of memory and compute. Moreover, it takes away the resources--it's like with the [xkcd comic](https://xkcd.com/303/), "it's training" is the #1 excuse for slacking off for data scientists. Using VMs also forces you to think about re-usable solutions like Docker.
+
+If you want iterations to be rapid but also fruitful, you need a consistent way of storing the results. In the future, you wouldn't need to click through hundreds of Untitled.ipynb notebooks to find your results. You need an easy way to compare between the experiments. Gathering the feedback from domain experts as often as possible would make it easier to judge the results and choose further research questions.
+
+### *What processes, tools, or artifacts have you found helpful in the machine learning lifecycle? What would you introduce if you joined a new team?*
+
+I recently joined a new team and started introducing such tools from day one. People often complain about the quality of the code produced by data scientists, but let's keep in mind that we have different goals than software engineers. 
+
+While I don’t consider myself a purist, I feel like having auto formatter like [Black](https://black.readthedocs.io/en/stable/) helps to end the unnecessary code reviews discussions on formatting.
+
+Testing the machine learning code is notoriously hard. We focus on experimenting rather than writing production-ready code, so the number of unit tests is often suboptimal. Writing tests for the models themselves is non-trivial. Even if you have tests, they often are slow, so you cannot fire them often enough to get instant feedback when working on the code. Having additional safeguards such as linters or static code analysis checkers that take seconds to run helps a lot. In a statically typed language, the compiler can detect many problems. With dynamic languages like Python, you don’t have the luxury of compiler errors. Tools like [mypy](http://mypy-lang.org/) can fill that gap and do the checking for some of the obvious bugs and inconsistencies (“this function can return None, but you expect a DataFrame”).
+
+For CI I love GitHub Actions, it's easy to learn and use, yet very flexible. Docker seems to solve most of the "it works on my machine" problems and the dependencies issues. Docker is usually painful at the beginning but then works like charm, where without containers everything works smoothly until it doesn't. 
+
+### *How do you quantify the impact of your work? What was the greatest impact you made?*
+
+I am proud of the infrastructure for serving ML models that we built with my colleagues at GreenSteam, my previous company. There was an additional problem that we used rather unorthodox technology (Bayesian models in PyMC) and most off-the-shelf solutions didn't work. I described it on [Neptune.ai blog](https://neptune.ai/blog/mlops-at-greensteam-shipping-machine-learning-case-study), so I won't repeat myself here.
+
+### *After shipping your ML project, how do you monitor performance in production? Did you have to update pipelines or retrain models—how manual or automatic was this?*
+
+I don't have a good answer for that. Having a human-in-the-loop (domain expert, customer) helps. I had mixed outcomes using rule-based model tests: they work to some degree and then fail. If you can verify the result with a rule-based system, then likely you wouldn't need machine learning for solving it, a rule-based system would be enough. When you need machine learning, it is because it is more complicated. All the explainability or testing is about simplifying things that by definition should be hard to simplify. This is a paradox.
+
+### *What’s a problem you encountered where machine learning seemed like the right solution, but turned out to be wrong? What was the eventual solution?*
+
+When working in e-commerce we had such issues many times: for new products on the market, there was simply not enough relevant data to make a reasonable prediction. Time was wasted on gathering data, trying different models, but in the end, we could be using something like average sales of similar products from the past year. 
+
+Another example is identifying products sold by resellers on our platform. Several teams spend a considerable amount of time attempting to solve the problem. In the end, we were not able to beat the things like regular expressions in some cases.
+
+### *Think of people who are able to apply ML effectively–what skills or traits do you think contributed to that?*
+
+Data science is a heterogeneous field, and there is no single set of skills. There are places where you need more statistics, A/B testing, and exploratory data analysis. There are other places where you need to worry about big data and scaling things. Some companies need deep learning, some don't. You need to be a quick learner and have an open mind. Technologies change, two years ago TensorFlow was on top, now it's more PyTorch, and who knows what's next. Companies also differ by the tech stack. I always assumed that I would catch up with the technology on-job when needed.
+
+### *Do you have any lessons or advice about applying ML that's especially helpful? Anything that you didn't learn at school or via a book (i.e., only at work)?*
+
+- Ask yourself: “What is the actual problem I’m trying to solve? How would I know it's done?”, "Why is it a problem?".
+- Start simple, this would help with getting familiar with the data, the technical problems that you may be facing in the future, and will give you a benchmark.
+- Keep the code organized, write tests, this solves a lot of problems in the future. It is a good practice to fix 10% of the time each week or sprint on writing unit tests, refactoring the code, writing documentation, etc, it pays up in the future.
+- Keep things modular, so they're easier to re-use. This applies to the code, but also to higher-level infrastructure. Remember about the single responsibility principle, it should be doing one thing and one thing only. Preprocess data in pipelines, where each of the steps can be easily removed or replaced.
+- If your strategy for machine learning is to throw every model implemented in scikit-learn at the data and see what sticks, you would be soon replaced with AutoML. Understanding “why” and “how” the stuff works gives you a huge advantage--tells you a psychologist by education, who took not a single mathematics course at the university.
+
+### *How do you learn continuously? What are some resources or role models that you've learned from?*
+
+I’m a book person, I read a lot. I won't be recommending any machine learning books, there's a ton of them. These are some of the books on software engineering and production that I liked, as we all should probably catch up on it.
+- "Release It!" by Nygard,
+- "Growing Object-Oriented Software, Guided by Tests" by Freeman,
+- "The DevOps Handbook" by Kim et al,
+- "Building Machine Learning Powered Applications" by Ameisen
+- "Introducing MLOps" by Stenac et al,
+- "Software Engineering at Google" by Winters et al.
+I also like podcasts. On machine learning, I can recommend
+- "The data exchange with Ben Lorica",
+- "Data Talks Club",
+- "MLOps community podcast",
+- "Gradient dissent",
+- "TWIML AI Podcast",
+and on software engineering and agility "The Rabbit Hole" and "Mob Mentality" are great.
+
+Finally, teaching others is a great way to learn: participate in Q&A sites, online communities, give talks, write a blog.
+
+### *More content from Timothy below*
+
+- [Can Machine Learning be Lean?](https://twolodzko.github.io/7-wastes)
+- [Deploying Machine Learning Models: A Checklist](https://twolodzko.github.io/ml-checklist)
