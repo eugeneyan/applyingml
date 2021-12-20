@@ -73,7 +73,7 @@ Getting a model to detect these issues using a CNN is only a couple of lines of 
 
 If we were to use a transformer for these tasks we might have to implement it ourselves, or rely on bleeding edge open source implementations. 
 
-This isn’t to say reading papers is bad, or that new code is inherently untrustworthy. It’s more that the marginal improvement we’d get from the shiniest, newest model architecture probably doesn’t justify the time it would take us to write a production implementation, particularly if the older, simpler way already performs great.
+This isn’t to say reading papers is bad, or that new code is inherently untrustworthy. It’s more that the marginal improvement we’d get from the shiniest, newest model architecture probably doesn’t justify the time it would take us to write a production implementation, particularly if the simpler method performs great.
 
 If we find that the project is getting a lot of use and we would get a big benefit if it was a bit better, we can always take a second pass at it with a fancier method.
 
@@ -142,13 +142,11 @@ Additionally we often use “smoke tests”, as a last line of defense against p
 
 For example, another data scientist at Bowery Farming, [Lauren McCarthy](https://www.linkedin.com/in/mccarthy-lauren/), and I built a model which uses images and crop experience data to predict the mass we will harvest from a crop while it is still growing.
 
-Bowery uses this to prioritize attention towards underperforming crops, as well as to forecast how much product we will be able to deliver each day in the coming weeks. Many people at Bowery make important decisions based on this model, so we need to have confidence in its predictions.
+Bowery uses this to prioritize attention towards underperforming crops, as well as to forecast how much product we will be able to deliver to our customers each day over the coming weeks. Many people at Bowery make important decisions based on this model, so we need to have confidence in its predictions.
 
 We have curated a selection of crops that failed (for example, due to a mechanical failure in the farm)  and some crops which performed very well. 
 
-We would never expect a newly retrained model to infer the crop mass *exactly*, but if the model doesn’t give the curated failed crops quite low expected masses and the great crops high expected masses we should not be promoting that model. 
-
-Any failure to promote a model will raise an alert that we can investigate further.
+We would never expect a newly retrained model to infer the crop mass *exactly*, but if the model doesn’t give the curated failed crops quite low expected masses and the great crops high expected masses we should not be promoting that model. Any failure to promote a model will raise an alert that we can investigate further.
 
 For cases where we don’t get incoming labelled data, we’ve hand curated datasets (I’ve spent many hours labelling images myself). Since we don’t get labels automatically we can’t know about our models real time performance and there is a real danger that our input data can drift somehow and our predictions can degrade in quality.
 
