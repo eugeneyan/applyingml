@@ -146,7 +146,7 @@ Bowery uses this model to prioritize attention towards underperforming crops by 
 
 We have curated a selection of crops that failed (for example, due to a mechanical failure in the farm)  and some crops which performed very well. 
 
-We would never expect a newly retrained model to infer the crop mass *exactly*, but if the model doesn’t give the failed crops in our smoke tests quite low expected masses and the great crops high expected masses we should not be promoting that model. Any failure to promote a model will raise an alert that we can investigate further.
+We would never expect a newly retrained model to infer the crop mass *exactly*, but if the model doesn’t give the failed crops in our smoke tests quite low expected masses and the great crops high expected masses, we should not be promoting that model. Any failure to promote a model will raise an alert that we can investigate further.
 
 For cases where we don’t get incoming labelled data, we’ve hand curated datasets (I’ve spent many hours labelling images myself). Since we don’t get labels automatically we can’t know about our models real time performance and there is a real danger that our input data can drift somehow and our predictions can degrade in quality.
 
