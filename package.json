@@ -42,6 +42,7 @@
     "gatsby-source-filesystem": "^3.4.0",
     "gatsby-transformer-sharp": "^3.4.0",
     "gatsby-transformer-yaml": "^3.5.0",
+    "immer": ">=9.0.6",
     "prism-react-renderer": "^1.2.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
