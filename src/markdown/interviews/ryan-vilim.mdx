@@ -63,10 +63,10 @@ If our predictions are great, but they aren’t able to be surfaced in the right
 
 Finally, if we’ve figured out that a project is worth doing, and ML is the way we are going to solve it, our bias is to use techniques which have been commoditized. This means there are likely high quality, open source solutions with pre-trained models available.
 
-For example, there’s [evidence](https://arxiv.org/pdf/2010.11929.pdf) that transformers can beat CNN’s on image recognition tasks. We have tons of straightforward, clearly posed image recognition tasks at Bowery:
+For example, there’s [evidence](https://arxiv.org/pdf/2010.11929.pdf) that transformers can beat CNN’s on image classification tasks. We have tons of straightforward, clearly posed image classification tasks at Bowery:
 
 - Is the light above this crop burnt out?
-- Is this crop wet? (e.g. do we have a water leak somewhere above this crop)
+- Is this crop wet? (e.g. is there a water leak somewhere above this crop)
 - Does this crop display characteristic X?
 
 Getting a model to detect these issues using a CNN is only a couple of lines of Keras, and using a pretrained TFHub module means you don’t need much  training data. Also, these issues are obvious enough in our images that a CNN will do a great job of detecting them. 
