@@ -11,7 +11,7 @@ Learn more about Ryan on his [Twitter](https://twitter.com/ryanvilim) and [Linke
 
 ### *Please share a bit about yourself: your current role, where you work, and what you do?*
 
-I’m a  Data Scientist at Bowery Farming, an indoor farming company that is growing fresh produce at vertical farms near major urban centers. I lead a data team that is devoted to ensuring that our crops get the experience they need to reach their full potential. 
+I’m a  Data Scientist at Bowery Farming, an indoor farming company that is growing fresh produce at vertical farms near major urban centers. I'm part of the data team that is devoted to ensuring that our crops get the experience they need to reach their full potential. 
 
 At Bowery we have installed cameras which continuously record images of every crop and we measure lots of environmental factors around each crop (temperature, humidity, irrigation). This allows us to use ML (often CV) and data to measure and infer properties of our crops, and help determine how to grow better crops. We work closely with our farmers, agriculture scientists, and commercial colleagues to build data and ML products that help them do their jobs more effectively.
 
@@ -19,7 +19,7 @@ My role has shifted over time at Bowery. When I was first hired we needed more d
 
 For my first few years I built internal APIs, helped define the data teams development and deployment workflow, migrated us to Snowflake, and set up our data pipelines using Airflow. As we’ve matured I have focussed more on data projects that help our farms, these range from analytics work, to ML and Integer programming.
 
-Most recently, I’ve transitioned to leading part of the “Seed to Harvest” team within Data/AI, which focuses on how to measure and optimize the experience our crops get over the course of their growth, as well the processes surrounding that. 
+I'm now part of the “Seed to Harvest” team within Data/AI, which focuses on how to measure and optimize the experience our crops get over the course of their growth, as well the processes surrounding that. 
 
 ### *What was your path towards working with machine learning? What factors helped along the way?*
 
@@ -61,13 +61,27 @@ If we have decided that the potential upside is large enough, and we have the ri
 
 If our predictions are great, but they aren’t able to be surfaced in the right place, or at the right time we have built the wrong product and wasted time doing it.
 
-Finally, if we’ve figured out that a project is worth doing, and ML is the way we are going to solve it, our bias is to use techniques which have been commoditized. This means there are likely high quality, open source solutions with pre-trained models available. If we find that the project is getting a lot of use and we would get a big benefit if it was a bit better, we can always take a second pass at it with a fancier method.
+Finally, if we’ve figured out that a project is worth doing, and ML is the way we are going to solve it, our bias is to use techniques which have been commoditized. This means there are likely high quality, open source solutions with pre-trained models available.
+
+For example, there’s [evidence](https://arxiv.org/pdf/2010.11929.pdf) that transformers can beat CNN’s on image classification tasks. We have tons of straightforward, clearly posed image classification tasks at Bowery:
+
+- Is the light above this crop burnt out?
+- Is this crop wet? (e.g. is there a water leak somewhere above this crop)
+- Does this crop display characteristic X?
+
+Getting a model to detect these issues using a CNN is only a couple of lines in Keras, and using a pretrained TFHub module means you don’t need much  training data. Also, these issues are obvious enough in our images that a CNN will do a great job of detecting them. 
+
+If we were to use a transformer for these tasks we might have to implement it ourselves, or rely on bleeding edge open source implementations. 
+
+This isn’t to say reading papers is bad, or that new code is inherently untrustworthy. It’s more that the marginal improvement we’d get from the shiniest, newest model architecture probably doesn’t justify the time it would take us to write a production implementation, particularly if the simpler method performs great.
+
+If we find that the project is getting a lot of use and we would get a big benefit if it was a bit better, we can always take a second pass at it with a fancier method.
 
 ### *There are many ways to structure DS/ML teams—what have you seen work, or not work?*
 
 Data at Bowery has a centralized reporting structure, but we’ve recently adopted the strategy of “Objectives” on the data team, which I’m a big fan of. 
 
-As I mentioned earlier I lead part of the “Seed to Harvest” objective which means we have a handful of metrics describing our crops while they are growing, and it’s our job to push on those. This means we can build expertise on the data team around a few systems, and really own those systems end to end.
+As I mentioned earlier I'm part of the “Seed to Harvest” objective which means we have a handful of metrics describing our crops while they are growing, and it’s our job to push on those. This means we can build expertise on the data team around a few systems, and really own those systems end to end.
 
 I feel fairly strongly that the minimum team size for a non-trivial project is two, that is, nobody should ever work totally alone on a project. On a small data team it’s very tempting to put everybody on a different project, so that the team can be as responsive to stakeholders as possible.
 
@@ -105,7 +119,7 @@ There are many things we can’t observe which affect yield, many more that we a
 
 Instead we often try to phrase our metrics in terms of factors we _know_ affect yield but are easier to tie to interventions. 
 
-The project I worked on that had the biggest impact had no ML component at all, but is an API to serve images and encode time lapse videos of our crops. I also wrote the frontend portion which allows anyone at the company to look up images or time lapse videos of every crop we’ve ever grown. 
+The project I worked on that had the biggest impact had no ML component at all. It is an API I built in collaboration with [Katie Yoshida](https://www.linkedin.com/in/yokatie/), another data scientist at Bowery to serve images and encode time lapse videos of our crops.
 
 This API means farmers and agricultural technicians can do “virtual” crop audits, it means when we detect something amiss in the farm we can pair it with a recent image of the problematic crop.
 
@@ -120,7 +134,19 @@ Our machine learning models are typically divided into two types:
 
 In the first example, we will eventually harvest that crop and learn its mass. In the second, we don’t have any independent evidence of _when_ the light broke.
 
-Monitoring and retraining for the former is pretty straightforward, we use ML-Flow to handle model tracking and datadog to handle ongoing performance monitoring. We typically retrain these models on a timescale of at most a week, and the retraining is scheduled through Airflow. We have analytics and “smoke tests” that we automatically monitor before promoting a model to production.
+Monitoring and retraining for the former is pretty straightforward, we use ML-Flow to handle model tracking and datadog to handle ongoing performance monitoring. We typically retrain these models on a timescale of at most a week, and the retraining is scheduled through Airflow.
+
+Since Bowery makes important operational decisions based on the output of our models we are serious about testing the quality of our automatically retrained models before we promote them to production. In order to be promoted, the model must perform well on metrics run against our validation sets. 
+
+Additionally we often use “smoke tests”, as a last line of defense against promoting a subtly wrong model into production. These consist of curated, unambiguous validation examples that the model should do well on.
+
+For example, another data scientist at Bowery Farming, [Lauren McCarthy](https://www.linkedin.com/in/mccarthy-lauren/), and I built a model which uses images and crop experience data to predict the mass we will harvest from a crop while it is still growing.
+
+Bowery uses this model to prioritize attention towards underperforming crops by sorting on the expected harvest mass. We also use it to forecast how much product we will deliver to our customers each day over the coming weeks by adding up the predicted mass of each crop due to be harvested on each day. Many people at Bowery make important decisions based on this model, so we need to have confidence in its predictions.
+
+We have curated a selection of crops that failed (for example, due to a mechanical failure in the farm)  and some crops which performed very well. 
+
+We would never expect a newly retrained model to infer the crop mass *exactly*, but if the model doesn’t give the failed crops in our smoke tests quite low expected masses and the great crops high expected masses, we should not be promoting that model. Any failure to promote a model will raise an alert that we can investigate further.
 
 For cases where we don’t get incoming labelled data, we’ve hand curated datasets (I’ve spent many hours labelling images myself). Since we don’t get labels automatically we can’t know about our models real time performance and there is a real danger that our input data can drift somehow and our predictions can degrade in quality.
 
