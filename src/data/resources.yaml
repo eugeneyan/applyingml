@@ -1,31 +1,5 @@
 categories:
-  - title: ML Guides
-    sections:
-      - title: The First Rule of Machine Learning
-        slug: /resources/first-rule-of-ml/
-      - title: Be More End-to-End
-        slug: /resources/end-to-end/
-      - title: Writing Machine Learning Design Docs
-        slug: /resources/ml-design-docs/
-      - title: Testing Machine Learning
-        slug: /resources/testing-ml/
-      - title: Challenges of Machine Learning in Production
-        slug: /resources/ml-production-challenges/
-      - title: Maintaining Machine Learning in Production
-        slug: /resources/ml-production-guide/
-  - title: Non-ML Guides
-    sections:
-      - title: How to Read Papers
-        slug: /resources/read-papers/
-      - title: Writing via Why, What, How
-        slug: /resources/why-what-how/
-      - title: How to Keep Learning
-        slug: /resources/keep-learning/
-      - title: Influencing without Authority
-        slug: /resources/influencing-without-authority/
-      - title: Assorted Advice on Applying ML
-        slug: /resources/assorted-advice/
-        
+
   - title: Teardowns
     sections:
       - title: System Design for RecSys & Search
@@ -36,6 +10,8 @@ categories:
         slug: /resources/search-query-matching/
       - title: Patterns for Personalization
         slug: /resources/personalization/
+      - title: Contextual Bandits for RecSys
+        slug: /resources/bandits/
       - title: Reinforcement Learning for RecSys
         slug: /resources/rl-for-recsys/
       - title: Feature Stores
@@ -44,3 +20,39 @@ categories:
         slug: /resources/data-discovery/
       - title: Bootstrapping Data Labels
         slug: /resources/data-labeling/
+
+  - title: ML Guides
+    sections:
+      - title: The First Rule of Machine Learning
+        slug: /resources/first-rule-of-ml/
+      - title: Be More End-to-End
+        slug: /resources/end-to-end/
+      - title: Writing Machine Learning Design Docs
+        slug: /resources/ml-design-docs/
+      - title: Patterns in ML Code and System
+        slug: /resources/patterns/
+      - title: Testing Machine Learning
+        slug: /resources/testing-ml/
+      - title: Challenges of Machine Learning in Production
+        slug: /resources/ml-production-challenges/
+      - title: Maintaining Machine Learning in Production
+        slug: /resources/ml-production-guide/
+      - title: Counterfactual Evaluation
+        slug: /resources/counterfactual/
+      - title: Mitigating Position Bias
+        slug: /resources/position-bias/
+
+  - title: Non-ML Guides
+    sections:
+      - title: How to Read Papers
+        slug: /resources/read-papers/
+      - title: Writing via Why, What, How
+        slug: /resources/why-what-how/
+      - title: How to Keep Learning
+        slug: /resources/keep-learning/
+      - title: Onboarding Effectively
+        slug: /resources/onboarding/
+      - title: Influencing without Authority
+        slug: /resources/influencing-without-authority/
+      - title: Assorted Advice on Applying ML
+        slug: /resources/assorted-advice/
