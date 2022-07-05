@@ -11,7 +11,7 @@ const CodeBlock = ({ children, className, live, render }) => {
 
   if (live) {
     return (
-      <div style={{ marginTop: '40px', backgroundColor: 'black' }}>
+      <div style={{ marginTop: '20px', backgroundColor: 'black' }}>
         <LiveProvider
           code={children.trim()}
           transformCode={(code) => `/** @jsx mdx */${code}`}
@@ -45,6 +45,7 @@ const CodeBlock = ({ children, className, live, render }) => {
             padding: '20px',
             overflow: 'auto',
             borderRadius: '3px',
+            fontFamily: 'SFMono-Regular, Menlo, Monaco, Consolas, monospace',
           }}
         >
           {tokens.map((line) => (

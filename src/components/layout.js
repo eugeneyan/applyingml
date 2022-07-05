@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import { rhythm } from '../utils/typography';
 
 import CodeBlock from './codeblock';
-import './layout.module.css';
+import './layout.css';
 import SubscriptionForm from './subscribe';
 
 const ListLink = (props) => (
