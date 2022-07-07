@@ -40,8 +40,16 @@ const MentorsPage = ({
       </Helmet>
 
       <p>
-        Stories and advice from machine learning practitioners. Want to contribute an interview or
-        recommend someone? Please <a href="mailto:applyingml@gmail.com">reach out</a>!
+        Stories & advice from machine learning practitioners. Want to contribute an interview or
+        recommend someone? Please <a href="mailto:applyingml@gmail.com">reach out</a> or make a{' '}
+        <a
+          href="https://github.com/eugeneyan/applyingml#contributing"
+          target="_blank"
+          rel="noreferrer"
+        >
+          pull request
+        </a>
+        .
       </p>
       <div>{Mentors}</div>
       <br />

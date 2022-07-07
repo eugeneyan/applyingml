@@ -42,8 +42,8 @@ const ResourcesPage = ({
       </Helmet>
 
       <p>
-        Guides and teardowns on how to apply machine learning in production. Spot an error or
-        suggesting edits? Please <a href="mailto:applyingml@gmail.com">reach out</a> or make a{' '}
+        Guides and teardowns on how to apply machine learning in production. Want to contribute a piece or
+        suggest edits? Please <a href="mailto:applyingml@gmail.com">reach out</a> or make a{' '}
         <a
           href="https://github.com/eugeneyan/applyingml#contributing"
           target="_blank"
