@@ -1,6 +1,6 @@
 # 📌 applyingml
 
-Repository for [applyingml.com](https://applyingml.com) containing [papers](https://applyingml.com/applied-ml/), [resources](https://applyingml.com/resources/), and [mentor interviews](https://applyingml.com/mentors/) on how to apply machine learning. 
+Repository for [applyingml.com](https://applyingml.com) containing [papers](https://applyingml.com/papers/), [resources](https://applyingml.com/resources/), and [mentor interviews](https://applyingml.com/mentors/) on how to apply machine learning. 
 
 Have questions? Reach out to [@eugeneyan](https://twitter.com/eugeneyan).
 
