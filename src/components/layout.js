@@ -150,7 +150,7 @@ export default function Layout({ children }) {
           css={css`
             liststyle: none;
             float: right;
-            margin-bottom: 0;
+            margin: 0 0;
           `}
         >
           <ListLink to="/papers/">Papers</ListLink>
