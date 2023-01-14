@@ -29,19 +29,23 @@ ListLink.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
-const ExternalLink = (props) => {
-  if (props.href.includes('yourwebsite.com') || props.href[0] === '/') {
-    return <Link to={props.href}>{props.children}</Link>;
-  }
-  return (
-    <Link to={props.href} target="_blank" rel="noopener noreferrer">
+const ExternalListLink = (props) => (
+  <li
+    css={css`
+      display: inline-block;
+      margin-left: 0.75rem;
+      margin-bottom: 0;
+      font-family: Raleway;
+    `}
+  >
+    <Link to={props.to} target="_blank">
       {props.children}
     </Link>
-  );
-};
+  </li>
+);
 
-ExternalLink.propTypes = {
-  href: PropTypes.string.isRequired,
+ExternalListLink.propTypes = {
+  to: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
 };
 
@@ -100,7 +104,7 @@ Header3.propTypes = {
 
 const components = {
   code: CodeBlock,
-  a: ExternalLink,
+  a: ExternalListLink,
   blockquote: BlockQuote,
   h3: Header3,
 };
@@ -152,6 +156,9 @@ export default function Layout({ children }) {
           <ListLink to="/papers/">Papers</ListLink>
           <ListLink to="/resources/">Resources</ListLink>
           <ListLink to="/mentors/">Mentors</ListLink>
+          <ExternalListLink to="https://www.meetup.com/ml-meetups-virtual/">
+            Meetups
+          </ExternalListLink>
         </ul>
       </header>
       <hr style={{ color: '#d9d9d9', border: '0' }} />
