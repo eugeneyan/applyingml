@@ -180,7 +180,7 @@ export default function Layout({ children }) {
         <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
           Eugene Yan
         </a>{' '}
-        {new Date().getFullYear()}
+        <a rel="me" href="https://recsys.social/@eugeneyan">{new Date().getFullYear()}</a>
         {' • '}
         <Link to="/about/">About</Link>
         {' • '}
