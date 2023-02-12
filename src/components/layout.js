@@ -29,6 +29,22 @@ ListLink.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
+const ExternalLink = (props) => {
+  if (props.href.includes('yourwebsite.com') || props.href[0] === '/') {
+    return <Link to={props.href}>{props.children}</Link>;
+  }
+  return (
+    <Link to={props.href} target="_blank" rel="noopener noreferrer">
+      {props.children}
+    </Link>
+  );
+};
+
+ExternalLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
+};
+
 const ExternalListLink = (props) => (
   <li
     css={css`
@@ -104,7 +120,7 @@ Header3.propTypes = {
 
 const components = {
   code: CodeBlock,
-  a: ExternalListLink,
+  a: ExternalLink,
   blockquote: BlockQuote,
   h3: Header3,
 };
@@ -180,7 +196,7 @@ export default function Layout({ children }) {
         <a href="https://eugeneyan.com" target="_blank" rel="noreferrer">
           Eugene Yan
         </a>{' '}
-        <a rel="me" href="https://recsys.social/@eugeneyan">{new Date().getFullYear()}</a>
+        {new Date().getFullYear()}
         {' • '}
         <Link to="/about/">About</Link>
         {' • '}
