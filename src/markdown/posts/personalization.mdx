@@ -18,10 +18,6 @@ Multi-armed bandits try to balance exploration and exploitation. They explore ne
 
 Contextual bandits take it a step further, where they collect and observe the context before each action, and choose actions based on the context. They learn about how actions _and context_ affect reward. In the case of recommendations and search, the context would be information we have about the customer (e.g., demographics, device, indicated/historical preferences) and environment (e.g., day of week, time of day).
 
-Multi-armed bandits try to balance exploration and exploitation. They explore new actions to learn what the potential reward is, and they exploit the current best action to maximize reward. The goal is to learn about and choose actions that maximize total reward (aka minimize regret).
-
-Contextual bandits take it a step further, where they collect and observe the context before each action, and choose actions based on the context. They learn about how actions _and context_ affect reward. In the case of recommendations and search, the context would be information we have about the customer (e.g., demographics, device, indicated/historical preferences) and environment (e.g., day of week, time of day).
-
 ![The difference between multi-armed and contextual bandits](../../assets/contextual-bandit.jpg)
 <FigureCaption caption="The difference between multi-armed and contextual bandits" source="https://dl.acm.org/doi/10.1145/3240323.3240354" />
 
