@@ -51,6 +51,10 @@ const ResourcesPage = ({
         >
           pull request
         </a>
+        . More on system design, techniques, engineering, mechanisms{' '}
+        <a href="https://eugeneyan.com/start-here/" target="_blank" rel="noreferrer">
+          here
+        </a>
         .
       </p>
       <div>{Categories}</div>
