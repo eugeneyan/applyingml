@@ -1,9 +1,9 @@
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
 import { css } from '@emotion/react';
-import { useStaticQuery, Link, graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { rhythm } from '../utils/typography';
 
@@ -172,9 +172,7 @@ export default function Layout({ children }) {
           <ListLink to="/papers/">Papers</ListLink>
           <ListLink to="/resources/">Resources</ListLink>
           <ListLink to="/mentors/">Mentors</ListLink>
-          <ExternalListLink to="https://www.meetup.com/ml-meetups-virtual/">
-            Meetups
-          </ExternalListLink>
+          <ExternalListLink to="https://applied-llms.org/">Applied-LLMs</ExternalListLink>
         </ul>
       </header>
       <hr style={{ color: '#d9d9d9', border: '0' }} />
